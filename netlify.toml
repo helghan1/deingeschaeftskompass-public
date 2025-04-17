@@ -4,4 +4,7 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  disabled = true
+
+    [plugins.inputs]
+      # Hier könntest du Plugin-spezifische Inputs konfigurieren,
+      # aber da wir es deaktivieren wollen, lassen wir diesen Abschnitt leer.
