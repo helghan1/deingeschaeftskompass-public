@@ -1,3 +1,7 @@
 [build]
   publish = "."
   command = ""
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  disabled = true
