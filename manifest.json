@@ -1,26 +1,36 @@
 {
-  "name": "Der Name deiner Webseite",
-  "short_name": "Kurzer Name",
+  "name": "Dein Geschäftskompass",
+  "short_name": "Dein Geschäftskompass",
   "icons": [
     {
-      "src": "/images/icon-192x192.png",
+      "src": "/public/Logo192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/images/icon-512x512.png",
+      "src": "/public/Logo512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
-    // Füge hier weitere Icon-Größen für verschiedene Geräte hinzu
-    // Es ist auch empfehlenswert, dein Favicon im .ico-Format hinzuzufügen:
-    /*
+    },
+
+    {
+      "src": "/public/Logo152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+
+    {
+      "src": "/public/Logo48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },   
+
     {
       "src": "/favicon.ico",
       "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
     }
-    */
+    
   ],
   "start_url": "/",
   "display": "standalone",
