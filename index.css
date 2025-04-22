@@ -1282,7 +1282,7 @@
   display: block;
   align-self: center;
   font-style: normal;
-  text-align: left;
+  text-align: center;
   word-break: keep-all;
   font-weight: 800;
 }
@@ -2133,6 +2133,7 @@
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
+  padding: var(--dl-layout-space-unit); 
 }
  
 .faq-icon18 {
@@ -3860,4 +3861,94 @@
     width: 50px;
     height: 50px;
   }
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 15px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cookie-buttons button {
+  margin: 0 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cookie-accept {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cookie-decline {
+  background-color: #f44336;
+  color: white;
+}
+
+#cookie-settings-button {
+  background-color: #008CBA;
+  color: white;
+}
+
+.cookie-settings {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  text-align: left;
+  min-width: 300px;
+}
+
+.cookie-settings.hidden {
+  display: none;
+}
+
+.cookie-settings h2 {
+  margin-top: 0;
+}
+
+.cookie-settings ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cookie-settings li {
+  margin-bottom: 10px;
+}
+
+.settings-buttons button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cookie-settings-save {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cookie-settings-cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+.cookie-settings p a {
+  color: #008CBA;
+  text-decoration: none;
 }
