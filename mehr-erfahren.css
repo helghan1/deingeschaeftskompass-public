@@ -916,7 +916,7 @@
  
 .vergleich-header26 {
   gap: var(--dl-layout-space-twounits);
-  height: 544px;
+  
   align-items: center;
   padding-top: 3px;
   padding-bottom: var(--dl-layout-space-threeunits);
@@ -943,7 +943,7 @@
 .vergleich-content {
   gap: var(--dl-layout-space-oneandhalfunits);
   width: auto;
-  height: 337px;
+  
   display: flex;
   position: relative;
   align-self: stretch;
@@ -991,7 +991,7 @@
  
 .vergleich-container2 {
   width: 100%;
-  height: 100px;
+  
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1007,7 +1007,7 @@
  
 .vergleich-container3 {
   width: 100%;
-  height: 100px;
+  
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1023,7 +1023,7 @@
  
 .vergleich-container4 {
   width: 100%;
-  height: 100px;
+ 
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1039,7 +1039,7 @@
  
 .vergleich-container5 {
   width: 100%;
-  height: 100px;
+  
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1051,7 +1051,7 @@
  
 .vergleich-container6 {
   width: 100%;
-  height: 100px;
+  
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1067,7 +1067,7 @@
  
 .vergleich-container7 {
   width: 100%;
-  height: 100px;
+  
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
