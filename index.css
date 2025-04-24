@@ -1803,34 +1803,35 @@
 .ablauf-wrapper {
   display: contents;
 }
- 
+
 .ablauf-container1 {
   width: auto;
 }
- 
+
 .ablauf-container2 {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
+  gap: 20px; /* Füge etwas Abstand zwischen den Spalten hinzu */
 }
- 
+
 .ablauf-text10 {
   width: auto;
   height: auto;
 }
- 
+
 .ablauf-text11 {
   width: auto;
 }
- 
+
 .ablauf-text15 {
   text-decoration: underline;
 }
- 
+
 .ablauf-text16 {
   text-decoration: underline;
 }
- 
+
 .ablauf-button {
   animation-name: none;
   animation-delay: 0s;
@@ -1840,74 +1841,88 @@
   animation-iteration-count: 1;
   animation-timing-function: ease;
 }
- 
+
 .ablauf-container4 {
-  display: block;
+  display: block; /* Lässt die Karten untereinander fließen */
 }
- 
+
 .ablauf-container5 {
   overflow: auto;
   padding-top: var(--dl-layout-space-unit);
   padding-bottom: var(--dl-layout-space-unit);
   background-color: var(--dl-color-theme-accent1);
+  margin-bottom: 10px; /* Füge etwas Abstand zwischen den Karten hinzu */
 }
- 
+
 .ablauf-text41 {
   text-align: center;
 }
- 
+
 .ablauf-container6 {
   top: 10%;
   padding-top: var(--dl-layout-space-unit);
   padding-bottom: var(--dl-layout-space-unit);
   background-color: var(--dl-color-theme-accent2);
+  margin-bottom: 10px; /* Füge etwas Abstand zwischen den Karten hinzu */
 }
- 
+
 .ablauf-text47 {
   text-align: center;
 }
- 
+
 .ablauf-container7 {
   padding-top: var(--dl-layout-space-unit);
   padding-bottom: var(--dl-layout-space-unit);
   background-color: var(--dl-color-theme-accent1);
+  margin-bottom: 10px; /* Füge etwas Abstand zwischen den Karten hinzu */
 }
- 
+
 .ablauf-text51 {
   text-align: center;
 }
- 
+
 .ablauf-container8 {
   padding-top: var(--dl-layout-space-unit);
   padding-bottom: var(--dl-layout-space-unit);
   background-color: var(--dl-color-theme-accent2);
+  margin-bottom: 10px; /* Füge etwas Abstand zwischen den Karten hinzu */
 }
- 
+
 .ablauf-text55 {
   text-align: center;
 }
- 
+
 .ablauf-container9 {
   padding-top: var(--dl-layout-space-unit);
   padding-bottom: var(--dl-layout-space-unit);
   background-color: var(--dl-color-theme-accent1);
+  margin-bottom: 10px; /* Füge etwas Abstand zwischen den Karten hinzu */
 }
- 
+
 .ablauf-text59 {
   text-align: center;
 }
- 
+
 .ablaufroot-class-name {
   align-self: flex-start;
 }
- 
+
 @media(max-width: 991px) {
   .ablauf-container4 {
-    word-break: break-all;
+    word-break:normal;
   }
 }
- 
+
 @media(max-width: 767px) {
+  .ablauf-container2 {
+    grid-template-columns: 1fr; /* Ändert das Grid zu einer einzelnen Spalte */
+    grid-template-rows: auto auto; /* Erlaubt den Zeilen, sich automatisch anzupassen */
+  }
+
+  .ablauf-container4 {
+    width: 100%; /* Nimmt die volle Breite ein */
+  }
+
   .ablauf-container5 {
     width: 100%;
   }
@@ -1924,7 +1939,7 @@
     width: 100%;
   }
 }
- 
+
 @media(max-width: 479px) {
   .ablauf-button {
     width: 100%;
