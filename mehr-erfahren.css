@@ -910,181 +910,6 @@
   }
 }
 
-.vergleich-wrapper {
-  display: contents;
-}
- 
-.vergleich-header26 {
-  gap: var(--dl-layout-space-twounits);
-  
-  align-items: center;
-  padding-top: 3px;
-  padding-bottom: var(--dl-layout-space-threeunits);
-  justify-content: center;
-}
- 
-.vergleich-text10 {
-  color: var(--dl-color-theme-primary1);
-}
- 
-.vergleich-max-width {
-  align-self: center;
-}
- 
-.vergleich-column {
-  gap: var(--dl-layout-space-oneandhalfunits);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  flex-direction: column;
-}
- 
-.vergleich-content {
-  gap: var(--dl-layout-space-oneandhalfunits);
-  width: auto;
-  
-  display: flex;
-  position: relative;
-  align-self: stretch;
-  align-items: center;
-  flex-direction: column;
-}
- 
-.vergleich-container1 {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text11 {
-  font-size: 18px;
-  font-style: normal;
-  text-align: center;
-  font-weight: 400;
-  border-color: var(--dl-color-theme-neutral-dark);
-  border-width: 0px;
-  border-bottom-width: 1px;
-}
- 
-.vergleich-text12 {
-  font-size: 18px;
-  font-style: normal;
-  text-align: center;
-  font-weight: 500;
-  border-color: var(--dl-color-theme-neutral-dark);
-  border-width: 0px;
-  border-bottom-width: 1px;
-}
- 
-.vergleich-text13 {
-  font-size: 18px;
-  font-style: normal;
-  text-align: center;
-  font-weight: 300;
-  border-color: var(--dl-color-theme-neutral-dark);
-  border-width: 0px;
-  border-bottom-width: 1px;
-}
- 
-.vergleich-container2 {
-  width: 100%;
-  
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text14 {
-  text-align: center;
-}
- 
-.vergleich-text15 {
-  padding-right: var(--dl-layout-space-halfunit);
-}
- 
-.vergleich-container3 {
-  width: 100%;
-  
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text17 {
-  text-align: center;
-}
- 
-.vergleich-text18 {
-  padding-right: var(--dl-layout-space-halfunit);
-}
- 
-.vergleich-container4 {
-  width: 100%;
- 
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text20 {
-  text-align: center;
-}
- 
-.vergleich-text21 {
-  padding-right: var(--dl-layout-space-halfunit);
-}
- 
-.vergleich-container5 {
-  width: 100%;
-  
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text23 {
-  text-align: center;
-}
- 
-.vergleich-container6 {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text26 {
-  text-align: center;
-}
- 
-.vergleich-text27 {
-  padding-right: var(--dl-layout-space-halfunit);
-}
- 
-.vergleich-container7 {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
- 
-.vergleich-text29 {
-  text-align: center;
-}
- 
-.vergleich-text30 {
-  padding-right: var(--dl-layout-space-halfunit);
-}
- 
-.vergleich-button {
-  padding-top: var(--dl-layout-space-fiveunit);
-  text-decoration: none;
-}
  
 .mehr-erfahren-fragment43 {
   display: contents;
@@ -2922,3 +2747,53 @@
     height: 50px;
   }
 }
+
+.vergleich-netzdiagramm {
+  max-width: 70%;
+  height: auto;
+}
+
+.vergleich-max-width {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.vergleich-header26 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.vergleich-header26 h2 {
+  margin-bottom: 20px; /* Standardmäßiger Abstand der Überschrift zum Bild */
+}
+
+.vergleich-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Für Smartphones (max-width: 600px) */
+@media (max-width: 600px) {
+  .vergleich-netzdiagramm {
+    max-width: 100%;
+  }
+
+  .vergleich-max-width {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .vergleich-header26 {
+    padding-top: 5px; /* Reduziere oberen Padding des Headers */
+    padding-bottom: 5px; /* Reduziere unteren Padding des Headers */
+  }
+
+  .vergleich-header26 h2 {
+    margin-bottom: 10px; /* Reduziere Abstand der Überschrift zum Bild auf Smartphones */
+  }
+}
+
+
