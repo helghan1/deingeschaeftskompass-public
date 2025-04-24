@@ -844,23 +844,6 @@
   animation-timing-function: ease;
 }
  
-.leistungen3-image2 {
-  animation-name: fadeIn;
-  animation-delay: 0s;
-  animation-duration: 300ms;
-  animation-direction: normal;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-}
- 
-.leistungen3-image3 {
-  animation-name: fadeIn;
-  animation-delay: 0s;
-  animation-duration: 300ms;
-  animation-direction: normal;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-}
  
 .startseite-fragment38 {
   display: contents;
@@ -970,6 +953,13 @@
  
 .preise-text11 {
   text-align: center;
+  margin-bottom: 16px; /* Stelle sicher, dass ein Abstand nach der Überschrift vorhanden ist (ggf. anpassen) */
+}
+
+@media (max-width: 767px) { /* Beispiel für einen typischen Smartphone-Breakpoint */
+  .preise-text11 {
+    line-height: 1.2; /* oder ein anderer kleinerer Wert, der gut aussieht */
+  }
 }
  
 .preise-text12 {
@@ -1285,6 +1275,7 @@
   text-align: center;
   word-break: keep-all;
   font-weight: 800;
+  order: 3;
 }
  
 .startseite-fragment44 {
