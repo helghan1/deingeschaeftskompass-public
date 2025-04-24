@@ -192,12 +192,30 @@
   font-weight: 600;
   line-height: 1.5;
 }
- 
+
+
+/* Standardstile für h3 */
 .thq-heading-3 {
   font-size: 26px;
   font-family: STIX Two Text;
   font-weight: 600;
   line-height: 1.5;
+  margin-bottom: 1em; /* Füge etwas Standard-Abstand nach unten hinzu */
+}
+
+/* Stile für Bildschirme kleiner oder gleich 768px (typische Tablet-Größe) */
+@media (max-width: 768px) {
+  .thq-heading-3 {
+    font-size: 22px; /* Kleinere Schriftgröße für Tablets */
+  }
+}
+
+/* Stile für Bildschirme kleiner oder gleich 480px (typische Smartphone-Größe) */
+@media (max-width: 480px) {
+  .thq-heading-3 {
+    font-size: 18px; /* Noch kleinere Schriftgröße für Smartphones */
+    line-height: 1.3; /* Etwas reduzierter Zeilenabstand kann auch helfen */
+  }
 }
  
 .thq-body-large {
