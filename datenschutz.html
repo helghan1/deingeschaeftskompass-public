@@ -38,7 +38,16 @@
     />
 
     <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption 
+      {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea 
+      {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] 
+      {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner 
+      {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a 
+      {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker 
+      {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] 
+      {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + 
+      [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html 
+      { scroll-behavior: smooth  }
     </style>
     <style data-tag="default-style-sheet">
       html {
@@ -98,75 +107,140 @@
     <link rel="stylesheet" href="./style.css" />
       <div>
     <link href="./datenschutz.css" rel="stylesheet" />
-      <div
-        class="datenschutz-container1">
-    <header 
-      	class="datenschutz-container2">
-    </header>
-        
-    <kopfzeile-rest-wrapper
+    <style>
+      /* Stile für das mobile Menü */
+      .kopfzeile-rest-burger-menu {
+          display: none; /* Standardmäßig ausblenden */
+          cursor: pointer;
+          padding: 10px;
+      }
+
+      .kopfzeile-rest-burger-menu div {
+          width: 30px;
+          height: 3px;
+          background-color: var(--dl-color-theme-neutral-dark); /* Passe die Farbe an */
+          margin: 5px 0;
+      }
+
+      .kopfzeile-rest-mobile-menu {
+          display: none; /* Standardmäßig ausblenden */
+          position: absolute;
+          top: 60px; /* Unterhalb der Hauptnavigation */
+          left: 0;
+          width: 100%;
+          background-color: var(--dl-color-theme-neutral-light); /* Passe die Farbe an */
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+          z-index: 10; /* Um sicherzustellen, dass es über anderen Inhalten liegt */
+          padding: 15px;
+          flex-direction: column;
+          align-items: flex-start;
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 0.3s ease; /* Sanftes Einblenden */
+      }
+
+      .kopfzeile-rest-mobile-menu.open {
+          display: flex;
+          visibility: visible;
+          opacity: 1;
+      }
+
+      /* Media Query für mobile Ansichten */
+      @media (max-width: 767px) {
+          .kopfzeile-rest-desktop-menu {
+              display: none; /* Desktop-Menü ausblenden */
+          }
+          .kopfzeile-rest-burger-menu {
+              display: block; /* Burger-Menü anzeigen */
+          }
+      }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <div
+      class="mehr-erfahren-container1"
+  >
+      <header class="mehr-erfahren-container2"></header>
+      <kopfzeile-rest-wrapper
           class="kopfzeile-rest-wrapper"
           rootclassname="kopfzeile-restundefined"
       >
-            
-      <!--KopfzeileRest component-->
-      <header
-        class="kopfzeile-rest-container kopfzeile-restroot-class-name2"
-      >
-        <header
-          data-thq="thq-navbar"
-          class="kopfzeile-rest-navbar-interactive"
-        >
-          <a 
-            href="index.html" 
-            class="kopfzeile-rest-navlink">
-              <img
-                alt="Dein Geschäftskompass – zurück zur Startseite."
-                src="public/Logo.png"
-                class="kopfzeile-rest-image1"
-              />
-          </a>
-
-          <div
-            data-thq="thq-navbar-nav"
-            class="kopfzeile-rest-desktop-menu">
-            <nav class="kopfzeile-rest-links">
-              <a
-                href="index.html"
-                class="kopfzeile-rest-link1 thq-body-small thq-link">
-                <fragment class="datenschutz-fragment10">
-                  <span class="datenschutz-text100">Startseite</span>
-                </fragment>
-              </a>
-            </nav>
-            <div class="kopfzeile-rest-buttons">
-              <a 
-                href="mehr-erfahren.html"
-                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
-                <span>
-                  <fragment class="datenschutz-fragment11">
-                    <span class="datenschutz-text101">mehr Erfahren</span>
-                  </fragment>
-                </span>
-              </a>
-                <a href="kontakt.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                  <span class="impressum-text12">Kontakt</span>
-                </a>    
-            </div>
-          </div>
-          
-          <div
-            data-thq="thq-burger-menu"
-            class="kopfzeile-rest-burger-menu">
-          </div>
-          
-          <div
-            data-thq="thq-mobile-menu"
-            class="kopfzeile-rest-mobile-menu">
-          </div>
-        </header>
-      </header>
-    </kopfzeile-rest-wrapper>
+          <header
+              class="kopfzeile-rest-container kopfzeile-restroot-class-name"
+          >
+              <header
+                  data-thq="thq-navbar"
+                  class="kopfzeile-rest-navbar-interactive"
+              >
+                  <a href="index.html" class="kopfzeile-rest-navlink">
+                      <img
+                          alt="Dein Geschäftskompass – zurück zur Startseite."
+                          src="public/Logo.png"
+                          class="kopfzeile-rest-image1"
+                      />
+                  </a>
+                  <div
+                      data-thq="thq-navbar-nav"
+                      class="kopfzeile-rest-desktop-menu"
+                  >
+                      <nav class="kopfzeile-rest-links">
+                          <a
+                              href="index.html"
+                              class="kopfzeile-rest-link1 thq-body-small thq-link"
+                          >
+                              <fragment class="mehr-erfahren-fragment10">
+                                  <span class="mehr-erfahren-text100">Startseite</span>
+                              </fragment>
+                          </a>
+                      </nav>
+                      <div class="kopfzeile-rest-buttons">
+                          <a
+                              href="mehr-erfahren.html"
+                              class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                          >
+                              <span>
+                                  <fragment class="mehr-erfahren-fragment11">
+                                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                                  </fragment>
+                              </span>
+                          </a>
+                          <a
+                              href="kontakt.html"
+                              class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                          >
+                              <span>
+                                  <fragment class="mehr-erfahren-fragment12">
+                                      <span class="mehr-erfahren-text102">Kontakt</span>
+                                  </fragment>
+                              </span>
+                          </a>
+                      </div>
+                  </div>
+                  <div
+                      data-thq="thq-burger-menu"
+                      class="kopfzeile-rest-burger-menu"
+                      onclick="toggleMobileMenuRest()"
+                  >
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                  </div>
+                  <div
+                      data-thq="thq-mobile-menu"
+                      class="kopfzeile-rest-mobile-menu"
+                      id="mobileMenuRest"
+                  >
+                      <a href="index.html">Startseite</a>
+                      <a href="gut-zu-wissen.html">Gut zu Wissen</a>
+                      <a href="preise.html">Preise</a>
+                      <a href="mehr-erfahren.html">Mehr Erfahren</a>
+                      <a href="kontakt.html">Kontakt</a>
+                  </div>
+              </header>
+          </header>
+      </kopfzeile-rest-wrapper>
     
     
     <datenschutz-text-wrapper
@@ -644,6 +718,21 @@
           </fuzeile-wrapper>
         </div>
       </div>
+
+      <script>
+        function toggleMobileMenuRest() {
+            const mobileMenu = document.getElementById('mobileMenuRest');
+            const mainContent = document.getElementById('mainContent');
+            mobileMenu.classList.toggle('open');
+  
+            if (mobileMenu.classList.contains('open')) {
+                mainContent.style.marginTop = 'auto'; // Oder die Höhe, die dein geöffnetes Menü einnimmt
+            } else {
+                mainContent.style.marginTop = '0';
+            }
+        }
+    </script>
+
     </body>
   </html>
   
