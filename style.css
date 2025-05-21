@@ -207,20 +207,43 @@
   font-weight: 600;
   line-height: 1.5;
   margin-bottom: 1em; /* Füge etwas Standard-Abstand nach unten hinzu */
-}
 
-/* Stile für Bildschirme kleiner oder gleich 768px (typische Tablet-Größe) */
+
+/* Responsive Anpassungen für Überschriften
+
 @media (max-width: 768px) {
+  /* Tablet-Größen */
+  .thq-heading-1 {
+    font-size: 38px; /* Kleiner für H1 auf Tablets */
+  }
+  .thq-heading-2 {
+    font-size: 30px; /* Kleiner für H2 auf Tablets */
+  }
+  .thq-heading-3 {
+    font-size: 22px; /* Kleiner für H3 auf Tablets, ähnlich H4 in deiner Referenz */
+  }
   .thq-heading-4 {
-    font-size: 22px; /* Kleinere Schriftgröße für Tablets */
+    font-size: 20px; /* Noch kleiner für H4 auf Tablets */
   }
 }
 
-/* Stile für Bildschirme kleiner oder gleich 480px (typische Smartphone-Größe) */
 @media (max-width: 480px) {
+  /* Smartphone-Größen */
+  .thq-heading-1 {
+    font-size: 30px; /* Deutlich kleiner für H1 auf Smartphones */
+    line-height: 1.3;
+  }
+  .thq-heading-2 {
+    font-size: 25px; /* Deutlich kleiner für H2 auf Smartphones */
+    line-height: 1.3;
+  }
+  .thq-heading-3 {
+    font-size: 18px; /* Wie dein ursprüngliches H4 auf Smartphones */
+    line-height: 1.3;
+  }
   .thq-heading-4 {
-    font-size: 18px; /* Noch kleinere Schriftgröße für Smartphones */
-    line-height: 1.3; /* Etwas reduzierter Zeilenabstand kann auch helfen */
+    font-size: 16px; /* Vielleicht noch kleiner für H4 auf Smartphones, je nach Design */
+    line-height: 1.3;
   }
 }
 
