@@ -294,7 +294,7 @@
     /* Interpretations-Text */
     #interpretation-display {
         font-size: 1.1em;
-        color: #555;
+        color: #000000;
         margin-bottom: 25px;
     }
 
@@ -330,6 +330,49 @@
     .cta-button:hover {
         background-color: #000000; /* Dunkleres Grün beim Hover */
     }
+
+    /* Media Query für kleinere Bildschirme (Smartphones und Tablets) */
+@media (max-width: 768px) {
+    /* ... (vorherige Anpassungen für Button und Layout bleiben hier) ... */
+
+    /* Farbe für den Haupttext (Frageninhalt und Antworten) */
+    /* Dies zielt auf die <p> Tags im Hauptcontainer und die Label der Radio-Buttons */
+    .effizienz-quick-check-container p, /* Für den Einführungstext und andere p-Tags */
+    .question-block label, /* Für die Antwortoptionen */
+    .thq-body-small { /* Für allgemeine thq-body-small Texte */
+        color: #222222; /* Sehr dunkles Grau, fast Schwarz, aber etwas weicher */
+        /* Stelle sicher, dass keine opacity: 0; oder ähnliches gesetzt ist */
+        opacity: 1; /* Überschreibt eventuelle ungewollte Transparenz */
+    }
+
+    /* Farbe für die Überschriften */
+    .effizienz-quick-check-container h2, /* Dein Effizienz-Radar */
+    .question-block h3, /* Fragenüberschriften */
+    .impressum-text-heading1 { /* Die "Gut zu Wissen" und "Mehr als nur Theorie" Überschriften */
+        color: #1a1a1a; /* Noch dunkler, fast reines Schwarz für Überschriften */
+        opacity: 1; /* Überschreibt eventuelle ungewollte Transparenz */
+    }
+
+    /* Sicherstellen, dass die Links (A-Tags) auch gut lesbar sind */
+    .impressum-text14 a {
+        color: #0056b3; /* Deine Linkfarbe */
+        text-decoration: underline; /* Unterstreichung kann Lesbarkeit von Links erhöhen */
+        opacity: 1;
+    }
+
+    /* Für den Text im CTA-Button, falls der betroffen ist */
+    .preise-button1 .startseite-text163 {
+        color: white; /* Standardmäßig weiß für den blauen Button */
+        opacity: 1;
+    }
+
+    /* Optional: Grundlegende Farbsicherung für den gesamten Container */
+    .effizienz-quick-check-container {
+        color: #333333; /* Setzt eine Grundfarbe für den gesamten Text im Container, falls nicht spezifisch überschrieben */
+    }
+
+    /* ... (restliche Media Query Anpassungen) ... */
+}
 </style>
 
 </head>
@@ -479,7 +522,7 @@
 
       <div class="question-block" id="q1">
           <h3>1. Transformation & Anpassungsfähigkeit</h3>
-          <p>Inwieweit sind deine Kernprozesse (z.B. Kundenverwaltung, Projektmanagement, Rechnungsstellung) durch **integrierte digitale Systeme** automatisiert und miteinander vernetzt, um manuelle Schritte zu reduzieren?</p>
+          <p>Inwieweit sind deine Kernprozesse (z.B. Kundenverwaltung, Projektmanagement, Rechnungsstellung) durch integrierte digitale Systeme automatisiert und miteinander vernetzt, um manuelle Schritte zu reduzieren?</p>
           <label><input type="radio" name="q1_digital_reife" value="3"> Umfassend: Die meisten Kernprozesse laufen über integrierte Softwarelösungen und sind stark automatisiert.</label><br>
           <label><input type="radio" name="q1_digital_reife" value="2"> Teilweise digitalisiert: Du nutzt diverse digitale Tools, aber Prozesse sind oft nicht durchgängig oder nur wenig vernetzt, was manuelle Übertragungen erfordert.</label><br>
           <label><input type="radio" name="q1_digital_reife" value="1"> Basic-Digitalisierung: Du nutzt grundlegende digitale Tools (z.B. Office-Anwendungen, E-Mail), die Prozesse sind aber weitgehend manuell oder isoliert.</label><br>
