@@ -173,17 +173,17 @@
         max-width: 800px;
         margin: 40px auto;
         padding: 30px;
-        background-color: #f9f9f9;
+        background-color: #333333; /* Dunkles Grau für den Haupt-Container */
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         font-family: Arial, sans-serif;
-        color: #000000;
+        color: #FFFFFF; /* Standardmäßig weiße Schrift für den Haupt-Container */
     }
 
     /* Titel des Quick-Checks */
     .effizienz-quick-check-container h2 {
         text-align: center;
-        color: #0056b3; /* Dunkelblau für den Titel */
+        color: #008cbaff; /* Deine gewählte Blau-Farbe für den Titel */
         margin-bottom: 20px;
     }
 
@@ -191,12 +191,13 @@
     .effizienz-quick-check-container p {
         line-height: 1.6;
         margin-bottom: 15px;
+        color: #FFFFFF; /* Sicherstellen, dass der Einführungstext weiß ist */
     }
 
     /* Progress Bar Container */
     .progress-container {
         width: 100%;
-        background-color: #e0e0e0; /* Hintergrundfarbe des Balkens */
+        background-color: #555555; /* Hintergrundfarbe des Balkens, etwas heller als der Container */
         border-radius: 5px;
         margin-bottom: 25px;
         height: 10px; /* Höhe der Progress Bar */
@@ -210,25 +211,26 @@
         background-color: #008cbaff; /* Farbe des Fortschrittsbalkens (Blau) */
         border-radius: 5px;
         text-align: center;
-        color: white;
+        color: white; /* Textfarbe auf dem Balken (falls vorhanden) */
         transition: width 0.4s ease-in-out; /* Sanfter Übergang beim Füllen */
     }
 
     /* Einzelner Fragenblock */
     .question-block {
-        background-color: #fff;
+        background-color: #444444; /* Dunkles Grau für den Fragenblock */
         padding: 25px;
         border-radius: 6px;
-        border: 1px solid #ddd;
+        border: 1px solid #666666; /* Angepasster Border für dunklen Hintergrund */
         margin-bottom: 20px;
+        color: #FFFFFF; /* Weiße Schrift für den Fragenblock-Inhalt */
     }
 
     /* Überschrift des Fragenblocks */
     .question-block h3 {
-        color: #0056b3; /* Dunkelblau für Fragenüberschriften */
+        color: #008cbaff; /* Deine gewählte Blau-Farbe für Fragenüberschriften */
         margin-top: 0;
         margin-bottom: 15px;
-        border-bottom: 2px solid #eee;
+        border-bottom: 2px solid #666666; /* Angepasster Border für dunklen Hintergrund */
         padding-bottom: 10px;
     }
 
@@ -239,16 +241,20 @@
         cursor: pointer;
         padding: 8px 0;
         transition: background-color 0.2s ease;
+        color: #FFFFFF; /* Sicherstellen, dass die Labels weiß sind */
     }
 
     .question-block label:hover {
-        background-color: #eef; /* Leichter Hintergrund beim Hover */
+        background-color: #555555; /* Etwas helleres Grau beim Hover für dunklen Hintergrund */
     }
 
     /* Radio-Buttons */
     .question-block input[type="radio"] {
         margin-right: 10px;
         transform: scale(1.2); /* Vergrößert die Radio-Buttons */
+        /* HINWEIS: Die Farbe der Radio-Buttons selbst ist schwerer zu stylen und browserabhängig.
+           Moderne Browser passen sie oft automatisch an den Hintergrund an.
+           Für tiefere Anpassungen bräuchtest du möglicherweise benutzerdefinierte Radio-Buttons. */
     }
 
     /* Weiter-Button */
@@ -265,21 +271,22 @@
     }
 
     .question-block button:hover {
-        background-color: #008cbaff; /* Dunkleres Blau beim Hover */
+        background-color: #006b99; /* Etwas dunkleres Blau beim Hover */
     }
 
     /* Ergebnisbereich */
     #result-area {
-        background-color: #e9f7ef; /* Helle grüne Farbe für den Ergebnisbereich */
+        background-color: #666666; /* Grüne Farbe für den Ergebnisbereich, angepasst für Kontrast mit Weiß */
         padding: 30px;
         border-radius: 8px;
-        border: 1px solid #c3e6cb;
+        border: 1px solid #666666; /* Dunklerer grüner Rand */
         text-align: center;
+        color: #FFFFFF; /* Weiße Schrift für den Ergebnisbereich */
     }
 
     /* Überschrift im Ergebnisbereich */
     #result-area h3 {
-        color: #008cbaff; /* Grüne Farbe */
+        color: #FFFFFF; /* Weiß für die Überschrift im Ergebnisbereich */
         margin-bottom: 15px;
     }
 
@@ -287,23 +294,23 @@
     #score-display {
         font-size: 2.2em;
         font-weight: bold;
-        color: #008cbaff; /* Blau für den Score */
+        color: #FFFFFF; /* Weiß für den Score */
         margin-bottom: 10px;
     }
 
     /* Interpretations-Text */
     #interpretation-display {
         font-size: 1.1em;
-        color: #000000;
+        color: #FFFFFF; /* Weiß für den Interpretationstext */
         margin-bottom: 25px;
     }
 
     /* Detaillierte Analyse Überschrift */
     #detailed-breakdown h4 {
-        color: #008cbaff; /* Dunkelblau */
+        color: #FFFFFF; /* Weiß für Überschrift im detaillierten Bereich */
         margin-top: 30px;
         margin-bottom: 15px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #666666; /* Angepasster Border für dunklen Hintergrund */
         padding-bottom: 10px;
     }
 
@@ -311,12 +318,13 @@
     #detailed-breakdown p {
         text-align: left;
         margin-bottom: 8px;
+        color: #FFFFFF; /* Weiß für Absätze im detaillierten Bereich */
     }
 
     /* Call-to-Action Button */
     .cta-button {
         display: inline-block;
-        background-color: #008cbaff; /* Grüne Farbe für den CTA */
+        background-color: #008cbaff; /* Deine gewählte Blau-Farbe für den CTA */
         color: white;
         padding: 15px 30px;
         border-radius: 5px;
@@ -328,51 +336,9 @@
     }
 
     .cta-button:hover {
-        background-color: #000000; 
+        background-color: #006b99; /* Dunkleres Blau beim Hover */
     }
 
-    /* Media Query für kleinere Bildschirme (Smartphones und Tablets) */
-@media (max-width: 768px) {
-    /* ... (vorherige Anpassungen für Button und Layout bleiben hier) ... */
-
-    /* Farbe für den Haupttext (Frageninhalt und Antworten) */
-    /* Dies zielt auf die <p> Tags im Hauptcontainer und die Label der Radio-Buttons */
-    .effizienz-quick-check-container p, /* Für den Einführungstext und andere p-Tags */
-    .question-block label, /* Für die Antwortoptionen */
-    .thq-body-small { /* Für allgemeine thq-body-small Texte */
-        color: #222222; /* Sehr dunkles Grau, fast Schwarz, aber etwas weicher */
-        /* Stelle sicher, dass keine opacity: 0; oder ähnliches gesetzt ist */
-        opacity: 1; /* Überschreibt eventuelle ungewollte Transparenz */
-    }
-
-    /* Farbe für die Überschriften */
-    .effizienz-quick-check-container h2, /* Dein Effizienz-Radar */
-    .question-block h3, /* Fragenüberschriften */
-    .impressum-text-heading1 { /* Die "Gut zu Wissen" und "Mehr als nur Theorie" Überschriften */
-        color: #1a1a1a; /* Noch dunkler, fast reines Schwarz für Überschriften */
-        opacity: 1; /* Überschreibt eventuelle ungewollte Transparenz */
-    }
-
-    /* Sicherstellen, dass die Links (A-Tags) auch gut lesbar sind */
-    .impressum-text14 a {
-        color: #0056b3; /* Deine Linkfarbe */
-        text-decoration: underline; /* Unterstreichung kann Lesbarkeit von Links erhöhen */
-        opacity: 1;
-    }
-
-    /* Für den Text im CTA-Button, falls der betroffen ist */
-    .preise-button1 .startseite-text163 {
-        color: white; /* Standardmäßig weiß für den blauen Button */
-        opacity: 1;
-    }
-
-    /* Optional: Grundlegende Farbsicherung für den gesamten Container */
-    .effizienz-quick-check-container {
-        color: #000000; /* Setzt eine Grundfarbe für den gesamten Text im Container, falls nicht spezifisch überschrieben */
-    }
-
-    /* ... (restliche Media Query Anpassungen) ... */
-}
 </style>
 
 </head>
@@ -430,7 +396,7 @@
 
                           <div class="kopfzeile-start-buttons">
                               <a
-                                  href="Verantwortung.html"
+                                  href="../Verantwortung.html"
                                   class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
                               >
                                   <span>
@@ -494,7 +460,7 @@
                     >
                         <a href="../index.html">Startseite</a>
                         <a href="../gut-zu-wissen.html">Gut zu Wissen</a>
-                        <a href="Verantwortung.html">Verantwortung</a>
+                        <a href="../Verantwortung.html">Verantwortung</a>
                         <a href="../preise.html">Preise</a>
                         <a href="../mehr-erfahren.html">Mehr Erfahren</a>
                         <a href="../kontakt.html">Kontakt</a>
@@ -717,7 +683,7 @@
           <div id="detailed-breakdown">
               <h4>Detaillierte Analyse nach Themenbereichen:</h4>
               </div>
-          <a href="mehr-erfahren.html" class="cta-button">Lass uns deine Effizienz gemeinsam steigern!</a>
+          <a href="../mehr-erfahren.html" class="cta-button">Lass uns deine Effizienz gemeinsam steigern!</a>
       </div>
     </div>
 
