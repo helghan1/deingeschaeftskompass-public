@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    
+    <script type="text/javascript">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKKNJDLN');
+    </script>
+    
+    <script
+      defer=""
+      src="https://unpkg.com/@teleporthq/teleport-custom-scripts">
+    </script>
+        
+    <title
+      >Kalkulator: Wie viel Zeit & Geld verlierst du durch Ineffizienz.
+    </title>
+    <meta
+      name="description"
+      content="Neugierig, wie effizient du wirklich sein könntest? Nutze unseren interaktiven Kalkulator, um dein jährliches Sparpotenzial durch smarte Prozessverbesserungen zu beziffern."
+    />
+    <meta
+      property="og:title"
+      content="Kalkulator: Wie viel Zeit & Geld verlierst du durch Ineffizienz"
+    />
+    <meta
+      property="og:description"
+      content="Neugierig, wie effizient du wirklich sein könntest? Nutze unseren interaktiven Kalkulator, um dein jährliches Sparpotenzial durch smarte Prozessverbesserungen zu beziffern."
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta charset="utf-8" />
+    <meta
+      property="twitter:card"
+      content="summary_large_image"
+    />
+    
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+    />
+    <meta charset="utf-8" />
+    <meta
+      property="twitter:card"
+      content="summary_large_image"
+    />
+    
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
+    </style>
+    
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 12px;
+      }
+
+      body {
+        font-weight: 100;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-theme-neutral-dark);
+        background: var(--dl-color-theme-neutral-light);
+
+        fill: var(--dl-color-theme-neutral-dark);
+      }
+    </style>
+        <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+  <body>
+    <noscript>
+      <iframe 
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
+        height="0" 
+        width="0" 
+        style="display:none;visibility:hidden">
+      </iframe>
+    </noscript>
+
+    <link rel="stylesheet" href="../style.css" />
+    <div>
+      <link href="../impressum.css" rel="stylesheet" />
+    
+      <style>
+        /* Stile für das mobile Menü */
+        .kopfzeile-rest-burger-menu {
+            display: none; /* Standardmäßig ausblenden */
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .kopfzeile-rest-burger-menu div {
+            width: 30px;
+            height: 3px;
+            background-color: var(--dl-color-theme-neutral-dark); /* Passe die Farbe an */
+            margin: 5px 0;
+        }
+
+        .kopfzeile-rest-mobile-menu {
+            display: none; /* Standardmäßig ausblenden */
+            position: absolute;
+            top: 60px; /* Unterhalb der Hauptnavigation */
+            left: 0;
+            width: 100%;
+            background-color: var(--dl-color-theme-neutral-light); /* Passe die Farbe an */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10; /* Um sicherzustellen, dass es über anderen Inhalten liegt */
+            padding: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease; /* Sanftes Einblenden */
+        }
+
+        .kopfzeile-rest-mobile-menu.open {
+            display: flex;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Media Query für mobile Ansichten */
+        @media (max-width: 767px) {
+            .kopfzeile-rest-desktop-menu {
+                display: none; /* Desktop-Menü ausblenden */
+            }
+            .kopfzeile-rest-burger-menu {
+                display: block; /* Burger-Menü anzeigen */
+            }
+        }
+    </style>
+  </div>
+
+    <style>
+        /* Allgemeine Container-Stile */
+        .effizienz-quick-check-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #333333; /* Dunkles Grau für den Haupt-Container */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            color: #FFFFFF; /* Standardmäßig weiße Schrift für den Haupt-Container */
+        }
+
+        /* Titel des Quick-Checks */
+        .effizienz-quick-check-container h2 {
+            text-align: center;
+            color: #008cbaff; /* Deine gewählte Blau-Farbe für den Titel */
+            margin-bottom: 20px;
+        }
+
+        /* Einführungstext */
+        .effizienz-quick-check-container p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #FFFFFF; /* Sicherstellen, dass der Einführungstext weiß ist */
+        }
+
+        /* Fortschrittsbalken (Nicht direkt für diesen Kalkulator verwendet, aber im Design) */
+        .progress-container {
+            width: 100%;
+            background-color: #555555; /* Hintergrundfarbe des Balkens, etwas heller als der Container */
+            border-radius: 5px;
+            margin-bottom: 25px;
+            height: 10px; /* Höhe der Progress Bar */
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #008cbaff;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            transition: width 0.4s ease-in-out;
+        }
+
+        /* Einzelner Fragenblock */
+        .question-block {
+            background-color: #444444; /* Dunkles Grau für den Fragenblock */
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #666666; /* Angepasster Border für dunklen Hintergrund */
+            margin-bottom: 20px;
+            color: #FFFFFF; /* Weiße Schrift für den Fragenblock-Inhalt */
+        }
+
+        /* Überschrift des Fragenblocks */
+        .question-block h3 {
+            color: #008cbaff; /* Deine gewählte Blau-Farbe für Fragenüberschriften */
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #666666; /* Angepasster Border für dunklen Hintergrund */
+            padding-bottom: 10px;
+        }
+
+        /* Labels für Auswahlfelder */
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: inherit; /* Nimmt Farbe vom Elternelement an */
+        }
+
+        /* Inputfelder und Select-Boxen */
+        .input-group input[type="number"],
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #666666; /* Angepasster Border */
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #555555; /* Etwas hellerer Hintergrund für Inputfelder */
+            color: #FFFFFF; /* Weiße Schrift in den Inputfeldern */
+            margin-bottom: 15px;
+        }
+
+        /* Hover-Stile für Select-Optionen (browserabhängig) */
+        .input-group select option {
+            background-color: #555555;
+            color: #FFFFFF;
+        }
+
+        /* Hilfe-Text unter Inputs */
+        .help-text {
+            font-size: 0.9em;
+            color: #b0b0b0; /* Helleres Grau für Hilfetext */
+            display: block;
+            margin-top: -10px; /* Etwas nach oben rücken */
+            margin-bottom: 15px;
+        }
+
+
+        /* Weiter-Button / Berechnen-Button */
+        .calculator-container button {
+            background-color: #008cbaff; /* Blau für Buttons */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            width: auto;
+            display: block; /* Block-Element für Zentrierung */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calculator-container button:hover {
+            background-color: #006b99; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Ergebnisbereich */
+        #resultsSection {
+            background-color: #444444; /* Dunkles Grau für den Ergebnisbereich, passend zum Fragenblock */
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #666666; /* Passender Border */
+            text-align: center;
+            color: #FFFFFF; /* Weiße Schrift */
+            margin-top: 30px;
+        }
+
+        #resultsSection h3 {
+            color: #008cbaff; /* Überschrift im Ergebnisbereich (Blau) */
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .result-category {
+            margin-bottom: 30px; /* Abstand zwischen den Kategorien (Zeit/Kosten) */
+            padding: 15px;
+            background-color: #555555; /* Hintergrund für die Ergebnisblöcke, dunkler als Haupt-Container */
+            border-radius: 8px;
+            text-align: left; /* Text in den Kategorien linksbündig */
+        }
+
+        .result-category h4 {
+            color: #008cbaff; /* Überschrift der Kategorie (Blau) */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-category h4 .icon-clock,
+        .result-category h4 .icon-euro {
+            /* Platzhalter für Icons - füge hier CSS für deine Icon-Bibliothek ein */
+            /* Beispiel für Font Awesome: font-family: "Font Awesome 5 Free"; font-weight: 900; */
+            margin-right: 10px;
+            font-size: 1.2em; /* Größe des Icons im Verhältnis zur Überschrift */
+            color: #FFFFFF; /* Icons weiß */
+        }
+        /* Wenn keine Icon-Lib, dann hier ein Emojisymbol als fallback oder direct-content */
+        .result-category h4 .icon-clock::before { content: '⏱️ '; }
+        .result-category h4 .icon-euro::before { content: '💰 '; }
+
+
+        .result-block {
+            display: flex;
+            justify-content: space-between; /* Label links, Wert rechts */
+            align-items: baseline;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #666666; /* Dezenter Trenner */
+        }
+
+        .result-block:last-child {
+            border-bottom: none; /* Kein Trenner nach dem letzten Block in der Kategorie */
+        }
+
+        .result-label {
+            font-weight: bold;
+            color: #DDDDDD; /* Leicht helleres Grau für die Labels */
+            flex-basis: 50%; /* Nimmt 50% der Breite ein */
+            text-align: left;
+            margin: 0;
+        }
+
+        .result-value {
+            font-size: 1.8em; /* Groß für die Zahlen */
+            font-weight: bold;
+            color: #FFFFFF; /* Weiß für die Zahlen */
+            flex-basis: 50%; /* Nimmt 50% der Breite ein */
+            text-align: right;
+            margin: 0;
+        }
+
+        .result-subtext {
+            font-size: 0.9em;
+            color: #BBBBBB; /* Leicht dunklerer Text für Sub-Informationen */
+            text-align: right;
+            width: 100%; /* Nimmt volle Breite unter dem Wert ein */
+            margin-top: -5px; /* Etwas näher an den Wert rücken */
+            margin-bottom: 10px;
+        }
+
+        /* Interpretations-Text */
+        .interpretation-display {
+            font-size: 1.1em;
+            color: #FFFFFF;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            text-align: left; /* Interpretations-Text linksbündig */
+        }
+
+        /* Call-to-Action Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #008cbaff; /* Deine gewählte Blau-Farbe für den CTA */
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #006b99; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Media Queries für Responsiveness */
+        @media (max-width: 768px) {
+            .effizienz-quick-check-container {
+                margin: 20px;
+                padding: 20px;
+            }
+            .question-block {
+                padding: 15px;
+            }
+            .result-block {
+                flex-direction: column; /* Stapelt Label und Wert untereinander */
+                align-items: flex-start;
+                text-align: left;
+            }
+            .result-label,
+            .result-value,
+            .result-subtext {
+                width: 100%;
+                text-align: left; /* Alles linksbündig */
+                margin-bottom: 5px;
+            }
+            .result-value {
+                font-size: 1.5em; /* Etwas kleiner auf Mobilgeräten */
+            }
+            .cta-button {
+                width: 90%;
+                box-sizing: border-box; /* Sicherstellen, dass Padding in Breite enthalten ist */
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div
+        class="mehr-erfahren-container1"
+    >
+        <header class="mehr-erfahren-container2"></header>
+        <kopfzeile-rest-wrapper
+            class="kopfzeile-rest-wrapper"
+            rootclassname="kopfzeile-restundefined"
+        >
+            <header
+                class="kopfzeile-rest-container kopfzeile-restroot-class-name"
+            >
+                <header
+                    data-thq="thq-navbar"
+                    class="kopfzeile-rest-navbar-interactive"
+                >
+                    <a href="../index.html" class="kopfzeile-rest-navlink">
+                        <img
+                            alt="Dein Geschäftskompass – zurück zur Startseite."
+                            src="../public/Logo.png"
+                            class="kopfzeile-rest-image1"
+                        />
+                    </a>
+                    <div
+                        data-thq="thq-navbar-nav"
+                        class="kopfzeile-rest-desktop-menu"
+                    >
+                        <nav class="kopfzeile-rest-links">
+                            <a
+                                href="../index.html"
+                                class="kopfzeile-rest-link1 thq-body-small thq-link"
+                            >
+                                <fragment class="mehr-erfahren-fragment10">
+                                    <span class="mehr-erfahren-text100">Startseite</span>
+                                </fragment>
+                            </a>
+
+                          <div class="kopfzeile-start-buttons">
+                              <a
+                                  href="../Gut-zu-Wissen.html"
+                                  class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                              >
+                                  <span>
+                                      <fragment class="startseite-fragment17">
+                                          <span class="startseite-text107">Gut zu Wissen</span>
+                                      </fragment>
+                                  </span>
+                              </a>
+                          </div>
+
+                          <div class="kopfzeile-start-buttons">
+                              <a
+                                  href="../Verantwortung.html"
+                                  class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                              >
+                                  <span>
+                                      <fragment class="startseite-fragment17">
+                                          <span class="startseite-text107">Verantwortung</span>
+                                      </fragment>
+                                  </span>
+                              </a>
+                          </div>
+                          
+                          <div class="kopfzeile-start-buttons">
+                            <a
+                                href="../Preise.html"
+                                class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                            >
+                                <span>
+                                    <fragment class="startseite-fragment17">
+                                        <span class="startseite-text107">Preise</span>
+                                    </fragment>
+                                </span>
+                            </a>
+                          </div>
+                            
+                        </nav>
+                        <div class="kopfzeile-rest-buttons">
+                            <a
+                                href="../mehr-erfahren.html"
+                                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                            >
+                                <span>
+                                    <fragment class="mehr-erfahren-fragment11">
+                                        <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                                    </fragment>
+                                </span>
+                            </a>
+                            <a
+                                href="../kontakt.html"
+                                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                            >
+                                <span>
+                                    <fragment class="mehr-erfahren-fragment12">
+                                        <span class="mehr-erfahren-text102">Kontakt</span>
+                                    </fragment>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        data-thq="thq-burger-menu"
+                        class="kopfzeile-rest-burger-menu"
+                        onclick="toggleMobileMenuRest()"
+                    >
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div
+                        data-thq="thq-mobile-menu"
+                        class="kopfzeile-rest-mobile-menu"
+                        id="mobileMenuRest"
+                    >
+                        <a href="../index.html">Startseite</a>
+                        <a href="../gut-zu-wissen.html">Gut zu Wissen</a>
+                        <a href="../Verantwortung.html">Verantwortung</a>
+                        <a href="../preise.html">Preise</a>
+                        <a href="../mehr-erfahren.html">Mehr Erfahren</a>
+                        <a href="../kontakt.html">Kontakt</a>
+                    </div>
+                </header>
+            </header>
+        </kopfzeile-rest-wrapper>
+      
+<!--Kalkulator-->
+
+  <div class="effizienz-quick-check-container calculator-container">
+        <h2>Dein Potenzial-Kalkulator: Finde verborgene Zeit & Geld</h2>
+        <p>Wie viel Potenzial steckt wirklich in deinen aktuellen Prozessen? Unser Rechner gibt dir eine erste Schätzung, damit du dich auf das konzentrieren kannst, was wirklich zählt.</p>
+
+        <div id="questionsContainer">
+            <div class="question-block" id="question1">
+                <h3>Frage 1 von 5</h3>
+                <label for="numEmployees">Wie viele Mitarbeiter (inklusive dir selbst als Selbstständiger/Inhaber) arbeiten aktiv in deinem Unternehmen?</label>
+                <select id="numEmployees">
+                    <option value="1">Ich allein</option>
+                    <option value="3.5">2-5 Mitarbeiter</option>
+                    <option value="10.5">6-15 Mitarbeiter</option>
+                    <option value="23">16-30 Mitarbeiter</option>
+                </select>
+            </div>
+
+            <div class="question-block" id="question2" style="display:none;">
+                <h3>Frage 2 von 5</h3>
+                <label for="searchFrequency">Wie oft geht euch (dir und deinem Team) wichtige Arbeitszeit für die Suche nach Dokumenten oder Informationen verloren?</label>
+                <select id="searchFrequency">
+                    <option value="0.5">Selten</option>
+                    <option value="1.5">Manchmal</option>
+                    <option value="3">Regelmäßig</option>
+                    <option value="5">Fast täglich</option>
+                </select>
+            </div>
+
+            <div class="question-block" id="question3" style="display:none;">
+                <h3>Frage 3 von 5</h3>
+                <label for="reworkFrequency">Wie oft müssen ihr (du und dein Team) Fehler korrigieren, Informationen nachbessern oder Aufgaben doppelt erledigen?</label>
+                <select id="reworkFrequency">
+                    <option value="0.5">Selten</option>
+                    <option value="1.5">Manchmal</option>
+                    <option value="3">Regelmäßig</option>
+                    <option value="5">Fast täglich</option>
+                </select>
+            </div>
+
+            <div class="question-block" id="question4" style="display:none;">
+                <h3>Frage 4 von 5</h3>
+                <label for="meetingEfficiency">Wie oft habt ihr (du und dein Team) das Gefühl, dass Meetings oder Besprechungen ineffizient sind und euch Zeit rauben?</label>
+                <select id="meetingEfficiency">
+                    <option value="0.5">Selten</option>
+                    <option value="1.5">Manchmal</option>
+                    <option value="3">Regelmäßig</option>
+                    <option value="5">Fast täglich</option>
+                </select>
+            </div>
+
+            <div class="question-block" id="question5" style="display:none;">
+                <h3>Frage 5 von 5</h3>
+                <label for="highValueHourlyRate">Welchen Stundensatz würdest du (oder dein Unternehmen) für deine hochwertigste Arbeitszeit (z.B. Kundenakquise, Strategieentwicklung) ansetzen? (€/Stunde)</label>
+                <input type="number" id="highValueHourlyRate" value="100" min="10" step="5">
+            </div>
+
+            <button id="nextQuestionButton" onclick="nextQuestion()">Weiter</button>
+            <button id="calculateButton" style="display:none;" onclick="calculateSavings()">Potenzial berechnen</button>
+        </div>
+
+        <div id="resultsSection" style="display: none;">
+            <h3>Dein geschätztes Effizienz-Potenzial auf einen Blick:</h3>
+
+            <div class="result-category">
+                <h4><i class="icon-clock"></i> Mehr Zeit für dein Kerngeschäft</h4>
+                <div class="result-block">
+                    <p class="result-label">Pro Monat:</p>
+                    <p class="result-value"><span id="resultHoursMonth"></span> Std.</p>
+                </div>
+                <div class="result-block">
+                    <p class="result-label">Pro Jahr:</p>
+                    <p class="result-value"><span id="resultHoursYear"></span> Std.</p>
+                </div>
+                <div class="result-block">
+                    <p class="result-label">In 5 Jahren:</p>
+                    <p class="result-value"><span id="resultHours5Years"></span> Std.</p>
+                </div>
+            </div>
+
+            <div class="result-category">
+                <h4><i class="icon-euro"></i> Spürbare Kostenersparnis</h4>
+                <div class="result-block">
+                    <p class="result-label">Pro Monat:</p>
+                    <p class="result-value"><span id="resultCostMonth"></span> €</p>
+                </div>
+                <div class="result-block">
+                    <p class="result-label">Pro Jahr:</p>
+                    <p class="result-value"><span id="resultCostYear"></span> €</p>
+                </div>
+                <div class="result-block">
+                    <p class="result-label">In 5 Jahren:</p>
+                    <p class="result-value"><span id="resultCost5Years"></span> €</p>
+                </div>
+            </div>
+
+            <p class="interpretation-display">
+                Diese Zahlen sind eine Schätzung, die auf deinen Angaben und unserer Erfahrung basieren. Sie zeigen dir eindrucksvoll, welches ungenutzte Potenzial in deinen aktuellen Abläufen schlummert.<br><br>
+                Es ist völlig normal, dass sich im Betriebsalltag Ineffizienzen einschleichen. Die gute Nachricht ist: Dein Geschäftskompass hilft dir, diese unnötigen Zeit- und Kostenfresser systematisch zu eliminieren und deine Ressourcen auf das zu konzentrieren, was wirklich zählt.
+            </p>
+
+            <a href="/kontakt.html" class="cta-button">Kostenloses Strategiegespräch vereinbaren</a>
+        </div>
+
+    </div>
+
+
+        
+
+<!--Fuzeile component-->
+        <fuzeile-wrapper class="fuzeile-wrapper">
+          <footer class="fuzeile-footer7 thq-section-padding">
+            
+            <div class="fuzeile-max-width thq-section-max-width">
+              <div class="fuzeile-content">
+                <div class="fuzeile-logo"></div>
+              </div>
+              <div class="fuzeile-credits">
+                <div class="thq-divider-horizontal"></div>
+                <div class="fuzeile-row">
+                  <div class="fuzeile-container"></div>
+                  <div class="fuzeile-footer-links">
+                    <span class="fuzeile-text2 thq-link">
+                      <fragment class="impressum-fragment8">
+                        <a href="../datenschutz.html" class="fuzeile-text2 thq-link">
+                          <span class="startseite-text269">Datenschutz</span>
+                        </a>
+                      </fragment>
+                    </span>
+                    <span class="thq-link">
+                      <fragment class="impressum-fragment7">
+                        <a href="../impressum.html" class="thq-link">
+                          <span class="startseite-text268">Impressum</span>
+                        </a>
+                        </fragment>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </footer>
+        </fuzeile-wrapper>
+      </div>
+    </div>
+
+    <script>
+      function toggleMobileMenuRest() {
+          const mobileMenu = document.getElementById('mobileMenuRest');
+          const mainContent = document.getElementById('mainContent');
+          mobileMenu.classList.toggle('open');
+
+          if (mobileMenu.classList.contains('open')) {
+              mainContent.style.marginTop = 'auto'; 
+          } else {
+              mainContent.style.marginTop = '0';
+          }
+      }
+  </script>
+
+ <script>
+    let currentQuestion = 1;
+    const totalQuestions = 5; // Stelle sicher, dass dies die korrekte Anzahl deiner Fragen ist
+    const questions = []; // Array to hold references to the question div elements
+
+    // Flag, um zu wissen, ob der Kalkulator über den Effizienz-Radar aufgerufen wurde
+    let wasLaunchedByRadar = false; 
+    let initialRadarScore = null; // Speichert den Radar Score, falls vorhanden
+
+
+    // Initialize the array with the IDs of the question divs
+    document.addEventListener('DOMContentLoaded', () => {
+        for (let i = 1; i <= totalQuestions; i++) {
+            const qElement = document.getElementById(`question${i}`);
+            if (qElement) { // Sicherstellen, dass das Element existiert
+                questions.push(qElement);
+            } else {
+                console.error(`Question div with ID 'question${i}' not found.`);
+                // Handle missing questions, e.g., adjust totalQuestions or log error
+            }
+        }
+
+        initialRadarScore = getRadarScoreFromUrl(); // Hole den Radar Score beim Laden
+        if (initialRadarScore !== null) {
+            wasLaunchedByRadar = true;
+        }
+        
+        setInitialQuestionValues(initialRadarScore); // Setze Initialwerte basierend auf Radar
+        
+        if (questions.length > 0) {
+            questions[0].style.display = 'block'; // Zeige die erste Frage
+        }
+    });
+
+
+    // --- Verknüpfung mit Effizienz-Radar Funktionen ---
+    function getRadarScoreFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('radarScore');
+        return score ? parseInt(score) : null;
+    }
+
+    function setInitialQuestionValues(radarScore) {
+        const searchFrequencySelect = document.getElementById('searchFrequency');
+        const reworkFrequencySelect = document.getElementById('reworkFrequency');
+        const meetingEfficiencySelect = document.getElementById('meetingEfficiency');
+
+        if (radarScore !== null) {
+            // Mapping Radar Score to Inefficiency Level
+            if (radarScore < 30) {
+                searchFrequencySelect.value = "5"; // Sehr ineffizient
+                reworkFrequencySelect.value = "5";
+                meetingEfficiencySelect.value = "5";
+            } else if (radarScore >= 30 && radarScore <= 50) {
+                searchFrequencySelect.value = "3"; // Mittel ineffizient
+                reworkFrequencySelect.value = "3";
+                meetingEfficiencySelect.value = "3";
+            } else if (radarScore > 50 && radarScore <= 70) {
+                searchFrequencySelect.value = "1.5"; // Eher effizient
+                reworkFrequencySelect.value = "1.5";
+                meetingEfficiencySelect.value = "1.5";
+            } else { // radarScore > 70 (Sehr effizient)
+                searchFrequencySelect.value = "0.5"; // Sehr niedrige Ineffizienz
+                reworkFrequencySelect.value = "0.5";
+                meetingEfficiencySelect.value = "0.5";
+            }
+        } else {
+            // Standalone-Fall: Setze Standardwerte, die nicht vom Radar beeinflusst werden
+            // Diese können auch im HTML über 'selected' Attribut gesetzt werden.
+            // Wenn du explizite JS-Standardwerte setzen möchtest:
+            searchFrequencySelect.value = "1.5"; 
+            reworkFrequencySelect.value = "1.5"; 
+            meetingEfficiencySelect.value = "1.5"; 
+        }
+    }
+    // --- Ende Verknüpfung Funktionen ---
+
+
+    function nextQuestion() {
+        let isValid = true;
+        const currentQuestionElement = questions[currentQuestion - 1];
+        const inputField = currentQuestionElement.querySelector('select, input[type="number"]');
+
+        if (inputField) {
+            if (inputField.tagName === 'SELECT' && inputField.value === '') {
+                isValid = false;
+            } else if (inputField.type === 'number' && (isNaN(parseFloat(inputField.value)) || parseFloat(inputField.value) <= 0)) {
+                isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            alert("Bitte beantworte diese Frage, bevor du fortfährst.");
+            return;
+        }
+
+        if (currentQuestion < totalQuestions) {
+            questions[currentQuestion - 1].style.display = 'none';
+            currentQuestion++;
+            questions[currentQuestion - 1].style.display = 'block';
+
+            // If it's the last question, change button text and function
+            if (currentQuestion === totalQuestions) {
+                const nextButton = document.getElementById('nextQuestionButton');
+                const calculateButton = document.getElementById('calculateButton');
+                if (nextButton) nextButton.style.display = 'none';
+                if (calculateButton) calculateButton.style.display = 'block';
+            }
+        }
+    }
+
+
+    function calculateSavings() {
+        // Ensure all questions are answered in case someone tries to trigger calculate early
+        for (let i = 0; i < totalQuestions; i++) {
+            const inputField = questions[i].querySelector('select, input[type="number"]');
+            if (inputField) {
+                if (inputField.tagName === 'SELECT' && inputField.value === '') {
+                    alert("Bitte beantworte alle Fragen, bevor du das Potenzial berechnest.");
+                    return;
+                } else if (inputField.type === 'number' && (isNaN(parseFloat(inputField.value)) || parseFloat(inputField.value) <= 0)) {
+                    alert("Bitte gib für alle Fragen gültige positive Zahlen ein.");
+                    return;
+                }
+            }
+        }
+
+        // 1. Eingabewerte holen und in numerische Werte umwandeln
+        const numEmployees = parseFloat(document.getElementById('numEmployees').value);
+        const searchFrequencyHours = parseFloat(document.getElementById('searchFrequency').value);
+        const reworkFrequencyHours = parseFloat(document.getElementById('reworkFrequency').value);
+        const meetingEfficiencyHours = parseFloat(document.getElementById('meetingEfficiency').value);
+        const highValueHourlyRate = parseFloat(document.getElementById('highValueHourlyRate').value);
+
+        // Berechne die Summe der Ineffizienzstunden pro Woche PRO MITARBEITER
+        const inefficiencyHoursPerWeekPerEmployee = searchFrequencyHours + reworkFrequencyHours + meetingEfficiencyHours;
+
+        // Totale Ineffizienzstunden pro Woche für das gesamte Team
+        const totalInefficiencyHoursPerWeek = inefficiencyHoursPerWeekPerEmployee * numEmployees;
+
+        // 2. Dynamische Berechnung des efficiencyGainFactor
+        let efficiencyGainFactor;
+
+        if (wasLaunchedByRadar && initialRadarScore !== null) {
+            // Logik WENN DER RADAR GENUTZT WURDE (Dynamische Berechnung basierend auf Radar-Score)
+            const maxTargetEfficiency = 90; // Deine gewünschte Obergrenze
+
+            let potenziellerGewinnProzent;
+
+            if (initialRadarScore < maxTargetEfficiency) {
+                // Wenn der aktuelle Score unter der 90%-Grenze liegt,
+                // ist der potenzielle Gewinn die Lücke bis zur 90%-Grenze.
+                potenziellerGewinnProzent = maxTargetEfficiency - initialRadarScore;
+            } else {
+                // Wenn der aktuelle Score 90% oder höher ist,
+                // ist der potenzielle Gewinn die verbleibende Lücke zur 100%-Marke.
+                potenziellerGewinnProzent = 100 - initialRadarScore;
+                if (potenziellerGewinnProzent < 0) { 
+                    potenziellerGewinnProzent = 0;
+                }
+            }
+            efficiencyGainFactor = potenziellerGewinnProzent / 100;
+
+        } else {
+            // Logik WENN DER RADAR NICHT GENUTZT WURDE (Fester Effizienzgewinn von 12.5%)
+            efficiencyGainFactor = 0.125; // Feste 12,5% Effizienzgewinn
+        }
+
+
+        // Stunden-Einsparungen
+        const savedHoursPerWeek = totalInefficiencyHoursPerWeek * efficiencyGainFactor;
+        const savedHoursPerMonth = savedHoursPerWeek * (52 / 12); // Monat = ca. 4.33 Wochen
+        const savedHoursPerYear = savedHoursPerWeek * 52;
+        const savedHoursOver5Years = savedHoursPerYear * 5;
+
+        // Kosten-Einsparungen
+        const savedCostPerMonth = savedHoursPerMonth * highValueHourlyRate;
+        const savedCostPerYear = savedHoursPerYear * highValueHourlyRate;
+        const savedCostOver5Years = savedCostPerYear * 5;
+
+        // 3. Ergebnisse anzeigen
+        // Stunden
+        document.getElementById('resultHoursMonth').innerText = savedHoursPerMonth.toFixed(0);
+        document.getElementById('resultHoursYear').innerText = savedHoursPerYear.toFixed(0);
+        document.getElementById('resultHours5Years').innerText = savedHoursOver5Years.toFixed(0);
+
+        // Kosten
+        document.getElementById('resultCostMonth').innerText = savedCostPerMonth.toFixed(2);
+        document.getElementById('resultCostYear').innerText = savedCostPerYear.toFixed(2);
+        document.getElementById('resultCost5Years').innerText = savedCostOver5Years.toFixed(2);
+
+        // Fragen ausblenden und Ergebnisbereich anzeigen
+        const questionsContainer = document.getElementById('questionsContainer');
+        const resultsSection = document.getElementById('resultsSection');
+        if (questionsContainer) questionsContainer.style.display = 'none';
+        if (resultsSection) resultsSection.style.display = 'block';
+    }
+</script>
+
+  </body>
+</html>

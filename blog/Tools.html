@@ -16,7 +16,7 @@
     </script>
         
     <title
-      >Wie gut steuerst du dein Unternehmen wirklich? | Dein Geschäftskompass.
+      >Was ist Controlling und warum ist Controlling wichtig? Steuerung und Kontrolle im Unternehmen.
     </title>
     <meta
       name="description"
@@ -24,7 +24,7 @@
     />
     <meta
       property="og:title"
-      content="Wie gut steuerst du dein Unternehmen wirklich? | Dein Geschäftskompass"
+      content="Impressum - Dein Geschäftskompass – Beratung für Unternehmen"
     />
     <meta
       property="og:description"
@@ -165,72 +165,60 @@
     </style>
   </div>
 
-  <style>
-        .question {
-            margin-bottom: 1.5rem;
-            background: #444242;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Etwas stärkerer Schatten für mehr Tiefe */
-            transition: transform 0.2s ease-in-out;
+   <style>
+
+
+        /* Basis-Layout für größere Bildschirme (Logo links, Buttons rechts) */
+        .tools-header-container {
+            display: flex; /* Macht diesen Container zu einem Flex-Container */
+            justify-content: center;
+            align-items: center; /* Zentriert die Elemente vertikal */
+            padding: 10px;
+            flex-wrap: wrap; /* Ermöglicht Umbruch, falls der Platz nicht ausreicht */
         }
-        .question:hover {
-            transform: translateY(-3px); /* Leichter Schwebe-Effekt beim Hover */
+
+        /* Styling für den Logo-Bereich */
+        .tools-logo-wrapper img {
+          max-width: auto;  
+          height: auto; /* Behält das Seitenverhältnis bei */
+            
         }
-        .question h3 {
-            margin-top: 0;
-            color: #008cbaff;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+
+        /* Styling für den Button-Bereich */
+        .tools-buttons-wrapper {
+            display: flex;
+            flex-direction: column; /* Buttons untereinander auf größeren Bildschirmen */
+            gap: 20px; /* Abstand zwischen den Buttons */
+
         }
-        label {
-            display: block;
-            margin: 0.75rem 0;
-            padding: 0.75rem 1rem;
-            background: #444242; /* Leichter Hintergrund für Radio-Optionen */
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
+
+        /* Responsive Anpassungen für KLEINERE BILDSCHIRME (z.B. max-width: 768px) */
+        @media (max-width: 768px) {
+            .tools-header-container {
+                flex-direction: column; /* Logo ÜBER den Buttons stapeln */
+                align-items: center; /* Alles horizontal zentrieren */
+                padding: 15px;
+            }
+
+            .tools-logo-wrapper {
+                margin-bottom: 20px; /* Abstand zwischen Logo und Buttons auf Mobil */
+                align-items: center;
+            }
+            
+            .tools-buttons-wrapper {
+                width: 100%; /* Buttons nehmen die volle Breite des Containers ein */
+                align-items: center; /* Buttons mittig zentrieren auf Mobil */
+            }
+
+            .tools-buttons-wrapper .thq-button-animated {
+                width: 80%; /* Beispielbreite für die Buttons auf Mobilgeräten */
+                max-width: 300px; /* Max. Breite, damit sie nicht zu breit werden */
+                text-align: center;
+                padding: 12px 15px; /* Etwas mehr Polsterung für mobile Buttons */
+            }
         }
-        label:hover {
-            background-color: #000000; /* Dunkler beim Hover */
-        }
-        input[type="radio"] {
-            margin-right: 0.75rem;
-            accent-color: #008cbaff; /* Akzentfarbe für Radio-Buttons */
-        }
-        button {
-            background-color: #008cbaff;
-            color: white;
-            border: none;
-            padding: 1.2rem 2.5rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: block; /* Button über die volle Breite */
-            width: 100%;
-            max-width: 300px; /* Max. Breite für den Button */
-            margin: 2.5rem auto 0; /* Zentriert und Abstand nach oben */
-            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-        }
-        button:hover {
-            background-color: #008cbaff; /* Dunklerer Ton beim Hover */
-            transform: translateY(-2px);
-        }
-        #result {
-            margin-top: 3rem;
-            font-weight: bold;
-            padding: 1.5rem;
-            background: #008cbaff;
-            border-left: 6px solid #008cbaff;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        #result strong {
-            color: #0033cc;
-        }
-    </style>
+      </style>
+
 
 </head>
 <body>
@@ -360,78 +348,70 @@
             </header>
         </kopfzeile-rest-wrapper>
       
-    <h1>
-      Wie gut steuerst du dein Unternehmen wirklich? 
-      <br>
-      <br>
-      Dein kurzes Entscheidungs-Quiz.
-      <br>
-      <br>
-    </h1>
+<!--Tools component-->  
+      <impressum-text-wrapper
+        class="impressum-text-wrapper"
+        rootclassname="impressum-textundefined"
+        >        
+        <div
+          class="impressum-text-container thq-section-padding impressum-textroot-class-name">
 
-<form id="quizForm">
+          <ul class="impressum-text-ul thq-flex-column">
+            <li class="thq-flex-column list-item" style="align-items: flex-start;">
+              
+              <h1 class="impressum-text-heading1 thq-heading-1">
+                <fragment class="impressum-fragment4">
+                  <span class="impressum-text13">Entdecke unsere interaktiven Tools für dein Unternehmen</span>
+                </fragment>
+              </h1>
+              
+              <p class="thq-body-small">
+                <fragment class="impressum-fragment5">
+                  <span class="impressum-text14">
+                    <span>
+                      Willkommen auf unserer Tool-Übersichtsseite! Hier findest du eine Sammlung interaktiver Anwendungen, 
+                      die dir helfen, das volle Potenzial deines Unternehmens zu erkennen und zu nutzen. 
+                      Jedes Tool ist darauf ausgelegt, dir auf einfache und verständliche Weise zu zeigen, wo du stehst und wie du dich verbessern kannst.
+                      Sie sind benutzerfreundlich gestaltet und erfordern keine speziellen Vorkenntnisse.
+                      Mit nur wenigen Klicks kannst du deine aktuelle Situation analysieren und wertvolle Erkenntnisse gewinnen.
+                      Klicke einfach auf den entsprechenden Button, um zu starten und den ersten Schritt in Richtung eines optimierten und erfolgreicheren Unternehmens zu gehen.
+                      Lass uns gemeinsam herausfinden, wie du dein Geschäft auf die nächste Ebene heben kannst!
+                    </span>
+                      <br /><br />
 
-        <div class="question">
-            <h3>1. Ein unerwarteter Umsatzrückgang tritt auf. Wie reagierst du primär?</h3>
-            <label><input type="radio" name="q1" value="false"> Ich informiere den Vertrieb, dass sie mehr verkaufen müssen und das Marketing, dass sie neue Kampagnen starten sollen.</label>
-            <label><input type="radio" name="q1" value="true"> Ich analysiere die Abweichungen im Detail, um die Gründe und Ursachen festzustellen.</label>
-            <label><input type="radio" name="q1" value="false"> Ich fordere eine kurzfristige Reduzierung der Ausgaben, um die Profitabilität zu sichern.</label>
-            <label><input type="radio" name="q1" value="false"> Ich schlage vor, die Preise zu erhöhen, um den Umsatz wieder anzukurbeln.</label>
+
+     <div class="tools-header-container">
+        <div class="tools-logo-wrapper">
+            <img src="../public/Logo.png" alt="" 
+            style="width: auto; height: 400px;">
         </div>
+        <div class="tools-buttons-wrapper">
+            <button
+                class="thq-button-animated thq-button-outline"
+                onclick="window.location.href='Dein-Effizienz-Radar.html'"> 
+                <span class="thq-body-small">Effizienz-Radar</span>
+            </button>
+            <button
+                class="thq-button-animated thq-button-outline"
+                onclick="window.location.href='Kalkulator.html'"> 
+                <span class="thq-body-small">Effizienz-Kalkulator</span>
+            </button>
 
-        <div class="question">
-            <h3>2. Das Unternehmen plant eine große Investition in eine neue Produktionsanlage. Was ist die wichtigste Aufgabe in diesem Prozess?</h3>
-            <label><input type="radio" name="q2" value="false"> Ich bereite die Unterlagen für den Kreditantrag bei der Bank vor.</label>
-            <label><input type="radio" name="q2" value="false"> Ich stelle sicher, dass die Investition in das Budget passt.</label>
-            <label><input type="radio" name="q2" value="true"> Ich erstelle eine detaillierte Investitionsrechnung.</label>
-            <label><input type="radio" name="q2" value="false"> Ich überprüfe, ob die neue Anlage die Produktionskapazität deutlich erhöhen kann.</label>
+            <button
+                class="thq-button-animated thq-button-outline"
+                onclick="window.location.href='Quiz.html'"> 
+                <span class="thq-body-small">Entscheidungs-Quiz</span>
+            </button>
         </div>
+    </div>
 
-        <div class="question">
-            <h3>3. Sie müssen kurzfristig komplexe Ergebnisse unterschiedlichen Zielgruppen präsentieren. Wie passst du deine Kommunikation an?</h3>
-            <label><input type="radio" name="q3" value="false"> Ich bereite schnell eine Präsentation vor, die alle relevanten Zahlen und Grafiken enthält und passe dann bei Bedarf die Geschwindigkeit meiner Erläuterungen an.</label>
-            <label><input type="radio" name="q3" value="true"> Ich investiere Zeit, um die spezifischen Informationsbedürfnisse und Entscheidungsfelder jeder Zielgruppe vor und nutze angepasste Präsentationen.</label>
-            <label><input type="radio" name="q3" value="false"> Ich konzentriere mich darauf, die positiven Entwicklungen hervorzuheben und mögliche negative Aspekte diplomatisch zu formulieren, um die Stimmung im Meeting positiv zu halten.</label>
-            <label><input type="radio" name="q3" value="false"> Ich sende die detaillierten Berichte vorab an alle Teilnehmer, damit sie sich selbst ein Bild machen können, und nutze die Präsentation für eine kurze Zusammenfassung und Fragen.</label>
-        </div>
-
-        <div class="question">
-            <h3>4. Die IT-Abteilung beklagt sich über knappe Budgets, während andere Führungskräfte die Effizienz der IT infrage stellen. Wie gehst du vor?</h3>
-            <label><input type="radio" name="q4" value="true"> Ich führe eine detaillierte Kosten-Nutzen-Analyse durch und schlage Optimierungspotenziale vor.</label>
-            <label><input type="radio" name="q4" value="false"> Ich fordere von der IT eine detaillierte Liste aller geplanten Projekte und bewerte deren Nutzen für das Unternehmen.</label>
-            <label><input type="radio" name="q4" value="false"> Ich organisiere ein Meeting zwischen der IT-Leitung und den Fachabteilungen, um Missverständnisse auszuräumen und die gegenseitigen Erwartungen abzugleichen.</label>
-            <label><input type="radio" name="q4" value="false"> Ich schlage vor, bestimmte IT-Leistungen an externe Dienstleister auszulagern, um Kosten zu senken und die Effizienz zu steigern.</label>
-        </div>
-
-        <div class="question">
-            <h3>5. Die Geschäftsleitung beabsichtigt, die operative Effizienz in den Kernprozessen des Unternehmens deutlich zu steigern. Was ist dazu ein entscheidender Beitrag?</h3>
-            <label><input type="radio" name="q5" value="false"> Ich fordere die Prozessverantwortlichen auf, detaillierte Zeitpläne und Meilensteine für ihre Effizienzinitiativen zu erstellen.</label>
-            <label><input type="radio" name="q5" value="true"> Ich entwickle und implementiere ein System zur Leistungsmessung für die relevanten Prozesse vor und führe eine Prozesskostenanalyse durch.</label>
-            <label><input type="radio" name="q5" value="false"> Ich erstelle ein Benchmark mit den Best-Practice-Unternehmen der Branche, um realistische Ziele für die Prozessverbesserung zu setzen.</label>
-            <label><input type="radio" name="q5" value="false"> Ich stelle sicher, dass die geplanten Effizienzmaßnahmen mit den strategischen Zielen des Unternehmens übereinstimmen.</label>
-        </div>
-
-        <div class="question">
-            <h3>6. Das Top-Management möchte die Gemeinkosten signifikant senken. Wie gehst du am effektivsten vor?</h3>
-            <label><input type="radio" name="q6" value="false"> Ich fordere alle auf, ihre Gemeinkostenbudgets für das kommende Jahr um 15% zu kürzen und die Maßnahmen zu begründen.</label>
-            <label><input type="radio" name="q6" value="false"> Ich vergleiche unsere Gemeinkostenquote mit der von Wettbewerbern und Best-Practice-Unternehmen, um Zielwerte für die Reduktion abzuleiten.</label>
-            <label><input type="radio" name="q6" value="false"> Ich überprüfe alle externen Dienstleisterverträge, um bessere Konditionen zu verhandeln oder alternative Anbieter zu finden.</label>
-            <label><input type="radio" name="q6" value="true"> Ich identifiziere und analysiere die Kostentreiber der Gemeinkosten, führe eine Prozesskostenrechnung durch und schlage spezifische Maßnahmen vor.</label>
-        </div>
-
-        <div class="question">
-            <h3>7. Angesichts zunehmender Marktvolatilität und externer Unsicherheiten, wie kann das interne Risikomanagement gestärkt werden?</h3>
-            <label><input type="radio" name="q7" value="false"> Ich sorge dafür, dass das Unternehmen über ausreichend Rücklagen verfügt, um unerwartete finanzielle Belastungen abzufedern.</label>
-            <label><input type="radio" name="q7" value="false"> Ich führe eine jährliche Risikobewertung durch, um die größten finanziellen Risiken zu identifizieren und einen Maßnahmenplan zur Risikominimierung zu erstellen.</label>
-            <label><input type="radio" name="q7" value="true"> Ich implementiere ein umfassendes Risikomanagement-System, das finanzielle und nicht-finanzielle Risiken erfasst, bewertet, steuert und überwacht.</label>
-            <label><input type="radio" name="q7" value="false"> Ich berate die Geschäftsleitung über Absicherungsstrategien gegen Betriebsmittel- und Arbeitsmittelpreisänderungen.</label>
-        </div>
-
-        <button type="button" onclick="calculateScore()">Dein Ergebnis anzeigen</button>
-    </form>
-
-    <div id="result"></div>
-
+                    </span>
+                  </fragment>
+                </p>
+              </li>
+            </ul>
+          </div>
+      </impressum-text-wrapper>
 
       <!--Fuzeile component-->
         <fuzeile-wrapper class="fuzeile-wrapper">
@@ -481,61 +461,7 @@
               mainContent.style.marginTop = '0';
           }
       }
-    </script>
-
-<script>
-        function calculateScore() {
-            const form = document.getElementById('quizForm');
-            const answers = form.querySelectorAll('input[type=radio]:checked');
-            let score = 0;
-
-            // Überprüfe, ob alle Fragen beantwortet wurden
-            if (answers.length !== 7) {
-                document.getElementById("result").innerText = "Bitte beantworte alle Fragen, um dein Ergebnis zu sehen!";
-                document.getElementById("result").style.backgroundColor = "#008cbaff"; // Warnfarbe
-                document.getElementById("result").style.borderColor = "#008cbaff"; // Warnrand
-                return; // Funktion beenden
-            }
-
-            answers.forEach(answer => {
-                if (answer.value === "true") {
-                    score++;
-                }
-            });
-
-            let resultText = "";
-            let followUpText = "";
-            let resultBgColor = "#e0f3ff"; // Standard-Hintergrundfarbe
-
-
-            if (score <= 2) {
-                resultText = "Du verwaltest, aber steuerst noch nicht. Dein Unternehmen hat enormes Potenzial, das du jetzt heben kannst!";
-                followUpText = "Lass uns gemeinsam die Grundlagen für mehr Klarheit und Effizienz legen. Dein Geschäftskompass hilft dir, die richtigen Wege zu finden.";
-                resultBgColor = "#ff6347"; 
-
-            } else if (score <= 5) {
-                resultText = "Du hast ein gutes Gespür für dein Geschäft, aber es gibt noch ungenutzte Stellschrauben für mehr Wachstum und Ertrag!";
-                followUpText = "Wir helfen dir, diese Potenziale gezielt zu identifizieren und umzusetzen, damit dein Unternehmen noch erfolgreicher wird. Zeit, dein Ruder neu auszurichten!";
-                resultBgColor = "#008cbaff"; 
-
-            } else {
-                resultText = "Du steuerst dein Unternehmen vorausschauend. Starke Einschätzung! Aber auch für die Besten gibt es immer ein 'noch besser'. Wann hast du das letzte mal nur 40 Stunden in der Woche gearbeitet?";
-                followUpText = "Lass uns analysieren, wie du deine führende Position weiter ausbauen und dein Geschäft für die Zukunft absichern kannst. Dein Geschäftskompass begleitet dich auf dem Weg zur absoluten Spitze.";
-                resultBgColor = "#008cbaff"; 
-
-            }
-
-            const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = `
-                Dein Ergebnis: <strong>${score} von 7 Punkten</strong>
-                <p>${resultText}</p>
-                <p>${followUpText}</p>
-                <p>Bereit für den nächsten Schritt? <a href="../kontakt.html" style="color: #0033cc; text-decoration: none; font-weight: bold;">Kontaktiere Dein Geschäftskompass jetzt für ein unverbindliches Gespräch.</a></p>
-            `;
-            resultDiv.style.backgroundColor = resultBgColor;
-            resultDiv.style.borderColor = resultBorderColor;
-        }
-    </script>
+  </script>
 
   </body>
 </html>
