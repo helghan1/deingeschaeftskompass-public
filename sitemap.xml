@@ -6,31 +6,35 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 
-
+<url>
+      <loc>https://xn--deingeschftskompass-owb.de/</loc>
+      <lastmod>2025-05-28T11:08:01+00:00</lastmod>
+      <priority>1.0</priority>
+</url>
 <url>
     <loc>https://xn--deingeschftskompass-owb.de/mehr-erfahren</loc>
-    <lastmod>2025-04-18T08:04:35+00:00</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2025-05-28T10:04:35+00:00</lastmod>
+    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://xn--deingeschftskompass-owb.de/kontakt</loc>
     <lastmod>2025-04-18T08:04:35+00:00</lastmod>
-    <priority>0.80</priority>
+    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://xn--deingeschftskompass-owb.de/datenschutz</loc>
     <lastmod>2025-04-18T08:04:35+00:00</lastmod>
-    <priority>0.80</priority>
+    <priority>0.30</priority>
   </url>
   <url>
     <loc>https://xn--deingeschftskompass-owb.de/impressum</loc>
     <lastmod>2025-04-18T08:04:35+00:00</lastmod>
-    <priority>0.80</priority>
+    <priority>0.30</priority>
   </url>
   <url>
     <loc>https://xn--deingeschftskompass-owb.de/preise</loc>
     <lastmod>2025-04-18T08:04:35+00:00</lastmod>
-    <priority>0.80</priority>
+    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://xn--deingeschftskompass-owb.de/gut-zu-wissen</loc>
@@ -38,10 +42,25 @@
     <priority>0.80</priority>
   </url>
   <url>
-  <loc>https://xn--deingeschftskompass-owb.de/blog/controlling</loc>
-  <lastmod>2025-05-13T12:11:00+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/controlling</loc>
+    <lastmod>2025-05-13T12:11:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/Dein-Effizienz-Radar.html</loc>
+    <lastmod>2025-05-28T11:04:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/Quiz.html</loc>
+    <lastmod>2025-05-28T11:04:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-owb.de/Verantwortung.html</loc>
+    <lastmod>2025-05-28T11:04:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
 
 
 </urlset>
