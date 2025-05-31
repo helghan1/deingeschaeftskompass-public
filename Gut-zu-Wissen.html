@@ -162,7 +162,88 @@
                 display: block; /* Burger-Menü anzeigen */
             }
         }
+
+/* Container, der alle Artikel umgibt */
+.article-container {
+    display: flex; /* Aktiviert Flexbox */
+    flex-wrap: wrap; /* Erlaubt das Umbrechen der Elemente in die nächste Zeile */
+    gap: 20px; /* Abstand zwischen den Artikeln (horizontal und vertikal) */
+    justify-content: center; /* Zentriert die Artikel, wenn nicht genug Platz für eine vollständige Reihe ist */
+    padding: 20px; /* Optional: Innenabstand für den Container */
+}
+
+/* Jeder einzelne Artikel-Container (der Link-Wrapper) */
+.article-item {
+    /* Die Hauptsteuerung für die Breite auf Desktop */
+    flex: 0 1 calc(50% - 20px); /* flex-grow: 0 (nicht wachsen), flex-shrink: 1 (schrumpfen), flex-basis: 50% minus Gap */
+    max-width: 450px; /* Maximale Breite für den Artikel-Block auf Desktop, falls die 50% größer wären */
+    min-width: 300px; /* Minimale Breite, bevor es umbricht, um zu vermeiden, dass die Boxen zu klein werden */
+    box-sizing: border-box; /* Stellt sicher, dass Padding und Border in der Breite enthalten sind */
+    text-decoration: none; /* Entfernt die Unterstreichung von Links */
+    color: inherit; /* Behält die Textfarbe des übergeordneten Elements bei */
+    display: flex; /* Macht das article-item ebenfalls zu einem Flex-Container */
+    flex-direction: column; /* Stapelt den Inhalt vertikal */
+}
+
+/* Der Wrapper für Bild und Text innerhalb jedes Artikels */
+.article-image-wrapper {
+    /* Nimmt die volle Breite des article-item ein, um sich responsiv anzupassen */
+    width: 100%;
+    /* Eine feste Höhe für den Wrapper, die das Bild und den Text umfassen soll.
+       Dies ist der Hauptgrund für Ihr Überlappen, wenn es zu klein ist.
+       Passen Sie dies an, damit es groß genug für Bild + Text ist. */
+    height: auto; /* auto ist hier besser, damit sich die Höhe an den Inhalt anpasst */
+    min-height: 300px; /* Beispiel: Mindesthöhe für den Wrapper, um den Text darunter nicht zu überlappen */
+
+    display: flex; /* Macht diesen Wrapper ebenfalls zu einem Flex-Container */
+    flex-direction: column; /* Bild und Text untereinander */
+    align-items: flex-start; /* Text linksbündig */
+    padding: 0; /* Kein Padding hier, da Sie keinen Rahmen möchten. Oder 15px, wenn Sie Innenabstand möchten */
+    /* border: none; */ /* Explizit keinen Rahmen */
+    /* box-shadow: none; */ /* Explizit keinen Schatten, falls zuvor vorhanden */
+}
+
+/* Das eigentliche Bild innerhalb des Containers */
+.article-thumbnail {
+    width: 100%; /* Bild füllt die Breite des article-image-wrapper */
+    height: 300px; /* Beispiel: Eine feste Höhe für Bilder auf Desktop */
+    object-fit: cover; /* Schneidet das Bild zu, um den Bereich zu füllen */
+    margin-bottom: 10px; /* Abstand zwischen Bild und Text */
+    border-radius: 0; /* Kein abgerundeter Rahmen, wenn Sie dies nicht möchten */
+}
+
+
+/* Medienabfrage für mobile Geräte (z.B. bis 768px Breite) */
+@media (max-width: 768px) {
+    .article-item {
+        flex: 1 1 100%; /* Auf Mobilgeräten: Eine Spalte (100% Breite) */
+        max-width: 100%; /* Stellt sicher, dass es die volle Breite einnimmt */
+        min-width: unset; /* Setzt min-width für Mobilgeräte zurück */
+    }
+
+    .article-image-wrapper {
+        width: 100%; /* Auf Mobilgeräten soll der Wrapper die volle Breite des article-item einnehmen */
+        height: auto; /* Höhe passt sich dem Inhalt an */
+        min-height: unset; /* Setzt min-height für Mobilgeräte zurück */
+    }
+
+    .article-thumbnail {
+        width: 100%; /* Bild füllt die Breite des article-image-wrapper */
+        height: 150px; /* Eine andere feste Höhe für Bilder auf Mobilgeräten */
+    }
+}
+
+a:hover {
+    color: #007bff; /* Beispiel: Farbe beim Hover-Effekt ändern */
+}
+
+/* Optional: Weitere Stile für den Text unter den Bildern */
+.article-image-wrapper b {
+    margin-bottom: 5px; /* Abstand zwischen Überschrift und Fließtext */
+}
     </style>
+
+    
     
 </head>
 <body>
@@ -303,13 +384,7 @@
 
           <ul class="impressum-text-ul thq-flex-column">
             <li class="thq-flex-column list-item" style="align-items: flex-start;">
-              
-              <h1 class="impressum-text-heading1 thq-heading-1">
-                <fragment class="impressum-fragment4">
-                  <span class="impressum-text13">Gut zu Wissen</span>
-                </fragment>
-              </h1>
-              
+                          
               <p class="thq-body-small">
                 <fragment class="impressum-fragment5">
                   <span class="impressum-text14">
@@ -351,23 +426,75 @@
                       <span>Mehr als nur Theorie: Unsere Artikel</span>
                     </h2>
                                         
-                  <p class="thq-body-small">
-                    <span class="impressum-text14">
-                      <a href="/blog/controlling.html">
-                        <span>
-                          Controlling: Was es ist und warum es für deinen Erfolg entscheidend ist<br/>
-                          1. Was ist Controlling? Definition, Ziele und Funktionen im Überblick<br/>
-                          2. Arten des Controllings: Operativ, Strategisch und Spezialgebiete<br/>
-                          3. Controlling in der Unternehmenspraxis: Umsetzung & Tools<br/> 
-                        </span>
-                      </a>
-                    </span>
-                    <br/><br/>
+                  <article class="thq-body-small">
+    <div class="article-container">
+        <a href="/blog/controlling.html">
+            <div class="article-item">
+                <div class="article-image-wrapper">
+                    <img
+                        src="../public/Controlling vorher nachher.png"
+                        alt="Controlling: Vorher-Nachher-Vergleich"
+                        class="article-thumbnail"
+                    >
+                    <b>Controlling: Was es ist und warum es für deinen Erfolg entscheidend ist</b><br/>
+                    Controlling – ein Begriff, der häufig fällt, wenn über Unternehmensführung,
+                    Wirtschaftlichkeit oder strategische Planung gesprochen wird...
+                </div>
+            </div>
+        </a>
 
-                    <span>
-                      <b>TEASER:</b><br/><br/>
-                    </span>
-                    <span>                      
+        <a href="/blog/controlling.html">
+            <div class="article-item">
+                <div class="article-image-wrapper">
+                    <img
+                        src="../public/Was ist Controlling.jfif"
+                        alt="Controlling: Was ist Controlling"
+                        class="article-thumbnail"
+                    >
+                    <b>1. Was ist Controlling? Definition, Ziele und Funktionen im Überblick</b><br/>
+                    Controlling ist mehr als das, was viele auf den ersten Blick vermuten.
+                    Es geht nicht nur um Zahlen oder das reine Reporting.
+                    Controlling ist...
+                </div>
+            </div>
+        </a>
+
+        <a href="/blog/controlling.html">
+            <div class="article-item">
+                <div class="article-image-wrapper">
+                    <img
+                        src="../public/Arten des Controllings.jfif"
+                        alt="Arten des Controllings"
+                        class="article-thumbnail"
+                    >
+                    <b>2. Arten des Controllings: Operativ, Strategisch und Spezialgebiete</b><br/>
+                    Welches Controlling brauchen wir eigentlich? Die Antwort darauf hängt stark von der Unternehmensgröße, der Branche und den Zielen ab.
+                    Aber grundlegend lassen sich drei Hauptarten des Controllings unterscheiden:...
+                </div>
+            </div>
+        </a>
+
+        <a href="/blog/controlling.html">
+            <div class="article-item">
+                <div class="article-image-wrapper">
+                    <img
+                        src="../public/Controlling in der Unternehmenspraxis Umsetzung & Tools.jfif"
+                        alt="Controlling in der Unternehmenspraxis"
+                        class="article-thumbnail"
+                    >
+                    <b>3. Controlling in der Unternehmenspraxis: Umsetzung & Tools</b><br/>
+                    Controlling in der Praxis steht und fällt mit der Umsetzung:
+                    Prozesse, Daten, Kommunikation und Tools müssen sinnvoll miteinander verzahnt sein.
+                    Nur dann gelingt es, aus einer Controlling-Funktion...
+                </div>
+            </div>
+        </a>
+    </div>
+</article>
+
+                      <b>TEASER:</b>
+                      <br/><br/>
+                     
                       4. Aufgaben im Controlling: Was macht ein Controller konkret?<br/>
                       5. Der Beruf Controller: Anforderungen, Skills und Karrierechancen<br/>
                       6. Controlling lernen: Studiengänge und Weiterbildung <br/>
@@ -396,7 +523,7 @@
                     <br />
                   </span>
                 </fragment>
-              </p>
+              </article>
             </li>
           </ul>
         </div>
