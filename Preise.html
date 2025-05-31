@@ -84,7 +84,7 @@
     <link rel="stylesheet" href="./style.css" />
     <link href="./index.css" rel="stylesheet" />
     <style>
-       /* Stile für das mobile Menü */
+        /* Stile für das mobile Menü */
         .kopfzeile-rest-burger-menu {
             display: none; /* Standardmäßig ausblenden */
             cursor: pointer;
@@ -144,54 +144,79 @@
             margin-bottom: 0;
         }
 
+        /* Angepasste Stile für die Links im mobilen Menü */
+        .kopfzeile-rest-mobile-menu a {
+            font-size: 1.2em; /* Schriftgröße anpassen, z.B. 1.2em oder 18px */
+            margin-bottom: 15px; /* Abstand nach unten zwischen den Links */
+            text-decoration: none; /* Unterstreichung entfernen, falls gewünscht */
+            color: var(--dl-color-theme-neutral-dark); /* Farbe der Links anpassen */
+            padding-top: 15px; /* Fügt Platz oberhalb des Textes hinzu, damit die Border nicht direkt am Text klebt */
+            width: 100%; /* Stellt sicher, dass die Border über die gesamte Breite des Links geht */
+            border-top: 1px solid #008cbaff; /* Hinzufügen der Border oben */
+            /* Den Wert für --dl-color-theme-neutral-light kannst du anpassen, wenn du eine andere Farbe für die Linie möchtest */
+        }
+
+        /* Den ersten Link ohne obere Border, da er der oberste ist */
+        .kopfzeile-rest-mobile-menu a:first-child {
+            border-top: none;
+            padding-top: 0; /* Entfernt den oberen Padding für den ersten Link */
+        }
+
+        /* Letzten Link ohne unteren Margin, falls gewünscht */
+        .kopfzeile-rest-mobile-menu a:last-child {
+            margin-bottom: 0;
+        }
+
         /* Media Query für mobile Ansichten */
         @media (max-width: 767px) {
-            .kopfzeile-start-desktop-menu {
+            .kopfzeile-rest-desktop-menu {
                 display: none; /* Desktop-Menü ausblenden */
             }
-            .kopfzeile-start-burger-menu {
+            .kopfzeile-rest-burger-menu {
                 display: block; /* Burger-Menü anzeigen */
             }
         }
-    </style>
+  </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <div class="startseite-container">
-
-        <kopfzeile-start-wrapper
-            class="kopfzeile-start-wrapper"
-            rootclassname="kopfzeile-startundefined"
+    <div
+        class="mehr-erfahren-container1"
+    >
+        <header class="mehr-erfahren-container2"></header>
+        <kopfzeile-rest-wrapper
+            class="kopfzeile-rest-wrapper"
+            rootclassname="kopfzeile-restundefined"
         >
             <header
-                id="Navbar8"
-                class="kopfzeile-start-container kopfzeile-startroot-class-name"
+                class="kopfzeile-rest-container kopfzeile-restroot-class-name"
             >
                 <header
                     data-thq="thq-navbar"
-                    class="kopfzeile-start-navbar-interactive"
+                    class="kopfzeile-rest-navbar-interactive"
                 >
-                <a href="index.html" class="kopfzeile-start-navlink">
-                    <img
-                        alt="Dein Geschäftskompass – zur Startseite."
-                        src="public/Logo.png"
-                        class="kopfzeile-start-image1"
-                    />
-                </a>
+                    <a href="index.html" class="kopfzeile-rest-navlink">
+                        <img
+                            alt="Dein Geschäftskompass – zurück zur Startseite."
+                            src="public/Logo.png"
+                            class="kopfzeile-rest-image1"
+                        />
+                    </a>
                     <div
                         data-thq="thq-navbar-nav"
-                        class="kopfzeile-start-desktop-menu"
+                        class="kopfzeile-rest-desktop-menu"
                     >
-                        <nav class="kopfzeile-start-links">
+                        <nav class="kopfzeile-rest-links">
                             <a
                                 href="index.html"
-                                class="kopfzeile-start-link1 thq-body-small thq-link"
+                                class="kopfzeile-rest-link1 thq-body-small thq-link"
                             >
-                                <fragment class="startseite-fragment10">
-                                    <span class="startseite-text100">Startseite</span>
+                                <fragment class="mehr-erfahren-fragment10">
+                                    <span class="mehr-erfahren-text100">Startseite</span>
                                 </fragment>
                             </a>
+
                           <div class="kopfzeile-start-buttons">
                               <a
                                   href="Gut-zu-Wissen.html"
@@ -217,7 +242,7 @@
                                   </span>
                               </a>
                           </div>
-
+                          
                           <div class="kopfzeile-start-buttons">
                             <a
                                 href="Preise.html"
@@ -230,22 +255,22 @@
                                 </span>
                             </a>
                           </div>
+                            
                         </nav>
-
-                        <div class="kopfzeile-start-buttons">
+                        <div class="kopfzeile-rest-buttons">
                             <a
                                 href="mehr-erfahren.html"
-                                class="kopfzeile-start-action1 thq-button-filled thq-button-animated"
+                                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
                             >
                                 <span>
-                                    <fragment class="startseite-fragment17">
-                                        <span class="startseite-text107">mehr Erfahren</span>
+                                    <fragment class="mehr-erfahren-fragment11">
+                                        <span class="mehr-erfahren-text101">mehr Erfahren</span>
                                     </fragment>
                                 </span>
                             </a>
                             <a
                                 href="kontakt.html"
-                                class="kopfzeile-start-action1 thq-button-filled thq-button-animated"
+                                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
                             >
                                 <span>
                                     <fragment class="mehr-erfahren-fragment12">
@@ -257,8 +282,8 @@
                     </div>
                     <div
                         data-thq="thq-burger-menu"
-                        class="kopfzeile-start-burger-menu"
-                        onclick="toggleMobileMenu()"
+                        class="kopfzeile-rest-burger-menu"
+                        onclick="toggleMobileMenuRest()"
                     >
                         <div></div>
                         <div></div>
@@ -266,8 +291,8 @@
                     </div>
                     <div
                         data-thq="thq-mobile-menu"
-                        class="kopfzeile-start-mobile-menu"
-                        id="mobileMenu"
+                        class="kopfzeile-rest-mobile-menu"
+                        id="mobileMenuRest"
                     >
                         <a href="index.html">Startseite</a>
                         <a href="gut-zu-wissen.html">Gut zu Wissen</a>
@@ -278,8 +303,7 @@
                     </div>
                 </header>
             </header>
-        </kopfzeile-start-wrapper>
-
+        </kopfzeile-rest-wrapper>
         
 
          
@@ -604,9 +628,16 @@
       </div>
 
       <script>
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMobileMenuRest() {
+            const mobileMenu = document.getElementById('mobileMenuRest');
+            const mainContent = document.getElementById('mainContent');
             mobileMenu.classList.toggle('open');
+  
+            if (mobileMenu.classList.contains('open')) {
+                mainContent.style.marginTop = 'auto'; // Oder die Höhe, die dein geöffnetes Menü einnimmt
+            } else {
+                mainContent.style.marginTop = '0';
+            }
         }
     </script>
 
