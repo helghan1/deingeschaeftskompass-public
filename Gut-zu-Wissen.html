@@ -153,6 +153,52 @@
             opacity: 1;
         }
 
+        /* Angepasste Stile für die Links im mobilen Menü */
+        .kopfzeile-rest-mobile-menu a {
+            font-size: 1.2em; /* Schriftgröße anpassen, z.B. 1.2em oder 18px */
+            margin-bottom: 15px; /* Abstand nach unten zwischen den Links */
+            text-decoration: none; /* Unterstreichung entfernen, falls gewünscht */
+            color: var(--dl-color-theme-neutral-dark); /* Farbe der Links anpassen */
+            padding-top: 15px; /* Fügt Platz oberhalb des Textes hinzu, damit die Border nicht direkt am Text klebt */
+            width: 100%; /* Stellt sicher, dass die Border über die gesamte Breite des Links geht */
+            border-top: 1px solid #008cbaff; /* Hinzufügen der Border oben */
+            /* Den Wert für --dl-color-theme-neutral-light kannst du anpassen, wenn du eine andere Farbe für die Linie möchtest */
+        }
+
+        /* Den ersten Link ohne obere Border, da er der oberste ist */
+        .kopfzeile-rest-mobile-menu a:first-child {
+            border-top: none;
+            padding-top: 0; /* Entfernt den oberen Padding für den ersten Link */
+        }
+
+        /* Letzten Link ohne unteren Margin, falls gewünscht */
+        .kopfzeile-rest-mobile-menu a:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Angepasste Stile für die Links im mobilen Menü */
+        .kopfzeile-rest-mobile-menu a {
+            font-size: 1.2em; /* Schriftgröße anpassen, z.B. 1.2em oder 18px */
+            margin-bottom: 15px; /* Abstand nach unten zwischen den Links */
+            text-decoration: none; /* Unterstreichung entfernen, falls gewünscht */
+            color: var(--dl-color-theme-neutral-dark); /* Farbe der Links anpassen */
+            padding-top: 15px; /* Fügt Platz oberhalb des Textes hinzu, damit die Border nicht direkt am Text klebt */
+            width: 100%; /* Stellt sicher, dass die Border über die gesamte Breite des Links geht */
+            border-top: 1px solid #008cbaff; /* Hinzufügen der Border oben */
+            /* Den Wert für --dl-color-theme-neutral-light kannst du anpassen, wenn du eine andere Farbe für die Linie möchtest */
+        }
+
+        /* Den ersten Link ohne obere Border, da er der oberste ist */
+        .kopfzeile-rest-mobile-menu a:first-child {
+            border-top: none;
+            padding-top: 0; /* Entfernt den oberen Padding für den ersten Link */
+        }
+
+        /* Letzten Link ohne unteren Margin, falls gewünscht */
+        .kopfzeile-rest-mobile-menu a:last-child {
+            margin-bottom: 0;
+        }
+
         /* Media Query für mobile Ansichten */
         @media (max-width: 767px) {
             .kopfzeile-rest-desktop-menu {
@@ -163,84 +209,84 @@
             }
         }
 
-/* Container, der alle Artikel umgibt */
-.article-container {
-    display: flex; /* Aktiviert Flexbox */
-    flex-wrap: wrap; /* Erlaubt das Umbrechen der Elemente in die nächste Zeile */
-    gap: 20px; /* Abstand zwischen den Artikeln (horizontal und vertikal) */
-    justify-content: center; /* Zentriert die Artikel, wenn nicht genug Platz für eine vollständige Reihe ist */
-    padding: 20px; /* Optional: Innenabstand für den Container */
-}
+        /* Container, der alle Artikel umgibt */
+        .article-container {
+            display: flex; /* Aktiviert Flexbox */
+            flex-wrap: wrap; /* Erlaubt das Umbrechen der Elemente in die nächste Zeile */
+            gap: 20px; /* Abstand zwischen den Artikeln (horizontal und vertikal) */
+            justify-content: center; /* Zentriert die Artikel, wenn nicht genug Platz für eine vollständige Reihe ist */
+            padding: 20px; /* Optional: Innenabstand für den Container */
+        }
 
-/* Jeder einzelne Artikel-Container (der Link-Wrapper) */
-.article-item {
-    /* Die Hauptsteuerung für die Breite auf Desktop */
-    flex: 0 1 calc(50% - 20px); /* flex-grow: 0 (nicht wachsen), flex-shrink: 1 (schrumpfen), flex-basis: 50% minus Gap */
-    max-width: 450px; /* Maximale Breite für den Artikel-Block auf Desktop, falls die 50% größer wären */
-    min-width: 300px; /* Minimale Breite, bevor es umbricht, um zu vermeiden, dass die Boxen zu klein werden */
-    box-sizing: border-box; /* Stellt sicher, dass Padding und Border in der Breite enthalten sind */
-    text-decoration: none; /* Entfernt die Unterstreichung von Links */
-    color: inherit; /* Behält die Textfarbe des übergeordneten Elements bei */
-    display: flex; /* Macht das article-item ebenfalls zu einem Flex-Container */
-    flex-direction: column; /* Stapelt den Inhalt vertikal */
-}
+        /* Jeder einzelne Artikel-Container (der Link-Wrapper) */
+        .article-item {
+            /* Die Hauptsteuerung für die Breite auf Desktop */
+            flex: 0 1 calc(50% - 20px); /* flex-grow: 0 (nicht wachsen), flex-shrink: 1 (schrumpfen), flex-basis: 50% minus Gap */
+            max-width: 450px; /* Maximale Breite für den Artikel-Block auf Desktop, falls die 50% größer wären */
+            min-width: 300px; /* Minimale Breite, bevor es umbricht, um zu vermeiden, dass die Boxen zu klein werden */
+            box-sizing: border-box; /* Stellt sicher, dass Padding und Border in der Breite enthalten sind */
+            text-decoration: none; /* Entfernt die Unterstreichung von Links */
+            color: inherit; /* Behält die Textfarbe des übergeordneten Elements bei */
+            display: flex; /* Macht das article-item ebenfalls zu einem Flex-Container */
+            flex-direction: column; /* Stapelt den Inhalt vertikal */
+        }
 
-/* Der Wrapper für Bild und Text innerhalb jedes Artikels */
-.article-image-wrapper {
-    /* Nimmt die volle Breite des article-item ein, um sich responsiv anzupassen */
-    width: 100%;
-    /* Eine feste Höhe für den Wrapper, die das Bild und den Text umfassen soll.
-       Dies ist der Hauptgrund für Ihr Überlappen, wenn es zu klein ist.
-       Passen Sie dies an, damit es groß genug für Bild + Text ist. */
-    height: auto; /* auto ist hier besser, damit sich die Höhe an den Inhalt anpasst */
-    min-height: 300px; /* Beispiel: Mindesthöhe für den Wrapper, um den Text darunter nicht zu überlappen */
+        /* Der Wrapper für Bild und Text innerhalb jedes Artikels */
+        .article-image-wrapper {
+            /* Nimmt die volle Breite des article-item ein, um sich responsiv anzupassen */
+            width: 100%;
+            /* Eine feste Höhe für den Wrapper, die das Bild und den Text umfassen soll.
+              Dies ist der Hauptgrund für Ihr Überlappen, wenn es zu klein ist.
+              Passen Sie dies an, damit es groß genug für Bild + Text ist. */
+            height: auto; /* auto ist hier besser, damit sich die Höhe an den Inhalt anpasst */
+            min-height: 300px; /* Beispiel: Mindesthöhe für den Wrapper, um den Text darunter nicht zu überlappen */
 
-    display: flex; /* Macht diesen Wrapper ebenfalls zu einem Flex-Container */
-    flex-direction: column; /* Bild und Text untereinander */
-    align-items: flex-start; /* Text linksbündig */
-    padding: 0; /* Kein Padding hier, da Sie keinen Rahmen möchten. Oder 15px, wenn Sie Innenabstand möchten */
-    /* border: none; */ /* Explizit keinen Rahmen */
-    /* box-shadow: none; */ /* Explizit keinen Schatten, falls zuvor vorhanden */
-}
+            display: flex; /* Macht diesen Wrapper ebenfalls zu einem Flex-Container */
+            flex-direction: column; /* Bild und Text untereinander */
+            align-items: flex-start; /* Text linksbündig */
+            padding: 0; /* Kein Padding hier, da Sie keinen Rahmen möchten. Oder 15px, wenn Sie Innenabstand möchten */
+            /* border: none; */ /* Explizit keinen Rahmen */
+            /* box-shadow: none; */ /* Explizit keinen Schatten, falls zuvor vorhanden */
+        }
 
-/* Das eigentliche Bild innerhalb des Containers */
-.article-thumbnail {
-    width: 100%; /* Bild füllt die Breite des article-image-wrapper */
-    height: 300px; /* Beispiel: Eine feste Höhe für Bilder auf Desktop */
-    object-fit: cover; /* Schneidet das Bild zu, um den Bereich zu füllen */
-    margin-bottom: 10px; /* Abstand zwischen Bild und Text */
-    border-radius: 0; /* Kein abgerundeter Rahmen, wenn Sie dies nicht möchten */
-}
+        /* Das eigentliche Bild innerhalb des Containers */
+        .article-thumbnail {
+            width: 100%; /* Bild füllt die Breite des article-image-wrapper */
+            height: 300px; /* Beispiel: Eine feste Höhe für Bilder auf Desktop */
+            object-fit: cover; /* Schneidet das Bild zu, um den Bereich zu füllen */
+            margin-bottom: 10px; /* Abstand zwischen Bild und Text */
+            border-radius: 8px; /* Optional: Abgerundete Ecken für das Bild */
+        }
 
 
-/* Medienabfrage für mobile Geräte (z.B. bis 768px Breite) */
-@media (max-width: 768px) {
-    .article-item {
-        flex: 1 1 100%; /* Auf Mobilgeräten: Eine Spalte (100% Breite) */
-        max-width: 100%; /* Stellt sicher, dass es die volle Breite einnimmt */
-        min-width: unset; /* Setzt min-width für Mobilgeräte zurück */
-    }
+        /* Medienabfrage für mobile Geräte (z.B. bis 768px Breite) */
+        @media (max-width: 768px) {
+            .article-item {
+                flex: 1 1 100%; /* Auf Mobilgeräten: Eine Spalte (100% Breite) */
+                max-width: 100%; /* Stellt sicher, dass es die volle Breite einnimmt */
+                min-width: unset; /* Setzt min-width für Mobilgeräte zurück */
+            }
 
-    .article-image-wrapper {
-        width: 100%; /* Auf Mobilgeräten soll der Wrapper die volle Breite des article-item einnehmen */
-        height: auto; /* Höhe passt sich dem Inhalt an */
-        min-height: unset; /* Setzt min-height für Mobilgeräte zurück */
-    }
+            .article-image-wrapper {
+                width: 100%; /* Auf Mobilgeräten soll der Wrapper die volle Breite des article-item einnehmen */
+                height: auto; /* Höhe passt sich dem Inhalt an */
+                min-height: unset; /* Setzt min-height für Mobilgeräte zurück */
+            }
 
-    .article-thumbnail {
-        width: 100%; /* Bild füllt die Breite des article-image-wrapper */
-        height: 150px; /* Eine andere feste Höhe für Bilder auf Mobilgeräten */
-    }
-}
+            .article-thumbnail {
+                width: 100%; /* Bild füllt die Breite des article-image-wrapper */
+                height: 150px; /* Eine andere feste Höhe für Bilder auf Mobilgeräten */
+            }
+        }
 
-a:hover {
-    color: #008cbaff; /* Beispiel: Farbe beim Hover-Effekt ändern */
-}
+        a:hover {
+            color: #008cbaff; /* Beispiel: Farbe beim Hover-Effekt ändern */
+        }
 
-/* Optional: Weitere Stile für den Text unter den Bildern */
-.article-image-wrapper b {
-    margin-bottom: 5px; /* Abstand zwischen Überschrift und Fließtext */
-}
+        /* Optional: Weitere Stile für den Text unter den Bildern */
+        .article-image-wrapper b {
+            margin-bottom: 5px; /* Abstand zwischen Überschrift und Fließtext */
+        }
     </style>
 
     
