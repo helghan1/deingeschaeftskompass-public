@@ -153,6 +153,29 @@
             opacity: 1;
         }
 
+        /* Angepasste Stile für die Links im mobilen Menü */
+        .kopfzeile-rest-mobile-menu a {
+            font-size: 1.2em; /* Schriftgröße anpassen, z.B. 1.2em oder 18px */
+            margin-bottom: 15px; /* Abstand nach unten zwischen den Links */
+            text-decoration: none; /* Unterstreichung entfernen, falls gewünscht */
+            color: var(--dl-color-theme-neutral-dark); /* Farbe der Links anpassen */
+            padding-top: 15px; /* Fügt Platz oberhalb des Textes hinzu, damit die Border nicht direkt am Text klebt */
+            width: 100%; /* Stellt sicher, dass die Border über die gesamte Breite des Links geht */
+            border-top: 1px solid #008cbaff; /* Hinzufügen der Border oben */
+            /* Den Wert für --dl-color-theme-neutral-light kannst du anpassen, wenn du eine andere Farbe für die Linie möchtest */
+        }
+
+        /* Den ersten Link ohne obere Border, da er der oberste ist */
+        .kopfzeile-rest-mobile-menu a:first-child {
+            border-top: none;
+            padding-top: 0; /* Entfernt den oberen Padding für den ersten Link */
+        }
+
+        /* Letzten Link ohne unteren Margin, falls gewünscht */
+        .kopfzeile-rest-mobile-menu a:last-child {
+            margin-bottom: 0;
+        }
+
         /* Media Query für mobile Ansichten */
         @media (max-width: 767px) {
             .kopfzeile-rest-desktop-menu {
@@ -301,6 +324,7 @@
         <div
           class="impressum-text-container thq-section-padding impressum-textroot-class-name">
 
+          
           <ul class="impressum-text-ul thq-flex-column">                            
 
               <li><b>Inhaltsverzeichnis</b></li>                  
