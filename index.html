@@ -1223,13 +1223,12 @@
           </faq-wrapper>
 
           <fuzeile-wrapper class="fuzeile-wrapper">
-            <div class="thq-divider-horizontal"></div>
-            <footer class="fuzeile-footer7 thq-section-padding">
+            <div class="thq-divider-horizontal"></div> <footer class="fuzeile-footer7 thq-section-padding">
               <div class="fuzeile-max-width thq-section-max-width">
                 <div class="fuzeile-content">
 
                   <div class="fuzeile-social-buttons">
-
+                    Teile deine Begeisterung auf:
                     <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/facebook.png" alt="Facebook" class="fuzeile-social-icon"/>
                     </a>
@@ -1239,6 +1238,15 @@
                     <a href="#" onclick="window.open(getShareUrl('whatsapp'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/whatsapp.png" alt="WhatsApp" class="fuzeile-social-icon"/>
                     </a>
+                    <a href="#" onclick="window.open(getShareUrl('tumblr'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/tumblr.png" alt="Tumblr" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/instagram.png" alt="Instagram" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('wordpress'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/wordpress.png" alt="WordPress" class="fuzeile-social-icon"/>
+                    </a>
                     <button class="fuzeile-share-button" onclick="sharePage()">
                       <img src="public/share.png" alt="Teilen" class="fuzeile-social-icon"/>
                     </button>
@@ -1246,7 +1254,6 @@
                 </div>
 
                 <div class="fuzeile-credits">
-
                   <div class="fuzeile-row">
                     <div class="fuzeile-container">
                       </div>
@@ -1283,7 +1290,7 @@
         const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || '');
 
         switch (platform) {
-          
+
           case 'facebook':
             // Facebook Share URL: u= für die zu teilende URL
             return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
@@ -1293,6 +1300,18 @@
           case 'whatsapp':
             // WhatsApp Share URL: text (Titel + URL)
             return `https://wa.me/?text=${title}%20${url}`;
+          case 'tumblr':
+            // Tumblr Share URL: posttype=link, title und content
+            // Du kannst auch posttype=quote oder posttype=text verwenden
+            return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
+          case 'instagram':
+
+            console.warn("Instagram bietet keine einfache URL zum Teilen von externen Webseiteninhalten im Feed. Button verlinkt zu Instagram.com.");
+            return `https://www.instagram.com`; // Generischer Link zu Instagram.com
+            // Oder spezifisch zu deinem Profil: return `https://www.instagram.com/DEIN_INSTAGRAM_BENUTZERNAME/`;
+          case 'wordpress':
+            // WordPress.com Share URL: link und title
+            return `https://wordpress.com/create/post?url=${url}&title=${title}`;
           default:
             console.warn("Unbekannte Plattform für Teilen-URL:", platform);
             return '#'; // Fallback
@@ -1313,6 +1332,7 @@
         } else {
           // Fallback für Browser, die die native Share-API nicht unterstützen
           alert('Ihr Browser unterstützt die native Share-Funktion nicht direkt. Bitte kopieren Sie den Link manuell: ' + window.location.href);
+
         }
       }
       </script>
