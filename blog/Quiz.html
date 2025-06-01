@@ -115,77 +115,7 @@
     <div>
       <link href="../impressum.css" rel="stylesheet" />
     
-      <style>
-        /* Stile für das mobile Menü */
-        .kopfzeile-rest-burger-menu {
-            display: none; /* Standardmäßig ausblenden */
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .kopfzeile-rest-burger-menu div {
-            width: 30px;
-            height: 3px;
-            background-color: var(--dl-color-theme-neutral-dark); /* Passe die Farbe an */
-            margin: 5px 0;
-        }
-
-        .kopfzeile-rest-mobile-menu {
-            display: none; /* Standardmäßig ausblenden */
-            position: absolute;
-            top: 60px; /* Unterhalb der Hauptnavigation */
-            left: 0;
-            width: 100%;
-            background-color: var(--dl-color-theme-neutral-light); /* Passe die Farbe an */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 10; /* Um sicherzustellen, dass es über anderen Inhalten liegt */
-            padding: 15px;
-            flex-direction: column;
-            align-items: flex-start;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.3s ease; /* Sanftes Einblenden */
-        }
-
-        .kopfzeile-rest-mobile-menu.open {
-            display: flex;
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Angepasste Stile für die Links im mobilen Menü */
-        .kopfzeile-rest-mobile-menu a {
-            font-size: 1.2em; /* Schriftgröße anpassen, z.B. 1.2em oder 18px */
-            margin-bottom: 15px; /* Abstand nach unten zwischen den Links */
-            text-decoration: none; /* Unterstreichung entfernen, falls gewünscht */
-            color: var(--dl-color-theme-neutral-dark); /* Farbe der Links anpassen */
-            padding-top: 15px; /* Fügt Platz oberhalb des Textes hinzu, damit die Border nicht direkt am Text klebt */
-            width: 100%; /* Stellt sicher, dass die Border über die gesamte Breite des Links geht */
-            border-top: 1px solid #008cbaff; /* Hinzufügen der Border oben */
-            /* Den Wert für --dl-color-theme-neutral-light kannst du anpassen, wenn du eine andere Farbe für die Linie möchtest */
-        }
-
-        /* Den ersten Link ohne obere Border, da er der oberste ist */
-        .kopfzeile-rest-mobile-menu a:first-child {
-            border-top: none;
-            padding-top: 0; /* Entfernt den oberen Padding für den ersten Link */
-        }
-
-        /* Letzten Link ohne unteren Margin, falls gewünscht */
-        .kopfzeile-rest-mobile-menu a:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Media Query für mobile Ansichten */
-        @media (max-width: 767px) {
-            .kopfzeile-rest-desktop-menu {
-                display: none; /* Desktop-Menü ausblenden */
-            }
-            .kopfzeile-rest-burger-menu {
-                display: block; /* Burger-Menü anzeigen */
-            }
-        }
-    </style>
+  
   </div>
 
   <style>
@@ -456,41 +386,101 @@
     <div id="result"></div>
 
 
-      <!--Fuzeile component-->
-        <fuzeile-wrapper class="fuzeile-wrapper">
-          <footer class="fuzeile-footer7 thq-section-padding">
-            
-            <div class="fuzeile-max-width thq-section-max-width">
-              <div class="fuzeile-content">
+                    <fuzeile-wrapper class="fuzeile-wrapper">
 
-              </div>
-              <div class="fuzeile-credits">
-                <div class="thq-divider-horizontal"></div>
-                <div class="fuzeile-row">
-                  <div class="fuzeile-container"></div>
-                  <div class="fuzeile-footer-links">
-                    <span class="fuzeile-text2 thq-link">
-                      <fragment class="impressum-fragment8">
-                        <a href="../datenschutz.html" class="fuzeile-text2 thq-link">
-                          <span class="startseite-text269">Datenschutz</span>
-                        </a>
-                      </fragment>
-                    </span>
-                    <span class="thq-link">
-                      <fragment class="impressum-fragment7">
-                        <a href="../impressum.html" class="thq-link">
-                          <span class="startseite-text268">Impressum</span>
-                        </a>
+<div class="thq-divider-horizontal"></div>
+            <footer class="fuzeile-footer7 thq-section-padding">
+              <div class="fuzeile-max-width thq-section-max-width">
+                <div class="fuzeile-content">
+
+
+                  <div class="fuzeile-social-buttons">
+
+                    <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="../public/facebook.png" alt="Facebook" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('reddit'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="../public/reddit.png" alt="Reddit" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('whatsapp'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="../public/whatsapp.png" alt="WhatsApp" class="fuzeile-social-icon"/>
+                    </a>
+                    <button class="fuzeile-share-button" onclick="sharePage()">
+                      <img src="../public/share.png" alt="Teilen" class="fuzeile-social-icon"/>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="fuzeile-credits">
+                  <div class="fuzeile-row">
+                    <div class="fuzeile-container">
+                      </div>
+                    <div class="fuzeile-footer-links">
+                      <span class="fuzeile-text2 thq-link">
+                        <fragment class="impressum-fragment8">
+                          <a href="../datenschutz.html" class="fuzeile-text2 thq-link">
+                            <span class="startseite-text269">Datenschutz</span>
+                          </a>
+                        </fragment>
+                      </span>
+                      <span class="thq-link">
+                        <fragment class="impressum-fragment7">
+                          <a href="/..impressum.html" class="thq-link">
+                            <span class="startseite-text268">Impressum</span>
+                          </a>
                         </fragment>
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
-          </footer>
-        </fuzeile-wrapper>
-      </div>
+            </footer>
+          </fuzeile-wrapper>
+     </div>
     </div>
+    
+      <script>
+      // Funktion zum Generieren der plattformspezifischen Share-URLs
+      function getShareUrl(platform) {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        // Versuche, die Meta-Description zu bekommen, sonst leer
+        const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || '');
+
+        switch (platform) {
+          
+          case 'facebook':
+            // Facebook Share URL: u= für die zu teilende URL
+            return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
+          case 'reddit':
+            // Reddit Share URL: url und title
+            return `https://www.reddit.com/submit?url=${url}&title=${title}`;
+          case 'whatsapp':
+            // WhatsApp Share URL: text (Titel + URL)
+            return `https://wa.me/?text=${title}%20${url}`;
+          default:
+            console.warn("Unbekannte Plattform für Teilen-URL:", platform);
+            return '#'; // Fallback
+        }
+      }
+
+      // Funktion für den allgemeinen Teilen-Button (nutzt native Browser-API)
+      function sharePage() {
+        if (navigator.share) {
+          // Wenn der Browser die native Share-API unterstützt
+          navigator.share({
+            title: document.title,
+            text: 'Schau dir diese Seite an: ' + document.title,
+            url: window.location.href,
+          })
+          .then(() => console.log('Erfolgreich geteilt!'))
+          .catch((error) => console.log('Fehler beim Teilen:', error));
+        } else {
+          // Fallback für Browser, die die native Share-API nicht unterstützen
+          alert('Ihr Browser unterstützt die native Share-Funktion nicht direkt. Bitte kopieren Sie den Link manuell: ' + window.location.href);
+        }
+      }
+      </script>
 
     <script>
       function toggleMobileMenuRest() {
