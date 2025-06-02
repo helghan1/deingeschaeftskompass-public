@@ -59,6 +59,9 @@
  
 .impressum-text14 {
   display: inline-block;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  word-break: normal;
 }
  
 .impressum-text18 {
