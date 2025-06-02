@@ -43,6 +43,9 @@
  
 .impressum-text-heading1 {
   align-self: flex-start;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  word-break: normal;
 }
  
 .impressum-fragment4 {
