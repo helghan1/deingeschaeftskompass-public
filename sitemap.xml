@@ -52,11 +52,26 @@
     <priority>0.70</priority>
   </url>
   <url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/Dein-Effizienz-Radar/Intensiv-Radar.html</loc>
+    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/Dein-Effizienz-Radar/Schnell-Radar.html</loc>
+    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/Dein-Effizienz-Radar/Kompakt-Radar.html</loc>
+    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
     <loc>https://xn--deingeschftskompass-owb.de/blog/Quiz.html</loc>
     <lastmod>2025-05-28T11:04:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
-<url>
+  <url>
     <loc>https://xn--deingeschftskompass-owb.de/blog/Tools.html</loc>
     <lastmod>2025-05-28T17:04:00+00:00</lastmod>
     <priority>0.70</priority>
