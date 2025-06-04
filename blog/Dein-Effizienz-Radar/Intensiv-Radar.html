@@ -629,8 +629,9 @@
         <div id="result-area" style="display:none;">
             <h3>Dein Effizienz-Ergebnis:</h3>
             <p id="score-display"></p>
-            <p id="interpretation-display"></p>
             <div id="detailed-breakdown">
+            <p id="interpretation-display"></p>
+
                 <h4>Detaillierte Analyse nach Themenbereichen:</h4>
             </div>
             <a href="../../kontakt.html" class="cta-button" id="contactCtaButton">Lass uns deine Effizienz gemeinsam steigern!</a>
@@ -911,63 +912,72 @@
             effectiveMaxScore -= 3; // Ziehe die maximalen Punkte für diese Frage von der Gesamtpunktzahl ab.
         }
 
-        const scorePercentage = (totalScore / effectiveMaxScore) * 100;
+        const scorePercentage = (totalScore / effectiveMaxScore) * 100; 
         let interpretation = "";
+        let ctaHtml = ""; // Variable für den dynamischen Haupt-CTA-HTML
+        let kalkulatorLinkContent = ""; // Variable für den dynamischen Kalkulator-Link-Inhalt
 
-        if (scorePercentage >= 80) {
+        if (scorePercentage === 100) { 
+            interpretation = "Absoluter Effizienz-Meister! Du bist ein leuchtendes Beispiel für optimale betriebliche Prozesse. Herzlichen Glückwunsch zu dieser herausragenden Leistung! Deine Systeme und Abläufe sind bereits auf höchstem Niveau. Lass uns in einem unverbindlichen Gespräch darüber sprechen, wie du dein Know-how als Branchenführer weiter ausbauen und möglicherweise neue Geschäftsfelder erschließen kannst, um deinen Vorsprung zu festigen und zu monetarisieren.";
+            ctaHtml = `<a href="../../kontakt.html?reason=Master" class="cta-button" id="contactCtaButton">Deinen Meisterstatus festigen & weiter skalieren!</a>`;
+            // Spezieller Text für 100% Score
+            kalkulatorLinkContent = `<a href="#" style="color: #cdf9ff;">Du hast die maximale Effizienz erreicht! Aber mal ehrlich: Wann hast du zuletzt 40 Wochenstunden gearbeitet, ohne dich danach noch um unzählige andere Dinge kümmern zu müssen? Ist deine Resilienz dann noch stark genug, um dich und dein Business auch durch unvorhergesehene Stürme zu steuern?</a>`;   
+        } else if (scorePercentage >= 80) {
             interpretation = "Hocheffizienter Vorreiter! Du bist bereits sehr gut aufgestellt und führst deine Prozesse mit herausragender Effizienz. Das ist beeindruckend! Lass uns in einem kurzen Gespräch erörtern, wie du diese Effizienz noch weiter ausbauen und als Wettbewerbsvorteil nutzen kannst, um zum echten Vorreiter in deiner Branche zu werden.";
+            ctaHtml = `<a href="../../kontakt.html?reason=Vanguard" class="cta-button" id="contactCtaButton">Deine Effizienz weiter ausbauen!</a>`;
+            kalkulatorLinkContent = `Möchtest du wissen, wie viel Zeit und Geld das in Zahlen bedeutet? <a href="../kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button">Dein Effizienz-Potenzial berechnen!</a>`;
         } else if (scorePercentage >= 50) {
             interpretation = "Auf dem richtigen Weg, mit Potenzial! Du hast eine solide Grundlage, aber es gibt klare Bereiche, in denen du deine Effizienz noch steigern kannst, um Zeit, Kosten und Nerven zu sparen. Dein Effizienz-Radar hat spezifische Felder aufgezeigt, in denen schnelle Gewinne möglich sind. Gerne besprechen wir in einem kostenlosen Erstgespräch, wie du diese Potenziale konkret anpacken und deine Betriebsabläufe auf das nächste Level heben kannst.";
+            ctaHtml = `<a href="../../kontakt.html?reason=Potential" class="cta-button" id="contactCtaButton">Dein Effizienz-Potenzial entdecken!</a>`;
+            kalkulatorLinkContent = `Möchtest du wissen, wie viel Zeit und Geld das in Zahlen bedeutet? <a href="../kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button">Dein Effizienz-Potenzial berechnen!</a>`;
         } else if (scorePercentage >= 25) {
             interpretation = "Optimierungsbedarf erkannt! Du stehst vor Herausforderungen in der betrieblichen Effizienz, die jedoch großes Potenzial für deutliche Verbesserungen bergen. Jetzt ist der ideale Zeitpunkt, um die Hebel in Bewegung zu setzen und deine Abläufe nachhaltig zu optimieren. Lass uns in einem unverbindlichen Gespräch darüber sprechen, wie du die größten Stolpersteine identifizierst und Effizienzgewinne erzielen kannst, die sich direkt auf dein Ergebnis auswirken.";
+            ctaHtml = `<a href="../../kontakt.html?reason=Optimize" class="cta-button" id="contactCtaButton">Jetzt Effizienz steigern!</a>`;
+            kalkulatorLinkContent = `Möchtest du wissen, wie viel Zeit und Geld das in Zahlen bedeutet? <a href="../kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button">Dein Effizienz-Potenzial berechnen!</a>`;
         } else {
             interpretation = "Dringender Handlungsbedarf! Deine aktuellen Prozesse scheinen stark ineffizient zu sein, was dich wertvolle Zeit, Energie und Geld kostet. Doch genau hier liegt die größte Chance für massive Verbesserungen! Mit gezielten Maßnahmen kannst du deine Produktivität drastisch steigern und dein Geschäft wieder auf Kurs bringen. Warte nicht länger – vereinbare jetzt ein kostenloses Erstgespräch, um einen konkreten Plan für deine Effizienzsteigerung zu entwickeln.";
+            ctaHtml = `<a href="../../kontakt.html?reason=Urgent" class="cta-button" id="contactCtaButton">Dringenden Handlungsbedarf angehen!</a>`;
+            kalkulatorLinkContent = `Möchtest du wissen, wie viel Zeit und Geld das in Zahlen bedeutet? <a href="../kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button">Dein Effizienz-Potenzial berechnen!</a>`;
         }
 
         document.getElementById("score-display").innerText = `${scorePercentage.toFixed(0)}% Effizienz`;
         document.getElementById("interpretation-display").innerText = interpretation;
 
         const detailedBreakdown = document.getElementById("detailed-breakdown");
-        detailedBreakdown.innerHTML = '<h4>Detaillierte Analyse nach Themenbereichen:</h4>'; // Clear previous content if any
+        detailedBreakdown.innerHTML = '<h4>Detaillierte Analyse nach Themenbereichen:</h4>';
         for (const topic in topicScores) {
-            const topicMaxScore = topicQuestions[topic].length * 3; // Max. Punkte für dieses Thema
-            let currentTopicScore = topicScores[topic];
-            let actualTopicMaxScore = topicMaxScore;
-
-            // Spezialbehandlung für Q3 im Thema "Transformation & Anpassungsfähigkeit"
-            if (topic === "Transformation & Anpassungsfähigkeit") {
-                const q3Option = document.querySelector('input[name="q3_remote_arbeit"]:checked');
-                if (q3Option && q3Option.value === "0") {
-                    actualTopicMaxScore -= 3; // Ziehe 3 Punkte vom maximalen Score dieses Themas ab
-                    // currentTopicScore bleibt gleich, da die 0 Punkte ohnehin nicht addiert wurden
-                }
-            }
+            const questionsInTopic = topicQuestions[topic].length;
+            const topicMaxScore = questionsInTopic * 3;
+            const currentTopicScore = topicScores[topic];
             
-            // Vermeide Division durch Null, falls ein Thema 0 Fragen hat oder alle Fragen "nicht zutreffend" sind
-            const topicPercentage = actualTopicMaxScore > 0 ? (currentTopicScore / actualTopicMaxScore) * 100 : 0;
+            const topicPercentage = topicMaxScore > 0 ? (currentTopicScore / topicMaxScore) * 100 : 0;
             detailedBreakdown.innerHTML += `<p><strong>${topic}:</strong> ${topicPercentage.toFixed(0)}% Effizienz</p>`;
         }
 
-
         const resultArea = document.getElementById("result-area");
-        resultArea.style.display = "block"; // Zeigt den Ergebnisbereich an
+        resultArea.style.display = "block";
 
-        // Stelle sicher, dass der Kontakt-Button eine ID hat, damit wir ihn finden können
-        const contactCtaButton = document.getElementById('contactCtaButton');
-
-        // Erstelle den Link zum Kalkulator dynamisch
-        const kalkulatorLinkWrapper = document.createElement('p');
-        kalkulatorLinkWrapper.classList.add('kalkulator-link-wrapper'); // Neue Klasse für Styling
-        kalkulatorLinkWrapper.innerHTML = `Möchtest du wissen, wie viel Zeit und Geld das in Zahlen bedeutet? <a href="kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button">Dein Effizienz-Potenzial berechnen!</a>`;
-
-        // Füge den neuen Link VOR dem bestehenden "Kontakt"-Button ein
-        if (contactCtaButton) {
-            contactCtaButton.parentNode.insertBefore(kalkulatorLinkWrapper, contactCtaButton);
+        const oldContactCtaButton = document.getElementById('contactCtaButton');
+        if (oldContactCtaButton) {
+            oldContactCtaButton.outerHTML = ctaHtml;
         } else {
-            resultArea.appendChild(kalkulatorLinkWrapper);
+            resultArea.insertAdjacentHTML('beforeend', ctaHtml);
         }
 
+        // Erstelle den Link zum Kalkulator dynamisch mit dem angepassten Inhalt
+        const kalkulatorLinkWrapper = document.createElement('p');
+        kalkulatorLinkWrapper.classList.add('kalkulator-link-wrapper');
+        kalkulatorLinkWrapper.innerHTML = kalkulatorLinkContent; // Hier wird der dynamische Inhalt zugewiesen
+
+        const newContactCtaButton = document.getElementById('contactCtaButton');
+        if (newContactCtaButton) {
+             newContactCtaButton.parentNode.insertBefore(kalkulatorLinkWrapper, newContactCtaButton);
+        } else {
+             resultArea.appendChild(kalkulatorLinkWrapper);
+        }
     }
+
+    document.addEventListener('DOMContentLoaded', updateProgressBar);
 </script>
   </body>
 </html>
