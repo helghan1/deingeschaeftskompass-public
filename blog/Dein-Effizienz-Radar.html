@@ -74,6 +74,15 @@
 
         fill: var(--dl-color-theme-neutral-dark);
       }
+
+          /* Titel des Quick-Checks */
+    .effizienz-quick-check-container h2 {
+        text-align: center;
+        color: #008cbaff; /* Deine gewählte Blau-Farbe für den Titel */
+        margin-bottom: 20px;
+    }
+
+
     </style>
         <link
       rel="stylesheet"
@@ -115,185 +124,9 @@
 
     <link rel="stylesheet" href="../style.css" />
     <div>
-      <link href="../impressum.css" rel="stylesheet" />
-    
-  
+      <link href="../impressum.css" rel="stylesheet" /> 
   </div>
-
-<style>
-    /* Allgemeine Container-Stile */
-    .effizienz-quick-check-container {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 30px;
-        background-color: #333333; /* Dunkles Grau für den Haupt-Container */
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-        color: #FFFFFF; /* Standardmäßig weiße Schrift für den Haupt-Container */
-    }
-
-    /* Titel des Quick-Checks */
-    .effizienz-quick-check-container h2 {
-        text-align: center;
-        color: #008cbaff; /* Deine gewählte Blau-Farbe für den Titel */
-        margin-bottom: 20px;
-    }
-
-    /* Einführungstext */
-    .effizienz-quick-check-container p {
-        line-height: 1.6;
-        margin-bottom: 15px;
-        color: #FFFFFF; /* Sicherstellen, dass der Einführungstext weiß ist */
-    }
-
-    /* Progress Bar Container */
-    .progress-container {
-        width: 100%;
-        background-color: #555555; /* Hintergrundfarbe des Balkens, etwas heller als der Container */
-        border-radius: 5px;
-        margin-bottom: 25px;
-        height: 10px; /* Höhe der Progress Bar */
-        overflow: hidden; /* Stellt sicher, dass der Balken nicht über den Container ragt */
-    }
-
-    /* Fortschrittsbalken */
-    .progress-bar {
-        width: 0%;
-        height: 100%;
-        background-color: #008cbaff; /* Farbe des Fortschrittsbalkens (Blau) */
-        border-radius: 5px;
-        text-align: center;
-        color: white; /* Textfarbe auf dem Balken (falls vorhanden) */
-        transition: width 0.4s ease-in-out; /* Sanfter Übergang beim Füllen */
-    }
-
-    /* Einzelner Fragenblock */
-    .question-block {
-        background-color: #444444; /* Dunkles Grau für den Fragenblock */
-        padding: 25px;
-        border-radius: 6px;
-        border: 1px solid #666666; /* Angepasster Border für dunklen Hintergrund */
-        margin-bottom: 20px;
-        color: #FFFFFF; /* Weiße Schrift für den Fragenblock-Inhalt */
-    }
-
-    /* Überschrift des Fragenblocks */
-    .question-block h3 {
-        color: #008cbaff; /* Deine gewählte Blau-Farbe für Fragenüberschriften */
-        margin-top: 0;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #666666; /* Angepasster Border für dunklen Hintergrund */
-        padding-bottom: 10px;
-    }
-
-    /* Labels für Radio-Buttons */
-    .question-block label {
-        display: block;
-        margin-bottom: 10px;
-        cursor: pointer;
-        padding: 8px 0;
-        transition: background-color 0.2s ease;
-        color: #FFFFFF; /* Sicherstellen, dass die Labels weiß sind */
-    }
-
-    .question-block label:hover {
-        background-color: #555555; /* Etwas helleres Grau beim Hover für dunklen Hintergrund */
-    }
-
-    /* Radio-Buttons */
-    .question-block input[type="radio"] {
-        margin-right: 10px;
-        transform: scale(1.2); /* Vergrößert die Radio-Buttons */
-        /* HINWEIS: Die Farbe der Radio-Buttons selbst ist schwerer zu stylen und browserabhängig.
-           Moderne Browser passen sie oft automatisch an den Hintergrund an.
-           Für tiefere Anpassungen bräuchtest du möglicherweise benutzerdefinierte Radio-Buttons. */
-    }
-
-    /* Weiter-Button */
-    .question-block button {
-        background-color: #008cbaff; /* Blau für Buttons */
-        color: white;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        transition: background-color 0.3s ease;
-    }
-
-    .question-block button:hover {
-        background-color: #006b99; /* Etwas dunkleres Blau beim Hover */
-    }
-
-    /* Ergebnisbereich */
-    #result-area {
-        background-color: #666666; /* Grüne Farbe für den Ergebnisbereich, angepasst für Kontrast mit Weiß */
-        padding: 30px;
-        border-radius: 8px;
-        border: 1px solid #666666; /* Dunklerer grüner Rand */
-        text-align: center;
-        color: #FFFFFF; /* Weiße Schrift für den Ergebnisbereich */
-    }
-
-    /* Überschrift im Ergebnisbereich */
-    #result-area h3 {
-        color: #FFFFFF; /* Weiß für die Überschrift im Ergebnisbereich */
-        margin-bottom: 15px;
-    }
-
-    /* Anzeige des Scores */
-    #score-display {
-        font-size: 2.2em;
-        font-weight: bold;
-        color: #FFFFFF; /* Weiß für den Score */
-        margin-bottom: 10px;
-    }
-
-    /* Interpretations-Text */
-    #interpretation-display {
-        font-size: 1.1em;
-        color: #FFFFFF; /* Weiß für den Interpretationstext */
-        margin-bottom: 25px;
-    }
-
-    /* Detaillierte Analyse Überschrift */
-    #detailed-breakdown h4 {
-        color: #FFFFFF; /* Weiß für Überschrift im detaillierten Bereich */
-        margin-top: 30px;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #666666; /* Angepasster Border für dunklen Hintergrund */
-        padding-bottom: 10px;
-    }
-
-    /* Absätze in der detaillierten Analyse */
-    #detailed-breakdown p {
-        text-align: left;
-        margin-bottom: 8px;
-        color: #FFFFFF; /* Weiß für Absätze im detaillierten Bereich */
-    }
-
-    /* Call-to-Action Button */
-    .cta-button {
-        display: inline-block;
-        background-color: #008cbaff; /* Deine gewählte Blau-Farbe für den CTA */
-        color: white;
-        padding: 15px 30px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 30px;
-        transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-        background-color: #006b99; /* Dunkleres Blau beim Hover */
-    }
-
-</style>
-
+ 
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
@@ -301,6 +134,7 @@
     <div
         class="mehr-erfahren-container1"
     >
+<!--Kopfzeile-->
         <header class="mehr-erfahren-container2"></header>
         <kopfzeile-rest-wrapper
             class="kopfzeile-rest-wrapper"
@@ -423,221 +257,90 @@
         </kopfzeile-rest-wrapper>
       
 
-      <!--Dein Effizienz Radar-->
-      
-   <div class="effizienz-quick-check-container">
-        <h2>Dein Effizienz-Radar</h2>
-        <br/> 
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        
-        <p>Finde heraus, wie effizient deine Betriebsabläufe wirklich sind. Beantworte die folgenden Fragen ehrlich und erhalte eine erste Einschätzung.</p>
-        <br/><br/> 
+<!--Dein Effizienz Radar-->
 
-        <div class="question-block" id="q1">
-            <h3>1. Transformation & Anpassungsfähigkeit</h3>
-            <p>Inwieweit sind deine Kernprozesse (z.B. Kundenverwaltung, Projektmanagement, Rechnungsstellung) durch integrierte digitale Systeme automatisiert und miteinander vernetzt, um manuelle Schritte zu reduzieren?</p>
-            <label><input type="radio" name="q1_digital_reife" value="3"> Umfassend: Die meisten Kernprozesse laufen über integrierte Softwarelösungen und sind stark automatisiert.</label><br>
-            <label><input type="radio" name="q1_digital_reife" value="2"> Teilweise digitalisiert: Du nutzt diverse digitale Tools, aber Prozesse sind oft nicht durchgängig oder nur wenig vernetzt, was manuelle Übertragungen erfordert.</label><br>
-            <label><input type="radio" name="q1_digital_reife" value="1"> Basic-Digitalisierung: Du nutzt grundlegende digitale Tools (z.B. Office-Anwendungen, E-Mail), die Prozesse sind aber weitgehend manuell oder isoliert.</label><br>
-            <label><input type="radio" name="q1_digital_reife" value="0"> Überwiegend manuell/analog: Die Mehrheit deiner Prozesse ist noch papierbasiert oder erfordert viel manuellen Aufwand.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
+      <impressum-text-wrapper
+        class="impressum-text-wrapper"
+        rootclassname="impressum-textundefined"
+        >        
+        <div
+          class="impressum-text-container thq-section-padding impressum-textroot-class-name">
 
-        <div class="question-block" id="q2" style="display:none;">
-            <h3>2. Transformation & Anpassungsfähigkeit</h3>
-            <p>Wie offen bist du oder dein Team gegenüber neuen Ideen und Veränderungen, und wie gut funktioniert die Zusammenarbeit über verschiedene Aufgabenbereiche hinweg?</p>
-            <label><input type="radio" name="q2_kulturelle_agilitaet" value="3"> Sehr offen: Neue Ideen sind willkommen, und interdisziplinäre Zusammenarbeit ist fester Bestandteil deiner Kultur.</label><br>
-            <label><input type="radio" name="q2_kulturelle_agilitaet" value="2"> Ziemlich offen: Du bist bereit für Veränderungen, aber die Zusammenarbeit zwischen Bereichen könnte noch besser sein.</label><br>
-            <label><input type="radio" name="q2_kulturelle_agilitaet" value="1"> Eher zögerlich: Veränderungen werden oft mit Skepsis betrachtet, und Aufgabenbereiche arbeiten eher isoliert.</label><br>
-            <label><input type="radio" name="q2_kulturelle_agilitaet" value="0"> Resistent: Du bevorzugst bewährte Methoden und feste Strukturen.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
+          <ul class="impressum-text-ul thq-flex-column">
+            <li class="thq-flex-column list-item" style="align-items: flex-start;">
+              <h1 class="impressum-text-heading2 thq-heading-1">
+                <fragment class="impressum-fragment3">
+                  <span class="impressum-text12">Dein Effizienz Radar</span>
+                </fragment>
+              </h1>
 
-        <div class="question-block" id="q3" style="display:none;">
-            <h3>3. Transformation & Anpassungsfähigkeit</h3>
-            <p>Falls du oder dein Team remote/hybrid arbeiten: Wie effizient sind Kommunikation, Abstimmung und der Zugriff auf Informationen in diesem Setup gewährleistet?</p>
-            <label><input type="radio" name="q3_remote_arbeit" value="3"> Sehr effizient: Du hast etablierte Prozesse und Tools, die Remote-Arbeit reibungslos machen.</label><br>
-            <label><input type="radio" name="q3_remote_arbeit" value="2"> Akzeptabel: Es funktioniert, aber es gibt noch Raum für Verbesserungen bei Kommunikation oder Tool-Nutzung.</label><br>
-            <label><input type="radio" name="q3_remote_arbeit" value="1"> Herausfordernd: Remote-Arbeit führt oft zu Missverständnissen, Verzögerungen oder Informationsverlust.</label><br>
-            <label><input type="radio" name="q3_remote_arbeit" value="0"> Nicht zutreffend: Du arbeitest ausschließlich vor Ort.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q4" style="display:none;">
-            <h3>4. Proaktive Agilität & Arbeitsfluss-Optimierung</h3>
-            <p>Wie oft identifizierst und behebst du potenzielle Engpässe oder Probleme in deinen Arbeitsabläufen, *bevor* diese kritisch werden oder den Fortschritt blockieren?</p>
-            <label><input type="radio" name="q4_proaktive_planung" value="3"> Regelmäßig und systematisch: Du analysierst proaktiv Risiken und planst Lösungen im Voraus.</label><br>
-            <label><input type="radio" name="q4_proaktive_planung" value="2"> Gelegentlich: Du versuchst, vorausschauend zu sein, aber oft reagierst du noch auf akute Probleme.</label><br>
-            <label><input type="radio" name="q4_proaktive_planung" value="1"> Selten: Die meisten Engpässe werden erst offensichtlich, wenn sie den Arbeitsfluss bereits stören.</label><br>
-            <label><input type="radio" name="q4_proaktive_planung" value="0"> Nie: Du bist meist im Reaktionsmodus und löst Probleme erst, wenn sie auftreten.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q5" style="display:none;">
-            <h3>5. Proaktive Agilität & Arbeitsfluss-Optimierung</h3>
-            <p>Wie schnell und reibungslos kannst du deine Prioritäten, Aufgaben oder Projektpläne anpassen, wenn sich Rahmenbedingungen (z.B. Kundenbedürfnisse, Marktveränderungen) ändern?</p>
-            <label><input type="radio" name="q5_flexible_anpassung" value="3"> Sehr schnell und agil: Anpassungen sind Teil deines täglichen Geschäfts und werden schnell integriert.</label><br>
-            <label><input type="radio" name="q5_flexible_anpassung" value="2"> Ziemlich schnell: Du kannst dich anpassen, aber es erfordert manchmal größeren Aufwand oder führt zu kleineren Verzögerungen.</label><br>
-            <label><input type="radio" name="q5_flexible_anpassung" value="1"> Langsam und mit Widerstand: Anpassungen sind aufwendig, führen zu Verzögerungen und stoßen oft auf interne Widerstände.</label><br>
-            <label><input type="radio" name="q5_flexible_anpassung" value="0"> Kaum: Du hältst an ursprünglichen Plänen fest, auch wenn sich die Bedingungen ändern.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q6" style="display:none;">
-            <h3>6. Proaktive Agilität & Arbeitsfluss-Optimierung</h3>
-            <p>Wie oft erlebst du oder dein Team, dass wichtige Aufgaben oder Projekte wegen unklarer Zuständigkeiten, fehlender Informationen oder unnötiger Wartezeiten ins Stocken geraten?</p>
-            <label><input type="radio" name="q6_unterbrechungsfreier_flow" value="3"> So gut wie nie: Dein Arbeitsfluss ist klar, und Aufgaben bewegen sich reibungslos voran.</label><br>
-            <label><input type="radio" name="q6_unterbrechungsfreier_flow" value="2"> Selten: Es kommt gelegentlich vor, aber ihr findet schnell Lösungen.</label><br>
-            <label><input type="radio" name="q6_unterbrechungsfreier_flow" value="1"> Manchmal: Dies passiert regelmäßig und führt zu merklichen Verzögerungen.</label><br>
-            <label><input type="radio" name="q6_unterbrechungsfreier_flow" value="0"> Oft: Stockungen sind an der Tagesordnung und beeinträchtigen deine Produktivität erheblich.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q7" style="display:none;">
-            <h3>7. Smarte Digitalisierung & Automatisierung</h3>
-            <p>Wie oft identifizierst du in deinen täglichen Arbeitsabläufen repetitive oder zeitaufwändige Aufgaben, die grundsätzlich automatisiert oder durch digitale Lösungen effizienter gestaltet werden könnten (z.B. Dateneingabe, Terminplanung, Standardkommunikation)?</p>
-            <label><input type="radio" name="q7_automatisierungspotenziale" value="3"> Regelmäßig: Du bist ständig auf der Suche nach solchen Potenzialen und versuchst, diese zu nutzen.</label><br>
-            <label><input type="radio" name="q7_automatisierungspotenziale" value="2"> Manchmal: Dir fallen zwar solche Aufgaben auf, aber du hast wenig Zeit oder Wissen für die Umsetzung.</label><br>
-            <label><input type="radio" name="q7_automatisierungspotenziale" value="1"> Selten: Du bist so im Tagesgeschäft, dass du solche Möglichkeiten kaum wahrnimmst.</label><br>
-            <label><input type="radio" name="q7_automatisierungspotenziale" value="0"> Nie: Du gehst davon aus, dass deine aktuellen Abläufe nicht wesentlich verbessert werden können.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q8" style="display:none;">
-            <h3>8. Smarte Digitalisierung & Automatisierung</h3>
-            <p>Nutzt du aktiv die Daten, die in deinen Prozessen anfallen (z.B. Kundendaten, Projektzeiten, Umsatzstatistiken), um Muster zu erkennen und deine betrieblichen Entscheidungen zu optimieren?</p>
-            <label><input type="radio" name="q8_daten_entscheidungen" value="3"> Ja, systematisch: Du sammelst und analysierst Daten regelmäßig, um fundierte Entscheidungen zu treffen.</label><br>
-            <label><input type="radio" name="q8_daten_entscheidungen" value="2"> Teilweise: Du sammelst Daten, aber die Analyse und Nutzung für strategische Entscheidungen ist noch inkonsistent oder oberflächlich.</label><br>
-            <label><input type="radio" name="q8_daten_entscheidungen" value="1"> Wenig: Daten werden gesammelt, aber kaum systematisch ausgewertet oder für Entscheidungen genutzt.</label><br>
-            <label><input type="radio" name="q8_daten_entscheidungen" value="0"> Nein: Deine Entscheidungen basieren hauptsächlich auf Erfahrung und Intuition, nicht auf Daten.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q9" style="display:none;">
-            <h3>9. Smarte Digitalisierung & Automatisierung</h3>
-            <p>Wenn du auf Effizienzpotenziale stößt oder dich von komplexen digitalen Themen überfordert fühlst: Suchst du aktiv nach externer, menschlicher Expertise, um maßgeschneiderte und verständliche Lösungen zu finden?</p>
-            <label><input type="radio" name="q9_externe_expertise" value="3"> Immer: Du bevorzugst persönliche Beratung, um komplexe Themen zu entschlüsseln und individuelle Lösungen zu erhalten.</label><br>
-            <label><input type="radio" name="q9_externe_expertise" value="2"> Manchmal: Bei größeren Herausforderungen ziehst du externe Hilfe in Betracht.</label><br>
-            <label><input type="radio" name="q9_externe_expertise" value="1"> Selten: Du versuchst, alles intern zu lösen, auch wenn es komplex wird.</label><br>
-            <label><input type="radio" name="q9_externe_expertise" value="0"> Nie: Du lehnst externe Beratung in der Regel ab.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q10" style="display:none;">
-            <h3>10. Finanzielle Sicherheit, Klarheit & Controlling</h3>
-            <p>Hast du jederzeit einen klaren und aktuellen Überblick über deine Einnahmen, Ausgaben, Cashflow und Profitabilität, um fundierte finanzielle Entscheidungen treffen zu können?</p>
-            <label><input type="radio" name="q10_finanz_transparenz" value="3"> Immer: Du hast ein Echtzeit-Dashboard oder regelmäßige, präzise Berichte, die dir umfassende Transparenz bieten.</label><br>
-            <label><input type="radio" name="q10_finanz_transparenz" value="2"> Meistens: Du hast einen Überblick, aber die Daten sind nicht immer aktuell oder erfordern manuellen Aufwand.</label><br>
-            <label><input type="radio" name="q10_finanz_transparenz" value="1"> Gelegentlich: Du erstellst Übersichten nur bei Bedarf oder hast Schwierigkeiten, die relevanten Daten zu sammeln.</label><br>
-            <label><input type="radio" name="q10_finanz_transparenz" value="0"> Selten: Deine Finanzlage ist oft unklar, was schnelle Entscheidungen erschwert.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q11" style="display:none;">
-            <h3>11. Finanzielle Sicherheit, Klarheit & Controlling</h3>
-            <p>Erstellst du Budgets und Finanzprognosen, die aktiv zur Steuerung deiner operativen Tätigkeiten und zukünftigen Investitionen genutzt werden?</p>
-            <label><input type="radio" name="q11_budgetierung_prognose" value="3"> Ja, systematisch: Du erstellst detaillierte Budgets und Prognosen, die als feste Leitlinien dienen und regelmäßig abgeglichen werden.</label><br>
-            <label><input type="radio" name="q11_budgetierung_prognose" value="2"> Ja, aber flexibel: Du hast Budgets, aber sie sind eher grobe Schätzungen und werden selten streng verfolgt.</label><br>
-            <label><input type="radio" name="q11_budgetierung_prognose" value="1"> Selten: Du erstellst gelegentlich einfache Budgets, aber keine umfassenden Prognosen.</label><br>
-            <label><input type="radio" name="q11_budgetierung_prognose" value="0"> Nein: Du arbeitest meist ohne formelle Budgets oder Prognosen.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q12" style="display:none;">
-            <h3>12. Finanzielle Sicherheit, Klarheit & Controlling</h3>
-            <p>Wie regelmäßig analysierst du deine Kosten und die Rentabilität deiner einzelnen Projekte oder Dienstleistungen, um Optimierungspotenziale zu identifizieren und finanzielle Lecks zu schließen?</p>
-            <label><input type="radio" name="q12_kostenkontrolle" value="3"> Regelmäßig und detailliert: Du führst kontinuierlich Kosten- und Rentabilitätsanalysen durch und leitest daraus Maßnahmen ab.</label><br>
-            <label><input type="radio" name="q12_kostenkontrolle" value="2"> Gelegentlich: Du überprüfst die Kosten und Rentabilität bei größeren Projekten oder wenn es Auffälligkeiten gibt.</label><br>
-            <label><input type="radio" name="q12_kostenkontrolle" value="1"> Selten: Du weißt zwar, was du verdienst, aber eine detaillierte Kosten- oder Rentabilitätsanalyse findet kaum statt.</label><br>
-            <label><input type="radio" name="q12_kostenkontrolle" value="0"> Nie: Du konzentrierst dich auf den Umsatz und überlässt die Kostenkontrolle der Buchhaltung am Jahresende.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q13" style="display:none;">
-            <h3>13. Finanzielle Sicherheit, Klarheit & Controlling</h3>
-            <p>Wie gut werden deine operativen Kennzahlen (z.B. Projektfortschritt, Ressourcenauslastung, Kundenakquisitionskosten) erfasst und in Entscheidungen einbezogen, um die Unternehmensentwicklung proaktiv zu steuern?</p>
-            <label><input type="radio" name="q13_controlling_steuerung" value="3"> Umfassend und aktiv: Du nutzt ein breites Spektrum an operativen Kennzahlen als Kerninstrumente für strategische und tägliche Entscheidungen.</label><br>
-            <label><input type="radio" name="q13_controlling_steuerung" value="2"> Teilweise: Einige Kennzahlen werden erfasst und für bestimmte Entscheidungen genutzt, aber nicht durchgängig.</label><br>
-            <label><input type="radio" name="q13_controlling_steuerung" value="1"> Wenig: Du erfasst nur wenige Kennzahlen, und deren Einfluss auf Entscheidungen ist gering.</label><br>
-            <label><input type="radio" name="q13_controlling_steuerung" value="0"> Kaum bis gar nicht: Operative Kennzahlen spielen bei deinen Entscheidungen keine wesentliche Rolle.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q14" style="display:none;">
-            <h3>14. Ressourcenoptimierung & Engpassmanagement</h3>
-            <p>Wie effektiv nutzt du deine Arbeitszeit, um dich auf wirklich wichtige und wirkungsvolle Aufgaben zu konzentrieren, statt im Tagesgeschäft zu verzetteln?</p>
-            <label><input type="radio" name="q14_zeitmanagement" value="3"> Sehr effektiv: Du priorisierst konsequent und fokussierst dich auf die Aufgaben mit der größten Wirkung.</label><br>
-            <label><input type="radio" name="q14_zeitmanagement" value="2"> Ziemlich effektiv: Du hast gute Ansätze, aber Ablenkungen oder Dringlichkeiten führen oft zu einer Verlagerung der Prioritäten.</label><br>
-            <label><input type="radio" name="q14_zeitmanagement" value="1"> Mittelmäßig: Du verzettelst dich oft in Details oder dringenden, aber unwichtigen Aufgaben.</label><br>
-            <label><input type="radio" name="q14_zeitmanagement" value="0"> Ineffizient: Die Zeitplanung ist chaotisch, und die Produktivität leidet stark darunter.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q15" style="display:none;">
-            <h3>15. Ressourcenoptimierung & Engpassmanagement</h3>
-            <p>Werden die individuellen Fähigkeiten und Stärken der Teammitglieder (oder bei Solo-Selbstständigen deine eigenen Kernkompetenzen) optimal für die Erledigung von Aufgaben eingesetzt?</p>
-            <label><input type="radio" name="q15_faehigkeiten_nutzung" value="3"> Umfassend: Aufgaben werden konsequent nach den jeweiligen Stärken und Kernkompetenzen zugewiesen/erledigt.</label><br>
-            <label><input type="radio" name="q15_faehigkeiten_nutzung" value="2"> Teilweise: Du versuchst, die Stärken zu berücksichtigen, aber oft übernimmst du auch Aufgaben außerhalb deiner Kernkompetenzen.</label><br>
-            <label><input type="radio" name="q15_faehigkeiten_nutzung" value="1"> Weniger gut: Fähigkeiten werden oft nicht optimal genutzt, da Aufgaben willkürlich verteilt oder ad-hoc erledigt werden.</label><br>
-            <label><input type="radio" name="q15_faehigkeiten_nutzung" value="0"> Kaum: Aufgaben werden erledigt, egal wer sie am besten kann; Stärken spielen keine Rolle.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q16" style="display:none;">
-            <h3>16. Ressourcenoptimierung & Engpassmanagement</h3>
-            <p>Wie oft kommt es vor, dass Aufgaben doppelt erledigt werden, Informationen nicht gefunden werden oder ineffiziente Kommunikationswege zu unnötigem Aufwand führen?</p>
-            <label><input type="radio" name="q16_mehrfacharbeiten" value="3"> Selten bis nie: Deine Prozesse sind klar, und Redundanzen werden systematisch vermieden.</label><br>
-            <label><input type="radio" name="q16_mehrfacharbeiten" value="2"> Gelegentlich: Es kommt vor, aber du korrigierst solche Situationen schnell.</label><br>
-            <label><input type="radio" name="q16_mehrfacharbeiten" value="1"> Regelmäßig: Doppelte Arbeiten oder Informationssuchen sind ein wiederkehrendes Problem.</label><br>
-            <label><input type="radio" name="q16_mehrfacharbeiten" value="0"> Sehr oft: Dies ist ein erheblicher Produktivitätskiller in deiner täglichen Arbeit.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q17" style="display:none;">
-            <h3>17. Datengestützte Entscheidungsfindung & Feedback-Schleifen</h3>
-            <p>Misst und verfolgst du regelmäßig **Schlüsselkennzahlen (KPIs)** deiner operativen Abläufe (z.B. Projektlieferzeiten, Kundenzufriedenheit, Lead-Conversion-Raten), um deine Leistung objektiv zu bewerten?</p>
-            <label><input type="radio" name="q17_performance_messung" value="3"> Ja, systematisch: Wir haben klare KPIs definiert und verfolgen diese aktiv, um unsere Leistung zu steuern.</label><br>
-            <label><input type="radio" name="q17_performance_messung" value="2"> Teilweise: Wir erfassen einige Daten, aber es fehlen oft klare Kennzahlen oder die regelmäßige Auswertung.</label><br>
-            <label><input type="radio" name="q17_performance_messung" value="1"> Wenig: Wir konzentrieren uns mehr auf das Gefühl oder den Umsatz, als auf spezifische operative Kennzahlen.</label><br>
-            <label><input type="radio" name="q17_performance_messung" value="0"> Nein: Wir messen unsere Leistung hauptsächlich an der Erledigung von Aufgaben, ohne feste KPIs.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q18" style="display:none;">
-            <h3>18. Datengestützte Entscheidungsfindung & Feedback-Schleifen</h3>
-            <p>Wie systematisch holst du Feedback von Kunden, Partnern oder internen Teammitgliedern ein und nutzt es, um deine Prozesse und Angebote zu verbessern?</p>
-            <label><input type="radio" name="q18_feedback_mechanismen" value="3"> Sehr systematisch: Feedback ist ein fester Bestandteil unserer Verbesserungsprozesse und führt zu konkreten Anpassungen.</label><br>
-            <label><input type="radio" name="q18_feedback_mechanismen" value="2"> Gelegentlich: Wir bitten um Feedback, aber die Umsetzung in konkrete Maßnahmen ist eher sporadisch.</label><br>
-            <label><input type="radio" name="q18_feedback_mechanismen" value="1"> Wenig: Feedback kommt meist informell und wird selten systematisch verarbeitet.</label><br>
-            <label><input type="radio" name="q18_feedback_mechanismen" value="0"> Kaum: Wir bitten selten um Feedback, oder es wird kaum beachtet.</label><br>
-            <button onclick="nextQuestion()">Weiter</button>
-        </div>
-
-        <div class="question-block" id="q19" style="display:none;">
-            <h3>19. Datengestützte Entscheidungsfindung & Feedback-Schleifen</h3>
-            <p>Nimmst du dir oder dein Team regelmäßig Zeit, um abgeschlossene Projekte oder Perioden zu reflektieren und daraus konkrete Learnings für die Optimierung zukünftiger Abläufe abzuleiten?</p>
-            <label><input type="radio" name="q19_prozess_verbesserung" value="3"> Immer: Regelmäßige Retrospektiven/Reviews sind fester Bestandteil unserer Arbeitsweise, um uns kontinuierlich zu verbessern.</label><br>
-            <label><input type="radio" name="q19_prozess_verbesserung" value="2"> Manchmal: Wir reflektieren gelegentlich, aber es gibt keine feste Struktur oder Regelmäßigkeit.</label><br>
-            <label><input type="radio" name="q19_prozess_verbesserung" value="1"> Selten: Wir sind meist im Tagesgeschäft gefangen und finden selten Zeit zur Reflexion.</label><br>
-            <label><input type="radio" name="q19_prozess_verbesserung" value="0"> Nie: Wir blicken meist nur nach vorne und lernen eher "on the fly".</label><br>
-            <button onclick="calculateResult()">Ergebnis anzeigen</button>
-        </div>
-
-        <div id="result-area" style="display:none;">
-            <h3>Dein Effizienz-Ergebnis:</h3>
-            <p id="score-display"></p>
-            <p id="interpretation-display"></p>
-            <div id="detailed-breakdown">
-                <h4>Detaillierte Analyse nach Themenbereichen:</h4>
+              <p class="thq-body-small">
+                <fragment class="impressum-fragment5">
+                  <span class="impressum-text14">
+                    <span>
+                  Finde heraus, wie effizient deine Betriebsabläufe wirklich sind. 
+                  Das Effizienz-Radar ist ein kostenloses, datenschutzkonformes Tool, das dir hilft, versteckte Effizienzbremsen in deinem Unternehmen zu identifizieren. 
+                  Es ist einfach zu bedienen und erfordert keine persönlichen Daten.
+                  Das Effizienz-Radar ist in drei Stufen unterteilt: Schnell, Kompakt und Intensiv. 
+                  Jede Stufe bietet eine andere Tiefe und Dauer der Analyse, um dir zu helfen, deine Betriebsabläufe zu optimieren.
+                    </span>
+                  </span>
+                </li>
+              </ul>
             </div>
-            <a href="../kontakt.html" class="cta-button" id="contactCtaButton">Lass uns deine Effizienz gemeinsam steigern!</a>
-        </div>
-    </div>
 
-            <fuzeile-wrapper class="fuzeile-wrapper">
+
+        <div style="position: relative; width: 90%; height: auto; display: flex; align-items: center; justify-content: center;">
+          <div style="position: relative; width: auto; height: 400px;">
+
+            <img src="../public/Logo.png" alt="Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: auto; z-index: 2;" />
+
+            <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%);">
+              <a href="/blog\Dein-Effizienzradar\Intensiv-Radar.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <span>
+                  <fragment class="mehr-erfahren-fragment11">
+                    <span class="mehr-erfahren-text101">Intensiv</span>
+                  </fragment>
+                </span>
+              </a>
+            </div>
+
+              <div style="position: absolute; bottom: 20px; left: 20px;">
+              <a href="/blog\Dein-Effizienzradar\Kompakt-Radar.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <span>
+                  <fragment class="mehr-erfahren-fragment11">
+                    <span class="mehr-erfahren-text101">Kompakt</span>
+                  </fragment>
+                </span>
+              </a>
+            </div>
+
+            <div style="position: absolute; bottom: 20px; right: 20px;">
+              <a href="/blog\Dein-Effizienzradar\Schnell-Radar.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <span>
+                  <fragment class="mehr-erfahren-fragment11">
+                    <span class="mehr-erfahren-text101">Schnell</span>
+                  </fragment>
+                </span>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', (event) => {
+            const introSlide = document.getElementById('introSlide');
+            if (introSlide) {
+              introSlide.addEventListener('animationend', () => {
+                introSlide.remove(); // Entfernt das Element aus dem DOM
+              });
+            }
+          });
+        </script>
+
+<!--Fußzeile-->
+          <fuzeile-wrapper class="fuzeile-wrapper">
             <div class="thq-divider-horizontal"></div> <footer class="fuzeile-footer7 thq-section-padding">
               <div class="fuzeile-max-width thq-section-max-width">
                 <div class="fuzeile-content">
@@ -645,7 +348,7 @@
                   <div class="fuzeile-social-buttons">
                     Teile deine Begeisterung auf:
                     <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="../../public/facebook.png" alt="Facebook" class="fuzeile-social-icon"/>
+                      <img src="../public/facebook.png" alt="Facebook" class="fuzeile-social-icon"/>
                     </a>
                     <a href="#" onclick="window.open(getShareUrl('reddit'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="../public/reddit.png" alt="Reddit" class="fuzeile-social-icon"/>
@@ -768,206 +471,6 @@
     }
 </script>
 
-<script>
-    let currentQuestionIndex = 1; // Startet bei der ersten Frage (q1)
-    let totalScore = 0;
-    const maxQuestions = 19; 
-    const maxPossibleScore = maxQuestions * 3; // Gesamtzahl der Fragen * max. Punkte pro Frage (3)
 
-    // Definiere die Punktwerte für jede Frage und Antwortoption (muss mit deiner Matrix übereinstimmen)
-    const questionScores = {
-        // Thema 1
-        "q1_digital_reife": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q2_kulturelle_agilitaet": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q3_remote_arbeit": { "3": 3, "2": 2, "1": 1, "0": 0 },
-
-        // Thema 2
-        "q4_proaktive_planung": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q5_flexible_anpassung": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q6_unterbrechungsfreier_flow": { "3": 3, "2": 2, "1": 1, "0": 0 },
-
-        // Thema 3
-        "q7_automatisierungspotenziale": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q8_daten_entscheidungen": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q9_externe_expertise": { "3": 3, "2": 2, "1": 1, "0": 0 },
-
-        // Thema 4
-        "q10_finanz_transparenz": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q11_budgetierung_prognose": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q12_kostenkontrolle": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q13_controlling_steuerung": { "3": 3, "2": 2, "1": 1, "0": 0 },
-
-        // Thema 5
-        "q14_zeitmanagement": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q15_faehigkeiten_nutzung": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q16_mehrfacharbeiten": { "3": 3, "2": 2, "1": 1, "0": 0 },
-
-        // Thema 6
-        "q17_performance_messung": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q18_feedback_mechanismen": { "3": 3, "2": 2, "1": 1, "0": 0 },
-        "q19_prozess_verbesserung": { "3": 3, "2": 2, "1": 1, "0": 0 }
-    };
-
-    const topicScores = {
-        "Transformation & Anpassungsfähigkeit": 0,
-        "Proaktive Agilität & Arbeitsfluss-Optimierung": 0,
-        "Smarte Digitalisierung & Automatisierung": 0,
-        "Finanzielle Sicherheit, Klarheit & Controlling": 0,
-        "Ressourcenoptimierung & Engpassmanagement": 0,
-        "Datengestützte Entscheidungsfindung & Feedback-Schleifen": 0
-    };
-
-    const topicQuestions = {
-        "Transformation & Anpassungsfähigkeit": ["q1_digital_reife", "q2_kulturelle_agilitaet", "q3_remote_arbeit"],
-        "Proaktive Agilität & Arbeitsfluss-Optimierung": ["q4_proaktive_planung", "q5_flexible_anpassung", "q6_unterbrechungsfreier_flow"],
-        "Smarte Digitalisierung & Automatisierung": ["q7_automatisierungspotenziale", "q8_daten_entscheidungen", "q9_externe_expertise"],
-        "Finanzielle Sicherheit, Klarheit & Controlling": ["q10_finanz_transparenz", "q11_budgetierung_prognose", "q12_kostenkontrolle", "q13_controlling_steuerung"],
-        "Ressourcenoptimierung & Engpassmanagement": ["q14_zeitmanagement", "q15_faehigkeiten_nutzung", "q16_mehrfacharbeiten"],
-        "Datengestützte Entscheidungsfindung & Feedback-Schleifen": ["q17_performance_messung", "q18_feedback_mechanismen", "q19_prozess_verbesserung"]
-    };
-
-    // Hilfsfunktion, um den Namen des Radio-Button-Sets zu bekommen
-    function getQuestionNameSuffix(index) {
-        // Dies ist eine manuelle Zuordnung, da die Suffixe nicht direkt aus dem Index ableitbar sind
-        const suffixes = {
-            1: "digital_reife",
-            2: "kulturelle_agilitaet",
-            3: "remote_arbeit",
-            4: "proaktive_planung",
-            5: "flexible_anpassung",
-            6: "unterbrechungsfreier_flow",
-            7: "automatisierungspotenziale",
-            8: "daten_entscheidungen",
-            9: "externe_expertise",
-            10: "finanz_transparenz",
-            11: "budgetierung_prognose",
-            12: "kostenkontrolle",
-            13: "controlling_steuerung",
-            14: "zeitmanagement",
-            15: "faehigkeiten_nutzung",
-            16: "mehrfacharbeiten",
-            17: "performance_messung",
-            18: "feedback_mechanismen",
-            19: "prozess_verbesserung"
-        };
-        return suffixes[index];
-    }
-
-    // Funktion zum Aktualisieren der Progress Bar
-    function updateProgressBar() {
-        const progressBar = document.getElementById("progressBar");
-        const progress = Math.min(((currentQuestionIndex - 1) / maxQuestions) * 100, 100);
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function nextQuestion() {
-        const currentQuestionBlock = document.getElementById(`q${currentQuestionIndex}`);
-        // Korrekte Abfrage des Radio-Buttons, basierend auf dem `name`-Attribut
-        const selectedOption = currentQuestionBlock.querySelector(`input[name="q${currentQuestionIndex}_${getQuestionNameSuffix(currentQuestionIndex)}"]:checked`);
-
-        if (!selectedOption) {
-            alert("Bitte wähle eine Antwort, bevor du fortfährst.");
-            return;
-        }
-
-        const selectedValue = selectedOption.value;
-        const questionName = selectedOption.name;
-
-        // Nur Punkte addieren, wenn es sich nicht um die "Nicht zutreffend" Option von q3 handelt
-        if (!(questionName === "q3_remote_arbeit" && selectedValue === "0")) {
-            const points = parseInt(selectedValue);
-            totalScore += points;
-
-            for (const topic in topicQuestions) {
-                if (topicQuestions[topic].includes(questionName)) {
-                    topicScores[topic] += points;
-                    break;
-                }
-            }
-        }
-
-        currentQuestionBlock.style.display = "none";
-
-        currentQuestionIndex++;
-
-        updateProgressBar();
-
-        const nextQuestionBlock = document.getElementById(`q${currentQuestionIndex}`);
-        if (nextQuestionBlock) {
-            nextQuestionBlock.style.display = "block";
-        } else {
-            calculateResult();
-        }
-    }
-
-    function calculateResult() {
-        document.getElementById(`q${currentQuestionIndex-1}`).style.display = "none";
-
-        let effectiveMaxScore = maxPossibleScore;
-
-        // Berücksichtige die "Nicht zutreffend" Option für Remote-Arbeit (q3)
-        const q3Option = document.querySelector('input[name="q3_remote_arbeit"]:checked');
-        if (q3Option && q3Option.value === "0") { // Wenn "Nicht zutreffend" gewählt wurde
-            effectiveMaxScore -= 3; // Ziehe die maximalen Punkte für diese Frage von der Gesamtpunktzahl ab.
-        }
-
-        const scorePercentage = (totalScore / effectiveMaxScore) * 100;
-        let interpretation = "";
-
-        if (scorePercentage >= 80) {
-            interpretation = "Hocheffizienter Vorreiter! Du bist bereits sehr gut aufgestellt und führst deine Prozesse mit herausragender Effizienz. Das ist beeindruckend! Lass uns in einem kurzen Gespräch erörtern, wie du diese Effizienz noch weiter ausbauen und als Wettbewerbsvorteil nutzen kannst, um zum echten Vorreiter in deiner Branche zu werden.";
-        } else if (scorePercentage >= 50) {
-            interpretation = "Auf dem richtigen Weg, mit Potenzial! Du hast eine solide Grundlage, aber es gibt klare Bereiche, in denen du deine Effizienz noch steigern kannst, um Zeit, Kosten und Nerven zu sparen. Dein Effizienz-Radar hat spezifische Felder aufgezeigt, in denen schnelle Gewinne möglich sind. Gerne besprechen wir in einem kostenlosen Erstgespräch, wie du diese Potenziale konkret anpacken und deine Betriebsabläufe auf das nächste Level heben kannst.";
-        } else if (scorePercentage >= 25) {
-            interpretation = "Optimierungsbedarf erkannt! Du stehst vor Herausforderungen in der betrieblichen Effizienz, die jedoch großes Potenzial für deutliche Verbesserungen bergen. Jetzt ist der ideale Zeitpunkt, um die Hebel in Bewegung zu setzen und deine Abläufe nachhaltig zu optimieren. Lass uns in einem unverbindlichen Gespräch darüber sprechen, wie du die größten Stolpersteine identifizierst und Effizienzgewinne erzielen kannst, die sich direkt auf dein Ergebnis auswirken.";
-        } else {
-            interpretation = "Dringender Handlungsbedarf! Deine aktuellen Prozesse scheinen stark ineffizient zu sein, was dich wertvolle Zeit, Energie und Geld kostet. Doch genau hier liegt die größte Chance für massive Verbesserungen! Mit gezielten Maßnahmen kannst du deine Produktivität drastisch steigern und dein Geschäft wieder auf Kurs bringen. Warte nicht länger – vereinbare jetzt ein kostenloses Erstgespräch, um einen konkreten Plan für deine Effizienzsteigerung zu entwickeln.";
-        }
-
-        document.getElementById("score-display").innerText = `${scorePercentage.toFixed(0)}% Effizienz`;
-        document.getElementById("interpretation-display").innerText = interpretation;
-
-        const detailedBreakdown = document.getElementById("detailed-breakdown");
-        detailedBreakdown.innerHTML = '<h4>Detaillierte Analyse nach Themenbereichen:</h4>'; // Clear previous content if any
-        for (const topic in topicScores) {
-            const topicMaxScore = topicQuestions[topic].length * 3; // Max. Punkte für dieses Thema
-            let currentTopicScore = topicScores[topic];
-            let actualTopicMaxScore = topicMaxScore;
-
-            // Spezialbehandlung für Q3 im Thema "Transformation & Anpassungsfähigkeit"
-            if (topic === "Transformation & Anpassungsfähigkeit") {
-                const q3Option = document.querySelector('input[name="q3_remote_arbeit"]:checked');
-                if (q3Option && q3Option.value === "0") {
-                    actualTopicMaxScore -= 3; // Ziehe 3 Punkte vom maximalen Score dieses Themas ab
-                    // currentTopicScore bleibt gleich, da die 0 Punkte ohnehin nicht addiert wurden
-                }
-            }
-            
-            // Vermeide Division durch Null, falls ein Thema 0 Fragen hat oder alle Fragen "nicht zutreffend" sind
-            const topicPercentage = actualTopicMaxScore > 0 ? (currentTopicScore / actualTopicMaxScore) * 100 : 0;
-            detailedBreakdown.innerHTML += `<p><strong>${topic}:</strong> ${topicPercentage.toFixed(0)}% Effizienz</p>`;
-        }
-
-
-        const resultArea = document.getElementById("result-area");
-        resultArea.style.display = "block"; // Zeigt den Ergebnisbereich an
-
-        // Stelle sicher, dass der Kontakt-Button eine ID hat, damit wir ihn finden können
-        const contactCtaButton = document.getElementById('contactCtaButton');
-
-        // Erstelle den Link zum Kalkulator dynamisch
-        const kalkulatorLinkWrapper = document.createElement('p');
-        kalkulatorLinkWrapper.classList.add('kalkulator-link-wrapper'); // Neue Klasse für Styling
-        kalkulatorLinkWrapper.innerHTML = `Möchtest du wissen, wie viel Zeit und Geld das in Zahlen bedeutet? <a href="kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button">Dein Effizienz-Potenzial berechnen!</a>`;
-
-        // Füge den neuen Link VOR dem bestehenden "Kontakt"-Button ein
-        if (contactCtaButton) {
-            contactCtaButton.parentNode.insertBefore(kalkulatorLinkWrapper, contactCtaButton);
-        } else {
-            resultArea.appendChild(kalkulatorLinkWrapper);
-        }
-
-    }
-</script>
   </body>
 </html>
