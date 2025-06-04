@@ -275,11 +275,7 @@
   display: flex;
   align-items: flex-start;
 }
- 
-.fuzeile-text2 {
-  fill: var(--dl-color-theme-neutral-dark);
-  color: var(--dl-color-theme-neutral-dark);
-}
+
  
 .datenschutz-fragment32 {
   display: contents;

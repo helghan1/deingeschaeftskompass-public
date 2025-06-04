@@ -168,10 +168,6 @@
   align-items: flex-start;
 }
  
-.fuzeile-text2 {
-  fill: var(--dl-color-theme-neutral-dark);
-  color: var(--dl-color-theme-neutral-dark);
-}
  
 .impressum-fragment7 {
   display: contents;
@@ -188,10 +184,7 @@
 .impressum-text44 {
   display: inline-block;
 }
- 
-.impressum-fragment8 {
-  display: contents;
-}
+
  
 .impressum-text46 {
   display: inline-block;
@@ -319,10 +312,7 @@
 .impressum-text45 {
   display: inline-block;
 }
- 
-.impressum-fragment8 {
-  display: contents;
-}
+
  
 .impressum-text46 {
   display: inline-block;
