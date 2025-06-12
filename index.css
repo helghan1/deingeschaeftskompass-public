@@ -88,33 +88,98 @@
     height:400px;
     display:block
 }
-.leistungen1-container2,.leistungen3-container2{
-    width:100%;
-    display:grid;
-    grid-gap:var(--dl-layout-space-fiveunits);
-    position:relative;
-    grid-template-columns:1fr 1fr
+/* Ziel: Das A-Tag soll den gesamten verfügbaren Platz seines Eltern-Flex-Containers einnehmen */
+.leistungen1-image-container a, 
+.leistungen3-image-container a {
+    display: block; /* Macht das A-Tag zu einem Block-Element */
+    width: 100%;    /* Lässt es die volle Breite des Eltern-Containers einnehmen */
+    height: 100%;   /* Lässt es die volle Höhe des Eltern-Containers einnehmen */
+    /* Optional: Wenn Sie Probleme mit zusätzlichem Leerraum im A-Tag haben,
+       können Sie Line-Height oder Text-Decoration entfernen */
+    line-height: 0;
+    text-decoration: none;
 }
-.leistungen1-image-container,.leistungen3-image-container{
-    height:100%;
-    display:flex;
-    position:relative
+.leistungen1-container2,
+.leistungen3-container2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Hier wird der Platz 50/50 aufgeteilt */
+    grid-gap: var(--dl-layout-space-fiveunits); /* Abstand zwischen den Spalten */
+    align-items: center; /* WICHTIG: Zentriert die Inhalte der Grid-Zellen vertikal */
 }
-.leistungen1-image1,.leistungen1-image2,.leistungen1-image3,.leistungen3-image1{
-    animation-name:fadeIn;
-    animation-delay:0s;
-    animation-duration:.3s;
-    animation-direction:normal;
-    animation-iteration-count:1;
-    animation-timing-function:ease
+
+.leistungen1-image-container,
+.leistungen3-image-container {
+    height: 100%; /* Nimmt die Höhe der Grid-Zelle ein */
+    display: flex; /* Für die Zentrierung des Bildes innerhalb dieses Containers */
+    align-items: center; /* Zentriert das Bild vertikal im Container */
+    justify-content: center; /* Zentriert das Bild horizontal im Container */
+    overflow: hidden; /* WICHTIG: Schneidet den Inhalt ab, der über den Container hinausragt (z.B. bei object-fit: cover) */
 }
-.leistungen1-tabs-menu,.leistungen3-tabs-menu{
-    gap:var(--dl-layout-space-twounits);
-    width:100%;
-    display:flex;
-    align-items:flex-start;
-    flex-direction:column;
-    justify-content:center
+
+.leistungen1-image,
+.leistungen1-image1,
+.leistungen1-image2,
+.leistungen1-image3,
+.leistungen3-image1 {
+    width: 100%; /* Füllt die Breite des Elterncontainers (image-container) aus */
+    height: 100%; /* Füllt die Höhe des Elterncontainers (image-container) aus */
+    object-fit: contain; /* Empfohlen für das Radar, um es vollständig zu sehen */
+    display: block; /* Entfernt jeglichen zusätzlichen Leerraum unter dem Bild */
+
+    /* Behalten Sie Ihre Animationen bei */
+    animation-name: fadeIn;
+    animation-delay: 0s;
+    animation-duration: 0.3s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+}
+.thq-img-ratio-16-9 {
+    object-fit: contain; /* ODER cover, je nachdem, was Sie wollen */
+}
+
+
+/* Der Text-Container */
+.leistungen1-tabs-menu,
+.leistungen3-tabs-menu {
+    gap: var(--dl-layout-space-twounits);
+    width: 100%; /* Nimmt die volle Breite seiner Grid-Zelle ein */
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (max-width: 768px) { /* Oder ein anderer Breakpoint, der für Ihre Seite passt */
+    .leistungen1-container2,
+    .leistungen3-container2 {
+        grid-template-columns: 1fr; /* Auf Mobilgeräten nur eine Spalte (Bild und Text untereinander) */
+        grid-gap: var(--dl-layout-space-threeunits); /* Optional: kleinerer Abstand auf Mobilgeräten */
+    }
+
+    .leistungen1-image-container,
+    .leistungen3-image-container {
+        max-height: 250px; /* Beispielwert, anpassen */
+        height: auto; 
+    }
+
+    .leistungen1-image,
+    .leistungen3-image1 {
+        /* Auch auf Mobilgeräten soll das Bild sich dem Container anpassen */
+        width: 100%;
+        height: 100%; /* Wenn der Container eine max-height hat, füllt das Bild diese aus */
+        object-fit: contain; /* Das Bild wird skaliert, um in den Container zu passen */
+    }
+
+    .leistungen1-tabs-menu,
+    .leistungen3-tabs-menu {
+        align-items: center; /* Zentriert den Text auf Mobilgeräten */
+        text-align: center; /* Zentriert den Textinhalt selbst */
+    }
+
+    .thq-section-padding {
+        padding: var(--dl-layout-space-threeunits) var(--dl-layout-space-oneandhalfunits);
+    }
 }
 .leistungen1-tab-horizontal1,.leistungen1-tab-horizontal2,.leistungen1-tab-horizontal3,.leistungen3-tab-horizontal1,.leistungen3-tab-horizontal2,.leistungen3-tab-horizontal3{
     gap:var(--dl-layout-space-twounits);

@@ -85,30 +85,82 @@
     text-align:center;
     padding-bottom:var(--dl-layout-space-unit)
 }
-.blogbeitrag-author{
-    gap:1rem;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    flex-direction:row
+.blogbeitrag-author {
+  display: flex;
+  flex-wrap: wrap; /* Ermöglicht Umbruch */
+  align-items: flex-start; /* Elemente oben ausrichten */
+  flex-direction: row; /* Standard für größere Bildschirme */
+  gap: 1rem;
 }
-.blogbeitrag-image1{
-    flex:1 1 200px;
-    height:auto;
-    max-width:35%;
-    object-fit:cover;
-    order:2
+
+.blogbeitrag-text-content {
+  flex: 2 1 300px; /* Ermöglicht dem Text zu wachsen und zu schrumpfen, Basis 300px */
+  word-break: normal;
+  overflow-wrap: break-word;
 }
-@media (max-width:767px){
-    .blogbeitrag-image1{
-        width:auto;
-        max-width:90%
-    }
+
+.blogbeitrag-image-link {
+  flex: 1 1 auto; /* Bild-Link-Container, ermöglicht Wachstum/Schrumpfung */
+  display: flex; /* Standardmäßig auf Desktop sichtbar */
+  justify-content: flex-end; /* Bild nach rechts schieben */
+  align-items: flex-start; /* Bild-Wrapper oben ausrichten */
+  padding-left: 20px; /* Abstand zwischen Text und Bild */
 }
-.blogbeitrag-text10{
-    flex:2 1 300px;
-    word-break:normal;
-    overflow-wrap:break-word
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Titel und Bild zentrieren */
+  width: 100%; /* Volle Breite des Flex-Elements einnehmen */
+  max-width: 300px; /* Maximale Breite des Bild-Wrappers steuern */
+}
+
+.blogbeitrag-image1 {
+  width: 100%; /* Bild nimmt volle Breite seines Containers ein */
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px; /* Optional: fügt leichte Abrundung hinzu */
+}
+
+.blogbeitrag-image-mobile-insert {
+  display: none;
+}
+
+/* Media Query für mobile Geräte */
+@media (max-width: 767px) {
+  .blogbeitrag-author {
+    flex-direction: column; /* Elemente auf kleineren Bildschirmen stapeln */
+    align-items: center; /* Elemente beim Stapeln zentrieren */
+  }
+
+  /* Desktop-Bildcontainer auf Mobilgeräten ausblenden */
+  .blogbeitrag-image-link {
+    display: none;
+  }
+
+  .blogbeitrag-image-mobile-insert {
+    display: block; /* Sichtbar machen */
+    float: right; /* Nach rechts floaten, damit Text darumfließt */
+    margin-left: 15px; /* Abstand zwischen Text und Bild */
+    margin-bottom: 15px; /* Abstand unter dem Bild */
+    max-width: 40%; /* Größe steuern (z.B. 40% der Elternelementbreite) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .blogbeitrag-image-mobile-insert .blogbeitrag-image-title {
+      font-size: 1.2rem; /* Titelgröße für Mobilgerät anpassen */
+      margin-bottom: 5px; /* Abstand anpassen */
+  }
+
+  .blogbeitrag-text-content {
+    flex-basis: auto;
+    text-align: left;
+    padding: 0 10px;
+  }
+
 }
 .blogbeitrag-content1{
     width:100%;
