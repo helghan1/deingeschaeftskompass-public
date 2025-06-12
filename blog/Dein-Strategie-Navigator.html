@@ -102,8 +102,8 @@
 
     h3 {
         font-size: 1.125rem; /* text-lg equivalent */
-        font-weight: 600; /* semibold equivalent */
-        margin-bottom: 0.5rem;
+        font-weight: 500; /* semibold equivalent */
+
         color: #ffffff; /* White for readability on dark card */
     }
 
@@ -230,6 +230,7 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
+        background-color: #333333;
     }
 
     #pnl-comparison-table th,
@@ -238,6 +239,7 @@
         padding: 10px;
         text-align: left;
         color: #ffffff; /* White text for readability on dark table cells */
+        background-color: #333333;
     }
 
     #pnl-comparison-table th {
@@ -247,7 +249,7 @@
         text-decoration: underline; /* Underline as per your original table header style */
     }
 
-    #pnl-comparison-table tbody tr:nth-child(even) {
+    #pnl-comparison-table tbody tr {
         background-color: #333333; /* As per your input */
     }
 
@@ -281,7 +283,7 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         margin-bottom: 20px;
         position: relative;
-        width: 90%;
+        width: 100%;
         max-width: 800px;
         height: 400px;
         margin-left: auto;
@@ -290,8 +292,23 @@
         justify-content: center;
         align-items: center;
     }
+    /* Standard-Stile für die Überschrift */
     .chart-box h3 {
-        color: #ffffff; /* White text for chart titles for readability */
+        /* Standard-Stile, z.B. keine Rotation */
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    /* Media Query für mobile Geräte (z.B. Bildschirme bis 768px Breite) */
+    @media (max-width: 768px) {
+        .chart-box h3 {
+            /* Hier werden die Stile nur auf mobilen Geräten angewendet */
+            transform: rotate(-90deg); /* Dreht die Überschrift um 90 Grad im Uhrzeigersinn */
+            flex-shrink: 0;
+            white-space: nowrap; /* Verhindert Zeilenumbruch */
+            transform-origin: center center; /* Standardmäßig um die Mitte drehen */
+            font-size: 0.9em;
+        }
     }
 
     .chart-box canvas {
@@ -466,7 +483,7 @@
     <header>
         <h1 class="impressum-text-heading2 thq-heading-1">
         <fragment class="impressum-fragment3">
-            <span class="impressum-text12">Dein Effizienz Radar</span>
+            <span class="impressum-text12">Dein Startegie Navigator</span>
         </fragment>
         </h1>
 
@@ -617,15 +634,15 @@
                     <canvas id="umsatzChart"></canvas>
                 </div>
                 <div class="chart-box hidden" id="gewinn-chart-box">
-                    <h3>Gewinnentwicklung (nach Steuern)</h3>
+                    <h3>Gewinnentwicklung</h3>
                     <canvas id="gewinnChart"></canvas>
                 </div>
-                <div class="chart-box hidden" id="cost-structure-chart-box">
+                <div class="chart-box hidden" id="cost-structure-chart-box" style="height: 500px;">
                     <h3>Kostenstruktur im Vergleich</h3>
                     <canvas id="costStructureChart"></canvas>
                 </div>
                 <div class="chart-box hidden" id="long-term-scaling-chart-box">
-                    <h3>Langfristige Skalierung: Deine Finanzen im Jahresverlauf</h3>
+                    <h3>Langfristige Skalierung</h3>
                     <canvas id="longTermScalingChart"></canvas>
                 </div>
                 <div id="goal-seeking-output" class="summary-box hidden">
@@ -1792,7 +1809,7 @@ function renderCharts() {
     myCharts.umsatzChartInstance = new Chart(umsatzCtx, {
         type: 'bar',
         data: {
-            labels: ['Umsatz'],
+            labels: [''],
             datasets: [
                 {
                     label: 'Basis',
@@ -1816,7 +1833,6 @@ function renderCharts() {
                     max: umsatzScale.max, // Dynamischer Maximalwert
                     title: {
                         display: true,
-                        text: 'Umsatz (€)'
                     },
                      ticks: {
                         callback: function(value) { // Formatierung für Achsenbeschriftungen
@@ -1828,7 +1844,6 @@ function renderCharts() {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Umsatzentwicklung'
                 },
                 datalabels: {
                     anchor: 'end',
@@ -1852,7 +1867,7 @@ function renderCharts() {
     myCharts.gewinnChartInstance = new Chart(gewinnCtx, {
         type: 'bar',
         data: {
-            labels: ['Gewinn nach Steuern'],
+            labels: [''],
             datasets: [
                 {
                     label: 'Basis',
@@ -1876,7 +1891,6 @@ function renderCharts() {
                     max: gewinnScale.max, // Dynamischer Maximalwert
                     title: {
                         display: true,
-                        text: 'Gewinn nach Steuern (€)'
                     },
                      ticks: {
                         callback: function(value) { // Formatierung für Achsenbeschriftungen
@@ -1888,7 +1902,6 @@ function renderCharts() {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Gewinnentwicklung (nach Steuern)'
                 },
                 datalabels: {
                     anchor: 'end',
@@ -1905,7 +1918,7 @@ function renderCharts() {
 
     // Cost Structure (Pie Chart) - remains largely unchanged for pie charts
 
-    const costLabels = ['Wareneinsatz', 'Personalkosten', 'Raumkosten', 'Werbekosten', 'Sonstige Betriebliche Aufwendungen', 'Abschreibungen', 'Finanzierungskosten'];
+    const costLabels = ['Wareneinsatz', 'Personalkosten', 'Raumkosten', 'Werbekosten', 'S. Betriebl. Aufwendungen', 'Abschreibungen', 'Finanzierungskosten'];
 
     const baselineCosts = [
         baselinePnl.wareneinsatz, baselinePnl.personalkosten, baselinePnl.raumkosten,
@@ -1940,7 +1953,16 @@ function renderCharts() {
                         display: true,
                         text: 'Kostenstruktur im Vergleich'
                     },
-
+                    legend: {
+                        display: true,
+                        position: 'top', // Oder 'top', 'bottom', 'left'
+                        labels: {
+                            color: '#ffffff',
+                            boxWidth: 20,
+                            padding: 15,
+                            align: 'start', // <-- Dies richtet die Legenden-Items linksbündig aus
+                        }
+                    },
                     tooltip: {
                         // Wichtige Anpassung hier für Tooltip!
                         callbacks: {
@@ -1983,7 +2005,7 @@ function renderCharts() {
                         display: 'auto', // WICHTIG: Zeigt Labels nur an, wenn genügend Platz ist
                         align: 'center', // Versuch, das Label mittig im Segment zu platzieren
                         font: {
-                            size: 10, // Kann bei sehr kleinen Segmenten helfen
+                            size: 9, // Kann bei sehr kleinen Segmenten helfen
                         }
                     }
                 }
