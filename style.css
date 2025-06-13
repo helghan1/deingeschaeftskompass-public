@@ -46,7 +46,6 @@
   margin-right: auto;
   position: relative;
   overflow: hidden;
-  list-style: none;
   padding: 0;
   /* Fix of Webkit flickering */
   z-index: 1;
@@ -740,19 +739,6 @@ button.swiper-pagination-bullet {
   border-width: 1px;
   border-radius: 4px;
   background-color: var(--dl-color-theme-neutral-light);
-}
- 
-.list {
-  width: 100%;
-  margin: 1em 0px 1em 0px;
-  display: block;
-  padding: 0px 0px 0px 1.5rem;
-  list-style-type: none;
-  list-style-position: outside;
-}
- 
-.list-item {
-  display: list-item;
 }
  
 .teleport-show {
