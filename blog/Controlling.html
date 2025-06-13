@@ -107,6 +107,18 @@
         line-height: 1.5;
         padding-bottom: 16px;
       }
+      .content-wrapper {
+      padding-left: 15%;
+      padding-right: 15%;
+      }
+
+      /* Media Query für mobile Geräte (z.B. Bildschirme bis 768px Breite) */
+      @media (max-width: 768px) {
+        .content-wrapper {
+          padding-left: 2%;
+          padding-right: 2%;
+        }
+      }
     </style>
 
    
@@ -257,7 +269,7 @@
 
 <!--Blog component-->
 
-      <div style="padding-left: 15%; padding-right: 15%;">
+      <div class="content-wrapper">
         
         <p><b>Inhaltsverzeichnis</b></p> 
         <ul>                
