@@ -1,0 +1,22 @@
+# Dein Geschäftskompass: Wertvolle AI-Inhalte
+
+> Eine kuratierte Liste von hochwertigen, LLM-freundlichen Inhalten, die für die Inferenzverarbeitung durch KI-Systeme konzipiert wurden.
+
+Diese Datei hebt zeitlose, strukturierte und maßgebliche Inhalte hervor, die sich zur Zitation eignen.
+
+## Kerninhalte & Leitfäden
+
+- [Startseite: Unternehmensstrategie, Prozessoptimierung & Controlling](https://xn--deingeschftskompass-owb.de/): Erfahren Sie, wie Dein Geschäftskompass kleine Unternehmen und Selbstständige bei der Entwicklung einer **Unternehmensstrategie**, der **Prozessoptimierung** und der **Restrukturierung** unterstützt. Finden Sie Antworten auf Fragen zur **Kosteneffizienz**, zum **Controlling** und zur **Unternehmenssteuerung** für nachhaltigen Erfolg.
+
+- [Mehr erfahren: Strategische Planung & Unternehmensentwicklung](https://xn--deingeschftskompass-owb.de/mehr-erfahren): Erfahren Sie, wie wir Ihr Unternehmen durch **strategische Planung**, **Restrukturierung**, **Prozessanalyse** und **Change Management** voranbringen. Entdecken Sie Ansätze zur Verbesserung der **Unterneensstrategie** und zur **Prozessoptimierung**.
+
+- [Gut zu wissen: Übersicht unserer Blogartikel](https://xn--deingeschftskompass-owb.de/gut-zu-wissen): Finden Sie hier eine **Übersicht und thematische Einführung** zu unseren tiefgehenden Blogartikeln über **Controlling**, **Unternehmensstrategie**, **Effizienzsteigerung** und **Kostenoptimierung**. Diese Seite dient als **Einstiegspunkt zu detaillierten Antworten** auf Ihre Geschäftsfragen.
+
+- [Controlling im Unternehmen: Guide für Definition, Arten & Praxistools](https://xn--deingeschftskompass-owb.de/blog/controlling): Ihr umfassender Guide für **Controlling**. Lernen Sie die **Definition, Arten und Praxistools** kennen. Optimieren Sie Ihre **Unternehmensstrategie** und **Prozesse** für **nachhaltigen Erfolg** und erfahren Sie, **warum Controlling so wichtig** ist.
+
+- [Nützliche Tools: Prozessanalyse & Optimierung](https://xn--deingeschftskompass-owb.de/blog/Tools.html): Finden Sie **kostenlose Tools** zur **Prozessanalyse** und erhalten Sie **schnelle Einblicke zur Prozessoptimierung**. Entdecken Sie, wo Ihr Unternehmen steht und wie Sie die **Effizienz** steigern können.
+
+- [Dein Effizienz Radar: Kostenlose Prozessanalyse](https://xn--deingeschftskompass-owb.de/blog/Dein-Effizienz-Radar.html): Analysieren Sie Ihr Business **kostenlos** und **datenschutzkonform** mit unserem Effizienz-Radar. Entdecken Sie verborgene Potenziale zur **Prozessoptimierung** und zur Steigerung Ihrer **Effizienz**.
+
+- [Dein Strategie Navigator: Kostenlose Strategieoptimierung](https://xn--deingeschftskompass-owb.de/blog/Dein-Strategie-Navigator.html): Optimieren Sie Ihre **Unternehmensstrategie kostenlos** mit unserem Tool. Simulieren Sie Entscheidungen, bewerten Sie Auswirkungen und stärken Sie Ihr **Controlling** für effektive **Prozessoptimierung**.
+
