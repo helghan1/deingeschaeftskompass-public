@@ -255,40 +255,88 @@
 
 
         <!--Fuzeile component-->
-          <footer class="fuzeile-footer7 thq-section-padding">
-            
-            <div class="fuzeile-max-width thq-section-max-width">
-              <div class="fuzeile-content">
+        <fuzeile-wrapper class="fuzeile-wrapper">
+            <div class="thq-divider-horizontal"></div> <footer class="fuzeile-footer7 thq-section-padding">
+              <div class="fuzeile-max-width thq-section-max-width">
+                <div class="fuzeile-content">
 
-              </div>
-              <div class="fuzeile-credits">
-                <div class="thq-divider-horizontal"></div>
-                <div class="fuzeile-row">
-                  <div class="fuzeile-container"></div>
-                  <div class="fuzeile-footer-links">
-                    <span class=" thq-link">
-                      <fragment class="impressum-fragment7">
-                        <a href="datenschutz.html" class=" thq-link">
-                          <span class="startseite-text269">Datenschutz</span>
-                        </a>
-                      </fragment>
-                    </span>
-                    <span class="thq-link">
-                      <fragment class="impressum-fragment7">
-                        <a href="impressum.html" class="thq-link">
-                          <span class="startseite-text268">Impressum</span>
-                        </a>
+                  <div class="fuzeile-social-buttons">
+                    Teile deine Begeisterung auf:
+                    <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/facebook.webp" alt="Facebook" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('reddit'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/reddit.webp" alt="Reddit" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('whatsapp'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/whatsapp.webp" alt="WhatsApp" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('tumblr'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
+                    </a>
+                    <a href="#" onclick="window.open(getShareUrl('wordpress'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon"/>
+                    </a>
+                    <button class="fuzeile-share-button" onclick="sharePage()">
+                      <img src="public/share.webp" alt="Teilen" class="fuzeile-social-icon"/>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="fuzeile-credits">
+                  <div class="fuzeile-row">
+                    <div class="fuzeile-container">
+                      </div>
+                    <div class="fuzeile-footer-links">
+                      <span class="thq-link">
+                        <fragment class="impressum-fragment7">
+                          <a href="Gut-zu-Wissen.html" class="thq-link">
+                            <span class="startseite-text269">Blog</span>
+                          </a>
+                        </fragment>
+                      </span>
+                      <span class="thq-link">
+                        <fragment class="impressum-fragment7">
+                          <a href="blog/Tools.html" class="thq-link">
+                            <span class="startseite-text269">Tools</span>
+                          </a>
+                        </fragment>
+                      </span>
+
+                      <span class="thq-link">
+                        <fragment class="impressum-fragment7">
+                          <a href="Widerrufsrecht.html" class="thq-link">
+                            <span class="startseite-text269">Widerrufsrecht</span>
+                          </a>
+                        </fragment>
+                      </span>
+                      <span class="thq-link">
+                        <fragment class="impressum-fragment7">
+                          <a href="datenschutz.html" class="thq-link">
+                            <span class="startseite-text269">Datenschutz</span>
+                          </a>
+                        </fragment>
+                      </span>
+                      
+                      <span class="thq-link">
+                        <fragment class="impressum-fragment7">
+                          <a href="impressum.html" class="thq-link">
+                            <span class="startseite-text268">Impressum</span>
+                          </a>
                         </fragment>
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
-          </footer>
-        </fuzeile-wrapper>
+            </footer>
+          </fuzeile-wrapper>
+        </div>
       </div>
-    </div>
-
+      
     <script>
       function toggleMobileMenuRest() {
           const mobileMenu = document.getElementById('mobileMenuRest');
