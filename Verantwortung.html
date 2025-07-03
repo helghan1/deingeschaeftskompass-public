@@ -313,7 +313,11 @@
                 <div class="fuzeile-content">
 
                   <div class="fuzeile-social-buttons">
-                    Teile deine Begeisterung auf:
+                    Folge Uns auf: 
+                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
+                    </a>
+                    - oder teile deine Begeisterung auf:                    
                     <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/facebook.webp" alt="Facebook" class="fuzeile-social-icon"/>
                     </a>
@@ -326,9 +330,7 @@
                     <a href="#" onclick="window.open(getShareUrl('tumblr'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon"/>
                     </a>
-                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
-                    </a>
+
                     <a href="#" onclick="window.open(getShareUrl('wordpress'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon"/>
                     </a>
@@ -412,10 +414,7 @@
             // Du kannst auch posttype=quote oder posttype=text verwenden
             return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
           case 'instagram':
-
-            console.warn("Instagram bietet keine einfache URL zum Teilen von externen Webseiteninhalten im Feed. Button verlinkt zu Instagram.com.");
-            return `https://www.instagram.com`; // Generischer Link zu Instagram.com
-            // Oder spezifisch zu deinem Profil: return `https://www.instagram.com/DEIN_INSTAGRAM_BENUTZERNAME/`;
+            return `https://www.instagram.com/deingeschaeftskompass/`;
           case 'wordpress':
             // WordPress.com Share URL: link und title
             return `https://wordpress.com/create/post?url=${url}&title=${title}`;

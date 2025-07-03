@@ -261,7 +261,11 @@
                 <div class="fuzeile-content">
 
                   <div class="fuzeile-social-buttons">
-                    Teile deine Begeisterung auf:
+                    Folge Uns auf: 
+                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
+                    </a>
+                    - oder teile deine Begeisterung auf:                    
                     <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/facebook.webp" alt="Facebook" class="fuzeile-social-icon"/>
                     </a>
@@ -273,9 +277,6 @@
                     </a>
                     <a href="#" onclick="window.open(getShareUrl('tumblr'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon"/>
-                    </a>
-                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
                     </a>
                     <a href="#" onclick="window.open(getShareUrl('wordpress'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon"/>
@@ -336,6 +337,59 @@
           </fuzeile-wrapper>
         </div>
       </div>
+
+    <script>
+      // Funktion zum Generieren der plattformspezifischen Share-URLs
+      function getShareUrl(platform) {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        // Versuche, die Meta-Description zu bekommen, sonst leer
+        const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || '');
+
+        switch (platform) {
+
+          case 'facebook':
+            // Facebook Share URL: u= für die zu teilende URL
+            return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
+          case 'reddit':
+            // Reddit Share URL: url und title
+            return `https://www.reddit.com/submit?url=${url}&title=${title}`;
+          case 'whatsapp':
+            // WhatsApp Share URL: text (Titel + URL)
+            return `https://wa.me/?text=${title}%20${url}`;
+          case 'tumblr':
+            // Tumblr Share URL: posttype=link, title und content
+            // Du kannst auch posttype=quote oder posttype=text verwenden
+            return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
+          case 'instagram':
+            return `https://www.instagram.com/deingeschaeftskompass/`;
+          case 'wordpress':
+            // WordPress.com Share URL: link und title
+            return `https://wordpress.com/create/post?url=${url}&title=${title}`;
+          default:
+            console.warn("Unbekannte Plattform für Teilen-URL:", platform);
+            return '#'; // Fallback
+        }
+      }
+
+      // Funktion für den allgemeinen Teilen-Button (nutzt native Browser-API)
+      function sharePage() {
+        if (navigator.share) {
+          // Wenn der Browser die native Share-API unterstützt
+          navigator.share({
+            title: document.title,
+            text: 'Schau dir diese Seite an: ' + document.title,
+            url: window.location.href,
+          })
+          .then(() => console.log('Erfolgreich geteilt!'))
+          .catch((error) => console.log('Fehler beim Teilen:', error));
+        } else {
+          // Fallback für Browser, die die native Share-API nicht unterstützen
+          alert('Ihr Browser unterstützt die native Share-Funktion nicht direkt. Bitte kopieren Sie den Link manuell: ' + window.location.href);
+
+        }
+      }
+      </script>
       
     <script>
       function toggleMobileMenuRest() {
@@ -349,7 +403,7 @@
               mainContent.style.marginTop = '0';
           }
       }
-  </script>
+    </script>
 
   </body>
 </html>

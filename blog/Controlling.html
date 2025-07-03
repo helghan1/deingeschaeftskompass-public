@@ -1075,11 +1075,56 @@
                   Selbstbewusster Umgang mit Steuerberatung, Banken oder Förderstellen
                 </li>
               </ul>
+          </ol>
           <p>
             Ein Minimal-Controlling mit Excel oder Google Sheets ersetzt kein ERP-System, aber es ersetzt Unsicherheit, Ratlosigkeit und Blindflug. 
             Wer regelmäßig strukturiert hinschaut, entdeckt Muster, erkennt Chancen und trifft bessere Entscheidungen. 
             Genau das ist der Zweck von Controlling unabhängig von der Unternehmensgröße.
           </p>
+
+          <h3 
+          class="impressum-text-heading1 thq-heading-2"
+            id="Controlling-Fehler">
+            3.5 Controlling-Fehler, die kleinen Unternehmen teuer kommen
+          </h3>
+
+          <p>
+            In der Zusammenarbeit mit kleinen Unternehmen und Solo-Unternehmer:innen sehe ich immer wieder dieselben wiederkehrenden Muster: 
+            Es geht weniger um fehlendes Fachwissen, sondern um unterschätzte Folgen kleiner Versäumnisse. 
+            Gerade in der Hektik des operativen Alltags rutscht das Controlling leicht in die zweite Reihe. 
+            Doch dort entstehen oft die unsichtbaren Kostentreiber.
+            Die folgenden Fehler wirken zunächst harmlos, aber sie kosten auf Dauer Zeit, Geld und Handlungsspielraum. 
+            Wer sie erkennt und korrigiert, schafft sofort spürbare Verbesserungen.
+          </p>
+          <ol>
+            <li>
+              Umsatz mit Gewinn verwechseln:
+              Viele Unternehmen leiten ihren wirtschaftlichen Erfolg allein aus dem Umsatz ab. 
+              Doch Umsatz ohne Überblick über Kosten, Steuern und Rücklagen ist ein trügerischer Indikator. 
+              Oft zeigt sich erst spät, dass ein hohes Auftragsvolumen kaum oder gar keinen Gewinn erzeugt.
+              Lösung: Regelmäßige Deckungsbeitragsrechnung mit einfachen Mitteln zeigt, welche Leistungen wirklich wirtschaftlich sind.
+            </li>
+            <li>
+              Keine Rücklagenbildung für Steuern oder Krisen:
+              Gerade in Solo-Betrieben fehlt oft die systematische Rücklagenbildung. 
+              Unerwartete Steuernachzahlungen oder Projektverschiebungen führen dann schnell zu Liquiditätsproblemen.
+              Lösung: Monatlich einen festen Prozentsatz für Steuern, Vorsorge und Puffer automatisch auf Unterkonten zurücklegen 
+              (z.B. mit Businessbanking-Tools wie Kontist oder Qonto).
+            </li>
+            <li>
+              Spontane Preisgestaltung ohne Kalkulationsgrundlage:
+              Viele kleinere Dienstleistungen kalkulieren ihre Preise „aus dem Bauch“, ohne eine klare Kostendeckung zu prüfen. 
+              Das führt zu Unterdeckung, Selbstüberlastung und Frust.
+              Lösung: Stunden- oder Projektverrechnungssätze auf Basis von Fixkosten, Auslastung und Zielgewinn kalkulieren und regelmäßig überprüfen.
+            </li>
+            <li>
+              Keine regelmäßige Analyse von Zahlungsflüssen:
+              Gerade in wachstumsstarken Phasen rutscht der Überblick über Zahlungsein- und -ausgänge ab. 
+              Es folgen hohe Außenstände, Liquiditätslücken, verspätete Zahlungen an Lieferanten.
+              Lösung: Einführung eines monatlichen Liquiditäts-Trackings. Manuell oder per Banking-Export ins Controlling-Sheet.
+            </li>
+          </ol>
+
 </div>
 
           <fuzeile-wrapper class="fuzeile-wrapper">
@@ -1088,7 +1133,11 @@
                 <div class="fuzeile-content">
 
                   <div class="fuzeile-social-buttons">
-                    Teile deine Begeisterung auf:
+                    Folge Uns auf: 
+                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
+                      <img src="/public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
+                    </a>
+                    - oder teile deine Begeisterung auf:                    
                     <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="/public/facebook.webp" alt="Facebook" class="fuzeile-social-icon"/>
                     </a>
@@ -1100,9 +1149,6 @@
                     </a>
                     <a href="#" onclick="window.open(getShareUrl('tumblr'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="/public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon"/>
-                    </a>
-                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="/public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
                     </a>
                     <a href="#" onclick="window.open(getShareUrl('wordpress'), '_blank'); return false;" class="fuzeile-social-button">
                       <img src="/public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon"/>
@@ -1186,10 +1232,7 @@
             // Du kannst auch posttype=quote oder posttype=text verwenden
             return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
           case 'instagram':
-
-            console.warn("Instagram bietet keine einfache URL zum Teilen von externen Webseiteninhalten im Feed. Button verlinkt zu Instagram.com.");
-            return `https://www.instagram.com`; // Generischer Link zu Instagram.com
-            // Oder spezifisch zu deinem Profil: return `https://www.instagram.com/DEIN_INSTAGRAM_BENUTZERNAME/`;
+            return `https://www.instagram.com/deingeschaeftskompass/`;
           case 'wordpress':
             // WordPress.com Share URL: link und title
             return `https://wordpress.com/create/post?url=${url}&title=${title}`;
