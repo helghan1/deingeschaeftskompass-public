@@ -1503,3 +1503,62 @@ button.swiper-pagination-bullet {
         margin-top: 0;
     }
 }
+
+.blog-navigation-container {
+    display: flex; /* Nutzt Flexbox für die Anordnung */
+    justify-content: space-between; /* Verteilt die Elemente gleichmäßig mit Platz dazwischen */
+    align-items: center; /* Zentriert die Elemente vertikal */
+    padding: 30px 20px; /* Innenabstand oben/unten und links/rechts */
+    margin: 50px auto; /* Abstand zu anderen Inhalten und Zentrierung */
+    max-width: 1000px; /* Maximale Breite, anpassen an dein Layout */
+    border-top: 1px solid #eee; /* Dezente Trennlinie nach oben */
+    border-bottom: 1px solid #eee; /* Dezente Trennlinie nach unten */
+}
+
+.blog-navigation-item {
+    flex-basis: 30%; /* Jedes Element nimmt etwa 30% der Breite ein */
+    text-align: center; /* Text innerhalb des Items zentrieren */
+}
+
+.blog-navigation-link {
+    text-decoration: none; /* Unterstreichung entfernen */
+    color: #008cbaff; /* Linkfarbe, an dein Branding anpassen */
+    font-weight: bold; /* Schrift fett */
+    font-size: 1.1em; /* Schriftgröße etwas größer */
+    padding: 10px 15px; /* Innenabstand der Links */
+    transition: color 0.3s ease; /* Weicher Übergang beim Hover */
+}
+
+.blog-navigation-link:hover {
+    color: #515156ff; /* Dunklere Farbe beim Hover */
+}
+
+/* Spezielle Formatierung für den "Alle Beiträge"-Link */
+.blog-navigation-overview {
+    border: 1px solid #008cbaff; /* Rahmen um den mittleren Link */
+    border-radius: 5px; /* Leicht abgerundete Ecken */
+    padding: 8px 15px; /* Etwas angepasster Padding für den Button-Look */
+    background-color: #515156ff; /* Leichter Hintergrund */
+}
+
+.blog-navigation-overview:hover {
+    background-color: #008cbaff;
+    color: rgb(255, 255, 255); /* Farbe beim Hover bleibt gleich oder wird angepasst */
+}
+
+/* Media Queries für kleinere Bildschirme (Optional, aber empfohlen) */
+@media (max-width: 768px) {
+    .blog-navigation-container {
+        flex-direction: column; /* Elemente untereinander anordnen */
+        padding: 20px 10px;
+    }
+
+    .blog-navigation-item {
+        flex-basis: 100%; /* Jedes Element nimmt die volle Breite ein */
+        margin-bottom: 15px; /* Abstand zwischen den Elementen */
+    }
+
+    .blog-navigation-item:last-child {
+        margin-bottom: 0; /* Kein Abstand nach dem letzten Element */
+    }
+}
