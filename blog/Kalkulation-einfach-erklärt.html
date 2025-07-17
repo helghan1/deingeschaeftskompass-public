@@ -103,11 +103,38 @@
         line-height: 1.5;
         padding-bottom: 16px;
       }
-      td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        font-family: Noto Sans;
+      ol {
+        list-style-type: none;
+        counter-reset: item; 
       }
+
+      ol li {
+        display: block; /*damit das ::before-Element korrekt positioniert wird */
+      }
+
+      /* Generiert die Nummerierung vor jedem Listenelement */
+      ol li::before {
+        /* 'counters(item, ".")' erstellt die verschachtelte Nummerierung (z.B. 1, 1.1, 2.3.1)
+          'item' ist der Name unseres Zählers, "." ist das Trennzeichen. */
+        content: counters(item, ".") ". ";
+        
+        /* Erhöht den Zähler 'item' für jedes li. */
+        counter-increment: item;
+      }
+
+      ul {
+        list-style-type: disc;
+      }
+
+      /* Entfernt alle Zähler- und Inhaltseffekte für Listenelemente (LI),
+        die sich in einer UL befinden – **egal ob diese UL in einer OL ist oder nicht**.
+      */
+      ul li::before {
+        content: none !important;         /* Stellt sicher, dass KEIN generierter Inhalt angezeigt wird */
+        counter-increment: none !important; /* Stellt sicher, dass KEIN Zähler inkrementiert wird */
+        /* Das !important verhindert, dass die Regeln von ol li::before "durchschlagen". */
+      }
+
       .content-wrapper {
       padding-left: 15%;
       padding-right: 15%;
@@ -279,8 +306,8 @@
           <li><a href="#Verkaufspreis-kalkulieren">Den Verkaufspreis kalkulieren: So vermeidest du Verluste</a>
           <li><a href="#Stundenlohn-kalkulieren">Den Stundenlohn kalkulieren: Dein Wert muss passen</a>
           <li><a href="#Fehler">Häufige Fehler bei der Kalkulation und wie du sie vermeidest</a>
+          <li><a href="#Fazit">Fazit zur einfachen Kalkulation</a>
           <li><a href="#Kalkulation-Verkaufspreis">Beispiel für eine Handwerkskalkulation: Kalkulation des Verkaufspreises</a>
-          <li><a href="#Faizt">Fazit zur einfachen Kalkulation</a>
         </ul>
         <br /><br /><br /> 
 
@@ -320,84 +347,843 @@
           Du brauchst eine klare Übersicht über deine Kosten und musst wissen, was du
           verlangen musst, um wirtschaftlich zu arbeiten. Hier ein Überblick:
         </p>
-        <p>
-          <strong>Handwerk und Dienstleistung</strong>
-          <br />
-          Wenn du im Handwerk bist oder Dienstleistungen anbietest, steht der
-          Stundenlohn oft im Vordergrund.
-          Du kalkulierst also, wie viel Zeit du brauchst, welche Materialkosten anfallen
-          und welche Betriebskosten dazukommen.
-          Das nennt man Zuschlagskalkulation oder Handwerkskalkulation.
-          Wichtig: Du musst auch unproduktive Zeiten einkalkulieren, also Urlaube,
-          Krankheit und Verwaltungsaufwand. Es gibt eine Menge kalkulative Kosten zu berücksichtigen. 
-        </p>
-        <p>
-          <strong>Produzierendes Gewerbe</strong>
-          <br />
-          In der Produktion geht es meist um Stückkosten.
-          Du kalkulierst, was es kostet, ein Produkt herzustellen.
-          Dazu zählen Material, Maschinenlaufzeit, Energie, Löhne und Gemeinkosten.
-          Hier nutzt man oft die Vollkostenkalkulation oder die Deckungsbeitragsrechnung um den Verkaufspreis zu kalkulieren. 
-        </p>
-        <p>
-          <strong>Handel</strong>
-          <br />
-          Im Handel ist die Verkaufspreiskalkulation etwas einfacher, aber nicht weniger wichtig.      
-          Hier kaufst du Produkte ein und schlägst deinen Gewinn sowie Kosten für Lager,
-          Transport, Miete und Personal oben drauf.
-          Das nennt man Handelsspanne kalkulieren.
-        </p>
-        <p>
-          <strong>Freelancer und Berater</strong>
-          <br />
-          Wenn du als Freelancer oder Berater arbeitest, ist der eigene Stundensatz
-          entscheidend.
-          Du verkaufst direkt deine Zeit und Leistung, also musst du den eigenen Stundenlohn kalkulieren.
-          Hier musst du besonders darauf achten, auch die Zeiten ohne Kundenauftrag
-          einzupreisen.
-        </p>
+        <ol>
+          <li>
+            <strong>Handwerk und Dienstleistung</strong>
+            <br />
+            Wenn du im Handwerk bist oder Dienstleistungen anbietest, steht der
+            Stundenlohn oft im Vordergrund.
+            Du kalkulierst also, wie viel Zeit du brauchst, welche Materialkosten anfallen
+            und welche Betriebskosten dazukommen.
+            Das nennt man Zuschlagskalkulation oder Handwerkskalkulation.
+            Wichtig: Du musst auch unproduktive Zeiten einkalkulieren, also Urlaube,
+            Krankheit und Verwaltungsaufwand. Es gibt eine Menge kalkulative Kosten zu berücksichtigen. 
+          </li>
+          <li>
+            <strong>Produzierendes Gewerbe</strong>
+            <br />
+            In der Produktion geht es meist um Stückkosten.
+            Du kalkulierst, was es kostet, ein Produkt herzustellen.
+            Dazu zählen Material, Maschinenlaufzeit, Energie, Löhne und Gemeinkosten.
+            Hier nutzt man oft die Vollkostenkalkulation oder die Deckungsbeitragsrechnung um den Verkaufspreis zu kalkulieren. 
+          </li>
+          <li>
+            <strong>Handel</strong>
+            <br />
+            Im Handel ist die Verkaufspreiskalkulation etwas einfacher, aber nicht weniger wichtig.      
+            Hier kaufst du Produkte ein und schlägst deinen Gewinn sowie Kosten für Lager,
+            Transport, Miete und Personal oben drauf.
+            Das nennt man Handelsspanne kalkulieren.
+          </li>
+          <li>
+            <strong>Freelancer und Berater</strong>
+            <br />
+            Wenn du als Freelancer oder Berater arbeitest, ist der eigene Stundensatz
+            entscheidend.
+            Du verkaufst direkt deine Zeit und Leistung, also musst du den eigenen Stundenlohn kalkulieren.
+            Hier musst du besonders darauf achten, auch die Zeiten ohne Kundenauftrag
+            einzupreisen.
+          </li>
+        </ol>
 
 
         <h2 
           class="impressum-text-heading1 thq-heading-2"
-            id="#Kalkulation-Kosten">  
+            id="Kalkulation-Kosten">  
             Warum eine saubere Kalkulation der Kosten entscheidend ist
         </h2>
         <br />
+        <p>
+          Bevor du überhaupt an den Preis denkst, musst du wissen, welche Kosten bei dir
+          anfallen. Das ist der wichtigste Schritt in jeder Kalkulation. Wenn du deine
+          Kosten nicht kennst, kannst du keinen sinnvollen Preis festlegen. Und genau
+          das passiert vielen Selbstständigen: Sie schätzen irgendwas, hoffen auf den
+          Marktpreis und wundern sich später, warum am Monatsende nichts übrig bleibt.
+        </p>
+        <h3 style="       
+          font-size: 16px;
+          font-family: Noto Sans;
+          line-height: 1.5;
+          padding-bottom: 16px;">
+            Welche Kosten musst du kalkulieren?
+        </h3>         
+        <p>
+          Bei der Kalkulation der Kosten unterscheidet man in der Regel zwischen:
+        </p>
+        <p>
+          <strong>Fixkosten:</strong>
+        </p>
+        <p>
+          Das sind alle Kosten, die jeden Monat anfallen, egal wie viel du verkaufst.
+            Beispiele sind Miete, Versicherungen, Software-Abos oder dein Steuerberater.
+        </p>
+        <p>
+          <strong>Variable Kosten:</strong>
+        </p>
+        <p>
+          Diese Kosten entstehen nur, wenn du etwas produzierst oder eine Dienstleistung
+          erbringst.
+            Zum Beispiel Materialkosten, Verpackung oder Fahrtkosten zu Kunden.
+        </p>
+        <p>
+          <strong>Personalkosten (auch eigene Arbeitszeit):</strong>
+        </p>
+        <p>
+          Dazu gehört dein eigener Lohn oder der deiner Mitarbeiter.
+            Auch das solltest du bei der Kalkulation der Kosten nicht vergessen.
+        </p>
+        <p>
+          <strong>Praxis-Tipp:</strong>
+        </p>
+        <p>
+          Schreib dir alle Kosten einmal komplett auf. Viele nutzen dafür eine einfache
+          Excel-Tabelle oder ein Kalkulationstool. Sei ehrlich zu dir selbst und rechne
+          realistisch, sonst rechnest du dich reich und hast am Ende trotzdem Verluste.
+        </p>
 
         <h2 
           class="impressum-text-heading1 thq-heading-2"
-            id="#Verkaufspreis-kalkulieren">  
+            id="Verkaufspreis-kalkulieren">  
             Den Verkaufspreis kalkulieren: So vermeidest du Verluste
         </h2>
         <br />
-                <h2 
+        <p>
+          Wenn du deine Kosten kennst, kannst du deinen Verkaufspreis kalkulieren. Das
+          Ziel: Deine Kosten decken und gleichzeitig Gewinn machen.
+          Laut einer
+          <a href="https://ftp.zew.de/pub/zew-docs/gutachten/Scheitern_junger_Unternehmen_2010.pdf"><i><u>Studie des Bundesministeriums</u></i></a> 
+          scheitern junge 
+          Unternehmen in Deutschland daran, weil sie ihre Preise falsch bewerten. Das zeigt, wie
+          wichtig eine gute Kalkulation des Verkaufspreises ist.
+        </p>
+        <p>
+          Wie kalkulierst du den Verkaufspreis? Es gibt verschiedene Methoden, um den
+          Verkaufspreis zu kalkulieren. Hier eine einfache Variante, die du direkt
+          nutzen kannst:
+        </p>
+        <h3 style="       
+          font-size: 16px;
+          font-family: Noto Sans;
+          line-height: 1.5;
+          padding-bottom: 16px;">
+            Formel für den Verkaufspreis:
+        </h3>
+        <p>
+          Gesamtkosten + gewünschter Gewinn = Netto-Verkaufspreis
+        </p>
+        <p>
+          Dann noch die Mehrwertsteuer draufschlagen und du hast deinen Brutto-Preis.
+        </p>
+        <p>
+          Beispiel:
+        </p>
+        <ul>
+          <li>Fixkosten pro Monat = 2.000 €</li>
+          <li>Variable Kosten pro Produkt = 50 €</li>
+          <li>Verkaufsziel pro Monat = 100 Produkte verkaufen</li>
+          <li>Dein Gewinnziel = 1.000 €</li>
+        </ul>
+        <p>
+          Rechnung:
+        </p>
+        <ul>
+          <li>(2.000 € Fixkosten / 100 Produkte) = 20 € Fixkosten pro Stück</li>
+          <li>50 € variable Kosten</li>
+          <li>10 € Gewinn (1.000 € Gewinnziel / 100 Produkte)</li>
+          <li>= 80 € Netto-Verkaufspreis</li>
+        </ul>
+        <p>
+          Mit 19 % Umsatzsteuer:
+        </p>
+        <ul>
+          <li>80 € x 1,19 = 95,20 € Brutto-Verkaufspreis</li>
+        </ul>
+
+        <h2 
           class="impressum-text-heading1 thq-heading-2"
-            id="#Stundenlohn-kalkulieren">  
+            id="Stundenlohn-kalkulieren">  
             Den Stundenlohn kalkulieren: Dein Wert muss passen
         </h2>
         <br />
-        <h3 
+
+        <p>
+          Viele Selbstständige verkaufen ihre Zeit. Und genau da wird es heikel, denn
+          den eigenen Stundenlohn zu kalkulieren ist schwieriger, als es aussieht.
+          Oft wird einfach der Stundenlohn aus dem letzten Angestelltenjob übernommen.
+          Das funktioniert aber nicht.
+        </p>
+        <p><b>Warum?</b> Weil du als Selbstständiger ganz andere Kosten hast:
+        </p>
+        <ul>
+          <li>Du musst deine Sozialabgaben selbst zahlen <a href="https://www.finanz.de/steuern/sozialversicherungsbeitraege/"><i><u>(Beitragshöhe siehe Finanz.de)</u></i></a></li>
+          <li>Es gibt Zeiten, in denen du keine Kunden hast.</li>
+          <li>
+            Du investierst Zeit in Akquise, Buchhaltung, 
+            <a href="Controlling-Definition.html"><i><u>Controlling</u></i></a> 
+            oder Weiterbildung, die dir niemand bezahlt.
+          </li>
+          <li>Rücklagen für Vorauszahlungen und Altersvorsorge müssen berücksichtigt werden.</li>
+        </ul>
+        <h4 style="       
+          font-size: 16px;
+          font-family: Noto Sans;
+          line-height: 1.5;
+          padding-bottom: 16px;">
+            Wie kalkulierst du deinen Stundenlohn richtig?
+        </h4>
+        <p>
+          Hier eine einfache Methode: Dein Mindestpreis und Marktcheck
+          Ziel ist es, herauszufinden, welchen Umsatz du pro Jahr erwirtschaften musst, um deine Kosten zu decken und dein realistisches Wunscheinkommen zu erzielen. 
+          Das ist dein persönlicher Break-even-Point pro Stunde. 
+        </p>
+        <p>
+          <b>Was brauchst du pro Jahr? (Gesamtkosten)</b>
+        </p>
+        <ol>
+          <li>
+            Dein gewünschtes Netto-Jahreseinkommen: Was du am Ende des
+            Jahres auf deinem Privatkonto haben möchtest.
+            <b>WICHTIG:</b> Sei hier realistisch und orientiere dich an dem,
+            was in deiner Branche für deine Erfahrung üblich ist! Ein überzogenes
+            Wunscheinkommen führt direkt zu einem unrealistischen Stundensatz.
+          </li>
+          <li>
+            Private Nebenkosten: Private Krankenversicherung,
+            Altersvorsorge, ggf. private BU-Versicherung etc.
+          </li>
+          <li>
+            Deine jährlichen Betriebskosten: Miete, Software-Lizenzen,
+            Marketing, Website, Telefon, Internet, Reisekosten, Weiterbildung,
+            Versicherungen, Büromaterial, Steuerberater etc.
+          </li>
+        </ol>
+        <p>
+          Summe A = (Gewünschtes Netto-Jahreseinkommen) + (Private Nebenkosten)
+          + (Jährliche Betriebskosten)
+        </p>
+        <p>
+          <b>Wie viele Stunden kannst du wirklich fakturieren? (Fakturierbare Stunden)</b>
+        </p>
+        <ol>
+          <li>
+            Arbeitstage pro Jahr: Gehe von ca. 251 Arbeitstagen aus
+            (365 Tage - Wochenenden - Feiertage).
+          </li>
+          <li>
+            Urlaub & Krankheit: Ziehe realistische Urlaubstage
+            (z.B. 30 Tage) und einen Puffer für Krankheit/Weiterbildung (z.B. 14 Tage)
+            ab.
+          </li>
+          <li>
+            Verbleibende Arbeitstage = Arbeitstage pro Jahr - Urlaub -
+            Krankheit/Weiterbildung
+            <br />
+            (Beispiel: 251 - 30 - 14 = 207 Tage)
+          </li>
+          <li>
+            Tägliche Arbeitszeit: Wie viele Stunden arbeitest du pro
+            Tag? (z.B. 8 Stunden)
+          </li>
+          <li>
+            Nicht-fakturierbare Zeit: Ein großer Teil deiner
+            Arbeitszeit ist nicht direkt bezahlbar (Akquise, Admin, Buchhaltung,
+            Controlling, Angebots-/Rechnungserstellung, Entwicklung). Plane hier realistisch
+            25-50% deiner gesamten Arbeitszeit ein.
+          </li>
+        </ol>
+        <p>
+          Summe B = (Verbleibende Arbeitstage) * (Tägliche Arbeitszeit) *
+          (Anteil fakturierbarer Zeit, z.B. 60% oder 0,60)
+        </p>
+        <p>
+          <b>Dein Netto-Stundensatz (ohne Umsatzsteuer)</b>
+        </p>
+        <p>
+          Netto-Stundensatz = Summe A (Gesamtkosten pro Jahr) / Summe B
+          (Fakturierbare Stunden pro Jahr)
+        </p>
+        <p>
+          <b>Dein Brutto-Stundensatz (für den Kunden)</b>
+        </p>
+        <p>
+          Wenn du umsatzsteuerpflichtig bist (und nicht die Kleinunternehmerregelung
+          nutzt), schlägst du die Umsatzsteuer (aktuell 19% in Deutschland) noch auf
+          deinen Netto-Stundensatz auf.
+        </p>
+        <p>
+          Brutto-Stundensatz = Netto-Stundensatz * 1,19
+        </p>
+        <br /><br />
+        <h4 style="       
+          font-size: 16px;
+          font-family: Noto Sans;
+          line-height: 1.5;
+          padding-bottom: 16px;">
+          Praktisches Beispiel zum Stundenlohn kalkulieren
+        </h4>
+        <p>
+          Nehmen wir an, du bist ein Marketing-Freelancer und möchtest folgendes
+          realistisches Einkommen und Kosten abdecken:
+        </p>
+        <ul>
+          <li>Gewünschtes Netto-Jahreseinkommen: 50.000 €</li>
+          <li>Private KV + Altersvorsorge: 8.000 €</li>
+          <li>
+            Jährliche Betriebskosten (Büromiete, Software, Marketing, etc.): 12.000 €
+          </li>
+        </ul>
+        <p>
+          Summe A (Gesamtkosten pro Jahr) = 50.000 € + 8.000 € + 12.000 € =
+          70.000 €
+        </p>
+        <ul>
+          <li>mögliche Arbeitstage = 207 Tage</li>
+          <li>Tägliche Arbeitszeit: 8 Stunden</li>
+          <li>Gesamte Stunden verfügbar = 207 Tage * 8 Stunden = 1656 Stunden</li>
+          <li>Anteil nicht-fakturierbare Zeit (z.B. 40%): 1656 Stunden * 0,40 = 662 Stunden</li>
+        </ul>
+        <p>
+          Summe B (Fakturierbare Stunden pro Jahr) = 1656 Stunden - 662 Stunden
+          = 994 Stunden (runden wir für Einfachheit auf ca. 1.000 Stunden)
+        </p>
+        <p>
+          Netto-Stundensatz:
+        </p>
+        <ul>
+          <li>70.000 € / 1.000 Stunden = 70 €/Stunde</li>
+        </ul>
+        <p>
+          Brutto-Stundensatz (für den Kunden, inkl. 19% USt):
+        </p>
+        <ul>
+          <li>70 €/Stunde * 1,19 = 83,30 €/Stunde</li>
+        </ul>
+        <p>
+          Das bedeutet, um alle deine Kosten zu decken und dein realistisches
+          Wunscheinkommen von 50.000 € netto zu erzielen, müsstest du mindestens 83,30 €
+          pro Stunde berechnen (wenn du umsatzsteuerpflichtig bist).
+        </p>
+
+        <p><b>Die Wahrheit hinter dem Stundensatz: Mehr als nur Rechnen</b></p>
+        <p>
+          Der berechnete Stundensatz ist dein unterer Schmerzgrenzwert. Wenn dein
+          Wunsch-Jahreseinkommen jedoch zu einem unrealistisch hohen Stundensatz führt, ist dein Einkommensziel für ein reines "Stunden-gegen-Geld"-Modell
+          vielleicht unrealistisch: 
+          Ein einzelner Freelancer kann nicht unendlich viele Stunden arbeiten oder astronomische Stundenlöhne am Markt durchsetzen, 
+          es sei denn, er hat eine extrem seltene und wertvolle Spezialisierung.
+          Du musst dein Geschäftsmodell überdenken: Um höhere Einkommen zu erzielen, musst du oft von reiner Zeit-Abrechnung wegkommen. Das bedeutet:
+        <ol>
+          <li>
+            Wertbasierte Preisgestaltung: Du verkaufst nicht deine
+            Zeit, sondern den Wert und das Ergebnis, das du für den Kunden schaffst. Der
+            Wert eines Problems, das du löst, kann weitaus höher sein als deine
+            aufgewendete Zeit.
+          </li>
+          <li>
+            Pauschalpreise/Projektpreise: Du kalkulierst intern mit
+            deinem Stundensatz, bietest dem Kunden aber einen festen Preis für ein
+            Projekt an. Damit profitierst du, wenn du effizienter bist.
+          </li>
+          <li>
+            Produktifizierung: Du entwickelst wiederkehrende Lösungen
+            oder Produkte (z.B. Online-Kurse, Templates, Standard-Workshops), die du
+            mehrfach verkaufen kannst, ohne jedes Mal deine Zeit direkt zu investieren.
+          </li>
+          <li>
+            Skalierung: Du baust ein Team auf, das für dich arbeitet,
+            und du fokussierst dich auf Führung und Akquise.
+          </li>
+        </ol>
+        <p>
+          Die Stundenkalkulation ist also nicht dazu da, dir ein Fantasiegehalt zu
+          ermöglichen, sondern um dir eine fundierte Basis für deine Preisgestaltung zu
+          geben und zu zeigen, ob deine Einkommensziele mit deinem aktuellen Modell
+          realistisch sind. Sie zwingt dich, über deine Kosten, deine verfügbare Zeit
+          und deinen Marktwert nachzudenken.
+        </p>
+        <h3 style="       
+          font-size: 16px;
+          font-family: Noto Sans;
+          line-height: 1.5;
+          padding-bottom: 16px;">
+            Standardwerte für eine Stundensatzkalkulation auf Jahresebene für einen Solo-Selbstständigen oder Freiberuflichen
+        </h3>
+        <ul>
+          <li>Tage im Jahr = 365,25 (0,25 da Schaltjahr)</li>
+          <li>40 Stunden pro Woche = 2080 Stunden pro Jahr</li>
+          <li>30 Tage Urlaub = 240 Stunden</li>
+          <li>10 Feiertage = 80 Stunden</li>
+          <li>104 Samstage & Sonntage</li>
+          <li>14 Tage Krankheit = 112 Stunden pro Jahr</li>          
+          <li>207,25 Arbeitstage (Mo-Fr) = 1.658 Stunden pro Jahr</li>
+          <li>20% Verwaltungsarbeit & Bürokratie = 332 Stunden pro Jahr</li>
+          <li>20% Unternehmensführung & -entwicklung = 332 Stunden pro Jahr</li>
+          <li>operative Stunden = 994 Stunden pro Jahr</li>
+          <li>ca. 42% Sozialabgaben</li>
+        </ul>
+        <p>
+          Diese Zahlen dienen als realistische Grundlage für die Kalkulation eines Stundensatzes als Selbstständiger.  
+          Das Modell berücksichtigt, dass neben der eigentlichen Kundenarbeit auch Zeit für Verwaltung, Buchhaltung, Angebotswesen, Marketing, Controlling 
+          und strategische Entwicklung benötigt wird.  
+          Je nachdem, wie du dein Geschäftsmodell aufstellst, kannst du die operativen Stunden erhöhen oder senken.  
+          Wenn du beispielsweise Assistenzen oder externe Dienstleister für Buchhaltung, Marketing oder Controlling beschäftigst,  
+          können die Verwaltungs- und Entwicklungstätigkeiten anteilig auf Gemeinkosten umgelegt werden.
+        </p> 
+
+       <h3 
           class="impressum-text-heading1 thq-heading-2"
             id="Fehler">  
             Häufige Fehler bei der Kalkulation und wie du sie vermeidest
         </h3>
         <br />
+        
+        <p>
+          Gerade wenn du am Anfang stehst, passieren schnell typische Fehler bei der
+          Kalkulation. Hier die häufigsten und wie du sie vermeidest:
+        </p>
+        <p>
+          <strong>Fehler 1: Du vergisst Kosten</strong>
+          <br />
+          Viele denken nur an Material und Lohn.
+          Aber was ist mit Miete, Versicherung, Steuerberater, Laptop oder Internet?
+          All diese Posten musst du in deiner Kalkulation der Kosten berücksichtigen.
+        </p>
+        <p>
+          <strong>Lösung:</strong>
+          Mach eine vollständige Kostenliste und aktualisiere sie regelmäßig.
+        </p>
+        <p>
+          <strong>Fehler 2: Du kalkulierst deinen Stundenlohn zu niedrig</strong>
+          <br />
+          Wenn du deinen Stundenlohn kalkulierst, unterschätzt du schnell den Aufwand,
+          der nicht bezahlt wird.
+          Kundenakquise, E-Mails beantworten, Buchhaltung – das kostet alles Zeit.
+        </p>
+        <p>
+          <strong>Lösung:</strong>
+          Rechne lieber konservativ und plane Puffer ein.
+        </p>
+          <p>
+          <strong>Fehler 3: Du orientierst dich nur an der Konkurrenz</strong>
+          <br />
+          Natürlich solltest du wissen, was der Markt verlangt.
+          Aber wenn deine Preise nicht deine Kosten decken, nützt dir der günstigste
+          Preis nichts.
+        </p>
+        <p>
+          <strong>Lösung:</strong>
+            Kalkuliere deinen Verkaufspreis, bevor du auf den Markt schaust. Erst danach
+            kannst du überlegen, wie du dich positionierst.
+        </p>
+
         <h3 
           class="impressum-text-heading1 thq-heading-2"
             id="Fazit">  
             Fazit zur einfachen Kalkulation
         </h3>
         <br />
-                
+        <p>
+        Du siehst: Kalkulation einfach erklärt heißt nicht, dass es banal ist.
+        Aber mit den richtigen Schritten bekommst du Klarheit.
+        Kenne deine Kosten und berechne deinen Stundenlohn realistisch. Anschließend 
+        kalkuliere deinen Verkaufspreis so, dass Gewinn übrig bleibt        
+        So stellst du sicher, dass dein Business auf gesunden Beinen steht und du nicht zu den Unternehmen gehörst, die weger schlechter Verkaufspreis Kalkulation scheitern.
+        Wenn du Unterstützung bei der Verkaufspreis oder Stundensatz Kalkulation benötigst, 
+        <a href="/kontakt.html"><i><u>melde dich gerne bei uns</u></i></a>. 
+        Gemeinsam finden wir heraus, wie du deine Preise optimal kalkulierst.
+        Alternativ haben wir Online ein Hilfsmittel gefunden:
+        <a href="https://www.blitzrechner.de/marge-berechnen/"><i><u>Blitzrechner.de/</u></i></a><br />
+        Es ist nicht ganz intuitiv, aber es ist eine gute Startmöglichkeit, wenn du keine Lust auf eigene Berechnungen hast.
+        </p>
+
+        <h3 
+          class="impressum-text-heading1 thq-heading-2"
+            id="Kalkulation-Verkaufspreis">  
+            Beispiel für eine Handwerkskalkulation: Kalkulation des Verkaufspreises
+        </h3>
+        <br />
+          <p>
+            Komplette Kalkulation für den Austausch von 5 Fenstern
+          </p>
+          <p>
+            <strong>Ausgangslage:</strong>
+            <br />
+            Austausch von 5 Kunststofffenstern (3-fach-Verglasung, 1,2 × 1,4 m).
+            Inklusive: Ausbau, Einbau, Dämmung der Laibung, Abdichtung (RAL), Entsorgung
+            der Altfenster. Die Anfahrt inkl. Fahrtzeit wird separat berechnet.
+          </p>
+          <ol>
+          <li>
+            Einzelkosten Material
+          </li>
+          <table>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Menge</th>
+                <th>Einzelpreis</th>
+                <th>Summe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kunststofffenster (3-fach-Verglasung)</td>
+                <td>5</td>
+                <td>400 €</td>
+                <td>2.000 €</td>
+              </tr>
+              <tr>
+                <td>Montagematerial (Schrauben, Bauschaum, Keile)</td>
+                <td>5</td>
+                <td>30 €</td>
+                <td>150 €</td>
+              </tr>
+              <tr>
+                <td>Dichtungsbänder (innen/außen, RAL)</td>
+                <td>5</td>
+                <td>25 €</td>
+                <td>125 €</td>
+              </tr>
+              <tr>
+                <td>Dämmmaterial (Mineralwolle, Kompriband)</td>
+                <td>5</td>
+                <td>20 €</td>
+                <td>100 €</td>
+              </tr>
+              <tr>
+                <td>Entsorgung Altfenster</td>
+                <td>5</td>
+                <td>20 €</td>
+                <td>100 €</td>
+              </tr>
+              <tr>
+                <td><strong>Summe Materialkosten</strong></td>
+                <td></td>
+                <td></td>
+                <td><strong>2.475 €</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          
+          <li>
+            Anfahrtskosten (inkl. Fahrtzeit)
+          </li>
+          <table>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Preis netto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fahrzeugpauschale inkl. Fahrtzeit</td>
+                <td>50 €</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+
+          <li>
+            Arbeitszeit (Einzelkosten Lohn)
+          </li>
+          <table>
+            <thead>
+              <tr>
+                <th>Tätigkeit</th>
+                <th>Zeit je Fenster</th>
+                <th>Gesamtzeit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ausbau alte Fenster</td>
+                <td>0,75 Std</td>
+                <td>3,75 Std</td>
+              </tr>
+              <tr>
+                <td>Vorbereitung Laibung</td>
+                <td>0,5 Std</td>
+                <td>2,5 Std</td>
+              </tr>
+              <tr>
+                <td>Einbau der neuen Fenster</td>
+                <td>1 Std</td>
+                <td>5 Std</td>
+              </tr>
+              <tr>
+                <td>Abdichtung innen &amp; außen</td>
+                <td>0,5 Std</td>
+                <td>2,5 Std</td>
+              </tr>
+              <tr>
+                <td>Dämmung der Laibung</td>
+                <td>0,25 Std</td>
+                <td>1,25 Std</td>
+              </tr>
+              <tr>
+                <td>Aufräumen &amp; Entsorgung</td>
+                <td>pauschal</td>
+                <td>1 Std</td>
+              </tr>
+              <tr>
+                <td><b>Summe Arbeitszeit</b></td>
+                <td></td>
+                <td><b>16 Std</b></td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+
+          <li>
+            Kalkulation des Stundenverrechnungssatzes
+          </li>
+            <ol>
+              <li>
+                Grundlagen
+              </li>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Posten</th>
+                    <th>Wert</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bruttolohn Mitarbeiter</td>
+                    <td>20,00 €</td>
+                  </tr>
+                  <tr>
+                    <td>Sozialabgaben Arbeitgeber-Anteil (22 %)</td>
+                    <td>4,40 €</td>
+                  </tr>
+                  <tr>
+                    <td>Krankheitsrisiko (10 Tage, Ø 4,5 %)</td>
+                    <td>0,90 €</td>
+                  </tr>
+                  <tr>
+                    <td>Sonstige Nebenkosten (Berufsgenossenschaft, Weiterbildung etc.)</td>
+                    <td>0,60 €</td>
+                  </tr>
+                  <tr>
+                    <td><b>Summe Lohnkosten pro Stunde (Basis)</b></td>
+                    <td><b>29,90 €</b></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+              <li>
+                Verrechenbare Stunden
+              </li>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Posten</th>
+                    <th>Stunden</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Jahresarbeitszeit (220 Tage × 8 Std)</td>
+                    <td>1.760 Std</td>
+                  </tr>
+                  <tr>
+                    <td>Abzug Krankheit (10 Tage × 8 Std)</td>
+                    <td>– 80 Std</td>
+                  </tr>
+                  <tr>
+                    <td>Abzug interne Arbeiten, Leerlauf</td>
+                    <td>– 160 Std</td>
+                  </tr>
+                  <tr>
+                    <td><b>Verrechenbare Stunden</b></td>
+                    <td><b>1.520 Std</b></td>
+                  </tr>              
+                </tbody>
+              </table>
+              <br />
+              <li>
+                Gemeinkosten-Zuschlag
+              </li>
+              <ul>
+                <li>-Miete Werkstatt</li>
+                <li>-Verwaltung &amp; Buchhaltung</li>
+                <li>-Fahrzeuge (anteilig)</li>
+                <li>-Maschinen &amp; Werkzeuganschaffung</li>
+                <li>-Werkzeugverschleiß</li>
+                <li>-Versicherungen</li>
+              </ul>
+              <p>
+                Ansatz: 35 % Gemeinkostenzuschlag
+                <br />
+                25,90 € × 35 % = 9,07 € Gemeinkosten je Stunde
+              </p>
+              <li>
+                Gewinnzuschlag
+              </li>
+              <p>
+                Kalkulatorischer Gewinn: 10 %
+                <br />
+                (25,90 € + 9,07 €) × 10 % = 3,50 € Gewinn je Stunde
+              </p>
+              <li>
+                Endgültiger Verrechnungssatz
+              </li>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kostenblock</th>
+                    <th>Betrag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Lohn inkl. Nebenkosten</td>
+                    <td>25,90 €</td>
+                  </tr>
+                  <tr>
+                    <td>Gemeinkosten</td>
+                    <td>9,07 €</td>
+                  </tr>
+                  <tr>
+                    <td>Gewinn</td>
+                    <td>3,50 €</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                = 38,47 € pro Stunde
+                <br />
+                Aufgerundet für Praxis: 38,50 € netto pro Stunde
+              </p>
+              <br />
+              <li>
+                Arbeitskosten gesamt
+              </li>
+              <p>
+                16 Stunden × 38,50 € = 616 € netto
+              </p>
+              <li>
+                Zusammenfassung der Einzelkosten
+              </li>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Posten</th>
+                    <th>Betrag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Materialkosten</td>
+                    <td>2.475 €</td>
+                  </tr>
+                  <tr>
+                    <td>Arbeitskosten</td>
+                    <td>616 €</td>
+                  </tr>
+                  <tr>
+                    <td>Anfahrtskosten</td>
+                    <td>50 €</td>
+                  </tr>
+                  <tr>
+                    <td><b>Summe Einzelkosten</b></td>
+                    <td><b>3.141</b></td>
+                  </tr>              
+                </tbody>
+              </table>
+            </ol>
+          <br />
+          <li>
+            Gewinnzuschlag auf Gesamtsumme (Projekt-Gewinn)
+          </li>
+          <p>
+            Zusätzlich zum Stunden-Gewinnaufschlag kann bei projektbezogener Kalkulation
+            noch ein fixer Gewinnzuschlag auf den Auftrag erfolgen.
+          </p>
+          <p>
+            In diesem Fall verzichten wir darauf, da der Gewinn bereits im Stundensatz
+            enthalten ist.
+            <br />
+            Projekt-Gewinnzuschlag: 0 € (bereits berücksichtigt)
+          </p>
+          <li>
+            Netto-Angebotspreis
+          </li>
+          <p>
+            3.141 € netto
+          </p>
+          <li>
+            Brutto-Angebotspreis (inkl. 19 % MwSt.)
+          </li>
+          <p>
+            3.141 € × 1,19 = 3.738,79 € brutto
+          </p>
+          <li>
+            Fertiges Kundenangebot (vereinfachte Darstellung)
+          </li>
+          <table>
+            <thead>
+              <tr>
+                <th>Leistung</th>
+                <th>Preis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Austausch von 5 Kunststofffenstern (3-fach-Verglasung), inkl. Einbau,
+                  Dämmung, Abdichtung, Entsorgung, Anfahrt
+                </td>
+                <td>3.738,79 € brutto</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <li>
+            Zusammenfassung der Kalkulation
+          </li>
+          <table>
+            <thead>
+              <tr>
+                <th>Kostenblock</th>
+                <th>Betrag netto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Material</td>
+                <td>2.475 €</td>
+              </tr>
+              <tr>
+                <td>Arbeitszeit (16 Std × 38,50 €)</td>
+                <td>616 €</td>
+              </tr>
+              <tr>
+                <td>Anfahrt (inkl. Fahrtzeit)</td>
+                <td>50 €</td>
+              </tr>
+              <tr>
+                <td>Gesamtsumme netto</td>
+                <td>3.141 €</td>
+              </tr>
+              <tr>
+                <td>Gesamtsumme brutto</td>
+                <td>3.738,79 €</td>
+              </tr>
+            </tbody>
+          </table>
+          </ol>
       </div>
 
       <!--Verlinkung component-->
 
       <div class="blog-navigation-container">
           <div class="blog-navigation-item blog-navigation-left">
-              <a href="Controlling-Arten.html" class="blog-navigation-link">
-                  &larr; Was für Controlling Arten gibt es? Überblick & Tipps
+              <a href="Rentabilität-steigern.html" class="blog-navigation-link">
+                  &larr; Rentabilität steigern: So machst du dein Business profitabler
               </a>
           </div>
           <div class="blog-navigation-item blog-navigation-middle">

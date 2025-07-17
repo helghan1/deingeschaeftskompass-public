@@ -25,7 +25,6 @@
       property="twitter:card"
       content="summary_large_image"
     />
-    
     <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -45,7 +44,7 @@
         "https://xn--deingeschftskompass-owb.de/public/Arten-des-Controllings.webp" 
       ],
       "url": "https://xn--deingeschftskompass-owb.de/blog/",
-      "datePublished": "2025-07-10T12:53:00+00:00", // Datum aus deiner Sitemap
+      "datePublished": "2025-07-10T12:53:00+00:00", // Datum Sitemap
       "dateModified": "2025-07-10T12:53:00+00:00",
       "author": {
         "@type": "Person",
@@ -108,11 +107,38 @@
         border: 1px solid #ddd;
         font-family: Noto Sans;
       }
+      th {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-right: 4px;
+        padding-left: 4px;
+      }
+      thead {
+        background-color:#008cbaff; 
+        text-align: center;
+      }
+      ol {
+        list-style-type: none;
+        counter-reset: item; 
+      }
+      ol li {
+        display: block; 
+      }
+      ol li::before {
+        content: counters(item, ".") ". ";
+        counter-increment: item;
+      }
+      ul {
+        list-style-type: disc;
+      }
+      ul li::before {
+        content: none !important;         
+        counter-increment: none !important; 
+      }      
       .content-wrapper {
       padding-left: 15%;
       padding-right: 15%;
       }
-
       /* Media Query für mobile Geräte (z.B. Bildschirme bis 768px Breite) */
       @media (max-width: 768px) {
         .content-wrapper {
@@ -121,10 +147,6 @@
         }
       }
     </style>
-
-   
-
-  <body>
     <noscript>
       <iframe 
         src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
@@ -133,11 +155,9 @@
         style="display:none;visibility:hidden">
       </iframe>
     </noscript>
-
     <link rel="stylesheet" href="/style.css" />
     <link href="/impressum.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/webfonts.css">
-    
+    <link rel="stylesheet" href="/webfonts.css">    
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
