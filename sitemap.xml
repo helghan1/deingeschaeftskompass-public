@@ -99,7 +99,7 @@
   </url>
     <url>
     <loc>https://xn--deingeschftskompass-owb.de/blog/Controlling-in-Kleinunternehmen</loc>
-    <lastmod>2025-07-10T12:53:00+00:00</lastmod>
+    <lastmod>2025-07-22T18:50:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
@@ -153,8 +153,13 @@
     <priority>0.70</priority>
   </url>
    <url>
-    <loc>https://xn--deingeschftskompass-owb.de/blog/finazielle-Probleme</loc>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/finanzielle-Probleme</loc>
     <lastmod>2025-07-21T12:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
+   <url>
+    <loc>https://xn--deingeschftskompass-owb.de/blog/Unternehmenswachstum</loc>
+    <lastmod>2025-07-22T23:11:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>   
 </urlset>
