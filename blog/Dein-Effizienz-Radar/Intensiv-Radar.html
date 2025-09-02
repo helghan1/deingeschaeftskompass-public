@@ -897,27 +897,27 @@ function calculateResult() {
 
     if (scorePercentage === 100) {
         interpretation = "Absoluter Effizienz-Meister! Herzlichen Glückwunsch zu dieser herausragenden Leistung! Wenn du wie wir an kontinuierliche Verbesserung glaubst, laden wir dich zu einem unverbindlichen Gespräch ein. Lass uns erörtern, wie du dein Know-how als Profi weiter ausbauen und neue Ziele erreichen kannst, um deinen Vorsprung zu festigen und zu monetarisieren";
-        ctaHtml = `<a href="/kontakt.html?reason=Master" class="cta-button" id="contactCtaButton">Deinen Meisterstatus festigen & weiter skalieren!</a>`;
+        ctaHtml = `<a href="/kontakt.html" class="cta-button" id="contactCtaButton">Deinen Meisterstatus festigen & weiter skalieren!</a>`;
         kalkulatorText = `<a href="#" style="color: #cdf9ff;">Aber mal ehrlich: Erinnerst du dich an deine letzte 40-stündige Arbeitswoche, ohne dich danach noch um unzählige andere Dinge kümmern zu müssen? Ist deine Resilienz dann noch stark genug, um dich und dein Business auch durch unvorhergesehene Stürme zu steuern?</a>`;
         kalkulatorButtonHtml = ""; // Kein separater Kalkulator-Button in diesem Fall
     } else if (scorePercentage >= 80) {
         interpretation = "Hocheffizienter Vorreiter! Du bist bereits sehr gut aufgestellt und führst deine Prozesse mit herausragender Effizienz. Lass uns gemeinsam erörtern, wie du diese Effizienz noch weiter ausbauen und als Wettbewerbsvorteil nutzen kannst, um zum echten Vorreiter in deiner Branche zu werden.";
-        ctaHtml = `<a href="/kontakt.html?reason=Vanguard" class="cta-button" id="contactCtaButton">Deine Effizienz weiter ausbauen!</a>`;
+        ctaHtml = `<a href="/kontakt.html" class="cta-button" id="contactCtaButton">Deine Effizienz weiter ausbauen!</a>`;
         kalkulatorText = `Oder möchtest wissen, wie viel Zeit und Geld das in Zahlen bedeutet?`;
         kalkulatorButtonHtml = `<a href="/blog/kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button kalkulator-cta-button">Deine versteckten Kosten berechnen!</a>`;
     } else if (scorePercentage >= 50) {
         interpretation = "Auf dem richtigen Weg, mit Potenzial! Du hast eine solide Grundlage. Dein Effizienz-Radar hat spezifische Felder aufgezeigt, in denen schnelle Gewinne möglich sind. Gerne erörtern wir gemeinsam, wie du diese Potenziale konkret anpacken und deine Betriebsabläufe auf das nächste Level heben kannst.";
-        ctaHtml = `<a href="/kontakt.html?reason=Potential" class="cta-button" id="contactCtaButton">Jetzt Effizienz steigern!</a>`;
+        ctaHtml = `<a href="/kontakt.html" class="cta-button" id="contactCtaButton">Jetzt Effizienz steigern!</a>`;
         kalkulatorText = `Oder möchtest wissen, wie viel Zeit und Geld das in Zahlen bedeutet?`;
         kalkulatorButtonHtml = `<a href="/blog/kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button kalkulator-cta-button">Deine versteckten Kosten berechnen!</a>`;
     } else if (scorePercentage >= 25) {
         interpretation = "Optimierungsbedarf erkannt! Du stehst vor Herausforderungen in der betrieblichen Effizienz, die jedoch großes Potenzial für deutliche Verbesserungen bergen. Jetzt ist der ideale Zeitpunkt, um die Hebel in Bewegung zu setzen. Lass uns gemeinsam darüber sprechen, wie du die größten Stolpersteine identifizierst und Effizienzgewinne erzielen kannst.";
-        ctaHtml = `<a href="/kontakt.html?reason=Optimize" class="cta-button" id="contactCtaButton">Jetzt Herausforderungen angehen!</a>`;
+        ctaHtml = `<a href="/kontakt.html" class="cta-button" id="contactCtaButton">Jetzt Herausforderungen angehen!</a>`;
         kalkulatorText = `Oder möchtest wissen, wie viel Zeit und Geld das in Zahlen bedeutet?`;
         kalkulatorButtonHtml = `<a href="/blog/kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button kalkulator-cta-button">Deine versteckten Kosten berechnen!</a>`;
     } else { // scorePercentage < 25
         interpretation = "Dringender Handlungsbedarf! Deine aktuellen Prozesse scheinen stark ineffizient zu sein, was dich wertvolle Zeit, Energie und Geld kostet. Mit gezielten Maßnahmen kannst du deine Produktivität drastisch steigern und dein Geschäft wieder auf Kurs bringen. Warte nicht länger und nimm unverbindlich Kontakt zu uns auf, um Lösungen zu finden.";
-        ctaHtml = `<a href="/kontakt.html?reason=Urgent" class="cta-button" id="contactCtaButton">Dringenden Handlungsbedarf angehen!</a>`;
+        ctaHtml = `<a href="/kontakt.html" class="cta-button" id="contactCtaButton">Dringenden Handlungsbedarf angehen!</a>`;
         kalkulatorText = `Oder möchtest wissen, wie viel Zeit und Geld das in Zahlen bedeutet?`;
         kalkulatorButtonHtml = `<a href="/blog/kalkulator.html?radarScore=${scorePercentage.toFixed(0)}" class="cta-button kalkulator-cta-button">Deine versteckten Kosten berechnen!</a>`;
     }
