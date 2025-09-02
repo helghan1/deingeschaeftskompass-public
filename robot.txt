@@ -1,3 +1,4 @@
 User-agent: Googlebot
 Disallow: /impressum/
 Disallow: /datenschutz/
+Disallow: /blog/Partner/
