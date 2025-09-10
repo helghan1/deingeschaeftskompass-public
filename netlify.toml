@@ -1,3 +1,19 @@
 [build]
   publish = "."
   command = ""
+
+# ---------------------------------------
+# Clean URLs ohne .html
+# ---------------------------------------
+
+# Saubere Blog-Links
+[[redirects]]
+  from = "/blog/:slug"
+  to = "/blog/:slug.html"
+  status = 200
+
+# Weiterleitung von .html -> ohne .html (SEO-freundlich)
+[[redirects]]
+  from = "/blog/:slug.html"
+  to = "/blog/:slug"
+  status = 301
