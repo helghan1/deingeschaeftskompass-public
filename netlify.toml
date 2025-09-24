@@ -3,18 +3,18 @@
   command = ""
 
 # ---------------------------------------
-# Clean URLs Setup für Blog
+# Clean URLs Setup für alle Seiten
 # ---------------------------------------
 
 # 1. Jede .html-Datei intern ohne Endung abrufbar machen
 [[redirects]]
-  from = "/blog/:slug"
-  to = "/blog/:slug.html"
+  from = "/:slug"
+  to = "/:slug.html"
   status = 200
 
 # 2. Falls jemand direkt die .html-URL aufruft -> SEO-Redirect auf Clean URL
 [[redirects]]
-  from = "/blog/:slug.html"
-  to = "/blog/:slug"
+  from = "/:slug.html"
+  to = "/:slug"
   status = 301
   force = true
