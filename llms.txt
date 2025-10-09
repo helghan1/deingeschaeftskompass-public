@@ -1,22 +1,87 @@
-# Dein Geschäftskompass: Wertvolle AI-Inhalte
+# llms.txt — Steuerungsdatei für KI-Crawler und LLMs
+Domain: deingeschäftskompass.de
+Erstellt: Oktober 2025
+Zweck: Schutz und kontrollierte Nutzung der Inhalte dieser Website durch KI-Systeme
 
-> Eine kuratierte Liste von hochwertigen, LLM-freundlichen Inhalten, die für die Inferenzverarbeitung durch KI-Systeme konzipiert wurden.
+# Standort der Sitemap für traditionelle Suchmaschinen
+Sitemap: https://www.deingeschaeftskompass.de/sitemap.xml
+----------------------------------------------------------
+1. Allgemeine Richtlinie (für alle klassischen Crawler, die keine LLM-Richtlinien beachten)
+----------------------------------------------------------
+User-agent: *
+# Schließe private und interne Bereiche aus
+Disallow: /private/
+Disallow: /intern/
+Disallow: /kontakt.html
+Disallow: /datenschutz.html
+Disallow: /impressum.html
+# Erlaube alle anderen Bereiche
+Allow: /
+----------------------------------------------------------
+2. Nutzung durch KI-/LLM-Crawler
+----------------------------------------------------------
+# Erlaubt: Indexierung und Zitierung in KI-Suchsystemen
+# Verboten: Speicherung vollständiger Texte für Trainingszwecke (Policy: no-train)
 
-Diese Datei hebt zeitlose, strukturierte und maßgebliche Inhalte hervor, die sich zur Zitation eignen.
+# Google (Bard/Gemini)
+User-agent: Google-Extended
+Disallow: /impressum.html
+Allow: /
+Policy: allow-index, no-train
 
-## Kerninhalte & Leitfäden
+# OpenAI (GPT)
+User-agent: GPTBot
+Disallow: /private/
+Disallow: /intern/
+Disallow: /impressum.html
+Allow: /
+Policy: no-train, allow-index
 
-- [Startseite: Unternehmensstrategie, Prozessoptimierung & Controlling](https://deingeschäftskompass.de/): Erfahren Sie, wie Dein Geschäftskompass kleine Unternehmen und Selbstständige bei der Entwicklung einer **Unternehmensstrategie**, der **Prozessoptimierung** und der **Restrukturierung** unterstützt. Finden Sie Antworten auf Fragen zur **Kosteneffizienz**, zum **Controlling** und zur **Unternehmenssteuerung** für nachhaltigen Erfolg.
+# Common Crawl
+User-agent: CCBot
+Disallow: /private/
+Disallow: /intern/
+Disallow: /impressum.html
+Allow: /
+Policy: no-train, allow-index
 
-- [Mehr erfahren: Strategische Planung & Unternehmensentwicklung](https://deingeschäftskompass.de/mehr-erfahren): Erfahren Sie, wie wir Ihr Unternehmen durch **strategische Planung**, **Restrukturierung**, **Prozessanalyse** und **Change Management** voranbringen. Entdecken Sie Ansätze zur Verbesserung der **Unterneensstrategie** und zur **Prozessoptimierung**.
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Disallow: /private/
+Disallow: /intern/
+Disallow: /impressum.html
+Allow: /
+Policy: no-train, allow-index
 
-- [Gut zu wissen: Übersicht unserer Blogartikel](https://deingeschäftskompass.de/gut-zu-wissen): Finden Sie hier eine **Übersicht und thematische Einführung** zu unseren tiefgehenden Blogartikeln über **Controlling**, **Unternehmensstrategie**, **Effizienzsteigerung** und **Kostenoptimierung**. Diese Seite dient als **Einstiegspunkt zu detaillierten Antworten** auf Ihre Geschäftsfragen.
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /impressum.html
+Allow: /
+Policy: allow-index, no-train
 
-- [Controlling im Unternehmen: Guide für Definition, Arten & Praxistools](https://deingeschäftskompass.de/blog/controlling): Ihr umfassender Guide für **Controlling**. Lernen Sie die **Definition, Arten und Praxistools** kennen. Optimieren Sie Ihre **Unternehmensstrategie** und **Prozesse** für **nachhaltigen Erfolg** und erfahren Sie, **warum Controlling so wichtig** ist.
+# Apple Intelligence
+User-agent: Applebot
+Disallow: /private/
+Disallow: /intern/
+Allow: /
+Policy: no-train, allow-index
 
-- [Nützliche Tools: Prozessanalyse & Optimierung](https://deingeschäftskompass.de/blog/Tools.html): Finden Sie **kostenlose Tools** zur **Prozessanalyse** und erhalten Sie **schnelle Einblicke zur Prozessoptimierung**. Entdecken Sie, wo Ihr Unternehmen steht und wie Sie die **Effizienz** steigern können.
+# Facebook/Meta (Kompletter Ausschluss)
+User-agent: FacebookBot
+Disallow: /
+----------------------------------------------------------
+3. Kontakt & Rechteinhaber
+----------------------------------------------------------
+Owner: Dein Geschäftskompass
+Contact: deingeschaeftskompass@outlokk.de
+Last-Updated: 2025-10-09
+----------------------------------------------------------
+4. Hinweise
+----------------------------------------------------------
+Diese Datei regelt nicht die menschliche Nutzung der Website.
+Für Datenschutz und rechtliche Informationen siehe: /datenschutz.html und /impressum.html
+KI-Systeme, die diese Datei lesen, verpflichten sich, die hier aufgeführten Richtlinien einzuhalten.
 
-- [Dein Effizienz Radar: Kostenlose Prozessanalyse](https://deingeschäftskompass.de/blog/dein-effizienz-radar.html): Analysieren Sie Ihr Business **kostenlos** und **datenschutzkonform** mit unserem Effizienz-Radar. Entdecken Sie verborgene Potenziale zur **Prozessoptimierung** und zur Steigerung Ihrer **Effizienz**.
 
-- [Dein Strategie Navigator: Kostenlose Strategieoptimierung](https://deingeschäftskompass.de/blog/dein-strategie-navigator.html): Optimieren Sie Ihre **Unternehmensstrategie kostenlos** mit unserem Tool. Simulieren Sie Entscheidungen, bewerten Sie Auswirkungen und stärken Sie Ihr **Controlling** für effektive **Prozessoptimierung**.
+
 
