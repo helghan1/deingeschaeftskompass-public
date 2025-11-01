@@ -147,7 +147,7 @@
   status = 301
   force = true
 [[redirects]]
-  from = "/blog/Produktivität-messen"
+  from = "/blog/produktivität-messen"
   to = "/blog/produktivität-messen"
   status = 301
   force = true
@@ -177,7 +177,7 @@
   status = 301
   force = true
 [[redirects]]
-  from = "/blog/Prozessoptimierung-Methoden"
+  from = "/blog/prozessoptimierung-methoden"
   to = "/blog/prozessoptimierung-methoden"
   status = 301
   force = true
