@@ -635,6 +635,47 @@
           </div>
       </div>
 
+      <!--Autor box component-->
+      <div id="author-placeholder" class="author-accordion-container">
+        <div class="author-header kopfzeile-rest-action2 thq-button-animated thq-button-outline" onclick="toggleAuthorBox()">
+          <span class="startseite-text107">Über den Autor</span>
+          <span id="author-toggle-icon">+</span>
+        </div>
+
+        <div id="author-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;">
+          <div class="author-body">
+            <img src="/public/Logo48.webp" alt="Gründer von Dein Geschäftskompass: Kay Beerbaum - Experte für Controlling" class="author-image">
+            <div class="author-info-text">
+              <h3>Kay Beerbaum</h3>
+              <p>
+                Als Gründer von <strong>Dein Geschäftskompass</strong> verbindet Kay Beerbaum, Experte für Controlling & Prozessoptimierung,<br>
+                fast 10 Jahre operative Erfahrung mit fundierter Forschung, um komplexe Daten in präzise Entscheidungsgrundlagen zu verwandeln.<br>
+                Durch seine methodische Expertise (Six Sigma, IAPM) garantiert er hochgradig belastbare Inhalte für Entscheider und Selbstständige.<br><br>
+                Vernetze dich direkt via <a href="https://www.linkedin.com/in/kay-beerbaum/" target="_blank" class="author-link">LinkedIn</a> 
+                oder finde mehr Informationen auf seiner <a href="/team/kay-beerbaum.html" class="author-link">Team-Seite</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <script>
+        function toggleAuthorBox() {
+          const content = document.getElementById('author-content');
+          const icon = document.getElementById('author-toggle-icon');
+          
+          if (!content.style.maxHeight || content.style.maxHeight === '0px') {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.innerText = '−';
+            icon.style.transform = 'rotate(180deg)';
+          } else {
+            content.style.maxHeight = "0px";
+            icon.innerText = '+';
+            icon.style.transform = 'rotate(0deg)';
+          }
+        }
+      </script>
+      <!-- Ende Autor box component-->
+
       <!--Fußzeilen component-->  
       
           <fuzeile-wrapper class="fuzeile-wrapper">

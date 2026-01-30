@@ -66,3 +66,64 @@ html {
           padding-right: 2%;
         }
       }
+
+      /* --- Autorenbox Zentrales Design --- */
+      .author-accordion-container {
+        max-width: 1000px;
+        margin: 50px auto; 
+        font-family: sans-serif;
+        overflow: hidden;
+      }
+
+      .author-header {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+      }
+
+      .author-header:hover {
+        background-color: #033546ff !important; 
+      }
+
+      .author-header span {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      #author-toggle-icon {
+        display: inline-block;
+        width: 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-size: 24px;
+      }
+
+      .author-body {
+        padding: 30px 20px; 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        border: 1px solid #515156ff;
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+      }
+
+      .author-image {
+        width: 48px; 
+        height: 48px;
+        border-radius: 50%; 
+        object-fit: cover;
+      }
+
+      .author-link {
+        color: #008cbaff; 
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .author-link:hover {
+        text-decoration: underline;
+      }      
