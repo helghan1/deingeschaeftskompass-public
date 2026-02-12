@@ -1,437 +1,608 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt – Unternehmensberatung für Strategie & Prozesse</title>
-  <meta name="description" content="Nehme Kontakt zu uns auf – individuelle Beratung zu Strategieplanung, Prozessoptimierung oder Restrukturierung." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt – Unternehmensberatung für Strategie & Prozesse</title>
+    <meta
+      name="description"
+      content="Nehme Kontakt zu uns auf – individuelle Beratung zu Strategieplanung, Prozessoptimierung oder Restrukturierung."
+    />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Kontakt – Unternehmensberatung für Strategie & Prozesse" />
-  <meta property="og:description" content="Nehme Kontakt zu uns auf – individuelle Beratung zu Strategieplanung, Prozessoptimierung oder Restrukturierung." />
-  <meta property="twitter:card" content="summary_large_image" />
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Kontakt – Unternehmensberatung für Strategie & Prozesse"
+    />
+    <meta
+      property="og:description"
+      content="Nehme Kontakt zu uns auf – individuelle Beratung zu Strategieplanung, Prozessoptimierung oder Restrukturierung."
+    />
+    <meta property="twitter:card" content="summary_large_image" />
 
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w,d,s,l,i){
-      w[l]=w[l]||[];
-      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),
-          dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-      f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WKKNJDLN');
-  </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+    </script>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "Dein Geschäftskompass",
-        "url": "https://deingeschäftskompass.de/",
-        "logo": "https://deingeschäftskompass.de/public/logo.webp",
-        "email": "deingeschaeftskompass@outlook.de",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Kundenservice",
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "Dein Geschäftskompass",
+          "url": "https://deingeschäftskompass.de/",
+          "logo": "https://deingeschäftskompass.de/public/logo.webp",
           "email": "deingeschaeftskompass@outlook.de",
-          "availableLanguage": ["de"]
-        }
-      },
-      "url": "https://deingeschäftskompass.de/kontakt.html",
-      "description": "Nehme Kontakt zu uns auf – individuelle Beratung zu Strategieplanung, Prozessoptimierung oder Restrukturierung.",
-      "name": "Kontakt"
-    }
-  </script>
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Kundenservice",
+            "email": "deingeschaeftskompass@outlook.de",
+            "availableLanguage": ["de"]
+          }
+        },
+        "url": "https://deingeschäftskompass.de/kontakt.html",
+        "description": "Nehme Kontakt zu uns auf – individuelle Beratung zu Strategieplanung, Prozessoptimierung oder Restrukturierung.",
+        "name": "Kontakt"
+      }
+    </script>
 
-  <!-- Reset Styles -->
-  <style data-tag="reset-style-sheet">
-    html { line-height: 1.15; }
-    body { margin: 0; }
-    * { box-sizing: border-box; border-width: 0; border-style: solid; -webkit-font-smoothing: antialiased; }
-    p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption { margin: 0; padding: 0; }
-    button { background-color: transparent; }
-    button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: 1.15; margin: 0; }
-    button, select { text-transform: none; }
-    button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; color: inherit; }
-    button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner { border-style: none; padding: 0; }
-    button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus { outline: 1px dotted ButtonText; }
-    a { color: inherit; text-decoration: inherit; }
-    input { padding: 2px 4px; }
-    img { display: block; }
-    details { display: block; margin: 0; padding: 0; }
-    summary::-webkit-details-marker { display: none; }
-    [data-thq="accordion"] [data-thq="accordion-content"] { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; padding: 0; }
-    [data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] { max-height: 1000vh; }
-    details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] { transform: rotate(180deg); }
-    html { scroll-behavior: smooth; }
-  </style>
+    <!-- Reset Styles -->
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        -webkit-font-smoothing: antialiased;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+        color: inherit;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      details {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      [data-thq="accordion"] [data-thq="accordion-content"] {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        padding: 0;
+      }
+      [data-thq="accordion"]
+        details[data-thq="accordion-trigger"][open]
+        + [data-thq="accordion-content"] {
+        max-height: 1000vh;
+      }
+      details[data-thq="accordion-trigger"][open]
+        summary
+        [data-thq="accordion-icon"] {
+        transform: rotate(180deg);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
 
-  <!-- Default Styles -->
-  <style data-tag="default-style-sheet">
-    html {
-      font-family: Inter, sans-serif;
-      font-size: 12px;
-    }
-    body {
-      font-weight: 100;
-      font-style: normal;
-      text-decoration: none;
-      text-transform: none;
-      letter-spacing: normal;
-      line-height: 1.15;
-      color: var(--dl-color-theme-neutral-dark);
-      background: var(--dl-color-theme-neutral-light);
-      fill: var(--dl-color-theme-neutral-dark);
-    }
-  </style>
+    <!-- Default Styles -->
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+      }
+      body {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-theme-neutral-dark);
+        background: var(--dl-color-theme-neutral-light);
+        fill: var(--dl-color-theme-neutral-dark);
+      }
+    </style>
 
-  <!-- External Stylesheets -->
-  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
-  <link rel="stylesheet" href="webfonts.css">
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./kontakt.css" />
+    <!-- External Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <link rel="stylesheet" href="webfonts.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./kontakt.css" />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript Backup) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      >
+      </iframe>
+    </noscript>
 
-</head>
-<body>
-  <!-- Google Tag Manager (noscript Backup) -->
-  <noscript>
-    <iframe 
-      src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
-      height="0" 
-      width="0" 
-      style="display:none;visibility:hidden">
-    </iframe>
-  </noscript>
-
-  <div class="mehr-erfahren-container1">
-  </div>
-        <header class="mehr-erfahren-container2"></header>
-        <kopfzeile-rest-wrapper
-            class="kopfzeile-rest-wrapper"
-            rootclassname="kopfzeile-restundefined"
-        >
-            <header
-                class="kopfzeile-rest-container kopfzeile-restroot-class-name"
-            >
-                <header
-                    data-thq="thq-navbar"
-                    class="kopfzeile-rest-navbar-interactive"
+    <div class="mehr-erfahren-container1">
+      <header class="mehr-erfahren-container2"></header>
+      <kopfzeile-rest-wrapper
+        class="kopfzeile-rest-wrapper"
+        rootclassname="kopfzeile-restundefined"
+      >
+        <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
+          <header
+            data-thq="thq-navbar"
+            class="kopfzeile-rest-navbar-interactive"
+          >
+            <a href="index.html" class="kopfzeile-rest-navlink">
+              <img
+                alt="Dein Geschäftskompass – zurück zur Startseite."
+                src="public/Logo.webp"
+                class="kopfzeile-rest-image1"
+              />
+            </a>
+            <div data-thq="thq-navbar-nav" class="kopfzeile-rest-desktop-menu">
+              <nav class="kopfzeile-rest-links">
+                <a
+                  href="index.html"
+                  class="kopfzeile-rest-link1 thq-body-small thq-link"
                 >
-                    <a href="index.html" class="kopfzeile-rest-navlink">
-                        <img
-                            alt="Dein Geschäftskompass – zurück zur Startseite."
-                            src="public/Logo.webp"
-                            class="kopfzeile-rest-image1"
-                        />
-                    </a>
-                    <div
-                        data-thq="thq-navbar-nav"
-                        class="kopfzeile-rest-desktop-menu"
-                    >
-                        <nav class="kopfzeile-rest-links">
-                            <a
-                                href="index.html"
-                                class="kopfzeile-rest-link1 thq-body-small thq-link"
-                            >
-                                <fragment class="mehr-erfahren-fragment10">
-                                    <span class="mehr-erfahren-text100">Startseite</span>
-                                </fragment>
-                            </a>
+                  <fragment class="mehr-erfahren-fragment10">
+                    <span class="mehr-erfahren-text100">Startseite</span>
+                  </fragment>
+                </a>
 
-                          <div class="kopfzeile-start-buttons">
-                              <a
-                                  href="Gut-zu-Wissen.html"
-                                  class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
-                              >
-                                  <span>
-                                      <fragment class="startseite-fragment17">
-                                          <span class="startseite-text107">Gut zu Wissen</span>
-                                      </fragment>
-                                  </span>
-                              </a>
-                          </div>
+                <div class="kopfzeile-start-buttons">
+                  <a
+                    href="Gut-zu-Wissen.html"
+                    class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                  >
+                    <span>
+                      <fragment class="startseite-fragment17">
+                        <span class="startseite-text107">Gut zu Wissen</span>
+                      </fragment>
+                    </span>
+                  </a>
+                </div>
 
-                          <div class="kopfzeile-start-buttons">
-                              <a
-                                  href="Verantwortung.html"
-                                  class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
-                              >
-                                  <span>
-                                      <fragment class="startseite-fragment17">
-                                          <span class="startseite-text107">Verantwortung</span>
-                                      </fragment>
-                                  </span>
-                              </a>
-                          </div>
-                          
-                          <div class="kopfzeile-start-buttons">
-                            <a
-                                href="Preise.html"
-                                class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
-                            >
-                                <span>
-                                    <fragment class="startseite-fragment17">
-                                        <span class="startseite-text107">Preise</span>
-                                    </fragment>
-                                </span>
-                            </a>
-                          </div>
-                            
-                        </nav>
-                        <div class="kopfzeile-rest-buttons">
-                            <a
-                                href="mehr-erfahren.html"
-                                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
-                            >
-                                <span>
-                                    <fragment class="mehr-erfahren-fragment11">
-                                        <span class="mehr-erfahren-text101">mehr Erfahren</span>
-                                    </fragment>
-                                </span>
-                            </a>
-                            <a
-                                href="kontakt.html"
-                                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
-                            >
-                                <span>
-                                    <fragment class="mehr-erfahren-fragment12">
-                                        <span class="mehr-erfahren-text102">Kontakt</span>
-                                    </fragment>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div
-                        data-thq="thq-burger-menu"
-                        class="kopfzeile-rest-burger-menu"
-                        onclick="toggleMobileMenuRest()"
-                    >
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div
-                        data-thq="thq-mobile-menu"
-                        class="kopfzeile-rest-mobile-menu"
-                        id="mobileMenuRest"
-                    >
-                        <a href="index.html">Startseite</a>
-                        <a href="gut-zu-wissen.html">Gut zu Wissen</a>
-                        <a href="Verantwortung.html">Verantwortung</a>
-                        <a href="preise.html">Preise</a>
-                        <a href="mehr-erfahren.html">Mehr Erfahren</a>
-                        <a href="kontakt.html">Kontakt</a>
-                    </div>
-                </header>
-            </header>
-        </kopfzeile-rest-wrapper>
+                <div class="kopfzeile-start-buttons">
+                  <a
+                    href="Verantwortung.html"
+                    class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                  >
+                    <span>
+                      <fragment class="startseite-fragment17">
+                        <span class="startseite-text107">Verantwortung</span>
+                      </fragment>
+                    </span>
+                  </a>
+                </div>
 
-        <kontaktmglichkeiten-wrapper
-          class="kontaktmglichkeiten-wrapper"
-          rootclassname="kontaktmglichkeitenundefined"
-          ><!--Kontaktmglichkeiten component--><div
-            id="ContactForm7"
-            class="kontaktmglichkeiten-contact1 thq-section-padding kontaktmglichkeitenroot-class-name"
-            ><div class="kontaktmglichkeiten-content1"
-              ><h2 class="thq-heading-2"
-                ><fragment class="kontakt-fragment17"
-                  ><span class="kontakt-text25">Kontakt zu Uns</span></fragment
-                ></h2
-              ><h1
-                ><fragment class="kontakt-fragment16"
-                  ><span class="kontakt-text24"
-                    >Was wir für eine gute Antwort brauchen</span
+                <div class="kopfzeile-start-buttons">
+                  <a
+                    href="Preise.html"
+                    class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                  >
+                    <span>
+                      <fragment class="startseite-fragment17">
+                        <span class="startseite-text107">Preise</span>
+                      </fragment>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+              <div class="kopfzeile-rest-buttons">
+                <a
+                  href="mehr-erfahren.html"
+                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                >
+                  <span>
+                    <fragment class="mehr-erfahren-fragment11">
+                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                    </fragment>
+                  </span>
+                </a>
+                <a
+                  href="kontakt.html"
+                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                >
+                  <span>
+                    <fragment class="mehr-erfahren-fragment12">
+                      <span class="mehr-erfahren-text102">Kontakt</span>
+                    </fragment>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div
+              data-thq="thq-burger-menu"
+              class="kopfzeile-rest-burger-menu"
+              onclick="toggleMobileMenuRest()"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div
+              data-thq="thq-mobile-menu"
+              class="kopfzeile-rest-mobile-menu"
+              id="mobileMenuRest"
+            >
+              <a href="index.html">Startseite</a>
+              <a href="gut-zu-wissen.html">Gut zu Wissen</a>
+              <a href="Verantwortung.html">Verantwortung</a>
+              <a href="preise.html">Preise</a>
+              <a href="mehr-erfahren.html">Mehr Erfahren</a>
+              <a href="kontakt.html">Kontakt</a>
+            </div>
+          </header>
+        </header>
+      </kopfzeile-rest-wrapper>
+
+      <kontaktmglichkeiten-wrapper
+        class="kontaktmglichkeiten-wrapper"
+        rootclassname="kontaktmglichkeitenundefined"
+        ><!--Kontaktmglichkeiten component-->
+        <div
+          id="ContactForm7"
+          class="kontaktmglichkeiten-contact1 thq-section-padding kontaktmglichkeitenroot-class-name"
+        >
+          <div class="kontaktmglichkeiten-content1">
+            <h2 class="thq-heading-2">
+              <fragment class="kontakt-fragment17"
+                ><span class="kontakt-text25">Kontakt zu Uns</span></fragment
+              >
+            </h2>
+            <h1>
+              <fragment class="kontakt-fragment16"
+                ><span class="kontakt-text24"
+                  >Was wir für eine gute Antwort brauchen</span
+                ></fragment
+              >
+            </h1>
+            <span class="kontaktmglichkeiten-text12"
+              ><fragment class="kontakt-fragment13"
+                ><span class="kontakt-text13"
+                  ><span
+                    >Damit wir dir praxisnah und konkret helfen können,
+                    beschreibe bitte kurz:</span
+                  ><br /><span
+                    >Was ist dein Anliegen?(z. B. "Lohnt es sich die Maschine
+                    XXX für 20.000 € anzuschaffen…")</span
+                  ><br /><span
+                    >Was ist aktuell der Stand?(z. B. "Die bisherige Anlage ist
+                    noch funktionstüchtig, aber langsamer.&nbsp;</span
+                  ><span
+                    >Wir arbeiten aktuell mit 3 Leuten an dem Prozess…")</span
+                  ><br /><span
+                    >Was willst du erreichen?(z. B. "Ich hoffe auf schnellere
+                    Bearbeitung und Einsparung von Personalkosten.")</span
+                  ></span
+                ></fragment
+              ></span
+            >
+          </div>
+          <div class="kontaktmglichkeiten-content2">
+            <div class="kontaktmglichkeiten-row1">
+              <svg viewBox="0 0 1024 1024" class="thq-icon-small">
+                <path
+                  d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z"
+                ></path></svg
+              ><a
+                href="mailto:deingeschaeftskompass@outlook.de?subject="
+                class="kontaktmglichkeiten-email1 thq-body-small"
+                ><fragment class="kontakt-fragment14"
+                  ><span class="kontakt-text22"
+                    >deingeschaeftskompass@outlook.de</span
                   ></fragment
-                ></h1
-              ><span class="kontaktmglichkeiten-text12"
-                ><fragment class="kontakt-fragment13"
-                  ><span class="kontakt-text13"
-                    ><span
-                      >Damit wir dir praxisnah und konkret helfen können,
-                      beschreibe bitte kurz:</span
-                    ><br /><span
-                      >Was ist dein Anliegen?(z. B. "Lohnt es sich die Maschine
-                      XXX für 20.000 € anzuschaffen…")</span
-                    ><br /><span
-                      >Was ist aktuell der Stand?(z. B. "Die bisherige Anlage
-                      ist noch funktionstüchtig, aber langsamer.&nbsp;</span
-                    ><span
-                      >Wir arbeiten aktuell mit 3 Leuten an dem Prozess…")</span
-                    ><br /><span
-                      >Was willst du erreichen?(z. B. "Ich hoffe auf schnellere
-                      Bearbeitung und Einsparung von Personalkosten.")</span
-                    ></span
+                ></a
+              >
+            </div>
+            <div class="kontaktmglichkeiten-row2">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"
+                  ></path>
+                  <path
+                    d="M19 4a2 2 0 0 1 1.995 1.85L21 6v13a2 2 0 0 1-1.85 1.995L19 21H5a2 2 0 0 1-1.995-1.85L3 19V6a2 2 0 0 1 1.85-1.995L5 4zM8 16H5v3h3zm11 0h-9v3h9zM8 11H5v3h3zm11 0h-9v3h9zM8 6H5v3h3zm11 0h-9v3h9z"
+                    fill="currentColor"
+                  ></path>
+                </g></svg
+              ><span class="thq-body-small"
+                ><fragment class="kontakt-fragment15"
+                  ><span class="kontakt-text23"
+                    >Nutze das Kontaktformular via Goolge-Forms</span
                   ></fragment
                 ></span
-              ></div
-            ><div class="kontaktmglichkeiten-content2"
-              ><div class="kontaktmglichkeiten-row1"
-                ><svg viewBox="0 0 1024 1024" class="thq-icon-small">
-                  <path
-                    d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z"
-                  ></path></svg                ><a
-                  href="mailto:deingeschaeftskompass@outlook.de?subject="
-                  class="kontaktmglichkeiten-email1 thq-body-small"
-                  ><fragment class="kontakt-fragment14"
-                    ><span class="kontakt-text22"
-                      >deingeschaeftskompass@outlook.de</span
-                    ></fragment
-                  ></a
-                ></div
-              ><div class="kontaktmglichkeiten-row2"
-                ><svg width="24" height="24" viewBox="0 0 24 24">
-                  <g fill="none" fill-rule="evenodd">
-                    <path
-                      d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"
-                    ></path>
-                    <path
-                      d="M19 4a2 2 0 0 1 1.995 1.85L21 6v13a2 2 0 0 1-1.85 1.995L19 21H5a2 2 0 0 1-1.995-1.85L3 19V6a2 2 0 0 1 1.85-1.995L5 4zM8 16H5v3h3zm11 0h-9v3h9zM8 11H5v3h3zm11 0h-9v3h9zM8 6H5v3h3zm11 0h-9v3h9z"
-                      fill="currentColor"
-                    ></path>
-                  </g></svg                ><span class="thq-body-small"
-                  ><fragment class="kontakt-fragment15"
-                    ><span class="kontakt-text23"
-                      >Nutze das Kontaktformular via Goolge-Forms</span
-                    ></fragment
-                  ></span
-                ></div
-              ></div
-            ></div
-          ></kontaktmglichkeiten-wrapper
-        ><div class="kontakt-container2"
-          ><div class="kontakt-container3"
-            ><iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLScnvW7l_YBHq4pO3_Z0dujvT0iJE9-AKqTGqeF8NX5CfyKKTA/viewform?embedded=true"
-              width="640"
-              height="1200"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              >Loading…</iframe
-            ></div>
-        </div>
-
-         <fuzeile-wrapper class="fuzeile-wrapper">
-            <div class="thq-divider-horizontal"></div> <footer class="fuzeile-footer7 thq-section-padding">
-              <div class="fuzeile-max-width thq-section-max-width">
-                <div class="fuzeile-content">
-
-                  <div class="fuzeile-social-buttons">
-                    Folge Uns auf: 
-                    <a href="#" onclick="window.open(getShareUrl('instagram'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/instagram.webp" alt="Instagram" class="fuzeile-social-icon"/>
-                    </a>
-                    - oder teile deine Begeisterung auf:                    
-                    <a href="#" onclick="window.open(getShareUrl('facebook'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/facebook.webp" alt="Facebook" class="fuzeile-social-icon"/>
-                    </a>
-                    <a href="#" onclick="window.open(getShareUrl('reddit'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/reddit.webp" alt="Reddit" class="fuzeile-social-icon"/>
-                    </a>
-                    <a href="#" onclick="window.open(getShareUrl('whatsapp'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/whatsapp.webp" alt="WhatsApp" class="fuzeile-social-icon"/>
-                    </a>
-                    <a href="#" onclick="window.open(getShareUrl('tumblr'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon"/>
-                    </a>
-
-                    <a href="#" onclick="window.open(getShareUrl('wordpress'), '_blank'); return false;" class="fuzeile-social-button">
-                      <img src="public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon"/>
-                    </a>
-                    <button class="fuzeile-share-button" onclick="sharePage()">
-                      <img src="public/share.webp" alt="Teilen" class="fuzeile-social-icon"/>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="fuzeile-credits">
-                  <div class="fuzeile-row">
-                    <div class="fuzeile-container">
-                      </div>
-                    <div class="fuzeile-footer-links">
-                      <span class="thq-link">
-                        <fragment class="impressum-fragment7">
-                          <a href="Gut-zu-Wissen.html" class="thq-link">
-                            <span class="startseite-text269">Blog</span>
-                          </a>
-                        </fragment>
-                      </span>
-                      <span class="thq-link">
-                        <fragment class="impressum-fragment7">
-                          <a href="blog/Tools.html" class="thq-link">
-                            <span class="startseite-text269">Tools</span>
-                          </a>
-                        </fragment>
-                      </span>
-
-                      <span class="thq-link">
-                        <fragment class="impressum-fragment7">
-                          <a href="Widerrufsrecht.html" class="thq-link">
-                            <span class="startseite-text269">Widerrufsrecht</span>
-                          </a>
-                        </fragment>
-                      </span>
-                      <span class="thq-link">
-                        <fragment class="impressum-fragment7">
-                          <a href="datenschutz.html" class="thq-link">
-                            <span class="startseite-text269">Datenschutz</span>
-                          </a>
-                        </fragment>
-                      </span>
-                      <span class="thq-link">
-                        <fragment class="impressum-fragment7">
-                          <a href="impressum.html" class="thq-link">
-                            <span class="startseite-text268">Impressum</span>
-                          </a>
-                        </fragment>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </footer>
-          </fuzeile-wrapper>
+              >
+            </div>
+          </div>
+        </div></kontaktmglichkeiten-wrapper
+      >
+      <div class="kontakt-container2">
+        <div class="kontakt-container3">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScnvW7l_YBHq4pO3_Z0dujvT0iJE9-AKqTGqeF8NX5CfyKKTA/viewform?embedded=true"
+            width="640"
+            height="1200"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            >Loading…</iframe
+          >
         </div>
       </div>
 
-      <script>
+      <fuzeile-wrapper class="fuzeile-wrapper">
+        <div class="thq-divider-horizontal"></div>
+        <footer class="fuzeile-footer7 thq-section-padding">
+          <div class="fuzeile-max-width thq-section-max-width">
+            <div class="fuzeile-content">
+              <div class="fuzeile-social-buttons">
+                Folge Uns auf:
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('instagram'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img
+                    src="public/instagram.webp"
+                    alt="Instagram"
+                    class="fuzeile-social-icon"
+                  />
+                </a>
+                - oder teile deine Begeisterung auf:
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('facebook'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img
+                    src="public/facebook.webp"
+                    alt="Facebook"
+                    class="fuzeile-social-icon"
+                  />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('reddit'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img
+                    src="public/reddit.webp"
+                    alt="Reddit"
+                    class="fuzeile-social-icon"
+                  />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('whatsapp'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img
+                    src="public/whatsapp.webp"
+                    alt="WhatsApp"
+                    class="fuzeile-social-icon"
+                  />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('tumblr'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img
+                    src="public/tumblr.webp"
+                    alt="Tumblr"
+                    class="fuzeile-social-icon"
+                  />
+                </a>
+
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('wordpress'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img
+                    src="public/wordpress.webp"
+                    alt="WordPress"
+                    class="fuzeile-social-icon"
+                  />
+                </a>
+                <button class="fuzeile-share-button" onclick="sharePage()">
+                  <img
+                    src="public/share.webp"
+                    alt="Teilen"
+                    class="fuzeile-social-icon"
+                  />
+                </button>
+              </div>
+            </div>
+
+            <div class="fuzeile-credits">
+              <div class="fuzeile-row">
+                <div class="fuzeile-container"></div>
+                <div class="fuzeile-footer-links">
+                  <span class="thq-link">
+                    <fragment class="impressum-fragment7">
+                      <a href="Gut-zu-Wissen.html" class="thq-link">
+                        <span class="startseite-text269">Blog</span>
+                      </a>
+                    </fragment>
+                  </span>
+                  <span class="thq-link">
+                    <fragment class="impressum-fragment7">
+                      <a href="blog/Tools.html" class="thq-link">
+                        <span class="startseite-text269">Tools</span>
+                      </a>
+                    </fragment>
+                  </span>
+
+                  <span class="thq-link">
+                    <fragment class="impressum-fragment7">
+                      <a href="Widerrufsrecht.html" class="thq-link">
+                        <span class="startseite-text269">Widerrufsrecht</span>
+                      </a>
+                    </fragment>
+                  </span>
+                  <span class="thq-link">
+                    <fragment class="impressum-fragment7">
+                      <a href="datenschutz.html" class="thq-link">
+                        <span class="startseite-text269">Datenschutz</span>
+                      </a>
+                    </fragment>
+                  </span>
+                  <span class="thq-link">
+                    <fragment class="impressum-fragment7">
+                      <a href="impressum.html" class="thq-link">
+                        <span class="startseite-text268">Impressum</span>
+                      </a>
+                    </fragment>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </fuzeile-wrapper>
+    </div>
+
+    <script>
       // Funktion zum Generieren der plattformspezifischen Share-URLs
       function getShareUrl(platform) {
         const url = encodeURIComponent(window.location.href);
         const title = encodeURIComponent(document.title);
         // Versuche, die Meta-Description zu bekommen, sonst leer
-        const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || '');
+        const description = encodeURIComponent(
+          document.querySelector('meta[name="description"]')?.content || "",
+        );
 
         switch (platform) {
-
-          case 'facebook':
+          case "facebook":
             // Facebook Share URL: u= für die zu teilende URL
             return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
-          case 'reddit':
+          case "reddit":
             // Reddit Share URL: url und title
             return `https://www.reddit.com/submit?url=${url}&title=${title}`;
-          case 'whatsapp':
+          case "whatsapp":
             // WhatsApp Share URL: text (Titel + URL)
             return `https://wa.me/?text=${title}%20${url}`;
-          case 'tumblr':
+          case "tumblr":
             // Tumblr Share URL: posttype=link, title und content
             // Du kannst auch posttype=quote oder posttype=text verwenden
             return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
-          case 'instagram':
+          case "instagram":
             return `https://www.instagram.com/deingeschaeftskompass/`;
-          case 'wordpress':
+          case "wordpress":
             // WordPress.com Share URL: link und title
             return `https://wordpress.com/create/post?url=${url}&title=${title}`;
           default:
             console.warn("Unbekannte Plattform für Teilen-URL:", platform);
-            return '#'; // Fallback
+            return "#"; // Fallback
         }
       }
 
@@ -439,36 +610,36 @@
       function sharePage() {
         if (navigator.share) {
           // Wenn der Browser die native Share-API unterstützt
-          navigator.share({
-            title: document.title,
-            text: 'Schau dir diese Seite an: ' + document.title,
-            url: window.location.href,
-          })
-          .then(() => console.log('Erfolgreich geteilt!'))
-          .catch((error) => console.log('Fehler beim Teilen:', error));
+          navigator
+            .share({
+              title: document.title,
+              text: "Schau dir diese Seite an: " + document.title,
+              url: window.location.href,
+            })
+            .then(() => console.log("Erfolgreich geteilt!"))
+            .catch((error) => console.log("Fehler beim Teilen:", error));
         } else {
           // Fallback für Browser, die die native Share-API nicht unterstützen
-          alert('Ihr Browser unterstützt die native Share-Funktion nicht direkt. Bitte kopieren Sie den Link manuell: ' + window.location.href);
-
+          alert(
+            "Ihr Browser unterstützt die native Share-Funktion nicht direkt. Bitte kopieren Sie den Link manuell: " +
+              window.location.href,
+          );
         }
       }
-      </script>
-
-
-      <script>
-        function toggleMobileMenuRest() {
-            const mobileMenu = document.getElementById('mobileMenuRest');
-            const mainContent = document.getElementById('mainContent');
-            mobileMenu.classList.toggle('open');
-  
-            if (mobileMenu.classList.contains('open')) {
-                mainContent.style.marginTop = 'auto'; // Oder die Höhe, die dein geöffnetes Menü einnimmt
-            } else {
-                mainContent.style.marginTop = '0';
-            }
-        }
     </script>
 
+    <script>
+      function toggleMobileMenuRest() {
+        const mobileMenu = document.getElementById("mobileMenuRest");
+        const mainContent = document.getElementById("mainContent");
+        mobileMenu.classList.toggle("open");
 
-</body
-></html>
+        if (mobileMenu.classList.contains("open")) {
+          mainContent.style.marginTop = "auto"; // Oder die Höhe, die dein geöffnetes Menü einnimmt
+        } else {
+          mainContent.style.marginTop = "0";
+        }
+      }
+    </script>
+  </body>
+</html>
