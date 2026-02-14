@@ -1,7 +1,5 @@
 User-agent: Googlebot
-Disallow: /impressum/
-Disallow: /datenschutz/
+
 Disallow: /blog/Partner/
-Disallow: /Verantwortung/
 Disallow: /QR/
 Disallow: /Quiz/
