@@ -1,5 +1,7 @@
-User-agent: Googlebot
+User-agent: *
 
 Disallow: /blog/Partner/
 Disallow: /QR/
 Disallow: /Quiz/
+
+Sitemap: https://xn--deingeschftskompass-pwb.de/sitemap.xml

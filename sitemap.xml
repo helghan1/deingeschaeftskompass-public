@@ -6,233 +6,238 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-    <loc>https://deingeschäftskompass.de/</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/</loc>
     <lastmod>2025-06-20T14:37:00+00:00</lastmod>
     <priority>1.0</priority>
 </url>
 <url>
-    <loc>https://deingeschäftskompass.de/mehr-erfahren</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/mehr-erfahren</loc>
     <lastmod>2025-05-18T15:05:30+00:00</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/kontakt</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/kontakt</loc>
     <lastmod>2025-04-18T08:04:35+00:00</lastmod>
-    <priority>0.90</priority>
+    <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/preise</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/preise</loc>
     <lastmod>2025-06-18T17:10:00+00:00</lastmod>
-    <priority>0.60</priority>
+    <priority>0.40</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/gut-zu-wissen</loc>
-    <lastmod>2025-07-10T12:53:00+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/dein-effizienz-radar</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/dein-effizienz-radar/intensiv-radar</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/dein-effizienz-radar/schnell-radar</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/dein-effizienz-radar/kompakt-radar</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/tools</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/dein-strategie-navigator</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.70</priority>
-  </url>
-    <url>
-    <loc>https://deingeschäftskompass.de/blog/kalkulator</loc>
-    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
-    <priority>0.70</priority>
-</url>
-  <url>
-    <loc>https://deingeschäftskompass.de/blog/einleitung</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/gut-zu-wissen</loc>
     <lastmod>2025-07-10T12:53:00+00:00</lastmod>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/controlling-arten</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/dein-effizienz-radar</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/dein-effizienz-radar/intensiv-radar</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/dein-effizienz-radar/schnell-radar</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/dein-effizienz-radar/kompakt-radar</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/tools</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/dein-strategie-navigator</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+    <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/kalkulator</loc>
+    <lastmod>2025-06-20T14:37:00+00:00</lastmod>
+    <priority>0.70</priority>
+</url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/einleitung</loc>
+    <lastmod>2025-07-10T12:53:00+00:00</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-arten</loc>
     <lastmod>2026-02-07T16:17:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/controlling-in-kleinunternehmen</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-in-kleinunternehmen</loc>
     <lastmod>2025-09-07T14:16:00+00:00</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/controlling-definition</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-definition</loc>
     <lastmod>2026-02-04T12:53:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/zeitmanagement-methoden</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/zeitmanagement-methoden</loc>
     <lastmod>2025-07-10T13:43:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/eisenhower-matrix</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/eisenhower-matrix</loc>
     <lastmod>2025-07-11T10:53:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/rentabilität-erklärt</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/rentabilität-erklärt</loc>
     <lastmod>2025-07-11T15:20:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/rentabilität-steigern</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/rentabilität-steigern</loc>
     <lastmod>2025-07-13T17:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/betriebswirtschaftliche-kennzahlen</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/betriebswirtschaftliche-kennzahlen</loc>
     <lastmod>2025-07-15T10:30:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/controlling-organisation</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-organisation</loc>
     <lastmod>2026-02-03T08:15:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/kalkulation-einfach-erklärt</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/kalkulation-einfach-erklärt</loc>
     <lastmod>2025-07-16T20:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/controlling-instrumente</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-instrumente</loc>
     <lastmod>2026-02-02T11:42:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/finanzplanung</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/finanzplanung</loc>
     <lastmod>2025-07-21T12:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/finanzielle-probleme</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/finanzielle-probleme</loc>
     <lastmod>2025-12-20T16:15:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>
-  <loc>https://deingeschäftskompass.de/blog/Unternehmenswachstum</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/Unternehmenswachstum</loc>
     <lastmod>2025-07-22T23:11:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>   
-  <loc>https://deingeschäftskompass.de/blog/produktivität-messen</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/produktivität-messen</loc>
     <lastmod>2025-07-23T10:03:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>  
-  <loc>https://deingeschäftskompass.de/blog/geschäftsstrategie</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/geschäftsstrategie</loc>
     <lastmod>2025-08-11T12:15:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-  <loc>https://deingeschäftskompass.de/blog/controlling-im-unternehmen</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-im-unternehmen</loc>
     <lastmod>2026-02-07T15:42:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>        
-  <loc>https://deingeschäftskompass.de/blog/controlling-im-unternehmen</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-im-unternehmen</loc>
     <lastmod>2026-02-07T15:42:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>
-  <loc>https://deingeschäftskompass.de/blog/controlling-resilienz</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-resilienz</loc>
     <lastmod>2026-02-07T17:16:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>  
-  <loc>https://deingeschäftskompass.de/blog/entscheidungsfindungsmodelle</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/entscheidungsfindungsmodelle</loc>
     <lastmod>2026-02-07T17:17:00+00:00</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
-  <loc>https://deingeschäftskompass.de/blog/influencer-finanzen</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/influencer-finanzen</loc>
     <lastmod>2025-08-16T18:52:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url> 
-  <loc>https://deingeschäftskompass.de/blog/prozessoptimierung-methoden</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/prozessoptimierung-methoden</loc>
     <lastmod>2025-08-17T09:02:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>   
   <url>   
-  <loc>https://deingeschäftskompass.de/blog/controlling-tipps</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-tipps</loc>
     <lastmod>2026-02-07T18:00:30+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>
-  <loc>https://deingeschäftskompass.de/blog/selbstständig-ohne-idee</loc>
+  <loc>https://xn--deingeschftskompass-pwb.de/blog/selbstständig-ohne-idee</loc>
     <lastmod>2025-08-22T14:56:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>
-    <loc>https://deingeschäftskompass.de/blog/finanziell-am-ende-was-tun</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/finanziell-am-ende-was-tun</loc>
     <lastmod>2025-09-20T10:10:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
     <url>
-    <loc>https://deingeschäftskompass.de/blog/als-selbstständiger-beachten</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/als-selbstständiger-beachten</loc>
     <lastmod>2025-08-30T18:11:03+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/betriebseffizienz</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/betriebseffizienz</loc>
     <lastmod>2025-10-04T14:24:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/liquiditätsplanung-definition</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/liquiditätsplanung-definition</loc>
     <lastmod>2025-09-03T06:13:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/besten-controlling-tools</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/besten-controlling-tools</loc>
     <lastmod>2026-02-02T13:53:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/controlling-kennzahlen</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/controlling-kennzahlen</loc>
     <lastmod>2026-02-01T08:18:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/selbstständig-ohne-Ausbildung</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/selbstständig-ohne-Ausbildung</loc>
     <lastmod>2025-09-07T13:10:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschäftskompass.de/blog/finanzielle-krise</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/finanzielle-krise</loc>
     <lastmod>2025-09-14T15:15:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>  
   <url>
-    <loc>https://deingeschäftskompass.de/blog/finanzprobleme-lösung</loc>
+    <loc>https://xn--deingeschftskompass-pwb.de/blog/finanzprobleme-lösung</loc>
     <lastmod>2026-01-02T16:34:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
 </urlset>
+<url>
+<loc>https://xn--deingeschftskompass-pwb.de/blog/kalkulatorischer-unternehmerlohn-richtig-berechnen</loc>
+    <lastmod>2026-02-14T15:00:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
