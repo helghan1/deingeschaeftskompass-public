@@ -32,23 +32,23 @@
         content="summary_large_image"
     />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "Details zu den Beratungen - Dein Geschäftskompass",
-        "url": "https://deingeschaeftskompass.de/mehr-erfahren.html",
-        "description": "Erfahre, wie wir dein Unternehmen in Strategische Planung, Restrukturierung, Prozessanalyse & Change Management voranbringen.",
-        "mainEntity": {
-          "@type": "Organization",
-          "name": "Dein Geschäftskompass",
-          "url": "https://deingeschaeftskompass.de/",
-          "logo": "https://deingeschaeftskompass.de/public/logo.webp",
-          "description": "Beratung für Unternehmensstrategie, Prozessoptimierung & Restrukturierung – für kleine Unternehmen und Selbstständige.",
-          "email": "deingeschaeftskompass@outlook.de"
-        }
-      }
-      </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Details zu den Beratungen - Dein Geschäftskompass",
+  "url": "https://deingeschaeftskompass.de/mehr-erfahren.html",
+  "description": "Erfahre, wie wir dein Unternehmen in Strategische Planung, Restrukturierung, Prozessanalyse & Change Management voranbringen.",
+  "mainEntity": {
+    "@id": "https://deingeschaeftskompass.de/#organization",
+    "name": "Dein Geschäftskompass"
+  },
+  "accountablePerson": {
+    "@id": "https://deingeschaeftskompass.de/team/kay-beerbaum/#person",
+    "name": "Kay Beerbaum"
+  }
+}
+</script>
 
 
     <style data-tag="reset-style-sheet"></style>
@@ -99,7 +99,7 @@
             <header
                 class="kopfzeile-rest-container kopfzeile-restroot-class-name"
             >
-                <header
+                <section
                     data-thq="thq-navbar"
                     class="kopfzeile-rest-navbar-interactive"
                 >
@@ -127,7 +127,7 @@
 
                             <div class="kopfzeile-start-buttons">
                               <a
-                                  href="Gut-zu-Wissen.html"
+                                  href="gut-zu.wissen.html"
                                   class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
                               >
                                   <span>
@@ -140,7 +140,7 @@
 
                           <div class="kopfzeile-start-buttons">
                               <a
-                                  href="Verantwortung.html"
+                                  href="verantwortung.html"
                                   class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
                               >
                                   <span>
@@ -153,7 +153,7 @@
                           
                           <div class="kopfzeile-start-buttons">
                             <a
-                                href="Preise.html"
+                                href="preise.html"
                                 class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
                             >
                                 <span>
@@ -204,17 +204,16 @@
                     >
                         <a href="index.html">Startseite</a>
                         <a href="gut-zu-wissen.html">Gut zu Wissen</a>
-                        <a href="Verantwortung.html">Verantwortung</a>
+                        <a href="verantwortung.html">Verantwortung</a>
                         <a href="preise.html">Preise</a>
                         <a href="mehr-erfahren.html">Mehr Erfahren</a>
                         <a href="kontakt.html">Kontakt</a>
                     </div>
-                </header>
+                  </section>
             </header>
-        </kopfzeile-rest-wrapper>
-              
-        <ber-uns-wrapper class="ber-uns-wrapper">
-          
+        </kopfzeile-rest-wrapper>     
+
+        <ber-uns-wrapper class="ber-uns-wrapper">          
           <!--BerUns component--><div
             id="Über-Uns"
             class="ber-uns-layout251 thq-section-padding"
@@ -356,29 +355,30 @@
                 </div>
                   
                   <div class="ber-uns-content5 thq-flex-column" style="text-align: left; margin-top: 0;">
-                  <p class="thq-heading-4">
-                    <fragment class="mehr-erfahren-fragment18">
-                      <span class="mehr-erfahren-text110">Dein Geschäftskompass ...</span>
-                    </fragment>
-                  </p>
-                  <div style="display: flex; align-items: flex-end; width: 100%;">
-                    <img
-                      alt="Dein Geschäftskompass – Unterstützung auch bei Prozessoptimierung."
-                      src="public/Logo.webp"
-                      class="thq-img-ratio-1-1 paket-beispiel-image"
-                      style="width: 30%; height: auto; margin-right: 20px;"
-                    />
-                  <p class="thq-heading-4" style="text-align: right; margin-bottom: 0; word-wrap: break-word;">
-                    <fragment class="mehr-erfahren-fragment18">
-                      <span class="mehr-erfahren-text110">
-                        <span>... Die Freiheit der Selbstständigkeit, die Sicherheit der Gemeinschaft: </span><br />
-                        <span>Warum gezielte Unterstützung den Unterschied macht</span
-                        ><br /></span></fragment
-                      >
-                  </p>
-                  </div>
+                    <p class="thq-heading-4">
+                      <fragment class="mehr-erfahren-fragment18">
+                        <span class="mehr-erfahren-text110">Dein Geschäftskompass ...</span>
+                      </fragment>
+                    </p>
+                    <div style="display: flex; align-items: flex-end; width: 100%;">
+                      <img
+                        alt="Dein Geschäftskompass – Unterstützung auch bei Prozessoptimierung."
+                        src="public/Logo.webp"
+                        class="thq-img-ratio-1-1 paket-beispiel-image"
+                        style="width: 30%; height: auto; margin-right: 20px;"
+                      />
+                    <p class="thq-heading-4" style="text-align: right; margin-bottom: 0; word-wrap: break-word;">
+                      <fragment class="mehr-erfahren-fragment18">
+                        <span class="mehr-erfahren-text110">
+                          <span>... Die Freiheit der Selbstständigkeit, die Sicherheit der Gemeinschaft: </span><br />
+                          <span>Warum gezielte Unterstützung den Unterschied macht</span
+                          ><br /></span></fragment
+                        >
+                    </p>
+                    </div>
                   </div>
 
+          
 <div class="blogbeitrag-author">
   <div class="blogbeitrag-text-content">
     <span class="blogbeitrag-text10 thq-body-small">
@@ -624,7 +624,8 @@
                             <div class="frage-mglichkeiten-content2">
                               <p class="frage-mglichkeiten-text12 thq-body-large" style="margin-bottom: 15px;">Du hast einen Sachverhalt für uns?</p>
                             </div>
-                            <a href="kontakt.html" class="frage-mglichkeiten-button thq-button-outline" style="padding: 10px 20px; border: 1px solid #008cbaff; color: #008cbaff; text-decoration: none; display: inline-block;">
+                            <a href="kontakt.html" class="frage-mglichkeiten-button thq-button-outline" 
+                            style="padding: 10px 20px; border: 1px solid #008cbaff; color: #008cbaff; text-decoration: none; display: inline-block;">
                               <span class="thq-body-small">kontaktiere Uns</span>
                             </a>
                             <div class="frage-mglichkeiten-container2"></div>
@@ -744,7 +745,7 @@
                         </div>
                       </div>
                     </paket-beispiel-wrapper>
-
+                  </ber-uns-wrapper>
       <!--Gründer box component-->
       <div id="author-placeholder" class="author-accordion-container">
         <div class="author-header kopfzeile-rest-action2 thq-button-animated thq-button-outline" onclick="toggleAuthorBox()">
@@ -827,7 +828,7 @@
                     <div class="fuzeile-footer-links">
                       <span class="thq-link">
                         <fragment class="impressum-fragment7">
-                          <a href="Gut-zu-Wissen.html" class="thq-link">
+                          <a href="gut-zu.wissen.html" class="thq-link">
                             <span class="startseite-text269">Blog</span>
                           </a>
                         </fragment>
@@ -869,6 +870,7 @@
           </fuzeile-wrapper>
         </div>
       </div>
+      
 
       <script>
       // Funktion zum Generieren der plattformspezifischen Share-URLs
