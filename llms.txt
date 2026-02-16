@@ -1,5 +1,5 @@
 # llms.txt — Steuerungsdatei für KI-Crawler und LLMs
-Domain: deingeschäftskompass.de
+Domain: deingeschaeftskompass.de
 Erstellt: Oktober 2025
 Zweck: Schutz und kontrollierte Nutzung der Inhalte dieser Website durch KI-Systeme
 
