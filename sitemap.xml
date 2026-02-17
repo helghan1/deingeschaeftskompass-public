@@ -96,12 +96,12 @@
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschaeftskompass.de/blog/rentabilität-erklärt</loc>
+    <loc>https://deingeschaeftskompass.de/blog/rentabilitaet-erklaert</loc>
     <lastmod>2025-07-11T15:20:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://deingeschaeftskompass.de/blog/rentabilität-steigern</loc>
+    <loc>https://deingeschaeftskompass.de/blog/rentabilitaet-steigern</loc>
     <lastmod>2025-07-13T17:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
@@ -151,11 +151,6 @@
     <priority>0.70</priority>
   </url>
   <url>
-  <loc>https://deingeschaeftskompass.de/blog/controlling-im-unternehmen</loc>
-    <lastmod>2026-02-07T15:42:00+00:00</lastmod>
-    <priority>0.70</priority>
-  </url> 
-  <url>        
   <loc>https://deingeschaeftskompass.de/blog/controlling-im-unternehmen</loc>
     <lastmod>2026-02-07T15:42:00+00:00</lastmod>
     <priority>0.70</priority>
@@ -235,9 +230,9 @@
     <lastmod>2026-01-02T16:34:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
-</urlset>
-<url>
-<loc>https://deingeschaeftskompass.de/blog/kalkulatorischer-unternehmerlohn-richtig-berechnen</loc>
+  <url>
+    <loc>https://deingeschaeftskompass.de/blog/kalkulatorischer-unternehmerlohn-richtig-berechnen</loc>
     <lastmod>2026-02-14T15:00:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
+</urlset>
