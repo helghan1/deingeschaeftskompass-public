@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /blog/Partner/
+Disallow: /QR/
+Disallow: /Quiz/
+
+Sitemap: https://deingeschaeftskompass.de/sitemap.xml
