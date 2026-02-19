@@ -31,26 +31,6 @@
 
     <style data-tag="reset-style-sheet"></style>
 
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 12px;
-      }
-
-      body {
-        font-weight: 100;
-        font-style: normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-theme-neutral-dark);
-        background: var(--dl-color-theme-neutral-light);
-
-        fill: var(--dl-color-theme-neutral-dark);
-      }
-    </style>
-
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/impressum.css" />
@@ -153,36 +133,34 @@
           </header>
         </header>
       </section>
+      <div class="content-wrapper">
+        <h1 class="impressum-text-heading1 thq-heading-2">
+          <p>Impressum</p>
+        </h1>
 
-      <impressum-text-wrapper class="impressum-text-wrapper" rootclassname="impressum-textundefined"
-        ><!--ImpressumText component-->
-        <div class="impressum-text-container thq-section-padding impressum-textroot-class-name">
-          <ul class="impressum-text-ul thq-flex-column">
-            <li class="thq-flex-column list-item">
-              <h2 class="impressum-text-heading1 thq-heading-2">
-                <span class="impressum-fragment4"><span class="impressum-text13">Impressum</span></span>
-              </h2>
-              <p class="thq-body-small">
-                <span class="impressum-fragment5"
-                  ><span class="impressum-text14"
-                    ><span>Angaben gemäß § 5 TMG</span><br /><br /><span class="impressum-text18"
-                      >Dein Geschäftskompass</span
-                    ><br class="impressum-text19" /><span
-                      >Inhaber &amp; Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</span
-                    ><br /><span> Kay Beerbaum</span><br /><span>Ziekowstraße 119</span><br /><span>13509 Berlin</span
-                    ><br /><span>Deutschland</span><br /><br /><span class="impressum-text31">Kontakt:</span
-                    ><br class="impressum-text32" /><span>E-Mail: deingeschaeftskompass@outlook.de</span><br /><span
-                      >Website: www.deingeschaeftskompass.de</span
-                    ><br /><br /><span class="impressum-text38">Umsatzsteuer-ID:</span
-                    ><br class="impressum-text39" /><span
-                      >Nicht umsatzsteuerpflichtig gemäß § 19 UStG (Kleinunternehmerregelung)</span
-                    ><br /><br /><br /></span
-                ></span>
-              </p>
-            </li>
-          </ul>
-        </div>
-      </impressum-text-wrapper>
+        <p>Angaben gemäß § 5 TMG</p>
+
+        <h2>Dein Geschäftskompass</h2>
+
+        <p>
+          Inhaber &amp; Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br />
+          Kay Beerbaum<br />
+          Ziekowstraße 119<br />
+          13509 Berlin<br />
+          Deutschland
+        </p>
+
+        <p>
+          Kontakt:<br />
+          E-Mail: deingeschaeftskompass@outlook.de<br />
+          Website: www.deingeschaeftskompass.de
+        </p>
+
+        <p>
+          Umsatzsteuer-ID:<br />
+          Nicht umsatzsteuerpflichtig gemäß § 19 UStG (Kleinunternehmerregelung)
+        </p>
+      </div>
 
       <!--Fuzeile component-->
       <fuzeile-wrapper class="fuzeile-wrapper">
