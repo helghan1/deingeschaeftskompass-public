@@ -1,23 +1,14 @@
-.impressum-text-heading1,
-.impressum-text14 {
+.impressum-text-heading1 {
   overflow-wrap: break-word;
   hyphens: auto;
   word-break: normal;
 }
 .fuzeile-container,
-.fuzeile-logo,
-.impressum-container2 {
+.fuzeile-logo {
   border: 2px dashed rgba(120, 120, 120, 0.4);
 }
 .fuzeile-wrapper,
-.impressum-fragment1,
-.impressum-fragment2,
-.impressum-fragment3,
-.impressum-fragment4,
-.impressum-fragment5,
-.impressum-fragment6,
-.impressum-fragment7,
-.impressum-text-wrapper {
+.impressum-fragment7 {
   display: contents;
 }
 .impressum-text-container {
@@ -106,36 +97,6 @@
     justify-content: center;
   }
 }
-.impressum-container1 {
-  width: 100%;
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-}
-.impressum-container2 {
-  width: 100%;
-  display: flex;
-  position: sticky;
-  justify-content: center;
-  background-color: var(--dl-color-theme-neutral-light);
-}
-.impressum-text10,
-.impressum-text11,
-.impressum-text12,
-.impressum-text13,
-.impressum-text14,
-.impressum-text44,
-.impressum-text45,
-.impressum-text46 {
+.impressum-text14 {
   display: inline-block;
-}
-.impressum-text18,
-.impressum-text19,
-.impressum-text31,
-.impressum-text32,
-.impressum-text38,
-.impressum-text39 {
-  font-style: normal;
-  font-weight: 400;
 }
