@@ -39,17 +39,7 @@
     width: 100%;
   }
 }
-.ablauf-wrapper,
-.fuzeile-wrapper,
-.leistungen1-wrapper,
-.leistungen2-wrapper,
-.leistungen3-wrapper,
-.preise-wrapper,
-.slogan-container2,
-.slogan-wrapper,
-.startseite-fragment17 {
-  display: contents;
-}
+
 .slogan-header78 {
   gap: var(--dl-layout-space-threeunits);
   width: 100%;
