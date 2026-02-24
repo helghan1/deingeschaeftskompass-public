@@ -60,10 +60,8 @@
       }
     </style>
 
-    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
-
     <link rel="stylesheet" href="webfonts.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link href="./index.css" rel="stylesheet" />
   </head>
   <body>
@@ -161,183 +159,104 @@
         </header>
       </section>
 
-      <!--Preise component-->
-      <section class="preise-wrapper" rootclassname="preiseundefined">
-        <div id="PreisID" class="preise-pricing23 thq-section-padding preiseroot-class-name">
+      <section class="preise-wrapper">
+        <div class="preise-pricing23 thq-section-padding">
           <div class="preise-max-width thq-section-max-width">
             <div class="preise-section-title">
-              <span class="preise-text10 thq-body-small"
-                ><span class="startseite-fragment17"><span>Wähle deine Analyse</span></span></span
-              >
-              <div id="PreisID" class="preise-content">
-                <h1 class="preise-text11 thq-heading-2">
-                  <span class="startseite-fragment17"><span>Analyse-Optionen & Preise</span></span>
-                </h1>
+              <span class="thq-body-small">Wähle deine Analyse</span>
+              <h1 class="thq-heading-2">Analyse-Optionen & Preise</h1>
+              <div class="preise-intro-text thq-body-large">
+                <p>
+                  Damit wir dir echte Ergebnisse liefern können, prüfen wir deine Anfrage zunächst auf Umsetzbarkeit.
+                  Finden wir gemeinsam die ideale Analyse-Option für deine Anfrage, senden wir dir umgehend die
+                  Auftragsbestätigung und die Zahlungsinformationen zu, damit wir mit der Umsetzung starten können.
+                </p>
+                <p>
+                  Möchtest du deine kostenfreie Einsteiger-Beratung erhalten?
+                  <a href="kontakt.html" class="contact-link">Kontaktiere uns jetzt!</a>
+                </p>
               </div>
             </div>
 
-            <p class="preise-text12 thq-body-large">
-              <span class="startseite-fragment17"
-                ><span
-                  ><span>Damit wir dir echte Ergebnisse liefern können, </span
-                  ><span>prüfen wir deine Anfrage zunächst auf Umsetzbarkeit.&nbsp;</span><br />
-                  <span>
-                    Finden wir gemeinsam die ideale Analyse-Option für deine Anfrage, senden wir dir umgehend die
-                    Auftragsbestätigung und die Zahlungsinformationen zu,
-                  </span>
+            <div class="preise-container-grid">
+              <div class="preise-column thq-card">
+                <div class="column-content">
+                  <h3>Einsteiger für Neukunden</h3>
+                  <p class="price-tag">0€</p>
+                  <p class="price-description">
+                    Du brauchst eine klare Antwort auf eine einzelne, fokussierte Frage oder eine Einschätzung eines
+                    definierten Teilbereichs deines Anliegens<br /><br />
+                    Antwort innerhalb von 36 Stunden <br /><br />
+                    Maximal eine E-Mail-Antwort (ca. 150-200 Wörter) – keine Nachfragen inklusive<br /><br />
+                    Keine Untersuchung, sondern kurze, praxisnahe Empfehlung
+                  </p>
+                </div>
+                <button class="thq-button-animated thq-button-outline" onclick="window.location.href = 'kontakt.html'">
+                  Lösung finden
+                </button>
+              </div>
+
+              <div class="preise-column accent thq-card">
+                <div class="column-content">
+                  <h3>QUICK CHECK</h3>
+                  <p class="price-tag">90€</p>
+                  <p class="price-description">
+                    Kurze Analyse einer spezifischen Fragestellung<br /><br />
+                    Antwort innerhalb von 3 Werktagen.<br /><br />
+                    Kurze schriftliche Auswertung max. eine A4 Seite<br /><br />
+                    Falls angefragt, detaillierte Lösungsalternativen oder fundierte Handlungsempfehlungen<br /><br />
+                    Inklusive von Rückfragen und Klärungen zu Inhalten per Mail
+                  </p>
+                </div>
+                <button class="thq-button-animated thq-button-outline" onclick="window.location.href = 'kontakt.html'">
+                  Lösung finden
+                </button>
+              </div>
+
+              <div class="preise-column dark thq-card">
+                <div class="column-content">
+                  <h3>DEEP DIVE</h3>
+                  <p class="price-tag">315€</p>
+                  <p class="price-description">
+                    Umfassende Themendurchleuchtung<br /><br />
+                    Bearbeitungszeit: Nur 1 Woche.<br /><br />
+                    Prägnanter kurzer Bericht mit klaren und praxisnahen Handlungsempfehlungen<br /><br />
+                    Inklusive von Rückfrage und telefonischer Klärung der Inhalte
+                  </p>
+                </div>
+                <button class="thq-button-animated thq-button-outline" onclick="window.location.href = 'kontakt.html'">
+                  Lösung finden
+                </button>
+              </div>
+
+              <div class="preise-column blue thq-card">
+                <div class="column-content">
+                  <h3>SYSTEM-AUDIT</h3>
+                  <p style="font-size: 24px">auf Anfrage</p>
                   <br />
-                  <span>damit wir mit der Umsetzung starten können.</span>
-                  <br
-                /></span>
-
-                <div>
-                  <p class="preise-text12 thq-body-large">
-                    <span class="startseite-fragment17">
-                      <span>
-                        <span>Möchtest du deine kostenfreie Einsteiger-Beratung erhalten?</span>
-                      </span>
-                    </span>
-                  </p>
-                  <p class="preise-text38 thq-body-large" style="font-style: italic">
-                    <span><a href="kontakt.html">Kontaktiere uns jetzt!</a></span>
+                  <p class="price-description">
+                    Detaillierte Analyse komplexer Unternehmenssituationen via E-Mail, Telefon und Teams<br /><br />
+                    Bearbeitungszeit und Betreuungszeit individuell<br /><br />
+                    Umfassender Beratungsbericht inklusive ausführlicher Handlungsempfehlungen und individuelle
+                    Erstellung von Vorlagen in Excel, Word oder PowerPoint<br /><br />
+                    Eine Feedback-Runde mit Anpassungen der Inhalte<br /><br />
+                    Follow-up per E-Mail oder Teams zur Nachbesprechung
                   </p>
                 </div>
-              </span>
-            </p>
-
-            <div class="preise-container1">
-              <div class="preise-column1 thq-card">
-                <div class="preise-price1">
-                  <div class="preise-price2">
-                    <p class="preise-text13 thq-body-large">
-                      <span class="startseite-fragment17"><span>Einsteiger für Neukunden</span></span>
-                    </p>
-                    <p class="preise-text14 thq-heading-3">
-                      <span class="startseite-fragment17"><span>0€</span></span>
-                    </p>
-                    <p class="preise-text16">
-                      <span class="startseite-fragment17"
-                        ><span>
-                          <span
-                            >Du brauchst eine klare Antwort auf eine einzelne, fokussierte Frage oder eine Einschätzung
-                            eines definierten Teilbereichs deines Anliegens</span
-                          ><br /><br /><span>Antwort innerhalb von 36 Stunden </span><br /><br /><span
-                            >Maximal eine E-Mail-Antwort (ca. 150-200 Wörter) – keine Nachfragen inklusive</span
-                          ><br /><br /><span>Keine Untersuchung, sondern kurze, praxisnahe Empfehlung</span><br /></span
-                      ></span>
-                    </p>
-                  </div>
-                </div>
-                <button
-                  class="preise-button1 thq-button-animated thq-button-outline"
-                  onclick="window.location.href = 'kontakt.html'"
+                <a href="kontakt.html" class="thq-button-filled thq-button-animated" style="border-color: black"
+                  >Analyse anfragen</a
                 >
-                  <span class="thq-body-small">
-                    <span>Lösung finden</span>
-                  </span>
-                </button>
-              </div>
-              <div class="preise-column2 thq-card">
-                <div class="preise-price3">
-                  <div class="preise-price4">
-                    <p class="preise-text18 thq-body-large">
-                      <span class="startseite-fragment17"><span>QUICK CHECK</span></span>
-                    </p>
-                    <p class="preise-text19 thq-heading-3">
-                      <span class="startseite-fragment17"><span>90€</span></span>
-                    </p>
-                    <p class="preise-text21">
-                      <span class="startseite-fragment17"
-                        ><span
-                          ><span>Kurze Analyse einer spezifischen Fragestellung</span><br /><br /><span
-                            >Antwort innerhalb von 3 Werktagen.</span
-                          ><br /><br /><span>Kurze schriftliche Auswertung max. eine A4 Seite</span><br /><span> </span
-                          ><br /><span
-                            >Falls angefragt, detaillierte Lösungsalternativen oder fundierte
-                            Handlungsempfehlungen</span
-                          ><br /><br /><span> </span
-                          ><span>Inklusive von Rückfragen und Klärungen zu Inhalten per Mail</span><br /><br /><span
-                            >&nbsp;</span
-                          ><br /><br /><br />
-                          <span> </span></span
-                      ></span>
-                    </p>
-                  </div>
-                </div>
-                <button
-                  class="preise-button1 thq-button-animated thq-button-outline"
-                  onclick="window.location.href = 'kontakt.html'"
-                >
-                  <span class="thq-body-small">
-                    <span class="startseite-text163">Lösung finden</span>
-                  </span>
-                </button>
-              </div>
-              <div class="preise-column3 thq-card">
-                <div class="preise-price5">
-                  <div class="preise-price6">
-                    <p class="preise-text23 thq-body-large">
-                      <span class="startseite-fragment17"><span class="startseite-text149">DEEP DIVE</span></span>
-                    </p>
-                    <p class="preise-text24 thq-heading-3">
-                      <span class="startseite-fragment17"><span class="startseite-text162">315€</span></span>
-                    </p>
-                    <div class="preise-container2">
-                      <p class="preise-text26">
-                        Umfassende Themendurchleuchtung<br /><br />
-                        Bearbeitungszeit: Nur 1 Woche.<br /><br />
-                        Prägnanter kurzer Bericht mit klaren und praxisnahen Handlungsempfehlungen<br /><br />
-                        Inklusive von Rückfrage und telefonischer Klärung der Inhalte<br /><br />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  class="preise-button1 thq-button-animated thq-button-outline"
-                  onclick="window.location.href = 'kontakt.html'"
-                >
-                  <span class="thq-body-small">
-                    <span class="startseite-text163">Lösung finden</span>
-                  </span>
-                </button>
-              </div>
-              <div class="preise-column4 thq-card">
-                <div class="preise-price7">
-                  <div class="preise-price8">
-                    <p class="preise-text28 thq-body-large">
-                      <span class="startseite-fragment17"><span class="startseite-text150">STRATEGIE-BOOST</span></span>
-                    </p>
-                    <p class="preise-text29 thq-heading-3">
-                      <span class="startseite-fragment17"
-                        ><span class="startseite-text170"><span>auf </span><br /><span>Anfrage</span></span></span
-                      >
-                    </p>
-                    <p class="preise-text31">
-                      Detaillierte Analyse komplexer Unternehmenssituationen via E-Mail, Telefon und Teams<br /><br />
-                      Bearbeitungszeit und Betreuungszeit individuell<br /><br />
-                      Umfassender Beratungsbericht inklusive ausführlicher Handlungsempfehlungen und individuelle
-                      Erstellung von Vorlagen in Excel, Word oder PowerPoint<br /><br />
-                      Eine Feedback-Runde mit Anpassungen der Inhalte<br /><br />
-                      Follow-up per E-Mail oder Teams zur Nachbesprechung<br />
-                    </p>
-                  </div>
-                </div>
-                <a href="kontakt.html" class="preise-button4 thq-button-filled thq-button-animated">
-                  <span class="thq-body-small">
-                    <span class="startseite-text192">Analyse anfragen</span>
-                  </span>
-                </a>
               </div>
             </div>
-            <div class="preise-container3">
-              <p class="preise-text33 thq-body-large">
-                <span
-                  >Wir begleiten dich gerne dabei, die passende Analyse-Optionen zu finden. Sollte deine Anfrage von der
+
+            <div class="preise-section-title">
+              <div class="preise-intro-text thq-body-large">
+                <p style="font-size: 14px">
+                  Wir begleiten dich gerne dabei, die passende Analyse-Optionen zu finden. Sollte deine Anfrage von der
                   Standardbeschreibung der Option abweichen, klären wir im persönlichen Austausch, welches Angebot
                   optimal für dich ist. Selbstverständlich unverbindlich.
-                </span>
-                <br />
-              </p>
+                </p>
+              </div>
             </div>
           </div>
         </div>
