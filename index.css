@@ -766,3 +766,8 @@
   color: #008cba;
   text-decoration: none;
 }
+.testimonial-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

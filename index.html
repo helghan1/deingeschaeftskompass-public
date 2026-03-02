@@ -39,8 +39,7 @@
       },
       "sameAs": [
         "https://www.instagram.com/deingeschaeftskompass/",
-        "https://www.reddit.com/r/deingeschaeftskompass/",
-        "https://www.xing.com/profile/Kay_Beerbaum"
+        "https://www.reddit.com/r/deingeschaeftskompass/"
       ]
     },
     {
@@ -55,6 +54,28 @@
         "https://www.xing.com/profile/Kay_Beerbaum"
       ],
       "knowsAbout": ["Controlling", "Unternehmenssteuerung", "Kostenmanagement", "Prozessoptimierung", "Six Sigma", "Unternehmensführung", "SAP", "Power BI"]
+    },
+    {
+      "@type": "Service",
+      "name": "Unternehmensberatung & Prozessoptimierung",
+      "provider": { "@id": "https://deingeschaeftskompass.de/#organization" },
+      "areaServed": "DE",
+      "description": "Beratung zur Senkung von Kosten und Optimierung betrieblicher Abläufe.",
+      "review": {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Inhaberin Süss",
+          "jobTitle": "Selbständige Bäckerin"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Vom Backen verstehe ich was, aber von Optimierung oder Kalkulationen nicht viel. Der Geschäftskompass hat mir geholfen, unrunde Abläufe zu erkennen. Nach der Umsetzung sind meine Kosten um 18% gesunken und Entscheidungen fallen sicherer. Klare Weiterempfehlung.",
+        "publisher": { "@id": "https://deingeschaeftskompass.de/#organization" }
+      }
     }
   ]
 }
@@ -456,7 +477,7 @@
   
                 
 <!--Ablauf component-->
-<ablauf-wrapper class="ablauf-wrapper" rootclassname="ablaufundefined">
+<section class="ablauf-wrapper" rootclassname="ablaufundefined">
     <div class="ablauf-container1 thq-section-padding ablaufroot-class-name">
       <div class="ablauf-container2">
         <div>
@@ -536,15 +557,45 @@
             </a>
         </p>
     </div>
-</ablauf-wrapper>
+  </section>
 
-            
+      <section class="preise-wrapper">
+        <div class="preise-pricing23 thq-section-padding">
+          <div class="preise-max-width thq-section-max-width">
+              <h3 class="thq-heading-2">Erfahrungsberichte</h3>
+              <div class="testimonial-container">
+                <img
+                    alt="Süss Logo einer selbständigen Bäckerin, die von der Beratung durch den Geschäftskompass profitiert hat."
+                    src="public/Süss_Logo.webp"
+                    class="preise-kundenstimmen-image thq-img-ratio-16-9"
+                    width="100" height="100"
+                />
+                <p style="border: 0.25px solid #008cbaff; padding: 10px;">
+                  <b style="color: #008cbaff;">Selbständige Bäckerin:</b> <i>Vom Backen verstehe ich was, aber von Optimierung, Kalkulationen oder irgendwelchen
+                  Budgetplanungen ehrlich gesagt nicht besonders viel. Den Geschäftskompass habe ich über eines der gratis Tools entdeckt und dann einfach ausprobiert. 
+                  Dabei wurde mir klar, dass der Laden bei mir unrund läuft.                  
+                  Also habe ich eine kostenlose Erstberatung angefragt. Man hat mir verschiedene Möglichkeiten erklärt. 
+                  Verständlich und ohne Fachchinesisch. Nach einer zweiten tieferen Analyse habe ich mir dann Zeit gelassen, 
+                  um alles sacken zu lassen. Am Ende habe ich einen der vorgeschlagenen Wege umgesetzt. 
+                  <u>Und ich muss sagen:</u> Es hat sich gelohnt. Ich treffe meine Entscheidungen heute
+                  sicherer und schneller. Meine Finanzen sind übersichtlicher geworden. Kosten sind um 18% gesunken und
+                  meine Bestellungen laufen strukturierter. Ich bin wirklich dankbar für die Unterstützung. Für jemanden wie mich, der vom
+                  Handwerk kommt und nicht aus der Betriebswirtschaft, war das eine große Hilfe. Klare Weiterempfehlung.</i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br /><br />
+
+  
       <section class="preise-wrapper">
         <div class="preise-pricing23 thq-section-padding">
           <div class="preise-max-width thq-section-max-width">
             <div class="preise-section-title">
               <span class="thq-body-small">Wähle deine Analyse</span>
-              <h1 class="thq-heading-2">Analyse-Optionen & Preise</h1>
+              <h3 class="thq-heading-2">Analyse-Optionen & Preise</h3>
               <div class="preise-intro-text thq-body-large">
                 <p>
                   Damit wir dir echte Ergebnisse liefern können, prüfen wir deine Anfrage zunächst auf Umsetzbarkeit.
@@ -813,8 +864,9 @@
       <!-- Ende Autor box component-->
 
 
-          <fuzeile-wrapper class="fuzeile-wrapper">
-            <div class="thq-divider-horizontal"></div> <footer class="fuzeile-footer7 thq-section-padding">
+          <footer class="fuzeile-wrapper">
+           <div class="thq-divider-horizontal"></div> 
+            <span class="fuzeile-footer7 thq-section-padding">
               <div class="fuzeile-max-width thq-section-max-width">
                 <div class="fuzeile-content">
 
@@ -891,10 +943,11 @@
                   </div>
                 </div>
               </div>
-            </footer>
-          </fuzeile-wrapper>
+            </span>
+          </footer>
       </div>
-      </div></div>
+    </div>
+  </div>
 
       <script>
       // Funktion zum Generieren der plattformspezifischen Share-URLs
