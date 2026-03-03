@@ -65,6 +65,7 @@
   width: 100%;
 }
 .slogan-placeholder-image1,
+.slogan-placeholder-image2,
 .slogan-placeholder-image3,
 .slogan-placeholder-image4,
 .slogan-placeholder-image5,
@@ -74,12 +75,9 @@
 .slogan-placeholder-image9 {
   width: 400px;
   height: 400px;
-}
-.slogan-placeholder-image2 {
-  width: 400px;
-  height: 400px;
   display: block;
 }
+
 /* Ziel: Das A-Tag soll den gesamten verfügbaren Platz seines Eltern-Flex-Containers einnehmen */
 .leistungen1-image-container a,
 .leistungen3-image-container a {
