@@ -23,6 +23,12 @@
   }
 }
 
+/* wird es ausgeblendet */
+@media (max-width: 768px) {
+  .slogan-content2 {
+    display: none !important;
+  }
+}
 .slogan-header78 {
   gap: var(--dl-layout-space-threeunits);
   width: 100%;
