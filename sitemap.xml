@@ -88,12 +88,12 @@
   <url>
     <loc>https://deingeschaeftskompass.de/blog/zeitmanagement-methoden</loc>
     <lastmod>2026-02-27T19:43:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/eisenhower-matrix</loc>
     <lastmod>2026-02-24T10:53:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/rentabilitaet-erklaert</loc>
@@ -133,7 +133,7 @@
   <url>
     <loc>https://deingeschaeftskompass.de/blog/finanzielle-probleme</loc>
     <lastmod>2026-02-28T17:03:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url> 
   <url>
   <loc>https://deingeschaeftskompass.de/blog/Unternehmenswachstum</loc>
@@ -168,7 +168,7 @@
   <url>
   <loc>https://deingeschaeftskompass.de/blog/influencer-finanzen</loc>
     <lastmod>2025-08-16T18:52:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url> 
   <url> 
   <loc>https://deingeschaeftskompass.de/blog/prozessoptimierung-methoden</loc>
@@ -183,17 +183,17 @@
   <url>
   <loc>https://deingeschaeftskompass.de/blog/selbstständig-ohne-idee</loc>
     <lastmod>2026-02-22T14:56:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url> 
   <url>
     <loc>https://deingeschaeftskompass.de/blog/finanziell-am-ende-was-tun</loc>
     <lastmod>2026-03-01T10:00:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url>
     <url>
     <loc>https://deingeschaeftskompass.de/blog/als-selbstständiger-beachten</loc>
     <lastmod>2026-02-28T16:11:03+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.6070</priority>
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/betriebseffizienz</loc>
@@ -218,21 +218,26 @@
   <url>
     <loc>https://deingeschaeftskompass.de/blog/selbstständig-ohne-Ausbildung</loc>
     <lastmod>2026-02-07T13:10:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/finanzielle-krise</loc>
     <lastmod>2026-03-01T11:15:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url>  
   <url>
     <loc>https://deingeschaeftskompass.de/blog/finanzprobleme-lösung</loc>
     <lastmod>2026-01-02T16:34:00+00:00</lastmod>
-    <priority>0.70</priority>
+    <priority>0.60</priority>
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/kalkulatorischer-unternehmerlohn-richtig-berechnen</loc>
     <lastmod>2026-02-14T15:00:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deingeschaeftskompass.de/blog/controlling-aufbauen</loc>
+    <lastmod>2026-03-08T11:15:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
 </urlset>
