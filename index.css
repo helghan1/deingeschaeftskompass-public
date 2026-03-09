@@ -285,14 +285,6 @@
   align-items: flex-start;
   justify-content: flex-end;
 }
-/* Grundstruktur */
-.preise-pricing23 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--dl-layout-space-unit) 0;
-}
 
 .preise-max-width {
   display: flex;
@@ -704,4 +696,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: center;
+  padding: 5xp;
 }
