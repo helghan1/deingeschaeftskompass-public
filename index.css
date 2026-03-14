@@ -694,8 +694,10 @@
 }
 .testimonial-container {
   display: flex;
+  flex-wrap: wrap; /* Erlaubt das Umbrechen auf Handys */
   align-items: center;
-  gap: 20px;
   justify-content: center;
-  padding: 5xp;
+  gap: 20px;
+  padding: 15px; /* Genug Abstand zum Bildschirmrand */
+  box-sizing: border-box; /* Wichtig, damit Padding die Breite nicht sprengt */
 }
