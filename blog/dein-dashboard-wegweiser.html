@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <link rel="canonical" href="https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser" />
+
+    <title>Dein Dashboard Wegweiser</title>
+
+    <meta name="description" content="" />
+
+    <!-- Funktionen -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Dein Dashboard Wegweiser" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser" />
+    <meta property="og:image" content="https://deingeschaeftskompass.de/public/dein-dashboard-wegweiser.webp" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Dein Geschäftskompass" />
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Dein Dashboard Wegweiser" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="https://deingeschaeftskompass.de/public/dein-dashboard-wegweiser.webp" />
+    <meta property="twitter:url" content="https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser" />
+
+    <!-- Viewport & Charset -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+
+    <!-- Strukturierte Daten für Google (Schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "image": ["https://deingeschaeftskompass.de/public/dein-dashboard-wegweiser.webp"],
+        "url": "https://deingeschaeftskompass.de/blog/",
+        "datePublished": "2025-08-13T17:15:00+00:00",
+        "dateModified": "2025-08-13T17:15:00+00:00",
+        "author": {
+          "@type": "Person",
+          "@id": "https://deingeschaeftskompass.de/team/kay-beerbaum/#person",
+          "name": "Kay Beerbaum",
+          "url": "https://deingeschaeftskompass.de/team/kay-beerbaum"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://deingeschaeftskompass.de/#organization",
+          "name": "Dein Geschäftskompass",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://deingeschaeftskompass.de/public/logo.webp"
+          }
+        },
+
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser"
+        },
+        "description": ""
+      }
+    </script>
+
+    <script type="text/javascript">
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+    </script>
+    <style data-tag="reset-style-sheet"></style>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/impressum.css" />
+    <link rel="stylesheet" href="/blog-styles.css" />
+
+<style>
+      #dashboard-app {
+        font-family: "Inter", "Noto Sans", sans-serif;
+        background-color: #191818;
+        color: #ffffff; /* Globaler Text auf Weiß/Hellgrau */
+      }
+      .input-group label {
+        display: block;
+        font-size: 1rem; /* Größer für bessere Lesbarkeit */
+        color: #008cba;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #333;
+        border-radius: 0.5rem;
+        color: #191818; /* Text im Input dunkel lassen für Kontrast auf weißem Feld */
+        background-color: #f8fafc;
+        font-size: 1.1rem;
+        outline: none;
+        transition: all 0.2s;
+      }
+      .input-group input:focus {
+        border-color: #008cba;
+        background-color: #ffffff;
+        ring: 3px solid rgba(0, 140, 186, 0.3);
+      }
+      /* Dashboard Karten Design für dunklen Hintergrund */
+      .card-dark {
+        background-color: #262626;
+        border: 1px solid #333;
+        color: #ffffff;
+      }
+      [data-lucide] {
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WKKNJDLN"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      >
+      </iframe>
+    </noscript>
+    <!-- Ende Google Tag Manager (noscript) -->
+    <div class="mehr-erfahren-container1">
+      <header class="mehr-erfahren-container2"></header>
+      <section class="kopfzeile-rest-wrapper" rootclassname="kopfzeile-restundefined">
+        <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
+          <header data-thq="thq-navbar" class="kopfzeile-rest-navbar-interactive">
+            <a href="/index.html" class="kopfzeile-rest-navlink">
+              <img
+                alt="Dein Geschäftskompass – zurück zur Startseite."
+                src="/public/Logo48.webp"
+                class="kopfzeile-rest-image1"
+                width="36"
+                height="36"
+              />
+            </a>
+            <div data-thq="thq-navbar-nav" class="kopfzeile-rest-desktop-menu">
+              <nav class="kopfzeile-rest-links">
+                <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
+                  <span class="mehr-erfahren-fragment10">
+                    <span class="mehr-erfahren-text100">Startseite</span>
+                  </span>
+                </a>
+
+                <div class="kopfzeile-start-buttons">
+                  <a href="/gut-zu-wissen.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
+                    <span>
+                      <span class="startseite-fragment17">
+                        <span>Gut zu Wissen</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+
+                <div class="kopfzeile-start-buttons">
+                  <a href="/verantwortung.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
+                    <span>
+                      <span class="startseite-fragment17">
+                        <span>Verantwortung</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+
+                <div class="kopfzeile-start-buttons">
+                  <a href="/preise.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
+                    <span>
+                      <span class="startseite-fragment17">
+                        <span>Preise</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+              <div class="kopfzeile-rest-buttons">
+                <a href="/mehr-erfahren.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                  <span>
+                    <span class="mehr-erfahren-fragment11">
+                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                    </span>
+                  </span>
+                </a>
+                <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                  <span>
+                    <span class="mehr-erfahren-fragment12">
+                      <span class="mehr-erfahren-text102">Kontakt</span>
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div data-thq="thq-burger-menu" class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div data-thq="thq-mobile-menu" class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
+              <a href="/index.html">Startseite</a>
+              <a href="/gut-zu-wissen.html">Gut zu Wissen</a>
+              <a href="/verantwortung.html">Verantwortung</a>
+              <a href="/preise.html">Preise</a>
+              <a href="/mehr-erfahren.html">Mehr Erfahren</a>
+              <a href="/kontakt.html">Kontakt</a>
+            </div>
+          </header>
+        </header>
+      </section>
+
+      <!--Blog component-->
+
+      <main id="dashboard-app" class="bg-slate-50 min-h-screen py-12 px-4">
+        <div id="react-root"></div>
+      </main>
+    </div>
+
+<script type="text/babel">
+      const { useState, useEffect } = React;
+
+      function App() {
+        const [activeTab, setActiveTab] = useState('dashboard');
+        
+        // --- STATES (wie zuvor) ---
+        const [bankBalance, setBankBalance] = useState(8500);
+        const [monthlyRevenue, setMonthlyRevenue] = useState(5200);
+        const [fixedCosts, setFixedCosts] = useState(1200);
+        const [variableCosts, setVariableCosts] = useState(400);
+        const [hoursWorked, setHoursWorked] = useState(140);
+        const [targetNetIncome, setTargetNetIncome] = useState(3000);
+        const [taxRate, setTaxRate] = useState(35);
+        const [billableHours, setBillableHours] = useState(80);
+
+        const totalCosts = fixedCosts + variableCosts;
+        const monthlyProfit = monthlyRevenue - totalCosts;
+        const runwayMonths = totalCosts > 0 ? (bankBalance / totalCosts).toFixed(1) : '0';
+        const isResilient = parseFloat(runwayMonths) >= 3;
+        const effectiveHourlyRate = hoursWorked > 0 ? (monthlyProfit / hoursWorked).toFixed(2) : 0;
+        
+        const grossTarget = targetNetIncome / (1 - (taxRate / 100));
+        const requiredRevenue = grossTarget + totalCosts;
+        const targetHourlyRate = billableHours > 0 ? (requiredRevenue / billableHours).toFixed(2) : 0;
+
+        useEffect(() => {
+          if (window.lucide) { window.lucide.createIcons(); }
+        }, [activeTab]);
+
+        const formatCurrency = (v) => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(v);
+
+        return (
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h1 class="impressum-text-heading1 thq-heading-1">Dein Dashboard Wegweiser</h1>
+              <p>Finanzielle Klarheit für dein Business</p>
+              <p>Wähle unter <i>Liquidität; Effizienz & Preisstratgie</i> deine Werte und erhalte dein eigenes Dashboard</p>
+            </div>
+
+            {/* Navigation - Dunkle Tabs */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333]">
+              {[
+                { id: 'dashboard', label: 'Dashboard', icon: 'layout' },
+                { id: 'liquidity', label: 'Liquidität', icon: 'wallet' },
+                { id: 'efficiency', label: 'Effizienz', icon: 'zap' },
+                { id: 'pricing', label: 'Preisstrategie', icon: 'calculator' }
+              ].map(tab => (
+                <button 
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-lg transition-all ${activeTab === tab.id ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-[#333]'}`}
+                >
+                  <i data-lucide={tab.icon} className="w-5 h-5"></i> {tab.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="space-y-8">
+              {activeTab === 'dashboard' && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {/* Karte 1 */}
+                  <div className={`p-10 rounded-3xl border-t-8 card-dark shadow-2xl ${isResilient ? 'border-green-500' : 'border-red-500'}`}>
+                    <div className="flex justify-between items-center mb-6">
+                      <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Runway</span>
+                      <i data-lucide={isResilient ? "shield-check" : "alert-triangle"} className={isResilient ? "text-green-500" : "text-red-500"}></i>
+                    </div>
+                    <div className="text-5xl font-black text-white mb-2">{runwayMonths} Monate</div>
+                    <p className="text-slate-400 text-lg">Puffer bei 0€ Umsatz</p>
+                  </div>
+                  
+                  {/* Karte 2 */}
+                  <div className="p-10 rounded-3xl border-t-8 border-blue-400 card-dark shadow-2xl">
+                    <div className="flex justify-between items-center mb-6">
+                      <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Eff. Stundensatz</span>
+                      <i data-lucide="clock" className="text-blue-400"></i>
+                    </div>
+                    <div className="text-5xl font-black text-white mb-2">{formatCurrency(effectiveHourlyRate)}</div>
+                    <p className="text-slate-400 text-lg">Pro Arbeitsstunde</p>
+                  </div>
+
+                  {/* Karte 3 */}
+                  <div className="p-10 rounded-3xl border-t-8 border-indigo-500 card-dark shadow-2xl">
+                    <div className="flex justify-between items-center mb-6">
+                      <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Monatsgewinn</span>
+                      <i data-lucide="trending-up" className="text-indigo-500"></i>
+                    </div>
+                    <div className="text-5xl font-black text-white mb-2">{formatCurrency(monthlyProfit)}</div>
+                    <p className="text-slate-400 text-lg">Reingewinn (v. St.)</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Liquidität Tab */}
+              {activeTab === 'liquidity' && (
+                <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">Eingabe Finanzstatus</h3>
+                    <div className="input-group">
+                      <label>Kontostand aktuell (€)</label>
+                      <input type="number" value={bankBalance} onChange={e => setBankBalance(Number(e.target.value))} />
+                    </div>
+                    <div className="input-group">
+                      <label>Fixkosten pro Monat (€)</label>
+                      <input type="number" value={fixedCosts} onChange={e => setFixedCosts(Number(e.target.value))} />
+                    </div>
+                    <div className="input-group">
+                      <label>Variable Kosten pro Monat (€)</label>
+                      <input type="number" value={variableCosts} onChange={e => setVariableCosts(Number(e.target.value))} />
+                    </div>
+                  </div>
+                  <div className="bg-[#111] p-10 rounded-3xl border border-[#333] flex flex-col justify-center text-center">
+                    <p className="text-[#008cba] font-bold uppercase tracking-widest text-sm mb-4">Monatliche Burn-Rate</p>
+                    <p className="text-6xl font-black text-white">{formatCurrency(totalCosts)}</p>
+                    <div className="mt-10 p-6 bg-[#191818] rounded-2xl border border-[#333]">
+                      <p className="text-xl italic text-slate-300">"Dein Polster reicht für <span className="text-white font-bold">{runwayMonths} Monate</span> ohne Umsatz."</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Preisstrategie Tab */}
+              {activeTab === 'pricing' && (
+                <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">Wunsch-Szenario</h3>
+                    <div className="input-group">
+                      <label>Wunsch-Netto (€) pro Monat</label>
+                      <input type="number" value={targetNetIncome} onChange={e => setTargetNetIncome(Number(e.target.value))} />
+                    </div>
+                    <div className="input-group">
+                      <label>Steuer-/Abgabenquote (%)</label>
+                      <input type="number" value={taxRate} onChange={e => setTaxRate(Number(e.target.value))} />
+                    </div>
+                    <div className="input-group">
+                      <label>Abrechenbare Stunden / Monat</label>
+                      <input type="number" value={billableHours} onChange={e => setBillableHours(Number(e.target.value))} />
+                    </div>
+                  </div>
+                  <div className="bg-[#008cba] p-10 rounded-3xl flex flex-col justify-center text-center shadow-inner">
+                    <p className="text-white/80 font-bold uppercase tracking-widest text-sm mb-4">Nötiger Stundensatz</p>
+                    <p className="text-7xl font-black text-white">{formatCurrency(targetHourlyRate)}</p>
+                    <p className="text-white/90 text-lg mt-8 leading-relaxed font-medium">
+                      Erforderlicher Monatsumsatz: <br/>
+                      <span className="text-2xl font-black">{formatCurrency(requiredRevenue)}</span>
+                    </p>
+                  </div>
+                </div>
+              )}
+              
+              {/* Effizienz Tab */}
+              {activeTab === 'efficiency' && (
+                <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl max-w-3xl mx-auto">
+                  <h3 className="text-2xl font-black mb-8 text-center border-b border-[#333] pb-4">Umsatz vs. Zeit</h3>
+                  <div className="space-y-6 mb-10">
+                    <div className="input-group">
+                      <label>Tatsächlicher Monatsumsatz (€)</label>
+                      <input type="number" value={monthlyRevenue} onChange={e => setMonthlyRevenue(Number(e.target.value))} />
+                    </div>
+                    <div className="input-group">
+                      <label>Gesamte Arbeitsstunden (inkl. Orga/Admin) pro Monat</label>
+                      <input type="number" value={hoursWorked} onChange={e => setHoursWorked(Number(e.target.value))} />
+                    </div>
+                  </div>
+                  <div className="p-10 bg-[#111] border border-[#333] rounded-3xl text-center">
+                    <p className="text-slate-400 font-bold uppercase text-sm tracking-widest mb-2">Reale Netto-Stundenvergütung</p>
+                    <p className="text-6xl font-black text-blue-400">{formatCurrency(effectiveHourlyRate)}</p>
+                  </div>
+                </div>
+              )}
+                <br /><p><i>*Die Daten werden nicht gespeichert und gehen beim Schließen der Seite verloren</i></p>
+
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('react-root'));
+      root.render(<App />);
+    </script>
+
+      <!--Fußzeilen component-->
+
+      <section class="fuzeile-wrapper">
+        <div class="thq-divider-horizontal"></div>
+        <footer class="fuzeile-footer7 thq-section-padding">
+          <div class="fuzeile-max-width thq-section-max-width">
+            <div class="fuzeile-content">
+              <div class="fuzeile-social-buttons">
+                Folge Uns auf:
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('instagram'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img src="/public/instagram.webp" alt="Instagram" class="fuzeile-social-icon" />
+                </a>
+                - oder teile deine Begeisterung auf:
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('facebook'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img src="/public/facebook.webp" alt="Facebook" class="fuzeile-social-icon" />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('reddit'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img src="/public/reddit.webp" alt="Reddit" class="fuzeile-social-icon" />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('whatsapp'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img src="/public/whatsapp.webp" alt="WhatsApp" class="fuzeile-social-icon" />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('tumblr'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img src="/public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon" />
+                </a>
+                <a
+                  href="#"
+                  onclick="
+                    window.open(getShareUrl('wordpress'), '_blank');
+                    return false;
+                  "
+                  class="fuzeile-social-button"
+                >
+                  <img src="/public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon" />
+                </a>
+                <button class="fuzeile-share-button" onclick="sharePage()">
+                  <img src="/public/share.webp" alt="Teilen" class="fuzeile-social-icon" />
+                </button>
+              </div>
+            </div>
+
+            <div class="fuzeile-credits">
+              <div class="fuzeile-row">
+                <div class="fuzeile-container"></div>
+                <div class="fuzeile-footer-links">
+                  <span class="thq-link">
+                    <span class="impressum-fragment7">
+                      <a href="/gut-zu-wissen.html" class="thq-link">
+                        <span>Blog</span>
+                      </a>
+                    </span>
+                  </span>
+                  <span class="thq-link">
+                    <span class="impressum-fragment7">
+                      <a href="Tools.html" class="thq-link">
+                        <span>Tools</span>
+                      </a>
+                    </span>
+                  </span>
+                  <span class="thq-link">
+                    <span class="impressum-fragment7">
+                      <a href="/Widerrufsrecht.html" class="thq-link">
+                        <span>Widerrufsrecht</span>
+                      </a>
+                    </span>
+                  </span>
+                  <span class="thq-link">
+                    <span class="impressum-fragment7">
+                      <a href="/datenschutz.html" class="thq-link">
+                        <span>Datenschutz</span>
+                      </a>
+                    </span>
+                  </span>
+                  <span class="thq-link">
+                    <span class="impressum-fragment7">
+                      <a href="/impressum.html" class="thq-link">
+                        <span class="startseite-text268">Impressum</span>
+                      </a>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+    <script>
+      // Funktion zum Generieren der plattformspezifischen Share-URLs
+      function getShareUrl(platform) {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        // Versuche, die Meta-Description zu bekommen, sonst leer
+        const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || "");
+
+        switch (platform) {
+          case "facebook":
+            // Facebook Share URL: u= für die zu teilende URL
+            return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
+          case "reddit":
+            // Reddit Share URL: url und title
+            return `https://www.reddit.com/submit?url=${url}&title=${title}`;
+          case "whatsapp":
+            // WhatsApp Share URL: text (Titel + URL)
+            return `https://wa.me/?text=${title}%20${url}`;
+          case "tumblr":
+            // Tumblr Share URL: posttype=link, title und content
+            // Du kannst auch posttype=quote oder posttype=text verwenden
+            return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
+          case "instagram":
+            return `https://www.instagram.com/deingeschaeftskompass/`;
+          case "wordpress":
+            // WordPress.com Share URL: link und title
+            return `https://wordpress.com/create/post?url=${url}&title=${title}`;
+          default:
+            console.warn("Unbekannte Plattform für Teilen-URL:", platform);
+            return "#"; // Fallback
+        }
+      }
+
+      // Funktion für den allgemeinen Teilen-Button (nutzt native Browser-API)
+      function sharePage() {
+        if (navigator.share) {
+          // Wenn der Browser die native Share-API unterstützt
+          navigator
+            .share({
+              title: document.title,
+              text: "Schau dir diese Seite an: " + document.title,
+              url: window.location.href,
+            })
+            .then(() => console.log("Erfolgreich geteilt!"))
+            .catch((error) => console.log("Fehler beim Teilen:", error));
+        } else {
+          // Fallback für Browser, die die native Share-API nicht unterstützen
+          alert(
+            "Ihr Browser unterstützt die native Share-Funktion nicht direkt. Bitte kopieren Sie den Link manuell: " +
+              window.location.href,
+          );
+        }
+      }
+    </script>
+
+    <script>
+      function toggleMobileMenuRest() {
+        const mobileMenu = document.getElementById("mobileMenuRest");
+        const mainContent = document.getElementById("mainContent");
+        mobileMenu.classList.toggle("open");
+
+        if (mobileMenu.classList.contains("open")) {
+          mainContent.style.marginTop = "auto";
+        } else {
+          mainContent.style.marginTop = "0";
+        }
+      }
+    </script>
+  </body>
+</html>
