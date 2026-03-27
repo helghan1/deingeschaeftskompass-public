@@ -2,7 +2,8 @@
   "name": "geschftskompass",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {},
-  "scripts": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2"
+  },
+  "scripts": {}
 }
