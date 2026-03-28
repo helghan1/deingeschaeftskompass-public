@@ -187,6 +187,7 @@
                 alt="Dein Geschäftskompass – zurück zur Startseite."
                 src="/public/Logo48.webp"
                 class="kopfzeile-rest-image1"
+                loading="lazy"
                 width="36"
                 height="36"
               />
@@ -195,7 +196,7 @@
               <nav class="kopfzeile-rest-links">
                 <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
                   <span class="mehr-erfahren-fragment10">
-                    <span class="mehr-erfahren-text100">Startseite</span>
+                    <span>Startseite</span>
                   </span>
                 </a>
 
@@ -230,17 +231,21 @@
                 </div>
               </nav>
               <div class="kopfzeile-rest-buttons">
-                <a href="/mehr-erfahren.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <a
+                  href="/mehr-erfahren.html"
+                  title="Über Uns"
+                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                >
                   <span>
                     <span class="mehr-erfahren-fragment11">
-                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                      <span>mehr Erfahren</span>
                     </span>
                   </span>
                 </a>
-                <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <a href="/kontakt\.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
                   <span>
                     <span class="mehr-erfahren-fragment12">
-                      <span class="mehr-erfahren-text102">Kontakt</span>
+                      <span>Kontakt</span>
                     </span>
                   </span>
                 </a>
@@ -287,6 +292,37 @@
                       &nbsp;&nbsp;
                     </span>
 
+                    <div style="width: 100%; max-width: 600px; margin: 20px auto">
+                      <input
+                        type="text"
+                        id="blogSearch"
+                        placeholder="Themen oder Blogs suchen..."
+                        style="
+                          width: 100%;
+                          padding: 12px 20px;
+                          border: 2px solid #008cbaff;
+                          border-radius: 25px;
+                          font-family: &quot;Noto Sans&quot;, sans-serif;
+                          font-size: 16px;
+                          outline: none;
+                          background: transparent;
+                          color: inherit;
+                        "
+                        onkeyup="filterBlogs()"
+                      />
+                    </div>
+
+                    <script>
+                      function filterBlogs() {
+                        const filter = document.getElementById("blogSearch").value.toLowerCase();
+                        const articles = document.querySelectorAll(".article-container > a");
+                        articles.forEach((article) => {
+                          const text = article.innerText.toLowerCase();
+                          article.style.display = text.includes(filter) ? "" : "none";
+                        });
+                      }
+                    </script>
+
                     <article class="thq-body-small">
                       <div class="article-container">
                         <a href="/blog/produktivitaet-messen.html">
@@ -296,6 +332,7 @@
                                 src="/public/produktivitaet-messen.webp"
                                 alt="Dein Effizienz-Radar"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Versteckte Effizienzprobleme erkennen: 5 Minuten Selbsttest für Unternehmer</b><br />
                               Controlling Erklärung, deine Basis in einem Satz: Produktivität messen klingt nach einem
@@ -311,6 +348,7 @@
                                 src="/public/geschaeftsstrategie.webp"
                                 alt="Dein Effizienz-Radar"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Wie du deine Geschäftsstrategie entwickeln und erfolgreich umsetzen kannst</b><br />
                               Eine erfolgreiche Geschäftsstrategie entwickeln ist kein Zufallsprodukt, sondern das
@@ -326,6 +364,7 @@
                                 src="/public/rentabilitaet-was-ist-das.webp"
                                 alt="Rentabilität steuern: Der wichtigste Hebel für dein Controlling"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Rentabilität steuern: Der wichtigste Hebel für dein Controlling</b><br />
                               Wenn Du ein Unternehmen führst oder ein kleines Business aufbauen willst, wirst Du früher
@@ -340,6 +379,7 @@
                                 src="/public/Finanzplanung.webp"
                                 alt="Finanzplanung Beispiel für Unternehmen: Praxisnah und verständlich erklärt"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Finanzplanung Beispiel für Unternehmen: Praxisnah und verständlich erklärt</b><br />
                               Ein Beispiel für Finanzplanung ist oft genau das, was Unternehmer brauchen, um endlich
@@ -352,9 +392,10 @@
                           <div class="article-item">
                             <div class="article-image-wrapper">
                               <img
-                                src="/public/kalkulation-einfach-erklaert.webp"
+                                src="/public/kalkulation-einfach-erklärt.webp"
                                 alt="Kalkulation einfach erklärt: So findest du den richtigen Verkaufspreis"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Kalkulation einfach erklärt: Warum dein Preis über Freiheit oder Druck entscheidet</b
                               ><br />
@@ -371,6 +412,7 @@
                                 src="/public/Zeitmanagement.webp"
                                 alt="Schluss mit Aufgaben-Chaos. Erfahre, welche Zeitmanagement Methoden wirklich Struktur in deinen Alltag bringen"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>5 Zeitmanagement Methoden: Mit System zu unternehmerischer Freiheit</b><br />
                               Zeitmanagement ist die Kunst, unsere Zeit auf die effektivste Weise zu nutzen. Aber sich
@@ -385,6 +427,7 @@
                                 src="/public/Eisenhower.webp"
                                 alt="Zeitmanagement Methoden: Eisenhower Matrix für Selbstständige und Unternehmer zur Effizienzsteigerung"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Business-Struktur 2026: Eisenhower Zeitmanagement für Entscheider</b><br />
                               Kennst du das Gefühl, ständig beschäftigt zu sein, aber nichts wirklich Relevantes
@@ -399,6 +442,7 @@
                                 src="/public/controlling-organisation.webp"
                                 alt="Controlling Organisation: So steuerst du dein Unternehmen mit System"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling Organisation: So steuerst du dein Unternehmen mit System</b><br />
                               Wenn du ein kleines Unternehmen führst, hast du wahrscheinlich viele Hüte auf. Du
@@ -414,42 +458,45 @@
                                 src="/public/finanzielle-probleme.webp"
                                 alt="Lerne, wie du finanzielle Probleme erkennst, mit finanziellen Sorgen umgehst und Unsicherheiten abbauen kannst. Dein praxisnaher Guide für den Alltag"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Ohne Struktur haben finanzielle Probleme einen hohen Einfluss</b><br />
                               Finanzielle Probleme gehören zu den häufigsten Belastungen im Leben. Egal ob du
                               selbstständig, angestellt oder gerade zwischen zwei Projekten steckst: Plötzlich...
                             </div>
                           </div>
-                          <a href="/blog/controlling-definition.html">
-                            <div class="article-item">
-                              <div class="article-image-wrapper">
-                                <img
-                                  src="/public/Was-ist-Controlling.webp"
-                                  alt="Was ist Controlling"
-                                  class="article-thumbnail"
-                                />
-                                <b>Controlling einfach erklärt: Aufgaben, Bereiche & Begriffe verstehen</b><br />
-                                Controlling Erklärung, deine Basis in einem Satz: Durch gezielte Planung und Analyse das
-                                Geschäft zu steuern und finanzielle Schwächen frühzeitig zu erkennen. Das gilt nicht...
-                              </div>
+                        </a>
+                        <a href="/blog/controlling-definition.html">
+                          <div class="article-item">
+                            <div class="article-image-wrapper">
+                              <img
+                                src="/public/Was-ist-Controlling.webp"
+                                alt="Was ist Controlling"
+                                class="article-thumbnail"
+                                loading="lazy"
+                              />
+                              <b>Controlling einfach erklärt: Aufgaben, Bereiche & Begriffe verstehen</b><br />
+                              Controlling Erklärung, deine Basis in einem Satz: Durch gezielte Planung und Analyse das
+                              Geschäft zu steuern und finanzielle Schwächen frühzeitig zu erkennen. Das gilt nicht...
                             </div>
-                          </a>
+                          </div>
+                        </a>
 
-                          <a href="/blog/controlling-arten.html">
-                            <div class="article-item">
-                              <div class="article-image-wrapper">
-                                <img
-                                  src="/public/Arten-des-Controllings.webp"
-                                  alt="Arten des Controllings"
-                                  class="article-thumbnail"
-                                />
-                                <b>Controlling Arten: Überblick, Unterschiede und Praxistipps</b><br />
-                                Wenn Unternehmen wirtschaftlich erfolgreich sein wollen, führt kein Weg am Controlling
-                                vorbei. Doch welche Controlling Arten gibt es und worin unterscheiden sie sich? Von der
-                                Planung über...
-                              </div>
+                        <a href="/blog/controlling-arten.html">
+                          <div class="article-item">
+                            <div class="article-image-wrapper">
+                              <img
+                                src="/public/Arten-des-Controllings.webp"
+                                alt="Arten des Controllings"
+                                class="article-thumbnail"
+                                loading="lazy"
+                              />
+                              <b>Controlling Arten: Überblick, Unterschiede und Praxistipps</b><br />
+                              Wenn Unternehmen wirtschaftlich erfolgreich sein wollen, führt kein Weg am Controlling
+                              vorbei. Doch welche Controlling Arten gibt es und worin unterscheiden sie sich? Von der
+                              Planung über...
                             </div>
-                          </a>
+                          </div>
                         </a>
                         <a href="/blog/einleitung.html">
                           <div class="article-item">
@@ -458,6 +505,7 @@
                                 src="/public/Controlling-vorher-nachher.webp"
                                 alt="Controlling: Vorher-Nachher-Vergleich"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Einleitung: Warum dieser Blog entstanden ist und was er dir bringt</b><br />
                               Willkommen auf dem Blog von Dein Geschäftskompass. Es ist dein digitaler Wegweiser für

@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <link rel="canonical" href="https://deingeschaeftskompass.de/Gut-zu-Wissen/seite-1" />
-    <link rel="prev" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-1" />
-    <link rel="next" href="https://deingeschaeftskompass.de/Gut-zu-Wissen" />
+    <link rel="canonical" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-3.html" />
+    <link rel="prev" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-2.html" />
+    <link rel="next" href="https://deingeschaeftskompass.de/gut-zu-wissen.html" />
 
     <title>Nützliche Informationen und Berichte aus der Praxis - Archiv Seite 3 - Dein Geschäftskompass</title>
     <meta
@@ -27,7 +27,7 @@
         "@context": "https://schema.org",
         "@type": "Blog",
         "name": "Nützliche Informationen und Berichte aus der Praxis - Archiv Seite 3 - Dein Geschäftskompass",
-        "url": "https://deingeschaeftskompass.de/Gut-zu-Wissen/Seite-1",
+        "url": "https://deingeschaeftskompass.de/gut-zu-wissen/seite-3.html",
         "description": "Hier findest du wertvolle Artikel und Einblicke zu Unternehmensstrategie, Prozessoptimierung, Restrukturierung und mehr für Kleinstunternehmen und Solo-Selbstständige.",
         "publisher": {
           "@type": "Organization",
@@ -40,7 +40,7 @@
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://deingeschaeftskompass.de/Gut-zu-Wissen/Seite-3"
+          "@id": "https://deingeschaeftskompass.de/gut-zu-wissen/seite-3.html"
         }
       }
     </script>
@@ -188,6 +188,7 @@
                 alt="Dein Geschäftskompass – zurück zur Startseite."
                 src="/public/Logo48.webp"
                 class="kopfzeile-rest-image1"
+                loading="lazy"
                 width="36"
                 height="36"
               />
@@ -196,7 +197,7 @@
               <nav class="kopfzeile-rest-links">
                 <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
                   <span class="mehr-erfahren-fragment10">
-                    <span class="mehr-erfahren-text100">Startseite</span>
+                    <span>Startseite</span>
                   </span>
                 </a>
 
@@ -231,17 +232,21 @@
                 </div>
               </nav>
               <div class="kopfzeile-rest-buttons">
-                <a href="/mehr-erfahren.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <a
+                  href="/mehr-erfahren.html"
+                  title="Über Uns"
+                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                >
                   <span>
                     <span class="mehr-erfahren-fragment11">
-                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                      <span>mehr Erfahren</span>
                     </span>
                   </span>
                 </a>
-                <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <a href="/kontakt\.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
                   <span>
                     <span class="mehr-erfahren-fragment12">
-                      <span class="mehr-erfahren-text102">Kontakt</span>
+                      <span>Kontakt</span>
                     </span>
                   </span>
                 </a>
@@ -272,10 +277,10 @@
             <li class="thq-flex-column list-item" style="align-items: flex-start">
               <p class="thq-body-small">
                 <span class="impressum-fragment7">
+                  <h1 class="impressum-text-heading1 thq-heading-2">
+                    <span>Mehr als nur Theorie: Unsere Artikel (Seite 3)</span>
+                  </h1>
                   <span class="impressum-text-heading1">
-                    <h1 class="impressum-text-heading1 thq-heading-2">
-                      <span>Mehr als nur Theorie: Unsere Artikel</span>
-                    </h1>
                     <span class="thq-body-small" style="width: 90%; text-align: right; display: block">
                       <i>Seiten</i>:
                       <a href="/gut-zu-wissen.html">4,</a>
@@ -288,6 +293,36 @@
                       &nbsp;&nbsp;
                     </span>
 
+                    <div style="width: 100%; max-width: 600px; margin: 20px auto">
+                      <input
+                        type="text"
+                        id="blogSearch"
+                        placeholder="Themen oder Blogs suchen..."
+                        style="
+                          width: 100%;
+                          padding: 12px 20px;
+                          border: 2px solid #008cbaff;
+                          border-radius: 25px;
+                          font-family: &quot;Noto Sans&quot;, sans-serif;
+                          font-size: 16px;
+                          outline: none;
+                          background: transparent;
+                          color: inherit;
+                        "
+                        onkeyup="filterBlogs()"
+                      />
+                    </div>
+
+                    <script>
+                      function filterBlogs() {
+                        const filter = document.getElementById("blogSearch").value.toLowerCase();
+                        const articles = document.querySelectorAll(".article-container > a");
+                        articles.forEach((article) => {
+                          const text = article.innerText.toLowerCase();
+                          article.style.display = text.includes(filter) ? "" : "none";
+                        });
+                      }
+                    </script>
                     <article class="thq-body-small">
                       <div class="article-container">
                         <a href="/blog/controlling-aufbauen.html">
@@ -297,6 +332,7 @@
                                 src="/public/controlling-aufbauen.webp"
                                 alt="Finde deine Finanzprobleme Lösung ✅ Jetzt Strategien entdecken und deine Geldsorgen beseitigen!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Conrolling aufbauen: Dein Weg zum finantziellen Überblick</b><br />
                               Hast du dich jemals gefragt, wo am Ende des Monats das ganze Geld geblieben ist? Du
@@ -311,6 +347,7 @@
                                 src="/public/finanzprobleme-lösung.webp"
                                 alt="Finde deine Finanzprobleme Lösung ✅ Jetzt Strategien entdecken und deine Geldsorgen beseitigen!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Finanzprobleme Lösung: Liquidität durch Controlling sichern</b><br />
                               Viele Menschen erreichen einen Punkt, an dem finanzielle Belastungen den Alltag dominieren
@@ -325,6 +362,7 @@
                                 src="/public/liquiditätsplanung-definition.webp"
                                 alt="Liquiditätsplanung Definition für Selbstständige: Erfahre, wie du mit wenigen Zahlen finanzielle Sicherheit schaffst und fundierte Entscheidungen triffst"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Liquiditätsplanung Definition: Warum sie über Stabilität oder Stress entscheidet</b
                               ><br />
@@ -340,6 +378,7 @@
                                 src="/public/Betriebseffizienz.webp"
                                 alt="🚀 Steigere deine Betriebseffizienz mit dem passenden Betriebsoptimierer. Entdecke, wie du deinen Betriebsprozess zuverlässig verbesserst."
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Betriebsoptimierer im Einsatz: Maximale Betriebseffizienz erreichen</b><br />
                               Betriebseffizienz ist kein Modewort. Sie entscheidet über die Wettbewerbsfähigkeit deines
@@ -354,6 +393,7 @@
                                 src="/public/besten-controlling-tools.webp"
                                 alt="Entdecke die besten Controlling-Tools für 2025. Optimiere dein Finanzmanagement noch heute!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling-Software im Vergleich: Mehr Effizienz in 2026</b><br />
                               In einer Wirtschaft, die immer komplexer wird und in der Entscheidungen schnell getroffen
@@ -368,6 +408,7 @@
                                 src="/public/prozessoptimierung-methoden.webp"
                                 alt="Prozessoptimierung Methoden für dein Unternehmen. Lerne konkrete Schritte und optimiere Produktion und Abläufe"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>strukturierte Methoden zur Prozessoptimierung als Selbstständiger anwenden</b><br />
                               Prozessoptimierung Methoden sind ein entscheidender Erfolgsfaktor für moderne Unternehmen.
@@ -382,6 +423,7 @@
                                 src="/public/finanziell-am-ende-was-tun.webp"
                                 alt="Finanziell am Ende - Was tun. Hier sind Strategien Soforthilfe und Tipps wie du deine Finanzen stabilisieren kannst"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Neustart mit Struktur: Was tun, wenn du finanziell am Ende bist</b><br />
                               Finanziell am Ende und was tun? Diese Frage stellen sich einige in schwierigen Zeiten.

@@ -330,14 +330,14 @@
   background-color: var(--dl-color-theme-accent1);
 }
 .preise-column.dark {
-  background-color: #053047;
+  background-color: var(--dl-color-theme-accent2);
   color: white;
-  border-color: #fff;
+  border-color: var(--dl-color-theme-neutral-dark);
 }
 .preise-column.blue {
-  background-color: #008cba;
+  background-color: var(--dl-color-theme-primary1);
   color: white;
-  border-color: #fff;
+  border-color: var(--dl-color-theme-neutral-dark);
 }
 .column-label {
   font-size: 0.875rem;
@@ -375,12 +375,6 @@
   background: transparent;
   cursor: pointer;
   transition: 0.3s;
-}
-
-.preise-column.blue .button-link {
-  background-color: #000;
-  color: #fff;
-  border: none;
 }
 
 /* Responsive */

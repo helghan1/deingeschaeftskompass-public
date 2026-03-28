@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <link rel="canonical" href="https://deingeschaeftskompass.de/Gut-zu-Wissen/seite-1" />
-    <link rel="prev" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-1" />
-    <link rel="next" href="https://deingeschaeftskompass.de/Gut-zu-Wissen" />
+    <link rel="canonical" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-2.html" />
+    <link rel="prev" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-1.html" />
+    <link rel="next" href="https://deingeschaeftskompass.de/gut-zu-wissen/seite-3.html" />
 
     <title>Nützliche Informationen und Berichte aus der Praxis - Archiv Seite 2 - Dein Geschäftskompass</title>
     <meta
@@ -27,7 +27,7 @@
         "@context": "https://schema.org",
         "@type": "Blog",
         "name": "Nützliche Informationen und Berichte aus der Praxis - Archiv Seite 2 - Dein Geschäftskompass",
-        "url": "https://deingeschaeftskompass.de/Gut-zu-Wissen/Seite-1",
+        "url": "https://deingeschaeftskompass.de/gut-zu-wissen/seite-2.html",
         "description": "Hier findest du wertvolle Artikel und Einblicke zu Unternehmensstrategie, Prozessoptimierung, Restrukturierung und mehr für Kleinstunternehmen und Solo-Selbstständige.",
         "publisher": {
           "@type": "Organization",
@@ -40,7 +40,7 @@
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://deingeschaeftskompass.de/Gut-zu-Wissen/Seite-3"
+          "@id": "https://deingeschaeftskompass.de/gut-zu-wissen/seite-2.html"
         }
       }
     </script>
@@ -189,6 +189,7 @@
                 alt="Dein Geschäftskompass – zurück zur Startseite."
                 src="/public/Logo48.webp"
                 class="kopfzeile-rest-image1"
+                loading="lazy"
                 width="36"
                 height="36"
               />
@@ -197,7 +198,7 @@
               <nav class="kopfzeile-rest-links">
                 <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
                   <span class="mehr-erfahren-fragment10">
-                    <span class="mehr-erfahren-text100">Startseite</span>
+                    <span>Startseite</span>
                   </span>
                 </a>
 
@@ -232,17 +233,21 @@
                 </div>
               </nav>
               <div class="kopfzeile-rest-buttons">
-                <a href="/mehr-erfahren.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <a
+                  href="/mehr-erfahren.html"
+                  title="Über Uns"
+                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+                >
                   <span>
                     <span class="mehr-erfahren-fragment11">
-                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                      <span>mehr Erfahren</span>
                     </span>
                   </span>
                 </a>
-                <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <a href="/kontakt\.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
                   <span>
                     <span class="mehr-erfahren-fragment12">
-                      <span class="mehr-erfahren-text102">Kontakt</span>
+                      <span>Kontakt</span>
                     </span>
                   </span>
                 </a>
@@ -289,6 +294,36 @@
                       &nbsp;&nbsp;
                     </span>
 
+                    <div style="width: 100%; max-width: 600px; margin: 20px auto">
+                      <input
+                        type="text"
+                        id="blogSearch"
+                        placeholder="Themen oder Blogs suchen..."
+                        style="
+                          width: 100%;
+                          padding: 12px 20px;
+                          border: 2px solid #008cbaff;
+                          border-radius: 25px;
+                          font-family: &quot;Noto Sans&quot;, sans-serif;
+                          font-size: 16px;
+                          outline: none;
+                          background: transparent;
+                          color: inherit;
+                        "
+                        onkeyup="filterBlogs()"
+                      />
+                    </div>
+
+                    <script>
+                      function filterBlogs() {
+                        const filter = document.getElementById("blogSearch").value.toLowerCase();
+                        const articles = document.querySelectorAll(".article-container > a");
+                        articles.forEach((article) => {
+                          const text = article.innerText.toLowerCase();
+                          article.style.display = text.includes(filter) ? "" : "none";
+                        });
+                      }
+                    </script>
                     <article class="thq-body-small">
                       <div class="article-container">
                         <a href="/blog/influencer-finanzen.html">
@@ -298,6 +333,7 @@
                                 src="/public/influencer-finanzen.webp"
                                 alt="Werde vom Creator zum Unternehmer. Optimiere deine Influencer Finanzen durch professionelles Controlling"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Influencer Finanzen: Controlling für Creator & Personal Brands</b><br />
                               Du musst als Influencer deine Finanzen beherschen, wenn du langfristig erfolgreich bleiben
@@ -308,7 +344,11 @@
                         <a href="/blog/Unternehmenswachstum.html">
                           <div class="article-item">
                             <div class="article-image-wrapper">
-                              <img src="/public/Unternehmenswachstum.webp" alt="" class="article-thumbnail" />
+                              <img
+                                src="/public/Unternehmenswachstum.webp"
+                                alt="Unternehmenswachstum durch Effizienz steigern"
+                                class="article-thumbnail"
+                              />
                               <b>Unternehmenswachstum fördern mit betrieblicher Effizienz</b><br />
                               Jedes Unternehmen wünscht sich stabiles Unternehmenswachstum. Doch die Realität sieht oft
                               anders aus. Mehr Umsatz bedeutet nicht automatisch mehr Gewinn. Warum...
@@ -322,6 +362,7 @@
                                 src="/public/Unternehmenszahlen-clever-auswerten.webp"
                                 alt="Wir erklären betriebswirtschaftliche Kennzahlen so, dass du sie direkt in dein tägliches Controlling-System integrieren kannst"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Business-Steuerung 2026: Die wichtigsten Kennzahlen im Griff</b><br />
                               Betriebswirtschaftliche Kennzahlen sind kein Thema nur für Konzerne. Auch als
@@ -337,6 +378,7 @@
                                 src="/public/rentabilitaet-steigern.webp"
                                 alt="Rentabilität steigern: Mit Planung, Rechnung und Strategie zum Erfolg"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Rentabilität steigern: So machst du dein Business profitabler</b><br />
                               Wenn du deine Rentabilität steigern willst, brauchst du mehr als nur Bauchgefühl. Du
@@ -351,6 +393,7 @@
                                 src="/public/Entscheidungsfindungsmodelle.webp"
                                 alt="Entscheidungsfindungsmodelle verstehen und nutzen, um bessere und schnellere Entscheidungen zu treffen"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Entscheidungsfindungsmodelle für deinen Erfolg.</b><br />
                               Entscheidungsfindungsmodelle helfen dir, komplexe Situationen klar zu analysieren und zu
@@ -365,6 +408,7 @@
                                 src="/public/Finanzen-im-Griff.webp"
                                 alt="Welche Controlling Instrumente brauchst du wirklich, um deine Finanzen im Griff zu behalten"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b
                                 >Welche Controlling Instrumente brauchst du wirklich, um deine Finanzen im Griff zu
@@ -382,6 +426,7 @@
                                 src="/public/controlling-resilienz.webp"
                                 alt="Unternehmensresilienz stärken? Controlling Resilienz hilft dir, Krisen zu meistern und nachhaltig zu wachsen. Wie funktioniert das? Jetzt lesen!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling Resilienz in der Praxis.</b><br />
                               In einer Welt, die von ständigen Veränderungen und unvorhersehbaren Ereignissen geprägt
@@ -397,6 +442,7 @@
                                 src="/public/Entscheidungsfindungsprozess.webp"
                                 alt="Verbessere deinen Entscheidungsfindungsprozess und meistere Entscheidungen unter Unsicherheit. Klarer Leitfaden für Unternehmer"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Erfolgreicher Entscheidungsfindungsprozess im Unternehmen</b><br />
                               Der Entscheidungsfindungsprozess ist ein zentrales Element, wenn du als Unternehmer
@@ -412,6 +458,7 @@
                                 src="/public/controlling-im-unternehmen.webp"
                                 alt="Controlling im Unternehmen 2026: Effizienz durch Zahlen steuern."
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling im Unternehmen für mehr Erfolg im Jahr 2025.</b><br />
                               Controlling im Unternehmen ist ein entscheidender Faktor für den langfristigen Erfolg. Es

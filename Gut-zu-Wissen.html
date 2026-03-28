@@ -183,6 +183,7 @@
                 alt="Dein Geschäftskompass – zurück zur Startseite."
                 src="public/Logo48.webp"
                 class="kopfzeile-rest-image1"
+                loading="lazy"
                 width="36"
                 height="36"
               />
@@ -191,7 +192,7 @@
               <nav class="kopfzeile-rest-links">
                 <a href="index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
                   <span class="mehr-erfahren-fragment10">
-                    <span class="mehr-erfahren-text100">Startseite</span>
+                    <span>Startseite</span>
                   </span>
                 </a>
 
@@ -229,14 +230,14 @@
                 <a href="mehr-erfahren.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
                   <span>
                     <span class="mehr-erfahren-fragment11">
-                      <span class="mehr-erfahren-text101">mehr Erfahren</span>
+                      <span>mehr Erfahren</span>
                     </span>
                   </span>
                 </a>
                 <a href="kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
                   <span>
                     <span class="mehr-erfahren-fragment12">
-                      <span class="mehr-erfahren-text102">Kontakt</span>
+                      <span>Kontakt</span>
                     </span>
                   </span>
                 </a>
@@ -322,6 +323,37 @@
                       &nbsp;&nbsp;
                     </span>
 
+                    <div style="width: 100%; max-width: 600px; margin: 20px auto">
+                      <input
+                        type="text"
+                        id="blogSearch"
+                        placeholder="Themen oder Blogs suchen..."
+                        style="
+                          width: 100%;
+                          padding: 12px 20px;
+                          border: 2px solid #008cbaff;
+                          border-radius: 25px;
+                          font-family: &quot;Noto Sans&quot;, sans-serif;
+                          font-size: 16px;
+                          outline: none;
+                          background: transparent;
+                          color: inherit;
+                        "
+                        onkeyup="filterBlogs()"
+                      />
+                    </div>
+
+                    <script>
+                      function filterBlogs() {
+                        const filter = document.getElementById("blogSearch").value.toLowerCase();
+                        const articles = document.querySelectorAll(".article-container > a");
+                        articles.forEach((article) => {
+                          const text = article.innerText.toLowerCase();
+                          article.style.display = text.includes(filter) ? "" : "none";
+                        });
+                      }
+                    </script>
+
                     <article class="thq-body-small">
                       <div class="article-container">
                         <a href="/blog/steuerungsfähigkeit.html">
@@ -331,6 +363,7 @@
                                 src="/public/steuerungsfähigkeit.webp"
                                 alt="🚀 Maximiere deine Steuerungsfähigkeit für echte Souveränität. Starte heute deine Transformation!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Steuerungsfähigkeit: Dein Weg zu finanzieller Freiheit</b><br />
                               Kennst du das beklemmende Gefühl, wenn du am Ende des Monats auf dein Geschäftskonto
@@ -345,6 +378,7 @@
                                 src="/public/unternehmenssteuerung-kennzahlen.webp"
                                 alt="Volle Auftragsbücher, aber leeres Konto? Mit moderner Unternehmenssteuerung über Kennzahlen in nur 7 Tagen zur echten Klarheit gelangen."
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Unternehmenssteuerung mit Kennzahlen: In 7 Tagen zum Profit</b><br />
                               Vergiss komplizierte Theorie. Erfahre, wie Marc mit 5 Min. wöchentlichem Controlling und
@@ -359,6 +393,7 @@
                                 src="/public/kalkulatorischer-unternehmerlohn.webp"
                                 alt="In einer finanziellen Krise entscheiden Struktur und Effizienz. Mit Controlling sicherst du deine Liquidität und den Turnaround.."
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Kalkulatorischer Unternehmerlohn richtig berechnen</b><br />
                               Viele Selbstständige arbeiten hart und stellen am Jahresende fest, dass zwar Umsatz da
@@ -374,6 +409,7 @@
                                 src="/public/finanzielle-krise.webp"
                                 alt="In einer finanziellen Krise entscheiden Struktur und Effizienz. Mit Controlling sicherst du deine Liquidität und den Turnaround.."
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Liquidität sichern in der finanziellen Krise: Strategien für 2026</b><br />
                               Eine finanzielle Krise kann jedes Unternehmen treffen, selbst erfahrene Unternehmer sind
@@ -389,6 +425,7 @@
                                 src="/public/selbstständig-ohne-Ausbildung.webp"
                                 alt="Keine Zeit für lange Lehrjahre? Erfahre, was man beim selbstständig werden ohne Ausbildung beachten muss, um durch operative Effizienz schneller zum Markterfolg zu kommen."
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Selbstständig werden ohne Ausbildung: Erfolg durch Systematik</b><br />
                               Wenn du dich selbständig ohne Ausbildung machen möchtest, bist du nicht allein. Immer mehr
@@ -403,6 +440,7 @@
                                 src="/public/controlling-kennzahlen.webp"
                                 alt="Controlling Kennzahlen meistern 📊 Optimiere Rentabilität und Liquidität. Starte jetzt deine bessere Finanzplanung!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling Kennzahlen: Dein Schlüssel zum Wachstum</b><br />
                               Controlling Kennzahlen sind das Herzstück einer erfolgreichen Unternehmenssteuerung. Sie
@@ -418,6 +456,7 @@
                                 src="/public/als-selbstständiger-beachten.webp"
                                 alt="Starte durch 🚀 Erfahre was man als Selbstständiger beachten muss und erhalte klare Tipps für deinen Erfolg!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Dein Business-Fahrplan 2026: Effizienz für Selbstständige</b><br />
                               Als selbstständiger gibt es viele Punkte zu beachten. Selbstständigkeit bedeutet Freiheit,
@@ -432,6 +471,7 @@
                                 src="/public/selbstständig-ohne-idee.webp"
                                 alt="Selbstständig machen ohne Idee 🚀 Finde Vorteile und Ideen für deinen Start. Jetzt Chancen entdecken und handeln!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Selbstständig machen ohne Idee? Mit Struktur kein Problem</b><br />
                               Sich selbstständig machen ohne Idee klingt im ersten Moment wie Selbstmord. Schließlich...
@@ -445,6 +485,7 @@
                                 src="/public/controlling-tipps.webp"
                                 alt="📊 Controlling Tipps für die Praxis. Lerne einfache Strategien für mehr Überblick und bessere Entscheidungen. Jetzt starten!"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling Tipps die wirklich funktionieren</b><br />
                               Wer unsere Controlling Tipps nicht nur liest sondern aktiv in den Alltag integriert,
@@ -459,6 +500,7 @@
                                 src="/public/Controlling in der Unternehmenspraxis Umsetzung & Tools.webp"
                                 alt="Controlling in Kleinunternehmen: Deine Wirtschaftlichkeitsanalyse"
                                 class="article-thumbnail"
+                                loading="lazy"
                               />
                               <b>Controlling in Kleinunternehmen: Deine Wirtschaftlichkeitsanalyse</b><br />
                               Gerade in kleinen Strukturen macht Controlling den Unterschied, nicht als Zahlenmonster,

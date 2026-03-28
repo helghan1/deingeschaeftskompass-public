@@ -820,84 +820,13 @@
   background-color: var(--dl-color-theme-neutral-light);
 }
 .mehr-erfahren-text100,
-.mehr-erfahren-text101,
-.mehr-erfahren-text102,
-.mehr-erfahren-text103,
-.mehr-erfahren-text104,
-.mehr-erfahren-text105,
-.mehr-erfahren-text106,
-.mehr-erfahren-text109,
-.mehr-erfahren-text110,
-.mehr-erfahren-text111,
-.mehr-erfahren-text115,
-.mehr-erfahren-text116,
-.mehr-erfahren-text120,
-.mehr-erfahren-text133,
-.mehr-erfahren-text134,
-.mehr-erfahren-text135,
-.mehr-erfahren-text136,
-.mehr-erfahren-text147,
-.mehr-erfahren-text182,
-.mehr-erfahren-text187,
-.mehr-erfahren-text188,
-.mehr-erfahren-text189,
-.mehr-erfahren-text190,
-.mehr-erfahren-text191,
-.mehr-erfahren-text192,
-.mehr-erfahren-text193,
-.mehr-erfahren-text194,
-.mehr-erfahren-text195,
-.mehr-erfahren-text198,
-.mehr-erfahren-text201,
-.mehr-erfahren-text204,
-.mehr-erfahren-text207,
-.mehr-erfahren-text210,
-.mehr-erfahren-text211,
-.mehr-erfahren-text212,
-.mehr-erfahren-text213,
-.mehr-erfahren-text214,
-.mehr-erfahren-text215,
-.mehr-erfahren-text216,
-.mehr-erfahren-text217,
-.mehr-erfahren-text218,
-.mehr-erfahren-text221,
-.mehr-erfahren-text222,
-.mehr-erfahren-text223,
-.mehr-erfahren-text224,
-.mehr-erfahren-text225,
-.mehr-erfahren-text226,
-.mehr-erfahren-text268,
-.mehr-erfahren-text320,
-.mehr-erfahren-text322,
-.mehr-erfahren-text323,
-.mehr-erfahren-text328,
-.mehr-erfahren-text342,
-.mehr-erfahren-text374,
-.mehr-erfahren-text375,
-.mehr-erfahren-text376 {
+.mehr-erfahren-text,
+.mehr-erfahren-text,
+[class*="mehr-erfahren-text"] {
   display: inline-block;
 }
-.mehr-erfahren-text137,
-.mehr-erfahren-text138,
-.mehr-erfahren-text139,
-.mehr-erfahren-text140,
-.mehr-erfahren-text141,
-.mehr-erfahren-text142,
-.mehr-erfahren-text143,
-.mehr-erfahren-text145,
-.mehr-erfahren-text150,
-.mehr-erfahren-text156,
-.mehr-erfahren-text158,
-.mehr-erfahren-text161,
-.mehr-erfahren-text162,
-.mehr-erfahren-text164,
-.mehr-erfahren-text167,
-.mehr-erfahren-text169,
-.mehr-erfahren-text172,
-.mehr-erfahren-text174,
-.mehr-erfahren-text177,
-.mehr-erfahren-text178,
-.mehr-erfahren-text180 {
+.mehr-erfahren-text,
+[class*="mehr-erfahren-text"] {
   font-style: normal;
   font-weight: 100;
 }
@@ -992,9 +921,6 @@
   .mehr-erfahren-text177 {
     font-style: inherit;
     font-weight: 400;
-  }
-  .mehr-erfahren-text153 {
-    text-decoration: underline;
   }
   .mehr-erfahren-text179 {
     font-style: normal;
