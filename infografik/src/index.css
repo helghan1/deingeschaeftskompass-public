@@ -1,1 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* --- DER SCHUTZWALL --- */
+
+/* Wir setzen alle Abstände innerhalb der Grafik hart auf 0, 
+   da Blog-Templates oft p, h3 und div mit Margins füllen. */
+#root * {
+  box-sizing: border-box;
+}
+
+#root div,
+#root p,
+#root h1,
+#root h2,
+#root h3,
+#root span,
+#root button {
+  margin: 0 !important;
+  padding: 0;
+  line-height: 1.5;
+  font-family: "Noto Sans", sans-serif !important;
+  text-transform: none !important; /* Verhindert ungewollte GROSSBUCHSTABEN aus dem Blog */
+}
+
+/* Tailwind braucht für Flex-Container oft die Standardanzeige zurück */
+#root .flex {
+  display: flex !important;
+}
+
+#root .grid {
+  display: grid !important;
+}
+
+/* Falls dein Blog-CSS alle Buttons komisch stylt: */
+#root button {
+  border: none !important;
+  background: none;
+  cursor: pointer;
+}

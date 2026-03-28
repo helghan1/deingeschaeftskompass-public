@@ -273,7 +273,12 @@
           >
           werden.
         </p>
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; margin: 40px 0">
+          <div id="root" style="width: 100%; max-width: 900px"></div>
+        </div>
 
+        <link rel="stylesheet" href="/scripts/prozess-grafik.css" />
+        <script type="module" src="/scripts/prozess-grafik.js"></script>
         <h2 class="impressum-text-heading1 thq-heading-2" id="prozessoptimierung-im-unternehmen">
           Prozessoptimierung im Unternehmen
         </h2>
@@ -475,11 +480,6 @@
           sich einen dauerhaften Vorteil im Markt. Die Kombination aus klassischen Ansätzen und modernen Trends wie
           Digitalisierung und Nachhaltigkeit eröffnet neue Chancen.
         </p>
-        <div id="root"></div>
-
-        <link rel="stylesheet" href="https://deingeschaeftskompass.de/scripts/prozess-grafik.css" />
-
-        <script type="module" src="https://deingeschaeftskompass.de/scripts/prozess-grafik.js"></script>
       </div>
 
       <!--Verlinkung component-->
@@ -512,6 +512,7 @@
           <span id="author-toggle-icon">+</span>
         </div>
 
+        <style data-tag="reset-style-sheet"></style>
         <div id="author-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out">
           <div class="author-body">
             <img
