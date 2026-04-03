@@ -442,7 +442,7 @@
     <!-- Automatisches Speicher-Feedback (Toast) -->
     <div
       id="save-status"
-      class="fixed bottom-6 right-6 bg-[#105a7a] text-white px-4 py-2 rounded-xl shadow-[0_20px_50px_rgba(0,140,186,0.3)] flex items-center gap-2 opacity-0 transition-opacity duration-300 pointer-events-none z-[10001] border border-[#008cba]/50 backdrop-blur-sm"
+      class="fixed bottom-6 right-6 bg-[#105a7a] text-white px-4 py-2 rounded-xl shadow-[0_20px_50px_rgba(0,140,186,0.3)] flex items-center gap-2 opacity-0 transition-opacity duration-300 pointer-events-none z[-10001] border border-[#008cba]/50 backdrop-blur-sm"
     >
       <i data-lucide="save" class="w-4 h-4 text-[#60e5ff]"></i>
       <span class="text-xs font-bold uppercase tracking-wider">Simulation gespeichert</span>
@@ -513,8 +513,8 @@
 
       <section class="desktop-container">
         <header>
-          <h1 class="impressum-text-heading2 thq-heading-1">
-            <span class="impressum-text14">Dein Strategie Navigator</span>
+          <h1 class="impressum-text-heading2 thq-heading-1 flex gap-4">
+            <span>Dein Strategie Navigator</span>
           </h1>
 
           <p class="thq-body-small">
@@ -1120,6 +1120,7 @@
         return new Intl.NumberFormat("de-DE", {
           style: "currency",
           currency: "EUR",
+          maximumFractionDigits: 0,
         }).format(value);
       }
 
@@ -1128,7 +1129,7 @@
         return new Intl.NumberFormat("de-DE", {
           style: "percent",
           minimumFractionDigits: 1,
-          maximumFractionDigits: 2,
+          maximumFractionDigits: 1,
         }).format(value / 100);
       }
 
@@ -1144,7 +1145,7 @@
           return ""; // Wenn es keine gültige Zahl ist, leeren String zurückgeben
         }
         // Formatieren ohne Währungssymbol, nur mit Tausendertrennzeichen (Standard de-DE ist Punkt)
-        return new Intl.NumberFormat("de-DE").format(num);
+        return new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(num);
       }
 
       // Helper to remove formatting for calculations - VOR BERECHNUNGEN VERWENDEN
@@ -1755,7 +1756,7 @@
             const employeeCount = baselinePnl.personalkosten / (3000 * 12 * (1 + EMPLOYER_SOCIAL_COSTS_PERCENT)); // Grobe Schätzung
             if (employeeCount > 0) {
               document.getElementById("gp_revenue_per_employee").value = (baselinePnl.umsatz / employeeCount).toFixed(
-                2,
+                0,
               );
             } else {
               document.getElementById("gp_revenue_per_employee").value = 0; // Kann nicht berechnet werden, wenn keine Mitarbeiter
@@ -2201,15 +2202,7 @@
               title: {
                 display: true,
               },
-              datalabels: {
-                anchor: "end",
-                align: "top",
-                formatter: function (value) {
-                  return formatCurrency(value);
-                },
-                color: "#ffffff",
-                font: { weight: "bold" },
-              },
+              datalabels: { display: false },
             },
           },
           plugins: [ChartDataLabels],
@@ -2269,15 +2262,7 @@
               title: {
                 display: true,
               },
-              datalabels: {
-                anchor: "end",
-                align: "top",
-                formatter: function (value) {
-                  return formatCurrency(value);
-                },
-                color: "#ffffff",
-                font: { weight: "bold" },
-              },
+              datalabels: { display: false },
             },
           },
           plugins: [ChartDataLabels],
