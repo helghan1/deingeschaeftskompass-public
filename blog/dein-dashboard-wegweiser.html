@@ -13,6 +13,8 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="article" />
@@ -110,11 +112,12 @@
         font-size: 1.1rem;
         outline: none;
         transition: all 0.2s;
+        font-weight: 500;
       }
       .input-group input:focus {
         border-color: #008cba;
         background-color: #ffffff;
-        ring: 3px solid rgba(0, 140, 186, 0.3);
+        box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.3);
       }
       /* Dashboard Karten Design für dunklen Hintergrund */
       .card-dark {
@@ -140,11 +143,9 @@
       </iframe>
     </noscript>
     <!-- Ende Google Tag Manager (noscript) -->
-    <div class="mehr-erfahren-container1">
-      <header class="mehr-erfahren-container2"></header>
-      <section class="kopfzeile-rest-wrapper" rootclassname="kopfzeile-restundefined">
+    <div class="mehr-erfahren-container1">      
         <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
-          <header data-thq="thq-navbar" class="kopfzeile-rest-navbar-interactive">
+          <header class="kopfzeile-rest-navbar-interactive">
             <a href="/index.html" class="kopfzeile-rest-navlink">
               <img
                 alt="Dein Geschäftskompass – zurück zur Startseite."
@@ -154,7 +155,7 @@
                 height="36"
               />
             </a>
-            <div data-thq="thq-navbar-nav" class="kopfzeile-rest-desktop-menu">
+            <div class="kopfzeile-rest-desktop-menu">
               <nav class="kopfzeile-rest-links">
                 <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
                   <span class="mehr-erfahren-fragment10">
@@ -163,7 +164,7 @@
                 </a>
 
                 <div class="kopfzeile-start-buttons">
-                  <a href="/gut-zu-wissen.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
+                  <a href="/gut-zu-wissen.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
                     <span>
                       <span class="startseite-fragment17">
                         <span>Gut zu Wissen</span>
@@ -173,7 +174,7 @@
                 </div>
 
                 <div class="kopfzeile-start-buttons">
-                  <a href="/verantwortung.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
+                  <a href="/verantwortung.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
                     <span>
                       <span class="startseite-fragment17">
                         <span>Verantwortung</span>
@@ -183,7 +184,7 @@
                 </div>
 
                 <div class="kopfzeile-start-buttons">
-                  <a href="/preise.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
+                  <a href="/preise.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
                     <span>
                       <span class="startseite-fragment17">
                         <span>Preise</span>
@@ -194,7 +195,7 @@
               </nav>
               <div class="kopfzeile-rest-buttons">
                 <a
-                  href="mehr-erfahren.html"
+                  href="/mehr-erfahren.html"
                   title="Über Uns"
                   class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
                 >                  <span>
@@ -212,12 +213,12 @@
                 </a>
               </div>
             </div>
-            <div data-thq="thq-burger-menu" class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
+            <div class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
               <div></div>
               <div></div>
               <div></div>
             </div>
-            <div data-thq="thq-mobile-menu" class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
+            <div class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
               <a href="/index.html">Startseite</a>
               <a href="/gut-zu-wissen.html">Gut zu Wissen</a>
               <a href="/verantwortung.html">Verantwortung</a>
@@ -227,12 +228,13 @@
             </div>
           </header>
         </header>
-      </section>
 
       <!--Blog component-->
 
       <main id="dashboard-app" class="bg-slate-50 min-h-screen py-12 px-4">
-        <div id="react-root"></div>
+        <div id="react-root">
+          <div class="flex flex-col items-center justify-center py-20 text-slate-400">Lade Dashboard-Komponenten...</div>
+        </div>
       </main>
     </div>
 
@@ -241,43 +243,200 @@
 
       function App() {
         const [activeTab, setActiveTab] = useState('dashboard');
+        const [isExporting, setIsExporting] = useState(false);
         
-        // --- STATES (wie zuvor) ---
-        const [bankBalance, setBankBalance] = useState(8500);
-        const [monthlyRevenue, setMonthlyRevenue] = useState(5200);
-        const [fixedCosts, setFixedCosts] = useState(1200);
-        const [variableCosts, setVariableCosts] = useState(400);
-        const [hoursWorked, setHoursWorked] = useState(140);
-        const [targetNetIncome, setTargetNetIncome] = useState(3000);
-        const [taxRate, setTaxRate] = useState(35);
-        const [billableHours, setBillableHours] = useState(80);
+        // --- STATES mit LocalStorage Initialisierung ---
+        const loadState = (key, def) => {
+          const saved = localStorage.getItem('dgk_dash_' + key);
+          return saved !== null ? Number(saved) : def;
+        };
+
+        const [bankBalance, setBankBalance] = useState(() => loadState('bankBalance', 8500));
+        const [monthlyRevenue, setMonthlyRevenue] = useState(() => loadState('monthlyRevenue', 5200));
+        const [fixedCosts, setFixedCosts] = useState(() => loadState('fixedCosts', 1200));
+        const [variableCosts, setVariableCosts] = useState(() => loadState('variableCosts', 400));
+        const [hoursWorked, setHoursWorked] = useState(() => loadState('hoursWorked', 140));
+        const [targetNetIncome, setTargetNetIncome] = useState(() => loadState('targetNetIncome', 3000));
+        const [taxRate, setTaxRate] = useState(() => loadState('taxRate', 35));
+        const [billableHours, setBillableHours] = useState(() => loadState('billableHours', 80));
+
+        // Automatisches Speichern bei Änderung
+        useEffect(() => {
+          localStorage.setItem('dgk_dash_bankBalance', bankBalance);
+          localStorage.setItem('dgk_dash_monthlyRevenue', monthlyRevenue);
+          localStorage.setItem('dgk_dash_fixedCosts', fixedCosts);
+          localStorage.setItem('dgk_dash_variableCosts', variableCosts);
+          localStorage.setItem('dgk_dash_hoursWorked', hoursWorked);
+          localStorage.setItem('dgk_dash_targetNetIncome', targetNetIncome);
+          localStorage.setItem('dgk_dash_taxRate', taxRate);
+          localStorage.setItem('dgk_dash_billableHours', billableHours);
+        }, [bankBalance, monthlyRevenue, fixedCosts, variableCosts, hoursWorked, targetNetIncome, taxRate, billableHours]);
 
         const totalCosts = fixedCosts + variableCosts;
         const monthlyProfit = monthlyRevenue - totalCosts;
         const runwayMonths = totalCosts > 0 ? (bankBalance / totalCosts).toFixed(1) : '0';
         const isResilient = parseFloat(runwayMonths) >= 3;
-        const effectiveHourlyRate = hoursWorked > 0 ? (monthlyProfit / hoursWorked).toFixed(2) : 0;
+        const effectiveHourlyRate = hoursWorked > 0 ? (monthlyProfit / hoursWorked) : 0;
+        
+        // Zusätzliche Berechnungen für den "Aha-Effekt"
+        const estimatedTax = monthlyProfit > 0 ? (monthlyProfit * (taxRate / 100)) : 0;
+        const monthlyMinReserve = (monthlyProfit > 0 ? estimatedTax : 0) + (monthlyRevenue * 0.10);
+        const netAfterTax = monthlyProfit - estimatedTax;
+        const breakEvenProgress = Math.min(100, (monthlyRevenue / totalCosts) * 100).toFixed(0);
         
         const grossTarget = targetNetIncome / (1 - (taxRate / 100));
         const requiredRevenue = grossTarget + totalCosts;
-        const targetHourlyRate = billableHours > 0 ? (requiredRevenue / billableHours).toFixed(2) : 0;
+        const targetHourlyRate = billableHours > 0 ? (requiredRevenue / billableHours) : 0;
 
         useEffect(() => {
           if (window.lucide) { window.lucide.createIcons(); }
         }, [activeTab]);
 
+        const getNudges = () => {
+          const nudges = [];
+          if (parseFloat(runwayMonths) < 1) {
+            nudges.push({
+              type: 'danger',
+              text: 'Existenzrisiko: Deine Liquidität reicht für weniger als einen Monat. Du solltest sofort unnötige Kosten stoppen und offene Forderungen eintreiben.',
+              icon: 'shield-alert'
+            });
+          } else if (parseFloat(runwayMonths) < 3) {
+            nudges.push({
+              type: 'warning',
+              text: 'Liquiditätswarnung: Dein Puffer ist mit unter 3 Monaten zu gering. Versuche, deine Rücklagen systematisch zu erhöhen.',
+              icon: 'alert-triangle'
+            });
+          }
+          
+          if (monthlyProfit < 0) {
+            nudges.push({
+              type: 'danger',
+              text: 'Verlustzone: Deine Ausgaben übersteigen deine Einnahmen. Prüfe deine Kostenstruktur oder korrigiere deine Preise nach oben.',
+              icon: 'trending-down'
+            });
+          } else if (effectiveHourlyRate < (targetHourlyRate * 0.8) && targetHourlyRate > 0) {
+            nudges.push({
+              type: 'info',
+              text: 'Effizienz-Lücke: Dein realer Stundensatz liegt deutlich unter deinem Ziel. Prüfe, ob du zu viel Zeit in unbezahlte Tätigkeiten investierst.',
+              icon: 'clock'
+            });
+          }
+          
+          if (monthlyProfit > 0) {
+            nudges.push({
+              type: 'success',
+              text: `Profitabler Monat! Sichere deinen Erfolg, indem du die Mindestrücklage von ${formatCurrency(monthlyMinReserve)} sofort zur Seite legst.`,
+              icon: 'check-circle'
+            });
+          }
+          return nudges;
+        };
+
         const formatCurrency = (v) => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(v);
+
+        const exportToPDF = async () => {
+          setIsExporting(true);
+          const { jsPDF } = window.jspdf;
+          const tabsToExport = [
+            { id: 'dashboard', label: 'Dashboard' },
+            { id: 'liquidity', label: 'Liquidität' },
+            { id: 'efficiency', label: 'Effizienz' },
+            { id: 'pricing', label: 'Preisstrategie' }
+          ];
+          const originalTab = activeTab;
+          const canvases = [];
+          
+
+          try {
+            // 1. Header erfassen (nur einmal am Anfang)
+            const header = document.getElementById('pdf-header');
+            const headerCanvas = await html2canvas(header, {
+              scale: 2,
+              backgroundColor: '#191818',
+              useCORS: true,
+              logging: false
+            });
+            canvases.push(headerCanvas);
+
+            // 2. Alle Tabs nacheinander durchlaufen und den Inhaltsbereich erfassen
+            for (let i = 0; i < tabsToExport.length; i++) {
+              setActiveTab(tabsToExport[i].id);
+              await new Promise(resolve => setTimeout(resolve, 800));
+              
+              const content = document.getElementById('pdf-content');
+              const canvas = await html2canvas(content, {
+                scale: 2,
+                backgroundColor: '#191818',
+                useCORS: true,
+                logging: false
+              });
+              canvases.push(canvas);
+            }
+
+            // 3. Gesamthöhe berechnen (A4 Breite = 210mm als Basis)
+            const pdfWidth = 210;
+            let currentY = 0;
+            const spacing = 10; // 10mm Abstand zwischen den Sektionen
+            
+            const imagesData = canvases.map((canvas, index) => {
+              const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+              const y = currentY;
+              currentY += imgHeight + (index < canvases.length - 1 ? spacing : 0);
+              return { data: canvas.toDataURL('image/png'), height: imgHeight, y };
+            });
+
+            // 4. PDF mit der berechneten Gesamthöhe (Inhalt + Puffer + Footer) erstellen
+            const footerAreaHeight = 25;
+            const totalPdfHeight = currentY + spacing + footerAreaHeight;
+            const doc = new jsPDF('p', 'mm', [pdfWidth, totalPdfHeight]);
+            
+            // Hintergrundfarbe für die gesamte Seite setzen (passend zum dunklen Design)
+            doc.setFillColor(25, 24, 24); // #191818
+            doc.rect(0, 0, pdfWidth, totalPdfHeight, 'F');
+
+            imagesData.forEach(img => {
+              doc.addImage(img.data, 'PNG', 0, img.y, pdfWidth, img.height);
+            });
+
+            // 5. Footer mit Branding hinzufügen
+            const footerY = currentY + spacing;
+            doc.setDrawColor(51, 51, 51); // #333 Trennlinie
+            doc.line(10, footerY, pdfWidth - 10, footerY);
+
+            doc.setFontSize(10);
+            doc.setTextColor(160, 160, 160); // #a0a0a0
+            
+            const dateStr = new Date().toLocaleDateString('de-DE');
+            doc.text('deingeschaeftskompass.de', 10, footerY + 10);
+            doc.text(`Stand: ${dateStr}`, 10, footerY + 16);
+
+            doc.save('Dein-Geschäftskompass-Dashboard.pdf');
+          } catch (err) {
+            console.error("PDF Export fehlgeschlagen:", err);
+            alert("Der Export ist fehlgeschlagen. Bitte versuchen Sie es erneut.");
+          } finally {
+            setActiveTab(originalTab);
+            setIsExporting(false);
+          }
+        };
 
         return (
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-12">
+            {isExporting && (
+              <div data-html2canvas-ignore className="fixed inset-0 bg-black/90 z[-10000] flex flex-col items-center justify-center text-white">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#008cba] mb-4"></div>
+                <p className="text-xl font-bold">PDF wird generiert...</p>
+                <p className="opacity-70">Alle Tabs werden nacheinander erfasst.</p>
+              </div>
+            )}
+            <div id="pdf-header" className="text-center mb-12">
               <h1 class="impressum-text-heading1 thq-heading-1">Dein Dashboard Wegweiser</h1>
               <p>Finanzielle Klarheit für dein Business</p>
               <p>Wähle unter <i>Liquidität; Effizienz & Preisstratgie</i> deine Werte und erhalte dein eigenes Dashboard</p>
             </div>
 
             {/* Navigation - Dunkle Tabs */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333]">
+            <div data-html2canvas-ignore className="flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333]">
               {[
                 { id: 'dashboard', label: 'Dashboard', icon: 'layout' },
                 { id: 'liquidity', label: 'Liquidität', icon: 'wallet' },
@@ -294,41 +453,106 @@
               ))}
             </div>
 
-            <div className="space-y-8">
-              {activeTab === 'dashboard' && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {/* Karte 1 */}
-                  <div className={`p-10 rounded-3xl border-t-8 card-dark shadow-2xl ${isResilient ? 'border-green-500' : 'border-red-500'}`}>
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Runway</span>
-                      <i data-lucide={isResilient ? "shield-check" : "alert-triangle"} className={isResilient ? "text-green-500" : "text-red-500"}></i>
-                    </div>
-                    <div className="text-5xl font-black text-white mb-2">{runwayMonths} Monate</div>
-                    <p className="text-slate-400 text-lg">Puffer bei 0€ Umsatz</p>
-                  </div>
-                  
-                  {/* Karte 2 */}
-                  <div className="p-10 rounded-3xl border-t-8 border-blue-400 card-dark shadow-2xl">
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Eff. Stundensatz</span>
-                      <i data-lucide="clock" className="text-blue-400"></i>
-                    </div>
-                    <div className="text-5xl font-black text-white mb-2">{formatCurrency(effectiveHourlyRate)}</div>
-                    <p className="text-slate-400 text-lg">Pro Arbeitsstunde</p>
-                  </div>
+            <div id="pdf-content" className="space-y-8 relative">
+              {/* Logo in der rechten Ecke */}
+              <div className="absolute top-0 right-0 z-10">
+                <img src="/public/Logo48.webp" alt="Logo" className="w-12 h-12" />
+              </div>
 
-                  {/* Karte 3 */}
-                  <div className="p-10 rounded-3xl border-t-8 border-indigo-500 card-dark shadow-2xl">
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Monatsgewinn</span>
-                      <i data-lucide="trending-up" className="text-indigo-500"></i>
-                    </div>
-                    <div className="text-5xl font-black text-white mb-2">{formatCurrency(monthlyProfit)}</div>
-                    <p className="text-slate-400 text-lg">Reingewinn (v. St.)</p>
-                  </div>
-                </div>
-              )}
+{activeTab === 'dashboard' && (
+  <>
+    {/* Grid Container für die Karten */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      {/* Karte 1: Runway */}
+      <div className={`p-10 rounded-3xl border-t-8 card-dark shadow-2xl ${isResilient ? 'border-green-500' : 'border-red-500'}`}>
+        <div className="flex justify-between items-center mb-6">
+          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Runway</span>
+          <i data-lucide={isResilient ? "shield-check" : "alert-triangle"} className={isResilient ? "text-green-500" : "text-red-500"}></i>
+        </div>
+        <div className="text-5xl font-black text-white mb-2">{runwayMonths} Monate</div>
+        <p className="text-slate-400 text-lg">Puffer bei 0€ Umsatz</p>
+      </div>
 
+      {/* Karte 2: Eff. Stundensatz */}
+      <div className="p-10 rounded-3xl border-t-8 border-blue-400 card-dark shadow-2xl">
+        <div className="flex justify-between items-center mb-6">
+          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Eff. Stundensatz</span>
+          <i data-lucide="clock" className="text-blue-400"></i>
+        </div>
+        <div className="text-5xl font-black text-white mb-2">{formatCurrency(effectiveHourlyRate)}</div>
+        <p className="text-slate-400 text-lg">Pro Arbeitsstunde</p>
+      </div>
+
+      {/* Karte 3: Monatsgewinn */}
+      <div className="p-10 rounded-3xl border-t-8 border-indigo-500 card-dark shadow-2xl">
+        <div className="flex justify-between items-center mb-6">
+          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Monatsgewinn</span>
+          <i data-lucide="trending-up" className="text-indigo-500"></i>
+        </div>
+        <div className="text-5xl font-black text-white mb-2">{formatCurrency(monthlyProfit)}</div>
+        <p className="text-slate-400 text-lg">Reingewinn (v. St.)</p>
+      </div>
+
+      {/* Karte 4: Mindestrücklage */}
+      <div className="p-10 rounded-3xl border-t-8 border-orange-400 card-dark shadow-2xl">
+        <div className="flex justify-between items-center mb-6">
+          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Mindestrücklage</span>
+          <i data-lucide="landmark" className="text-orange-400"></i>
+        </div>
+        <div className="text-5xl font-black text-white mb-2">{formatCurrency(monthlyMinReserve)}</div>
+        <p className="text-slate-400 text-lg">Empfohlene Sparrate*</p>
+      </div>
+
+      {/* Karte 5: Break-Even Status */}
+      <div className="p-10 rounded-3xl border-t-8 border-teal-400 card-dark shadow-2xl md:col-span-2">
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Kostendeckung</span>
+          <span className="text-white font-bold">{breakEvenProgress}%</span>
+        </div>
+        <div className="w-full bg-slate-700 h-4 rounded-full mb-6 overflow-hidden">
+          <div 
+            className="bg-teal-400 h-full transition-all duration-1000" 
+            style={{ width: `${breakEvenProgress}%` }}
+          ></div>
+        </div>
+        <p className="text-slate-400">
+          {monthlyRevenue >= totalCosts 
+            ? "✅ Du arbeitest diesen Monat profitabel!" 
+            : `Dir fehlen noch ${formatCurrency(totalCosts - monthlyRevenue)} bis zur Gewinnschwelle.`}
+        </p>
+      </div>
+    </div> {/* Ende des Grids */}
+
+    {/* Strategische Handlungsanalyse */}
+    <div className="mt-12 p-10 rounded-3xl card-dark border border-[#333] shadow-2xl">
+      <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 flex items-center gap-3">
+        <i data-lucide="brain-circuit" className="text-[#008cba]"></i>
+        Strategische Handlungsanalyse
+      </h3>
+      <div className="space-y-6">
+        {getNudges().map((nudge, idx) => (
+          <div key={idx} className={`flex gap-6 p-6 rounded-2xl border-l-8 ${
+            nudge.type === 'warning' ? 'bg-orange-500/10 border-orange-500' :
+            nudge.type === 'danger' ? 'bg-red-500/10 border-red-500' :
+            nudge.type === 'success' ? 'bg-green-500/10 border-green-500' :
+            'bg-blue-500/10 border-blue-500'
+          }`}>
+            <div className="mt-1 shrink-0">
+              <i data-lucide={nudge.icon} className={
+                nudge.type === 'warning' ? 'text-orange-500' :
+                nudge.type === 'danger' ? 'text-red-500' :
+                nudge.type === 'success' ? 'text-green-500' :
+                'text-blue-500'
+              }></i>
+            </div>
+            <p className="text-lg font-medium leading-relaxed">{nudge.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </>
+)}
               {/* Liquidität Tab */}
               {activeTab === 'liquidity' && (
                 <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -406,9 +630,17 @@
                   </div>
                 </div>
               )}
-                <br /><p><i>*Die Daten werden nicht gespeichert und gehen beim Schließen der Seite verloren</i></p>
-
+                <br /><p data-html2canvas-ignore><i>*Die Mindestrücklage basiert auf Steuerschätzung + 10% Umsatzpuffer für Sicherheit.</i></p>
             </div>
+              <button 
+                data-html2canvas-ignore
+                onClick={exportToPDF}
+                disabled={isExporting}
+                className="mt-6 px-8 py-3 bg-[#008cba] hover:bg-[#086f96] text-white rounded-xl font-bold flex items-center gap-2 mx-auto transition-all shadow-lg active:scale-95"
+              >
+                <i data-lucide="file-down"></i> PDF Export (Alle Tabs)
+              </button>
+              <br /><p data-html2canvas-ignore className="text-center text-slate-400 mt-4"><i>Hinweis: Alle Eingaben werden automatisch gespeichert und können jederzeit angepasst werden.</i></p>
           </div>
         );
       }
@@ -597,13 +829,13 @@
     <script>
       function toggleMobileMenuRest() {
         const mobileMenu = document.getElementById("mobileMenuRest");
-        const mainContent = document.getElementById("mainContent");
         mobileMenu.classList.toggle("open");
-
+        
+        // Verhindert Scrollen des Bodys wenn Menü offen
         if (mobileMenu.classList.contains("open")) {
-          mainContent.style.marginTop = "auto";
+          document.body.style.overflow = 'hidden';
         } else {
-          mainContent.style.marginTop = "0";
+          document.body.style.overflow = 'auto';
         }
       }
     </script>

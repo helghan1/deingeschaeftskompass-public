@@ -1,7 +1,77 @@
 <!doctype html>
 <html lang="de">
   <head>
+    <!-- Grundlegende Einstellungen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://deingeschaeftskompass.de/blog/dein-strategie-navigator" />
+
+    <!-- PDF Export & UI Tools -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- Titel & Beschreibung -->
+    <title>Dein Strategie Navigator: Mehr Erfolg durch smarte Finanz-Simulation.</title>
+    <meta
+      name="description"
+      content="Entscheide präziser, stärke dein Controlling: Unser kostenloser Strategie Navigator hilft dir, Unternehmensentscheidungen zu simulieren und dein Business profitabler zu machen."
+    />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="Dein Strategie Navigator: Kostenlose Finanz-Simulation & Controlling." />
+    <meta
+      property="og:description"
+      content="Optimiere deine Unternehmensstrategie mit unserem Tool. Simuliere Entscheidungen, bewerte Auswirkungen und stärke dein Controlling für effektive Prozessoptimierung für nachhaltiges Wachstum."
+    />
+    <meta property="og:url" content="https://deingeschaeftskompass.de/blog/dein-strategie-navigator" />
+    <meta property="og:image" content="https://deingeschaeftskompass.de/public/dein-strategie-navigator-hero.webp" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Dein Geschäftskompass" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dein Strategie Navigator: Mehr Erfolg durch smarte Finanz-Simulation." />
+    <meta
+      name="twitter:description"
+      content="Entscheide präziser, stärke dein Controlling: Unser kostenloser Strategie Navigator hilft dir, Unternehmensentscheidungen zu simulieren und dein Business profitabler zu machen."
+    />
+    <meta name="twitter:image" content="https://deingeschaeftskompass.de/public/dein-strategie-navigator-hero.webp" />
+    <meta name="twitter:site" content="@deingeschaeftskompass" />
+
+    <!-- Strukturierte Daten für Google (Schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Dein Strategie Navigator",
+        "url": "https://deingeschaeftskompass.de/blog/dein-strategie-navigator",
+        "description": "Optimiere deine Unternehmensstrategie mit unserem Tool. Simuliere Entscheidungen, bewerte Auswirkungen und stärke dein Controlling für effektive Prozessoptimierung für nachhaltiges Wachstum.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": "0.00",
+          "availability": "https://schema.org/InStock"
+        },
+        "mainEntity": {
+          "@type": "WebApplication",
+          "name": "Dein Strategie Navigator",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any",
+          "url": "https://deingeschaeftskompass.de/blog/dein-strategie-navigator",
+          "potentialAction": {
+            "@type": "ViewAction",
+            "target": "https://deingeschaeftskompass.de/blog/dein-strategie-navigator"
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Tag Manager -->
     <script type="text/javascript">
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -14,32 +84,13 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
     </script>
-
-    <title>kostenlose Finanz-Simulation & Controlling | Dein Strategie Navigator.</title>
-    <meta
-      name="description"
-      content="Optimiere deine Unternehmensstrategie mit unserem Tool. Simuliere Entscheidungen, bewerte Auswirkungen und stärke dein Controlling für effektive Prozessoptimierung."
-    />
-    <meta property="og:title" content="kostenlose Finanz-Simulation & Controlling | Dein Strategie Navigator." />
-    <meta
-      property="og:description"
-      content="Optimiere deine Unternehmensstrategie mit unserem Tool. Simuliere Entscheidungen, bewerte Auswirkungen und stärke dein Controlling für effektive Prozessoptimierung."
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
-
     <style data-tag="reset-style-sheet"></style>
 
     <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 12px;
-      }
-
       body {
         font-weight: 100;
         font-style: normal;
+        font-family: noto sans;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
@@ -54,29 +105,46 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/impressum.css" />
-
     <link rel="stylesheet" href="/blog-styles.css" />
 
     <style>
       .card {
-        background-color: #333333; /* Dark card background */
+        background-color: #333333;
         padding: 25px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       }
 
-      h2 {
-        font-size: 1.5rem; /* text-2xl equivalent */
+      /* Animation für das Aufklappen der Sektionen */
+      .scenario-section-hidden {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          opacity 0.5s ease-out,
+          max-height 0.7s ease-out;
+      }
+
+      .scenario-section-visible {
+        opacity: 1;
+        max-height: 4000px; /* Höherer Wert für Bereich 3 wegen der Charts */
+        transition:
+          opacity 0.5s ease-out,
+          max-height 0.8s ease-out;
+      }
+
+      h1 {
+        font-size: 2.5rem; /* Large headline */
         font-weight: bold;
         margin-bottom: 1rem;
-        color: #ffffff; /* White for readability on dark card */
+        color: #ffffff;
       }
 
       h3 {
-        font-size: 1.125rem; /* text-lg equivalent */
-        font-weight: 500; /* semibold equivalent */
+        font-size: 1.125rem;
+        font-weight: 500;
 
-        color: #ffffff; /* White for readability on dark card */
+        color: #ffffff;
       }
 
       p {
@@ -92,61 +160,103 @@
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: #ffffff; /* White label text as per your input */
+        color: #ffffff;
       }
 
-      /* Korrigierter Teil in deiner style.css */
       .input-group input[type="number"],
       .input-group input[type="text"],
       .input-group select {
         width: 100%; /* Nimmt die volle Breite des Elternelements ein */
         max-width: 300px; /* Begrenzt die maximale Breite, damit es nicht zu breit wird */
         padding: 10px;
-        border: 1px solid #333333; /* Border as per your input */
-        background-color: #d1d1d1; /* Background as per your input */
+        border: 1px solid #333333;
+        background-color: #d3d3d3;
         border-radius: 4px;
-        font-size: 1rem;
-        color: #333333; /* Ensures input text is dark and readable on light input background */
+        font-size: 12px;
+        font-weight: 400;
+        color: #000000;
       }
 
       .input-group input[type="text"]:focus,
       .input-group input[type="number"]:focus {
         outline: none; /* Remove default focus outline */
-        box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.5); /* Blue focus outline matching your brand blue */
+        box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.5);
       }
 
       /* Flex container for sections */
+      .mehr-erfahren-container1 {
+        gap: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      @media (min-width: 768px) {
+        .mehr-erfahren-container1 {
+          gap: 3rem; /* Larger gap for larger screens */
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+      }
       .sections-container {
         display: flex;
-        flex-direction: column; /* Default to column on small screens */
+        flex-direction: column;
         gap: 2rem; /* Abstand zwischen den Sektionen */
         padding: 1rem; /* Innenabstand */
         justify-content: center;
         align-items: flex-start;
+        width: 100%;
+        margin: 0 auto;
       }
 
       @media (min-width: 768px) {
         /* md breakpoint */
         .sections-container {
           flex-direction: row; /* Row on medium screens and up */
-          gap: 3rem; /* Größerer Abstand auf Desktop */
-          padding: 2rem;
+          flex-wrap: wrap; /* Erlaubt das Umbrechen von Sektionen */
+          gap: 3rem;
+          padding: 0;
         }
-        .sections-container > section {
-          width: 50%; /* Jede Sektion nimmt die Hälfte der Breite ein */
+        #baseline-input {
+          width: 25%;
+        }
+        #scenario-selection {
+          width: 50%; /* Block 2 bereits um 25% reduziert */
+        }
+        #results-output {
+          width: calc(75% + 3rem) !important; /* Block 3 entspricht nun 100% - 25% und passt genau unter 1+2 */
         }
       }
 
-      /* Specific Button Colors based on your original request */
+      #results-output {
+        margin-top: 0; /* Gap of parent will handle spacing */
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        #results-output {
+          margin-top: 0; /* Gap of parent will handle spacing */
+        }
+      }
       #calculate-baseline {
-        color: #008cbaff; /* Your brand blue */
-        border-color: #008cbaff; /* Your brand blue */
+        color: #008cbaff;
+        border-color: #008cbaff;
       }
 
       #calculate-baseline:hover {
-        background-color: #008cbaff; /* Fill with your brand blue on hover */
-        color: #333333; /* Dark text for contrast on hover */
-        border-color: transparent;
+        background-color: #008cbaff;
+        color: #333333;
+      }
+
+      .reset-simulation-btn {
+        color: #9ca3af !important; /* Sanftes Grau für Text & Icon */
+        border-color: #6b7280 !important; /* Dezenter Grauton für den Rahmen */
+      }
+
+      .reset-simulation-btn:hover {
+        color: #191818 !important; /* Dunkler Text für Kontrast auf grauem Hintergrund */
+      }
+
+      .reset-simulation-btn:before {
+        background-color: #9ca3af !important; /* Die Farbe der Hover-Animation */
       }
 
       .summary-box {
@@ -197,6 +307,7 @@
         margin-top: 0;
         color: #008cbaff; /* As per your input */
         font-size: 1.1em;
+        font-weight: 300;
       }
 
       #pnl-comparison-table {
@@ -291,12 +402,7 @@
       }
 
       #reset-simulation {
-        background-color: #333333; /* As per your input */
         margin-top: 30px;
-      }
-
-      #reset-simulation:hover {
-        background-color: #5a6268; /* As per your input */
       }
 
       /* Specific styling for the Long-Term Scaling table (if used for numbers) */
@@ -333,355 +439,445 @@
       </iframe>
     </noscript>
 
+    <!-- Automatisches Speicher-Feedback (Toast) -->
+    <div
+      id="save-status"
+      class="fixed bottom-6 right-6 bg-[#105a7a] text-white px-4 py-2 rounded-xl shadow-[0_20px_50px_rgba(0,140,186,0.3)] flex items-center gap-2 opacity-0 transition-opacity duration-300 pointer-events-none z-[10001] border border-[#008cba]/50 backdrop-blur-sm"
+    >
+      <i data-lucide="save" class="w-4 h-4 text-[#60e5ff]"></i>
+      <span class="text-xs font-bold uppercase tracking-wider">Simulation gespeichert</span>
+    </div>
+
     <div class="mehr-erfahren-container1">
-      <header class="mehr-erfahren-container2"></header>
-      <section class="kopfzeile-rest-wrapper" rootclassname="kopfzeile-restundefined">
-        <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
-          <header data-thq="thq-navbar" class="kopfzeile-rest-navbar-interactive">
-            <a href="/index.html" class="kopfzeile-rest-navlink">
-              <img
-                alt="Dein Geschäftskompass – zurück zur Startseite."
-                src="/public/Logo48.webp"
-                class="kopfzeile-rest-image1"
-                width="36"
-                height="36"
-              />
-            </a>
-            <div data-thq="thq-navbar-nav" class="kopfzeile-rest-desktop-menu">
-              <nav class="kopfzeile-rest-links">
-                <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
-                  <span class="mehr-erfahren-fragment10">
-                    <span>Startseite</span>
-                  </span>
-                </a>
+      <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
+        <header class="kopfzeile-rest-navbar-interactive">
+          <a href="/index.html" class="kopfzeile-rest-navlink">
+            <img
+              alt="Dein Geschäftskompass – zurück zur Startseite."
+              src="/public/Logo48.webp"
+              class="kopfzeile-rest-image1"
+              width="36"
+              height="36"
+            />
+          </a>
+          <div class="kopfzeile-rest-desktop-menu">
+            <nav class="kopfzeile-rest-links">
+              <a href="/index.html" class="kopfzeile-rest-link1 thq-body-small thq-link"> Startseite </a>
 
-                <div class="kopfzeile-start-buttons">
-                  <a href="/gut-zu-wissen.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                    <span>
-                      <span class="startseite-fragment17">
-                        <span>Gut zu Wissen</span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-
-                <div class="kopfzeile-start-buttons">
-                  <a href="/verantwortung.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                    <span>
-                      <span class="startseite-fragment17">
-                        <span>Verantwortung</span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-
-                <div class="kopfzeile-start-buttons">
-                  <a href="/preise.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                    <span>
-                      <span class="startseite-fragment17">
-                        <span>Preise</span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-              <div class="kopfzeile-rest-buttons">
-                <a
-                  href="/mehr-erfahren.html"
-                  title="Über Uns"
-                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
-                >
-                  <span>
-                    <span class="mehr-erfahren-fragment11">
-                      <span>mehr Erfahren</span>
-                    </span>
-                  </span>
-                </a>
-                <a href="/kontakt\.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
-                  <span>
-                    <span class="mehr-erfahren-fragment12">
-                      <span>Kontakt</span>
-                    </span>
-                  </span>
+              <div class="kopfzeile-start-buttons">
+                <a href="/gut-zu-wissen.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                  <span> Gut zu Wissen </span>
                 </a>
               </div>
+
+              <div class="kopfzeile-start-buttons">
+                <a href="/verantwortung.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                  <span> Verantwortung </span>
+                </a>
+              </div>
+
+              <div class="kopfzeile-start-buttons">
+                <a href="/preise.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                  <span> Preise </span>
+                </a>
+              </div>
+            </nav>
+            <div class="kopfzeile-rest-buttons">
+              <a
+                href="/mehr-erfahren.html"
+                title="Über Uns"
+                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+              >
+                <span> mehr Erfahren </span>
+              </a>
+              <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <span> Kontakt </span>
+              </a>
             </div>
-            <div data-thq="thq-burger-menu" class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div data-thq="thq-mobile-menu" class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
-              <a href="/index.html">Startseite</a>
-              <a href="/gut-zu-wissen.html">Gut zu Wissen</a>
-              <a href="/verantwortung.html">Verantwortung</a>
-              <a href="/preise.html">Preise</a>
-              <a href="/mehr-erfahren.html">Mehr Erfahren</a>
-              <a href="/kontakt.html">Kontakt</a>
-            </div>
-          </header>
+          </div>
+          <div class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
+            <a href="/index.html">Startseite</a>
+            <a href="/gut-zu-wissen.html">Gut zu Wissen</a>
+            <a href="/verantwortung.html">Verantwortung</a>
+            <a href="/preise.html">Preise</a>
+            <a href="/mehr-erfahren.html">Mehr Erfahren</a>
+            <a href="/kontakt.html">Kontakt</a>
+          </div>
         </header>
-      </section>
-
-      <!--Neuer component-->
-      <header>
-        <h1 class="impressum-text-heading2 thq-heading-1">
-          <span class="impressum-text14">Dein Strategie Navigator</span>
-        </h1>
-
-        <p class="thq-body-small">
-          Simuliere deine strategische Entscheidungen und bewerte die Auswirkungen deiner Erfolgsrechnung.
-        </p>
       </header>
 
-      <main>
-        <div class="sections-container">
-          <section id="baseline-input" class="card">
-            <h2>1. Aktuelle Jahres-Ist-Werte</h2>
-            <form id="baseline-form">
-              <div class="input-group">
-                <label for="umsatz_ist">Umsatz (pro Jahr) €</label>
-                <input type="text" id="umsatz_ist" value="1.000.000" min="0" required inputmode="numeric" />
-              </div>
-              <div class="input-group">
-                <label for="wareneinsatz_ist">Wareneinsatz / Materialaufwand (pro Jahr) €</label>
-                <input type="text" id="wareneinsatz_ist" value="400.000" min="0" required inputmode="numeric" />
-              </div>
-              <div class="input-group">
-                <label for="current_employees">Aktuelle Anzahl Mitarbeiter</label>
-                <input type="number" id="current_employees" value="10" min="0" required />
-              </div>
-              <div class="input-group">
-                <label for="personalkosten_ist">Personalkosten (pro Jahr) €</label>
-                <input type="text" id="personalkosten_ist" value="200.000" min="0" required inputmode="numeric" />
-              </div>
-              <div class="input-group">
-                <label for="raumkosten_ist">Raumkosten (pro Jahr) €</label>
-                <input type="text" id="raumkosten_ist" value="50.000" min="0" required inputmode="numeric" />
-              </div>
-              <div class="input-group">
-                <label for="werbekosten_ist">Werbekosten (pro Jahr) €</label>
-                <input type="text" id="werbekosten_ist" value="30.000" min="0" required inputmode="numeric" />
-              </div>
-              <div class="input-group">
-                <label for="sonstige_betriebliche_aufwendungen_ist"
-                  >Sonstige Betriebliche Aufwendungen (pro Jahr) €</label
+      <section class="desktop-container">
+        <header>
+          <h1 class="impressum-text-heading2 thq-heading-1">
+            <span class="impressum-text14">Dein Strategie Navigator</span>
+          </h1>
+
+          <p class="thq-body-small">
+            Simuliere deine strategische Entscheidungen und bewerte die Auswirkungen deiner Erfolgsrechnung.
+          </p>
+        </header>
+
+        <main class="flex flex-col gap-8 md:gap-12">
+          <!-- Start-Screen Ebene -->
+          <div
+            id="start-screen"
+            class="flex flex-col items-center justify-center py-16 px-6 bg-[#333333] rounded-2xl border border-[#444] shadow-2xl max-w-3xl mx-auto text-center transition-all duration-500"
+          >
+            <div class="p-4 bg-[#008cba]/10 rounded-full mb-6">
+              <i data-lucide="rocket" class="w-16 h-16 text-[#008cba]"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-white mb-4">Starte deine Simulation</h2>
+            <ol class="text-gray-300 text-lg mb-8 max-w-lg mx-auto">
+              <li class="mb-2 text-gray-300 text-left">
+                <strong>Aktuelle Werte erfassen:</strong> Gib deine aktuellen Jahres-Ist-Werte für Umsatz, Kosten,
+                Mitarbeiterzahl und weitere relevante Kennzahlen ein.
+              </li>
+              <li class="mb-2 text-gray-300 text-left">
+                <strong>Szenarien auswählen:</strong> Wähle aus verschiedenen Szenarien wie Preisänderungen,
+                Neueinstellungen oder Investitionen, um deren Auswirkungen zu simulieren.
+              </li>
+              <li class="mb-2 text-gray-300 text-left">
+                <strong>Ergebnisse exportieren:</strong> Ergebnisse exportieren (PDF/CSV) für externe KI-Analysen.
+              </li>
+            </ol>
+
+            <button
+              id="start-now-btn"
+              class="px-12 py-5 bg-[#008cba] hover:bg-[#086f96] text-white rounded-2xl font-bold flex items-center gap-3 transition-all shadow-xl hover:shadow-[#008cba]/20 active:scale-95 text-xl"
+            >
+              <i data-lucide="play"></i> jetzt Starten
+            </button>
+            <br />
+            <i class="text-white-400 text-sm max-w-lg mx-auto">
+              kostenlos, unverbindlich, ohne Anmeldung. Alle Ergebnisse basieren auf deinen Eingaben und dienen nur zur
+              Simulation. Speicherung nur in deinem Browser, volle Kontrolle über deine Informationen.
+            </i>
+          </div>
+
+          <!-- Info-Box für geladene Daten -->
+          <div
+            id="load-info"
+            class="hidden max-w-6xl mx-auto w-[90%] p-4 bg-[#105a7a]/10 border border-[#008cba]/20 rounded-xl text-[#60e5ff] text-sm items-center justify-between italic backdrop-blur-md"
+          >
+            <div class="flex items-center gap-3">
+              <i data-lucide="history" class="w-4 h-4"></i>
+              <span id="load-info-text"></span>
+            </div>
+            <button id="close-load-info" class="hover:text-white transition-colors p-1" title="Schließen">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div id="navigator-workspace" class="sections-container hidden">
+            <section id="baseline-input" class="card">
+              <h2>1. Aktuelle Jahres-Ist-Werte</h2>
+              <form id="baseline-form">
+                <div class="input-group">
+                  <label for="umsatz_ist">Umsatz (pro Jahr) €</label>
+                  <input type="text" id="umsatz_ist" value="1.000.000" min="0" required inputmode="numeric" />
+                </div>
+                <div class="input-group">
+                  <label for="wareneinsatz_ist">Wareneinsatz / Materialaufwand (pro Jahr) €</label>
+                  <input type="text" id="wareneinsatz_ist" value="400.000" min="0" required inputmode="numeric" />
+                  <div id="cogs-plausibility-hint" class="text-[10px] text-orange-400 mt-1 hidden italic"></div>
+                </div>
+                <div class="input-group">
+                  <label for="current_employees">Aktuelle Anzahl Mitarbeiter</label>
+                  <input type="number" id="current_employees" value="5" min="0" required />
+                </div>
+                <div class="input-group">
+                  <label for="personalkosten_ist">Personalkosten (pro Jahr) €</label>
+                  <input type="text" id="personalkosten_ist" value="200.000" min="0" required inputmode="numeric" />
+                  <div id="personnel-plausibility-hint" class="text-[10px] text-orange-400 mt-1 hidden italic"></div>
+                </div>
+                <div class="input-group">
+                  <label for="raumkosten_ist">Raumkosten (pro Jahr) €</label>
+                  <input type="text" id="raumkosten_ist" value="50.000" min="0" required inputmode="numeric" />
+                </div>
+                <div class="input-group">
+                  <label for="werbekosten_ist">Werbekosten (pro Jahr) €</label>
+                  <input type="text" id="werbekosten_ist" value="30.000" min="0" required inputmode="numeric" />
+                  <div id="marketing-plausibility-hint" class="text-[10px] text-orange-400 mt-1 hidden italic"></div>
+                </div>
+                <div class="input-group">
+                  <label for="sonstige_betriebliche_aufwendungen_ist"
+                    >Sonstige Betriebliche Aufwendungen (pro Jahr) €</label
+                  >
+                  <input
+                    type="text"
+                    id="sonstige_betriebliche_aufwendungen_ist"
+                    value="20.000"
+                    min="0"
+                    required
+                    inputmode="numeric"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="abschreibungen_ist">Jährliche Abschreibungen €</label>
+                  <input type="text" id="abschreibungen_ist" value="10.000" min="0" required inputmode="numeric" />
+                </div>
+                <div class="input-group">
+                  <label for="finanzierungskosten_ist">Jährliche Finanzierungskosten / Zinsaufwand €</label>
+                  <input type="text" id="finanzierungskosten_ist" value="5.000" min="0" required inputmode="numeric" />
+                </div>
+                <div class="input-group">
+                  <label for="ertragsteuersatz_ist">Durchschnittlicher Ertragsteuersatz (%)</label>
+                  <input type="number" id="ertragsteuersatz_ist" value="25" min="0" max="100" step="0.1" required />
+                  <div id="tax-plausibility-hint" class="text-[10px] text-orange-400 mt-1 hidden italic"></div>
+                  <div id="ebt-plausibility-hint" class="text-[10px] text-orange-400 mt-1 hidden italic"></div>
+                </div>
+                <button
+                  type="button"
+                  id="calculate-baseline"
+                  class="kopfzeile-rest-action1 thq-button-animated thq-button-outline"
                 >
-                <input
-                  type="text"
-                  id="sonstige_betriebliche_aufwendungen_ist"
-                  value="20.000"
-                  min="0"
-                  required
-                  inputmode="numeric"
-                />
+                  <span>Baseline berechnen</span>
+                </button>
+
+                <div class="flex gap-2 mt-4">
+                  <button
+                    type="button"
+                    id="export-csv"
+                    class="thq-button-outline px-4 py-2 text-sm flex items-center gap-2"
+                    title="Aktuelle Werte als CSV speichern"
+                  >
+                    <i data-lucide="download" class="w-4 h-4"></i> Export CSV
+                  </button>
+                  <button
+                    type="button"
+                    id="import-csv-trigger"
+                    class="thq-button-outline px-4 py-2 text-sm flex items-center gap-2"
+                    title="Werte aus CSV laden"
+                  >
+                    <i data-lucide="upload" class="w-4 h-4"></i> Import CSV
+                  </button>
+                  <input type="file" id="csv-upload" accept=".csv" class="hidden" />
+                </div>
+              </form>
+              <i>Tipp: Werte als CSV sichern und jederzeit komfortabel wiederherstellen</i>
+              <div id="baseline-pnl-summary" class="summary-box"></div>
+            </section>
+
+            <section id="scenario-selection" class="card scenario-section-hidden">
+              <h2>2. Szenarien auswählen und simulieren</h2>
+              <p class="mb-4 text-700">Wähle ein oder mehrere Szenarien aus, um deren Auswirkungen zu simulieren.</p>
+
+              <div class="scenario-category">
+                <h3>A. Wachstum & Umsatztreiber</h3>
+                <label class="block mb-1"
+                  ><input type="checkbox" data-scenario="price_adjustment" class="mr-2" /> Preise anpassen & Wirkung auf
+                  Profitabilität prüfen</label
+                >
+                <label class="block mb-1"
+                  ><input type="checkbox" data-scenario="new_product" class="mr-2" /> Neues Produkt / Dienstleistung
+                  einführen & Wirtschaftlichkeit bewerten</label
+                >
+                <label class="block"
+                  ><input type="checkbox" data-scenario="marketing_investment" class="mr-2" /> Marketinginvestitionen
+                  planen & deren Effekt simulieren</label
+                >
               </div>
-              <div class="input-group">
-                <label for="abschreibungen_ist">Jährliche Abschreibungen €</label>
-                <input type="text" id="abschreibungen_ist" value="10.000" min="0" required inputmode="numeric" />
+
+              <div class="scenario-category">
+                <h3>B. Personalmanagement</h3>
+                <label class="block mb-1"
+                  ><input type="checkbox" data-scenario="new_employee" class="mr-2" /> Neuen Mitarbeiter einstellen &
+                  Finanzierung planen</label
+                >
+                <label class="block"
+                  ><input type="checkbox" data-scenario="growth_personnel" class="mr-2" /> Personalbedarf bei Wachstum
+                  ermitteln</label
+                >
               </div>
-              <div class="input-group">
-                <label for="finanzierungskosten_ist">Jährliche Finanzierungskosten / Zinsaufwand €</label>
-                <input type="text" id="finanzierungskosten_ist" value="5.000" min="0" required inputmode="numeric" />
+
+              <div class="scenario-category">
+                <h3>C. Investitionen & Assets</h3>
+                <label class="block mb-1"
+                  ><input type="checkbox" data-scenario="new_machine" class="mr-2" /> Neue Maschine /
+                  Betriebsausstattung planen & Auswirkungen simulieren</label
+                >
+                <label class="block mb-1"
+                  ><input type="checkbox" data-scenario="new_vehicle" class="mr-2" /> Neues Fahrzeug (KFZ) anschaffen &
+                  Auswirkungen simulieren</label
+                >
+                <label class="block"
+                  ><input type="checkbox" data-scenario="it_infrastructure" class="mr-2" /> IT-Infrastruktur /
+                  Softwarelizenzen investieren & Effekte prüfen</label
+                >
               </div>
-              <div class="input-group">
-                <label for="ertragsteuersatz_ist">Durchschnittlicher Ertragsteuersatz (%)</label>
-                <input type="number" id="ertragsteuersatz_ist" value="25" min="0" max="100" step="0.1" required />
+
+              <div class="scenario-category">
+                <h3>D. Kosten & Effizienz</h3>
+                <label class="block"
+                  ><input type="checkbox" data-scenario="cost_optimization" class="mr-2" /> Kosten optimieren & Gewinn
+                  steigern</label
+                >
               </div>
+
+              <div class="scenario-category">
+                <h3>E. Risiko & Strategische Planung</h3>
+                <label class="block mb-1"
+                  ><input type="checkbox" data-scenario="revenue_decline" class="mr-2" /> Umsatzeinbruch / Kundenverlust
+                  simulieren & Auswirkung prüfen</label
+                >
+                <label class="block"
+                  ><input type="checkbox" data-scenario="long_term_scaling" class="mr-2" /> Langfristige
+                  Business-Skalierung über mehrere Jahre visualisieren</label
+                >
+              </div>
+
+              <div id="scenario-inputs-container" class="mt-4">
+                <!-- Dynamically loaded scenario inputs will appear here -->
+              </div>
+              <div class="flex flex-wrap gap-4 mt-4">
+                <button
+                  type="button"
+                  class="kopfzeile-rest-action1 thq-button-animated thq-button-outline"
+                  id="calculate-scenario"
+                >
+                  Szenario(s) simulieren
+                </button>
+                <button
+                  type="button"
+                  class="kopfzeile-rest-action1 thq-button-animated thq-button-outline reset-simulation-btn"
+                >
+                  Werte zurücksetzen
+                </button>
+              </div>
+            </section>
+
+            <section id="results-output" class="card scenario-section-hidden">
+              <h2>3. Simulationsergebnisse*</h2>
+              <div class="-sectiresulton">
+                <h3>P&L Vergleich (Ist vs. Neu)</h3>
+                <table id="pnl-comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Posten</th>
+                      <th>Ist-Werte (€)</th>
+                      <th>Neue Werte (€)</th>
+                      <th>Veränderung (€)</th>
+                      <th>Veränderung (%)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Table rows will be inserted here by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="result-section">
+                <div id="key-metrics-summary" class="summary-box"></div>
+              </div>
+              <br /><br /><br />
+
+              <p
+                class="preise-text38 thq-body-large"
+                style="text-align: left; font-style: italic; color: #ffffff; font-weight: 800"
+              >
+                Hast du Fragen zu den Ergebnissen oder möchtest du tiefer in die Details deiner Finanzplanung
+                eintauchen?<br />
+                Wir helfen dir gerne weiter, um deine Simulation noch präziser zu gestalten!. Nimm gerne Kontakt zu uns
+                aus.<br />
+              </p>
+              <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <span>
+                  <span class="mehr-erfahren-fragment12">
+                    <span>Jetzt unverbindlich Kontakt aufnehmen</span>
+                  </span>
+                </span>
+              </a>
+
+              <div id="chart-container">
+                <div class="chart-box hidden" id="umsatz-chart-box">
+                  <h3>Umsatzentwicklung</h3>
+                  <canvas id="umsatzChart"></canvas>
+                </div>
+                <div class="chart-box hidden" id="gewinn-chart-box">
+                  <h3>Gewinnentwicklung</h3>
+                  <canvas id="gewinnChart"></canvas>
+                </div>
+                <div class="chart-box hidden" id="cost-structure-chart-box" style="height: 500px">
+                  <h3>Kostenstruktur im Vergleich</h3>
+                  <canvas id="costStructureChart"></canvas>
+                </div>
+                <div class="chart-box hidden" id="long-term-scaling-chart-box">
+                  <h3>Langfristige Skalierung</h3>
+                  <canvas id="longTermScalingChart"></canvas>
+                </div>
+                <div id="goal-seeking-output" class="summary-box hidden">
+                  <h3>Ziel-Outputs</h3>
+                  <p id="needed-revenue-output"></p>
+                </div>
+              </div>
+
+              <br />
+              <p class="thq-body-small">
+                Du fragst dich wer hinter Dein Startegie Navigator steckt und möchtest weitere Tools entdecken, dann
+                erfahre mehr Über Uns.<br />
+              </p>
+              <a href="/mehr-erfahren.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                <span>
+                  <span class="mehr-erfahren-fragment12">
+                    <span>Jetzt mehr Erfahren</span>
+                  </span>
+                </span>
+              </a>
+              <br />
+              <p class="thq-body-small">Oder starte eine neue Simulation:<br /></p>
               <button
                 type="button"
-                id="calculate-baseline"
-                class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
+                class="kopfzeile-rest-action1 thq-button-animated thq-button-outline reset-simulation-btn"
+                id="reset-simulation"
               >
-                <span>Baseline berechnen</span>
+                Neue Simulation starten
               </button>
-            </form>
-            <div id="baseline-pnl-summary" class="summary-box"></div>
-          </section>
-
-          <section id="scenario-selection" class="card">
-            <h2>2. Szenarien auswählen und simulieren</h2>
-            <p class="mb-4 text-gray-700">Wähle ein oder mehrere Szenarien aus, um deren Auswirkungen zu simulieren.</p>
-
-            <div class="scenario-category">
-              <h3>A. Wachstum & Umsatztreiber</h3>
-              <label class="block mb-1"
-                ><input type="checkbox" data-scenario="price_adjustment" class="mr-2" /> Preise anpassen & Wirkung auf
-                Profitabilität prüfen</label
+              <p class="text-xs text-gray-400 mt-2 italic">
+                Hinweis: Hiermit werden alle aktuellen Eingaben gelöscht und das Tool auf die Standardwerte
+                zurückgesetzt.
+              </p>
+              <button
+                id="pdf-export-btn"
+                data-html2canvas-ignore
+                onclick="exportToPDF()"
+                class="mt-6 px-8 py-3 bg-[#008cba] hover:bg-[#086f96] text-white rounded-xl font-bold flex items-center gap-2 mx-auto transition-all shadow-lg active:scale-95"
               >
-              <label class="block mb-1"
-                ><input type="checkbox" data-scenario="new_product" class="mr-2" /> Neues Produkt / Dienstleistung
-                einführen & Wirtschaftlichkeit bewerten</label
-              >
-              <label class="block"
-                ><input type="checkbox" data-scenario="marketing_investment" class="mr-2" /> Marketinginvestitionen
-                planen & deren Effekt simulieren</label
-              >
-            </div>
-
-            <div class="scenario-category">
-              <h3>B. Personalmanagement</h3>
-              <label class="block mb-1"
-                ><input type="checkbox" data-scenario="new_employee" class="mr-2" /> Neuen Mitarbeiter einstellen &
-                Finanzierung planen</label
-              >
-              <label class="block"
-                ><input type="checkbox" data-scenario="growth_personnel" class="mr-2" /> Personalbedarf bei Wachstum
-                ermitteln</label
-              >
-            </div>
-
-            <div class="scenario-category">
-              <h3>C. Investitionen & Assets</h3>
-              <label class="block mb-1"
-                ><input type="checkbox" data-scenario="new_machine" class="mr-2" /> Neue Maschine / Betriebsausstattung
-                planen & Auswirkungen simulieren</label
-              >
-              <label class="block mb-1"
-                ><input type="checkbox" data-scenario="new_vehicle" class="mr-2" /> Neues Fahrzeug (KFZ) anschaffen &
-                Auswirkungen simulieren</label
-              >
-              <label class="block"
-                ><input type="checkbox" data-scenario="it_infrastructure" class="mr-2" /> IT-Infrastruktur /
-                Softwarelizenzen investieren & Effekte prüfen</label
-              >
-            </div>
-
-            <div class="scenario-category">
-              <h3>D. Kosten & Effizienz</h3>
-              <label class="block"
-                ><input type="checkbox" data-scenario="cost_optimization" class="mr-2" /> Kosten optimieren & Gewinn
-                steigern</label
-              >
-            </div>
-
-            <div class="scenario-category">
-              <h3>E. Risiko & Strategische Planung</h3>
-              <label class="block mb-1"
-                ><input type="checkbox" data-scenario="revenue_decline" class="mr-2" /> Umsatzeinbruch / Kundenverlust
-                simulieren & Auswirkung prüfen</label
-              >
-              <label class="block"
-                ><input type="checkbox" data-scenario="long_term_scaling" class="mr-2" /> Langfristige
-                Business-Skalierung über mehrere Jahre visualisieren</label
-              >
-            </div>
-
-            <div id="scenario-inputs-container" class="mt-4">
-              <!-- Dynamically loaded scenario inputs will appear here -->
-            </div>
-            <button
-              type="button"
-              class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
-              id="calculate-scenario"
-            >
-              Szenario(s) simulieren
-            </button>
-          </section>
-        </div>
-
-        <section id="results-output" class="card hidden mx-4 md:mx-8 mt-8">
-          <h2>3. Simulationsergebnisse*</h2>
-          <div class="-sectiresulton">
-            <h3>P&L Vergleich (Ist vs. Neu)</h3>
-            <table id="pnl-comparison-table">
-              <thead>
-                <tr>
-                  <th>Posten</th>
-                  <th>Ist-Werte (€)</th>
-                  <th>Neue Werte (€)</th>
-                  <th>Veränderung (€)</th>
-                  <th>Veränderung (%)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- Table rows will be inserted here by JavaScript -->
-              </tbody>
-            </table>
+                <i data-lucide="file-down"></i> PDF Export (inkl. Charts)
+              </button>
+              <br />
+              <i>
+                *Wichtiger Hinweis zu den Simulationsergebnissen: Bitte beachte, dass alle Ergebnisse, die dieses Tool
+                generiert, ohne Gewähr sind und ausschließlich auf den von dir eingegebenen Werten für eine vereinfachte
+                Simulation basieren. Diese Berechnungen sollen dir ein grundlegendes Verständnis potenzieller
+                finanzieller Auswirkungen unter bestimmten Annahmen vermitteln und stellen keine Finanz-, Steuer- oder
+                Rechtsberatung dar. Für eine umfassende und präzise Finanzanalyse ist es entscheidend, dass du Faktoren
+                berücksichtigst, die über diese Simulation hinausgehen. Dazu gehören unter anderem: 1. Liquidität: Diese
+                Simulation berücksichtigt weder deinen tatsächlichen Cashflow noch die Liquiditätsbedürfnisse, die für
+                deinen Geschäftsbetrieb von entscheidender Bedeutung sind. 2. Individuelle Gegebenheiten: Deine
+                spezifische Unternehmensstruktur, Rechtsform, Steuersituation, bestehende Verträge und andere
+                einzigartige betriebliche Details können deine finanzielle Performance erheblich beeinflussen. 3.
+                Marktdynamik: Externe Marktbedingungen, unvorhergesehene Ereignisse und Änderungen im Wirtschaftsklima
+                werden von diesem vereinfachten Modell nicht vollständig erfasst.
+              </i>
+            </section>
           </div>
+        </main>
+      </section>
 
-          <div class="result-section">
-            <div id="key-metrics-summary" class="summary-box"></div>
-          </div>
-          <br /><br /><br />
-
-          <p
-            class="preise-text38 thq-body-large"
-            style="text-align: left; font-style: italic; color: #ffffff; font-weight: 800"
-          >
-            Hast du Fragen zu den Ergebnissen oder möchtest du tiefer in die Details deiner Finanzplanung eintauchen?<br />
-            Wir helfen dir gerne weiter, um deine Simulation noch präziser zu gestalten!. Nimm gerne Kontakt zu uns
-            aus.<br />
-          </p>
-          <a href="/kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
-            <span>
-              <span class="mehr-erfahren-fragment12">
-                <span>Jetzt unverbindlich Kontakt aufnehmen</span>
-              </span>
-            </span>
-          </a>
-
-          <div id="chart-container">
-            <div class="chart-box hidden" id="umsatz-chart-box">
-              <h3>Umsatzentwicklung</h3>
-              <canvas id="umsatzChart"></canvas>
-            </div>
-            <div class="chart-box hidden" id="gewinn-chart-box">
-              <h3>Gewinnentwicklung</h3>
-              <canvas id="gewinnChart"></canvas>
-            </div>
-            <div class="chart-box hidden" id="cost-structure-chart-box" style="height: 500px">
-              <h3>Kostenstruktur im Vergleich</h3>
-              <canvas id="costStructureChart"></canvas>
-            </div>
-            <div class="chart-box hidden" id="long-term-scaling-chart-box">
-              <h3>Langfristige Skalierung</h3>
-              <canvas id="longTermScalingChart"></canvas>
-            </div>
-            <div id="goal-seeking-output" class="summary-box hidden">
-              <h3>Ziel-Outputs</h3>
-              <p id="needed-revenue-output"></p>
-            </div>
-          </div>
-
-          <br />
-          <p class="thq-body-small">
-            Du fragst dich wer hinter Dein Startegie Navigator steckt und möchtest weitere Tools entdecken, dann erfahre
-            mehr Über Uns.<br />
-          </p>
-          <a href="/mehr-erfahren.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-            <span>
-              <span class="mehr-erfahren-fragment12">
-                <span>Jetzt mehr Erfahren</span>
-              </span>
-            </span>
-          </a>
-          <br />
-          <p class="thq-body-small">Oder starte eine neue Simulation:<br /></p>
-          <button
-            type="button"
-            class="kopfzeile-rest-action2 thq-button-animated thq-button-outline"
-            id="reset-simulation"
-          >
-            Neue Simulation starten
-          </button>
-          <br />
-          <p>
-            *Wichtiger Hinweis zu den Simulationsergebnissen: Bitte beachte, dass alle Ergebnisse, die dieses Tool
-            generiert, ohne Gewähr sind und ausschließlich auf den von dir eingegebenen Werten für eine vereinfachte
-            Simulation basieren. Diese Berechnungen sollen dir ein grundlegendes Verständnis potenzieller finanzieller
-            Auswirkungen unter bestimmten Annahmen vermitteln und stellen keine Finanz-, Steuer- oder Rechtsberatung
-            dar. Für eine umfassende und präzise Finanzanalyse ist es entscheidend, dass du Faktoren berücksichtigst,
-            die über diese Simulation hinausgehen. Dazu gehören unter anderem: 1. Liquidität: Diese Simulation
-            berücksichtigt weder deinen tatsächlichen Cashflow noch die Liquiditätsbedürfnisse, die für deinen
-            Geschäftsbetrieb von entscheidender Bedeutung sind. 2. Individuelle Gegebenheiten: Deine spezifische
-            Unternehmensstruktur, Rechtsform, Steuersituation, bestehende Verträge und andere einzigartige betriebliche
-            Details können deine finanzielle Performance erheblich beeinflussen. 3. Marktdynamik: Externe
-            Marktbedingungen, unvorhergesehene Ereignisse und Änderungen im Wirtschaftsklima werden von diesem
-            vereinfachten Modell nicht vollständig erfasst.
-          </p>
-        </section>
-      </main>
+      <!-- Export Status Overlay -->
+      <div
+        id="export-overlay"
+        class="hidden fixed inset-0 bg-black/80 z[10000] flex-col items-center justify-center text-white"
+        data-html2canvas-ignore
+      >
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[#008cba] mb-4"></div>
+        <p class="text-xl font-bold">PDF wird generiert...</p>
+      </div>
 
       <section class="fuzeile-wrapper">
         <div class="thq-divider-horizontal"></div>
@@ -975,6 +1171,69 @@
         return pnlData;
       }
 
+      // Zentrale Funktion für Plausibilitäts-Checks (benutzerfreundlich & dezent)
+      function checkAllPlausibilities(pnl) {
+        // 1. Personalkosten Check
+        const persHint = document.getElementById("personnel-plausibility-hint");
+        if (persHint && pnl.current_employees > 0 && pnl.personalkosten > 0) {
+          const avgCost = pnl.personalkosten / pnl.current_employees;
+          if (avgCost < 19000) {
+            persHint.textContent = `Hinweis: Durchschnittl. Kosten von ${formatCurrency(avgCost)} pro MA sind sehr niedrig (Mini-Jobs?).`;
+            persHint.classList.remove("hidden");
+          } else if (avgCost > 180000) {
+            persHint.textContent = `Hinweis: Durchschnittl. Kosten von ${formatCurrency(avgCost)} pro MA sind ungewöhnlich hoch.`;
+            persHint.classList.remove("hidden");
+          } else {
+            persHint.classList.add("hidden");
+          }
+        }
+
+        // 2. Rohertrag Check (Wareneinsatz vs Umsatz)
+        const cogsHint = document.getElementById("cogs-plausibility-hint");
+        if (cogsHint) {
+          if (pnl.wareneinsatz >= pnl.umsatz && pnl.umsatz > 0) {
+            cogsHint.textContent = "Hinweis: Dein Wareneinsatz ist höher als dein Umsatz (negativer Rohertrag).";
+            cogsHint.classList.remove("hidden");
+          } else {
+            cogsHint.classList.add("hidden");
+          }
+        }
+
+        // 3. Marketing Check (>40% vom Umsatz ist extrem hoch)
+        const markHint = document.getElementById("marketing-plausibility-hint");
+        if (markHint) {
+          if (pnl.werbekosten > pnl.umsatz * 0.4 && pnl.umsatz > 0) {
+            markHint.textContent = "Hinweis: Deine Werbekosten sind sehr hoch im Verhältnis zum Umsatz (>40%).";
+            markHint.classList.remove("hidden");
+          } else {
+            markHint.classList.add("hidden");
+          }
+        }
+
+        // 4. Steuersatz Check
+        const taxHint = document.getElementById("tax-plausibility-hint");
+        if (taxHint) {
+          if (pnl.ertragsteuersatz > 55 || (pnl.ertragsteuersatz < 10 && pnl.ertragsteuersatz > 0)) {
+            taxHint.textContent = "Hinweis: Dieser Steuersatz wirkt ungewöhnlich (üblich sind 15-45%).";
+            taxHint.classList.remove("hidden");
+          } else {
+            taxHint.classList.add("hidden");
+          }
+        }
+
+        // 5. EBT-Marge Check (>80% ist verdächtig hoch)
+        const ebtHint = document.getElementById("ebt-plausibility-hint");
+        if (ebtHint) {
+          const ebtMargin = (pnl.ebt / pnl.umsatz) * 100;
+          if (ebtMargin > 80 && pnl.umsatz > 0) {
+            ebtHint.textContent = "Hinweis: Eine EBT-Marge von über 80% ist extrem hoch. Hast du alle Kosten erfasst?";
+            ebtHint.classList.remove("hidden");
+          } else {
+            ebtHint.classList.add("hidden");
+          }
+        }
+      }
+
       // This is a conceptual function. You need to fill in the specifics based on how your costs are structured.
 
       function calculateBreakEvenData(pnlData, maxUmsatz) {
@@ -1091,72 +1350,11 @@
             // Füge Event Listener für die Formatierung beim Verlassen des Feldes hinzu
             inputElement.addEventListener("blur", (event) => {
               event.target.value = formatNumberForInput(event.target.value);
-              // Trigger the relevant calculation after formatting on blur
-              if (id === "gp_monthly_salary") calculateGrowthPersonnel();
-              if (id === "ne_monthly_salary") calculateNewEmployeeCost();
             });
             // Füge Event Listener für 'input' bei jedem Tastendruck hinzu, falls eine 'Live-Berechnung' gewünscht ist
-            inputElement.addEventListener("input", (event) => {
-              // We don't format on 'input' for number inputs to allow free typing
-              // but we do trigger calculations if these are scenario inputs
-              if (id === "gp_monthly_salary") calculateGrowthPersonnel();
-              if (id === "ne_monthly_salary") calculateNewEmployeeCost();
-            });
+            inputElement.addEventListener("input", (event) => {});
           }
         });
-
-        // Event Listener für das Feld 'current_employees'
-        const currentEmployeesInput = document.getElementById("current_employees");
-        if (currentEmployeesInput) {
-          currentEmployeesInput.addEventListener("input", calculateGrowthPersonnel); // Triggert die Wachstumspersonal-Berechnung bei Änderung
-          // Da es ein type="number" ist, ist keine `formatNumberForInput` Initialisierung oder blur-Formatierung nötig.
-        }
-
-        // Event Listener für den Berechnen-Button
-        document.getElementById("calculate-baseline").addEventListener("click", function () {
-          calculateAndDisplayBaseline();
-          applyCostItemStyling(); // Call styling after calculation
-          // Trigger die Szenario-Berechnungen nach dem Aktualisieren der Baseline
-          calculateGrowthPersonnel();
-          calculateNewEmployeeCost();
-        });
-
-        // --- Cost Item Styling Logic (No changes needed here) ---
-        const pnlTableBody = document.querySelector("#pnl-comparison-table tbody");
-        const costItems = [
-          "Wareneinsatz / Materialaufwand",
-          "Personalkosten",
-          "Raumkosten",
-          "Werbekosten",
-          "Sonstige Betriebliche Aufwendungen",
-          "Jährliche Abschreibungen",
-          "Jährliche Finanzierungskosten / Zinsaufwand",
-        ];
-
-        function applyCostItemStyling() {
-          console.log("applyCostItemStyling called!");
-          if (!pnlTableBody) {
-            console.error("Error: #pnl-comparison-table tbody not found.");
-            return;
-          }
-          const rows = pnlTableBody.querySelectorAll("tr");
-          rows.forEach((row) => {
-            const firstCell = row.querySelector("td:first-child");
-            if (firstCell) {
-              const itemText = firstCell.textContent.trim();
-              const isCostItem = costItems.some((costItem) => itemText.startsWith(costItem));
-              if (isCostItem) {
-                row.classList.add("cost-item");
-              } else {
-                row.classList.remove("cost-item");
-              }
-            }
-          });
-        }
-
-        // Initialberechnung beim Laden der Seite, um die Summary mit den Standardwerten anzuzeigen
-        calculateAndDisplayBaseline();
-        applyCostItemStyling(); // Also call styling on initial load
 
         // Initialisiere die Anzeige der Gehaltsnebenkosten für beide Szenarien
         const employerCostsDisplay = document.getElementById("employer-social-costs-display");
@@ -1228,24 +1426,86 @@
         baselinePnl = { ...inputs };
         baselinePnl = calculateDerivedPnl(baselinePnl, inputs.ertragsteuersatz);
 
+        // Alle Plausibilitäts-Checks ausführen
+        checkAllPlausibilities(baselinePnl);
+
         const summaryBox = document.getElementById("baseline-pnl-summary");
         summaryBox.innerHTML = `
-        <h3>Erfolgsrechnung Zusammenfassung:</h3>
-        <p><strong>Umsatz:</strong> ${formatCurrency(baselinePnl.umsatz)}</p>
-        <p><strong>Rohertrag:</strong> ${formatCurrency(baselinePnl.rohertrag)}</p>
-        <p><strong>Ergebnis vor Steuern (EBT):</strong> ${formatCurrency(baselinePnl.ebt)}</p>
-        <p><strong>EBT-Marge:</strong> ${formatPercentage((baselinePnl.ebt / baselinePnl.umsatz) * 100)}</p>
-        <p><strong>Ergebnis nach Steuern:</strong> ${formatCurrency(baselinePnl.ergebnis_nach_steuern)}</p>
-        <p><strong>Jahresüberschuss-Marge:</strong> ${formatPercentage((baselinePnl.ergebnis_nach_steuern / baselinePnl.umsatz) * 100)}</p>        
+        <h3 class="flex items-center gap-2 mb-4 border-b border-white/20 pb-2">
+          <i data-lucide="bar-chart-3" class="w-5 h-5 text-[#60e5ff]"></i>
+          Erfolgsrechnung Zusammenfassung
+        </h3>
+        <div class="space-y-2 text-sm md:text-base">
+          <p class="flex items-center gap-2"><i data-lucide="trending-up" class="w-4 h-4 text-[#60e5ff]"></i> <strong>Umsatz:</strong> ${formatCurrency(baselinePnl.umsatz)}</p>
+          <p class="flex items-center gap-2"><i data-lucide="package" class="w-4 h-4 text-orange-300"></i> <strong>Wareneinsatz:</strong> ${formatCurrency(baselinePnl.wareneinsatz)}</p>
+          <p class="flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-teal-300"></i> <strong>Rohertrag:</strong> ${formatCurrency(baselinePnl.rohertrag)}</p>        
+          <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-blue-300"></i> <strong>Personalkosten:</strong> ${formatCurrency(baselinePnl.personalkosten)}</p>
+          <div class="h-px bg-white/10 my-2"></div>
+          <p class="flex items-center gap-2">
+            <i data-lucide="calculator" class="w-4 h-4 text-[#60e5ff]"></i>
+            <span><strong>Ergebnis v. St. (EBT):</strong> ${formatCurrency(baselinePnl.ebt)}</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <i data-lucide="percent" class="w-4 h-4 text-[#60e5ff]"></i>
+            <span><strong>EBT-Marge:</strong> ${formatPercentage((baselinePnl.ebt / baselinePnl.umsatz) * 100)}</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+            <span><strong>Netto-Ergebnis:</strong> ${formatCurrency(baselinePnl.ergebnis_nach_steuern)}</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <i data-lucide="pie-chart" class="w-4 h-4 text-green-400"></i>
+            <span><strong>Netto-Marge:</strong> ${formatPercentage((baselinePnl.ergebnis_nach_steuern / baselinePnl.umsatz) * 100)}</span>
+          </p>
+        </div>
     `;
+        if (window.lucide) window.lucide.createIcons();
         summaryBox.style.display = "block";
 
         document.querySelectorAll('#scenario-selection input[type="checkbox"]').forEach((el) => (el.disabled = false));
+        const scenarioSelection = document.getElementById("scenario-selection");
+        scenarioSelection.classList.remove("scenario-section-hidden");
+        scenarioSelection.classList.add("scenario-section-visible");
         document.getElementById("calculate-scenario").disabled = false;
 
-        // Dies stellt sicher, dass Szenarien, die von Baseline-Werten abhängen (wie Umsatz pro Mitarbeiter), aktualisiert werden.
-        calculateGrowthPersonnel();
-        calculateNewEmployeeCost(); // Falls dieses Szenario auch von Baseline-Werten abhängt
+        // Automatisches sanftes Scrollen zum neuen Bereich
+        setTimeout(() => {
+          scenarioSelection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 400);
+      }
+
+      // --- Cost Item Styling Logic (Global) ---
+      function applyCostItemStyling() {
+        const pnlTableBody = document.querySelector("#pnl-comparison-table tbody");
+        const costItems = [
+          "Wareneinsatz / Materialaufwand",
+          "Personalkosten",
+          "Raumkosten",
+          "Werbekosten",
+          "Sonstige Betriebliche Aufwendungen",
+          "Jährliche Abschreibungen",
+          "Jährliche Finanzierungskosten / Zinsaufwand",
+        ];
+
+        if (!pnlTableBody) return;
+        const rows = pnlTableBody.querySelectorAll("tr");
+        rows.forEach((row) => {
+          const firstCell = row.querySelector("td:first-child");
+          if (firstCell) {
+            const itemText = firstCell.textContent.trim();
+            const isCostItem = costItems.some((costItem) => itemText.startsWith(costItem));
+            if (isCostItem) {
+              row.classList.add("cost-item");
+            } else {
+              row.classList.remove("cost-item");
+            }
+          }
+        });
+      }
+
+      // Placeholder für Szenario-Updates (falls Baseline sich ändert)
+      function updateScenarioDefaults() {
+        // Hier könnten Werte in den Szenario-Inputs aktualisiert werden
       }
 
       // -----------------------------------------------------------
@@ -1763,7 +2023,16 @@
         renderKeyMetrics();
         renderCharts();
 
-        document.getElementById("results-output").classList.remove("hidden");
+        const resultsOutput = document.getElementById("results-output");
+        // Animation statt hartem Einblenden
+        resultsOutput.classList.remove("scenario-section-hidden");
+        resultsOutput.classList.add("scenario-section-visible");
+
+        // Automatisches sanftes Scrollen zu den Simulationsergebnissen
+        setTimeout(() => {
+          resultsOutput.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 400);
+
         console.log("--- calculateScenarioPnl END ---");
       }
 
@@ -1831,6 +2100,23 @@
 
         hideAllChartContainers(); // Hide all chart containers first
 
+        // Globale Einstellungen für modernere Optik
+        Chart.defaults.font.family = "'Noto Sans', sans-serif";
+        Chart.defaults.color = "#a0a0a0";
+        Chart.defaults.plugins.tooltip.backgroundColor = "rgba(25, 24, 24, 0.95)";
+        Chart.defaults.plugins.tooltip.titleColor = "#008cba";
+        Chart.defaults.plugins.tooltip.borderColor = "rgba(0, 140, 186, 0.3)";
+        Chart.defaults.plugins.tooltip.borderWidth = 1;
+        Chart.defaults.plugins.tooltip.padding = 12;
+        Chart.defaults.plugins.tooltip.cornerRadius = 10;
+        Chart.defaults.plugins.legend.labels.usePointStyle = true;
+        Chart.defaults.plugins.legend.labels.padding = 20;
+
+        const commonGrid = {
+          color: "rgba(255, 255, 255, 0.05)",
+          drawBorder: false,
+        };
+
         // Helper function to calculate min/max with a small buffer for dynamic scales
         function calculateMinMax(dataValues) {
           if (dataValues.length === 0) return { min: 0, max: 100 }; // Default if no data
@@ -1876,11 +2162,15 @@
                 label: "Basis",
                 data: [umsatzData[0]],
                 backgroundColor: "#008cba",
+                borderRadius: 8,
+                maxBarThickness: 60,
               },
               {
                 label: "Simuliert",
                 data: [umsatzData[1]],
                 backgroundColor: "#cdf9ff",
+                borderRadius: 8,
+                maxBarThickness: 60,
               },
             ],
           },
@@ -1895,12 +2185,16 @@
                 title: {
                   display: true,
                 },
+                grid: commonGrid,
                 ticks: {
                   callback: function (value) {
                     // Formatierung für Achsenbeschriftungen
                     return formatCurrency(value);
                   },
                 },
+              },
+              x: {
+                grid: { display: false },
               },
             },
             plugins: {
@@ -1913,7 +2207,8 @@
                 formatter: function (value) {
                   return formatCurrency(value);
                 },
-                color: "#333",
+                color: "#ffffff",
+                font: { weight: "bold" },
               },
             },
           },
@@ -1935,11 +2230,15 @@
                 label: "Basis",
                 data: [gewinnData[0]],
                 backgroundColor: "#008cba",
+                borderRadius: 8,
+                maxBarThickness: 60,
               },
               {
                 label: "Simuliert",
                 data: [gewinnData[1]],
                 backgroundColor: "#cdf9ff",
+                borderRadius: 8,
+                maxBarThickness: 60,
               },
             ],
           },
@@ -1954,12 +2253,16 @@
                 title: {
                   display: true,
                 },
+                grid: commonGrid,
                 ticks: {
                   callback: function (value) {
                     // Formatierung für Achsenbeschriftungen
                     return formatCurrency(value);
                   },
                 },
+              },
+              x: {
+                grid: { display: false },
               },
             },
             plugins: {
@@ -1972,7 +2275,8 @@
                 formatter: function (value) {
                   return formatCurrency(value);
                 },
-                color: "#333",
+                color: "#ffffff",
+                font: { weight: "bold" },
               },
             },
           },
@@ -2012,7 +2316,9 @@
                 {
                   label: "Basis Kostenanteile",
                   data: baselineCosts,
-                  backgroundColor: ["#2ac9c4", "#0f7476", "#18cef8", "#008cba", "#105a7a", "#5fe9e1", "#042c2f"],
+                  backgroundColor: ["#374955", "#9aaebb", "#18cef8", "#008cba", "#105a7a", "#a77948", "#704819"],
+                  borderColor: "#333333",
+                  borderWidth: 2,
                   hoverOffset: 4,
                 },
               ],
@@ -2143,24 +2449,30 @@
                   label: "Umsatz",
                   data: projectedUmsatz,
                   borderColor: "#15b784",
+                  backgroundColor: "rgba(21, 183, 132, 0.1)",
                   fill: false,
-                  tension: 0.1,
+                  tension: 0.4,
+                  pointRadius: 4,
                   yAxisID: "y", // Zuweisung zur ersten Y-Achse
                 },
                 {
                   label: "EBT",
                   data: projectedEbt,
                   borderColor: "#18cef8",
+                  backgroundColor: "rgba(24, 206, 248, 0.1)",
                   fill: false,
-                  tension: 0.1,
+                  tension: 0.4,
+                  pointRadius: 4,
                   yAxisID: "y1", // Zuweisung zur zweiten Y-Achse
                 },
                 {
                   label: "Ergebnis nach Steuern",
                   data: projectedProfit,
                   borderColor: "#ebfeff",
+                  backgroundColor: "rgba(235, 254, 255, 0.1)",
                   fill: false,
-                  tension: 0.1,
+                  tension: 0.4,
+                  pointRadius: 4,
                   yAxisID: "y1", // Zuweisung zur zweiten Y-Achse
                 },
               ],
@@ -2178,6 +2490,7 @@
                     display: true,
                     text: "Umsatz (€)",
                   },
+                  grid: commonGrid,
                   ticks: {
                     callback: function (value) {
                       return formatCurrency(value);
@@ -2209,6 +2522,7 @@
                     display: true,
                     text: "Jahr",
                   },
+                  grid: { display: false },
                 },
               },
               plugins: {
@@ -2233,7 +2547,295 @@
       // 7. Event Listeners
       // -----------------------------------------------------------
 
+      const STORAGE_KEY = "dgk_navigator_v1";
+      let saveFeedbackTimeout;
+      let debounceTimer;
+
+      function saveInputs() {
+        const data = {
+          baseline: {},
+          scenarios: Array.from(activeScenarios),
+          scenarioInputs: {},
+          lastSaved: new Date().toLocaleString("de-DE", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        };
+
+        // Baseline inputs
+        document.querySelectorAll("#baseline-form input").forEach((el) => {
+          data.baseline[el.id] = el.value;
+        });
+
+        // Dynamic scenario inputs
+        document
+          .querySelectorAll("#scenario-inputs-container input, #scenario-inputs-container select")
+          .forEach((el) => {
+            data.scenarioInputs[el.id] = el.value;
+          });
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+        // Visuelles Feedback einblenden
+        const statusEl = document.getElementById("save-status");
+        if (statusEl) {
+          statusEl.classList.replace("opacity-0", "opacity-100");
+
+          clearTimeout(saveFeedbackTimeout);
+          saveFeedbackTimeout = setTimeout(() => {
+            statusEl.classList.replace("opacity-100", "opacity-0");
+          }, 1500);
+        }
+      }
+
+      function loadInputs() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        try {
+          const data = JSON.parse(saved);
+
+          // Info über geladenen Stand anzeigen
+          if (data.lastSaved) {
+            const infoEl = document.getElementById("load-info");
+            const textEl = document.getElementById("load-info-text");
+            if (infoEl && textEl) {
+              textEl.textContent = `Simulation vom ${data.lastSaved} erfolgreich geladen.`;
+              infoEl.classList.remove("hidden");
+              infoEl.classList.add("flex");
+              // Automatisches Ausblenden nach 10 Sekunden
+              setTimeout(() => {
+                infoEl.classList.add("hidden");
+                infoEl.classList.remove("flex");
+              }, 10000);
+            }
+          }
+
+          // Baseline laden
+          if (data.baseline) {
+            Object.entries(data.baseline).forEach(([id, val]) => {
+              const el = document.getElementById(id);
+              if (el) el.value = val;
+            });
+          }
+
+          // Scenarios aktivieren
+          if (data.scenarios) {
+            data.scenarios.forEach((sId) => {
+              const cb = document.querySelector(`input[data-scenario="${sId}"]`);
+              if (cb) {
+                cb.checked = true;
+                handleScenarioCheckboxChange({ target: cb });
+              }
+            });
+          }
+
+          // Scenario Werte laden (nachdem Container generiert wurden)
+          if (data.scenarioInputs) {
+            Object.entries(data.scenarioInputs).forEach(([id, val]) => {
+              const el = document.getElementById(id);
+              if (el) el.value = val;
+            });
+          }
+        } catch (e) {
+          console.error("Automatisches Laden fehlgeschlagen", e);
+        }
+      }
+
+      function exportBaselineToCSV() {
+        const ids = [
+          "umsatz_ist",
+          "wareneinsatz_ist",
+          "current_employees",
+          "personalkosten_ist",
+          "raumkosten_ist",
+          "werbekosten_ist",
+          "sonstige_betriebliche_aufwendungen_ist",
+          "abschreibungen_ist",
+          "finanzierungskosten_ist",
+          "ertragsteuersatz_ist",
+          "current_employees",
+        ];
+
+        const data = ids.map((id) => {
+          const el = document.getElementById(id);
+          // Exportiere saubere Zahlenwerte für bessere Kompatibilität
+          const rawVal = el ? cleanNumberForCalculation(el.value) : "";
+          return { id, val: rawVal };
+        });
+
+        const csvContent = [data.map((d) => d.id).join(";"), data.map((d) => d.val).join(";")].join("\n");
+
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "strategie_navigator_daten.csv");
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function handleCSVUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const text = e.target.result;
+          const lines = text.trim().split("\n");
+          if (lines.length < 2) return;
+
+          const headers = lines[0].split(";").map((h) => h.trim());
+          const values = lines[1].split(";").map((v) => v.trim());
+
+          headers.forEach((id, index) => {
+            const el = document.getElementById(id);
+            if (el && values[index] !== undefined) {
+              el.value = values[index];
+              // Formatierung für Geldbeträge anwenden (Punkte als Tausendertrenner)
+              if (el.tagName === "INPUT" && el.id !== "current_employees" && el.id !== "ertragsteuersatz_ist") {
+                el.value = formatNumberForInput(el.value);
+              }
+            }
+          });
+
+          calculateAndDisplayBaseline();
+          event.target.value = "";
+        };
+        reader.readAsText(file);
+      }
+
+      let isExporting = false;
+
+      window.exportToPDF = async function () {
+        if (isExporting) return;
+
+        const overlay = document.getElementById("export-overlay");
+        const btn = document.getElementById("pdf-export-btn");
+
+        try {
+          isExporting = true;
+          btn.disabled = true;
+          overlay.classList.remove("hidden");
+
+          const { jsPDF } = window.jspdf;
+          const canvases = [];
+
+          // Erfasse sichtbare Sektionen: Baseline, Szenario-Eingaben und Ergebnisse
+          const ids = ["baseline-input", "scenario-selection", "results-output"];
+          for (const id of ids) {
+            const el = document.getElementById(id);
+            if (el && !el.classList.contains("hidden")) {
+              const canvas = await html2canvas(el, {
+                scale: 2,
+                backgroundColor: "#333333",
+                useCORS: true,
+                logging: false,
+              });
+              canvases.push(canvas);
+            }
+          }
+
+          const pdfWidth = 210;
+          let currentY = 15;
+          const spacing = 10;
+          const margin = 15;
+          const innerWidth = pdfWidth - margin * 2;
+
+          const imagesData = canvases.map((canvas) => ({
+            data: canvas.toDataURL("image/png"),
+            height: (canvas.height * innerWidth) / canvas.width,
+          }));
+
+          const totalHeight = imagesData.reduce((sum, img) => sum + img.height + spacing, currentY) + 30;
+          const doc = new jsPDF("p", "mm", [pdfWidth, Math.max(297, totalHeight)]);
+
+          // Hintergrundfarbe setzen
+          doc.setFillColor(25, 24, 24); // #191818
+          doc.rect(0, 0, pdfWidth, doc.internal.pageSize.getHeight(), "F");
+
+          imagesData.forEach((img) => {
+            doc.addImage(img.data, "PNG", margin, currentY, innerWidth, img.height);
+            currentY += img.height + spacing;
+          });
+
+          // Footer hinzufügen
+          const footerY = currentY + 5;
+          doc.setDrawColor(51, 51, 51);
+          doc.line(margin, footerY, pdfWidth - margin, footerY);
+          doc.setFontSize(10);
+          doc.setTextColor(160, 160, 160);
+          const dateStr = new Date().toLocaleDateString("de-DE");
+
+          doc.text("deingeschaeftskompass.de", 10, footerY + 10);
+          doc.text(`Stand: ${dateStr}`, 10, footerY + 16);
+
+          doc.save("Dein-Strategie-Navigator-Analyse.pdf");
+        } catch (err) {
+          console.error("PDF Export failed:", err);
+          alert("Export fehlgeschlagen. Bitte laden Sie die Seite neu.");
+        } finally {
+          isExporting = false;
+          btn.disabled = false;
+          overlay.classList.add("hidden");
+        }
+      };
+
       document.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide) window.lucide.createIcons();
+
+        // Schließen-Logik für die Lade-Info
+        document.getElementById("close-load-info").addEventListener("click", () => {
+          const infoEl = document.getElementById("load-info");
+          infoEl.classList.add("hidden");
+          infoEl.classList.remove("flex");
+        });
+
+        // Automatisches Speichern bei jeder Eingabe
+        document.addEventListener("input", (e) => {
+          if (e.target.closest("#baseline-form") || e.target.closest("#scenario-selection")) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(saveInputs, 5000); // 5 Sekunde
+          }
+        });
+        document.addEventListener("change", (e) => {
+          if (e.target.type === "checkbox") {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(saveInputs, 5000); // 5 Sekunden
+          }
+        });
+
+        // Sicherstellen, dass beim Schließen oder Verlassen der Seite sofort gespeichert wird
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "hidden" && debounceTimer) {
+            clearTimeout(debounceTimer);
+            saveInputs();
+          }
+        });
+
+        // CSV Export/Import Listeners
+        document.getElementById("export-csv").addEventListener("click", exportBaselineToCSV);
+        document.getElementById("import-csv-trigger").addEventListener("click", () => {
+          document.getElementById("csv-upload").click();
+        });
+        document.getElementById("csv-upload").addEventListener("change", handleCSVUpload);
+
+        // Start-Button Logik: Blendet die Ebene davor aus und den Navigator ein
+        const startBtn = document.getElementById("start-now-btn");
+        startBtn.addEventListener("click", () => {
+          // Gespeicherte Daten laden, falls vorhanden
+          const hasSavedData = localStorage.getItem(STORAGE_KEY);
+          if (hasSavedData) loadInputs();
+
+          document.getElementById("start-screen").classList.add("hidden");
+          document.getElementById("navigator-workspace").classList.remove("hidden");
+          if (window.lucide) window.lucide.createIcons(); // Icons im neuen Bereich rendern
+        });
+
         // Initial state: disable scenario selection and scenario calculation until baseline is calculated
         // All checkboxes and the 'calculate-scenario' button should be disabled initially
         document.querySelectorAll('#scenario-selection input[type="checkbox"]').forEach((el) => (el.disabled = true));
@@ -2264,35 +2866,45 @@
           checkbox.addEventListener("change", handleScenarioCheckboxChange);
         });
 
-        // Event listener for the "Neue Simulation starten" button
-        document.getElementById("reset-simulation").addEventListener("click", () => {
-          // Reset all inputs
-          document.getElementById("baseline-form").reset();
-          document.querySelectorAll('#scenario-selection input[type="checkbox"]').forEach((checkbox) => {
-            checkbox.checked = false;
-            checkbox.disabled = true; // Disable until new baseline
+        // Event listener for the "Neue Simulation starten" button(s)
+        document.querySelectorAll(".reset-simulation-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            localStorage.removeItem(STORAGE_KEY);
+            const infoEl = document.getElementById("load-info");
+            infoEl.classList.add("hidden");
+            infoEl.classList.remove("flex");
+
+            // Reset all inputs
+            document.getElementById("baseline-form").reset();
+            document.querySelectorAll('#scenario-selection input[type="checkbox"]').forEach((checkbox) => {
+              checkbox.checked = false;
+              checkbox.disabled = true; // Disable until new baseline
+            });
+            document.getElementById("calculate-scenario").disabled = true; // Disable scenario button after reset
+
+            document.getElementById("baseline-pnl-summary").innerHTML = "";
+            document.getElementById("baseline-pnl-summary").style.display = "none"; // Hide summary
+
+            const scenarioSelection = document.getElementById("scenario-selection");
+            scenarioSelection.classList.remove("scenario-section-visible");
+            scenarioSelection.classList.add("scenario-section-hidden");
+            document.getElementById("scenario-inputs-container").innerHTML = "";
+            activeScenarios.clear();
+
+            const resultsOutput = document.getElementById("results-output");
+            resultsOutput.classList.remove("scenario-section-visible");
+            resultsOutput.classList.add("scenario-section-hidden");
+
+            destroyCharts();
+            hideAllChartContainers();
+            document.getElementById("pnl-comparison-table tbody").innerHTML = "";
+            document.getElementById("key-metrics-summary").innerHTML = "";
+            document.getElementById("goal-seeking-output").classList.add("hidden");
+
+            baselinePnl = {}; // Clear baseline data
+            scenarioPnl = {}; // Clear scenario data
           });
-          document.getElementById("calculate-scenario").disabled = true; // Disable scenario button after reset
-
-          document.getElementById("baseline-pnl-summary").innerHTML = "";
-          document.getElementById("baseline-pnl-summary").style.display = "none"; // Hide summary
-
-          document.getElementById("scenario-inputs-container").innerHTML = "";
-          activeScenarios.clear();
-
-          document.getElementById("results-output").classList.add("hidden"); // Hide results
-          destroyCharts();
-          hideAllChartContainers();
-          document.getElementById("pnl-comparison-table tbody").innerHTML = "";
-          document.getElementById("key-metrics-summary").innerHTML = "";
-          document.getElementById("goal-seeking-output").classList.add("hidden");
-
-          baselinePnl = {}; // Clear baseline data
-          scenarioPnl = {}; // Clear scenario data
         });
-
-        // Initial baseline calculation on load with default values (optional, but good for demo)
-        calculateAndDisplayBaseline();
       });
     </script>
   </body>

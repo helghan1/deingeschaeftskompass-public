@@ -64,6 +64,55 @@
     <!-- Reset Styles -->
     <style data-tag="reset-style-sheet"></style>
 
+    <style>
+      /* Spezifisches Styling für das neue Kontaktformular */
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 20px;
+      }
+      .form-row {
+        display: flex;
+        gap: 15px;
+      }
+      .form-row input {
+        flex: 1;
+      }
+      .contact-form input,
+      .contact-form select,
+      .contact-form textarea {
+        padding: 12px 15px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        background-color: #242424;
+        color: #fff;
+        font-family: "Noto Sans", sans-serif;
+        font-size: 16px;
+      }
+      .contact-form input:focus,
+      .contact-form select:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #008cbaff;
+      }
+      .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      .contact-form button {
+        width: fit-content;
+        padding: 12px 30px;
+      }
+      @media (max-width: 600px) {
+        .form-row {
+          flex-direction: column;
+        }
+      }
+    </style>
+
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/impressum.css" />
 
@@ -82,137 +131,145 @@
     </noscript>
 
     <div class="mehr-erfahren-container1">
-      <header class="mehr-erfahren-container2"></header>
-      <section class="kopfzeile-rest-wrapper" rootclassname="kopfzeile-restundefined">
-        <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
-          <header data-thq="thq-navbar" class="kopfzeile-rest-navbar-interactive">
-            <a href="index.html" class="kopfzeile-rest-navlink">
-              <img
-                alt="Dein Geschäftskompass – zurück zur Startseite."
-                src="public/Logo.webp"
-                class="kopfzeile-rest-image1"
-              />
-            </a>
-            <div data-thq="thq-navbar-nav" class="kopfzeile-rest-desktop-menu">
-              <nav class="kopfzeile-rest-links">
-                <a href="index.html" class="kopfzeile-rest-link1 thq-body-small thq-link">
-                  <span class="mehr-erfahren-fragment10">
-                    <span>Startseite</span>
-                  </span>
-                </a>
+      <header class="kopfzeile-rest-container kopfzeile-restroot-class-name">
+        <header class="kopfzeile-rest-navbar-interactive">
+          <a href="index.html" class="kopfzeile-rest-navlink">
+            <img
+              alt="Dein Geschäftskompass – zurück zur Startseite."
+              src="public/Logo.webp"
+              class="kopfzeile-rest-image1"
+            />
+          </a>
+          <div class="kopfzeile-rest-desktop-menu">
+            <nav class="kopfzeile-rest-links">
+              <a href="index.html" class="kopfzeile-rest-link1 thq-body-small thq-link"> Startseite </a>
 
-                <div class="kopfzeile-start-buttons">
-                  <a href="gut-zu-wissen.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                    <span>
-                      <span class="startseite-fragment17">
-                        <span>Gut zu Wissen</span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-
-                <div class="kopfzeile-start-buttons">
-                  <a href="verantwortung.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                    <span>
-                      <span class="startseite-fragment17">
-                        <span>Verantwortung</span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-
-                <div class="kopfzeile-start-buttons">
-                  <a href="preise.html" class="kopfzeile-rest-action2 thq-button-animated thq-button-outline">
-                    <span>
-                      <span class="startseite-fragment17">
-                        <span>Preise</span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-              <div class="kopfzeile-rest-buttons">
-                <a
-                  href="mehr-erfahren.html"
-                  title="Über Uns"
-                  class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
-                >
-                  <span>
-                    <span class="mehr-erfahren-fragment11">
-                      <span>mehr Erfahren</span>
-                    </span>
-                  </span>
-                </a>
-                <a href="kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
-                  <span>
-                    <span class="mehr-erfahren-fragment12">
-                      <span>Kontakt</span>
-                    </span>
-                  </span>
+              <div class="kopfzeile-start-buttons">
+                <a href="gut-zu-wissen.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                  <span> Gut zu Wissen </span>
                 </a>
               </div>
+
+              <div class="kopfzeile-start-buttons">
+                <a href="verantwortung.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                  <span> Verantwortung </span>
+                </a>
+              </div>
+
+              <div class="kopfzeile-start-buttons">
+                <a href="preise.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
+                  <span> Preise </span>
+                </a>
+              </div>
+            </nav>
+            <div class="kopfzeile-rest-buttons">
+              <a
+                href="mehr-erfahren.html"
+                title="Über Uns"
+                class="kopfzeile-rest-action1 thq-button-filled thq-button-animated"
+              >
+                <span> mehr Erfahren </span>
+              </a>
+              <a href="kontakt.html" class="kopfzeile-rest-action1 thq-button-filled thq-button-animated">
+                <span> Kontakt </span>
+              </a>
             </div>
-            <div data-thq="thq-burger-menu" class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div data-thq="thq-mobile-menu" class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
-              <a href="index.html">Startseite</a>
-              <a href="gut-zu-wissen.html">Gut zu Wissen</a>
-              <a href="verantwortung.html">Verantwortung</a>
-              <a href="preise.html">Preise</a>
-              <a href="mehr-erfahren.html">Mehr Erfahren</a>
-              <a href="kontakt.html">Kontakt</a>
-            </div>
-          </header>
+          </div>
+          <div class="kopfzeile-rest-burger-menu" onclick="toggleMobileMenuRest()">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
+            <a href="index.html">Startseite</a>
+            <a href="gut-zu-wissen.html">Gut zu Wissen</a>
+            <a href="verantwortung.html">Verantwortung</a>
+            <a href="preise.html">Preise</a>
+            <a href="mehr-erfahren.html">Mehr Erfahren</a>
+            <a href="kontakt.html">Kontakt</a>
+          </div>
         </header>
-      </section>
+      </header>
 
       <div class="content-wrapper">
         <div id="ContactForm7">
           <div>
-            <h2 class="thq-heading-2">Kontakt zu Uns</h2>
-            <h1>Was wir für eine gute Antwort brauchen:</h1>
-            <p>Damit wir dir praxisnah und konkret helfen können, beschreibe bitte kurz:</p>
-
-            <p>
-              <strong>Was ist dein Anliegen?</strong><br />
-              (z. B. „Lohnt es sich, die Maschine XXX für 20.000 € anzuschaffen?“)
-            </p>
-
-            <p>
-              <strong>Was ist aktuell der Stand?</strong><br />
-              (z. B. „Die bisherige Anlage ist noch funktionstüchtig, aber langsamer. Wir arbeiten aktuell mit 3 Leuten
-              an dem Prozess…“)
-            </p>
-
-            <p>
-              <strong>Was willst du erreichen?</strong><br />
-              (z. B. „Ich hoffe auf schnellere Bearbeitung und Einsparung von Personalkosten.“)
-            </p>
-          </div>
-          <div>
-            <a href="mailto:deingeschaeftskompass@outlook.de?subject=">
-              <p>📧 deingeschaeftskompass@outlook.de</p>
-            </a>
-            <p>📝 Nutze das Kontaktformular via Goolge-Forms</p>
+            <h1 class="thq-heading-2">Kontakt zu Uns</h1>
           </div>
         </div>
         <div class="kontakt-container2">
           <div class="kontakt-container3">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLScnvW7l_YBHq4pO3_Z0dujvT0iJE9-AKqTGqeF8NX5CfyKKTA/viewform?embedded=true"
-              width="640"
-              height="1200"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              >Loading…</iframe
+            <form action="https://formsubmit.co/deingeschaeftskompass@outlook.de" method="POST" class="contact-form">
+              <!-- Konfiguration für FormSubmit -->
+              <input type="hidden" name="_subject" value="Neue Kontaktanfrage: Dein Geschäftskompass" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="text" name="_honey" style="display: none" />
+
+              <div class="form-row">
+                <input type="text" name="Name" placeholder="Name / Vorname" />
+                <input type="text" name="Firma" placeholder="Firma" />
+              </div>
+
+              <input type="email" name="email" placeholder="Deine E-Mail Adresse *" required />
+
+              <select name="Thema" required>
+                <option value="" disabled selected>Bitte wähle ein Thema *</option>
+                <option value="Strategieplanung">Option Einsteiger für Neukunden</option>
+                <option value="Prozessoptimierung">Option QUICK CHECK</option>
+                <option value="Restrukturierung">Otion DEEP DIVE</option>
+                <option value="Preise_Analyse">Option SYSTEM-AUDIT</option>
+                <option value="Allgemein">Allgemeine Anfrage</option>
+              </select>
+
+              <textarea
+                name="Nachricht"
+                placeholder="Beschreibe kurz dein Anliegen, den aktuellen Stand und dein Ziel... *"
+                required
+              ></textarea>
+              <br />
+              <button type="submit" class="thq-button-filled thq-button-animated">
+                <span>Anfrage absenden</span>
+              </button>
+            </form>
+            <i
+              >"Mit dem Absenden dieses Formulars erkläre ich mich damit einverstanden, dass meine Daten zur Bearbeitung
+              meines Anliegens an FormSubmit weitergeleitet werden. Weitere Informationen finden Sie in unserer
+              [Datenschutzerklärung]."</i
             >
           </div>
         </div>
+        <br />
+        <br />
+        <p>Damit wir dir praxisnah und konkret helfen können, beschreibe bitte kurz:</p>
+        <p>
+          Was ist dein Anliegen?<br />
+          (z. B. „Lohnt es sich, die Maschine XXX für 20.000 € anzuschaffen?“)
+        </p>
+        <p>
+          Was ist aktuell der Stand?<br />
+          (z. B. „Die bisherige Anlage ist noch funktionstüchtig, aber langsamer. Wir arbeiten aktuell mit 3 Leuten an
+          dem Prozess…“)
+        </p>
+        <p>
+          Was willst du erreichen?<br />
+          (z. B. „Ich hoffe auf schnellere Bearbeitung und Einsparung von Personalkosten.“)
+        </p>
+        <p><b>Weitere Kontaktmöglichkeiten:</b></p>
+        <a href="mailto:deingeschaeftskompass@outlook.de?subject=">
+          <p>📧 deingeschaeftskompass@outlook.de</p>
+        </a>
+        <p>📝 Kontaktformular via Goolge-Forms</p>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScnvW7l_YBHq4pO3_Z0dujvT0iJE9-AKqTGqeF8NX5CfyKKTA/viewform?embedded=true"
+          width="640"
+          height="1200"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          >Loading…
+        </iframe>
       </div>
+      <div></div>
       <!--Fuzeile component-->
       <section class="fuzeile-wrapper">
         <div class="thq-divider-horizontal"></div>

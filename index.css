@@ -70,15 +70,7 @@
 .slogan-row-container {
   width: 100%;
 }
-.slogan-placeholder-image1,
-.slogan-placeholder-image2,
-.slogan-placeholder-image3,
-.slogan-placeholder-image4,
-.slogan-placeholder-image5,
-.slogan-placeholder-image6,
-.slogan-placeholder-image7,
-.slogan-placeholder-image8,
-.slogan-placeholder-image9 {
+.slogan-image {
   width: 400px;
   height: 400px;
   display: block;
@@ -90,8 +82,6 @@
   display: block; /* Macht das A-Tag zu einem Block-Element */
   width: 100%; /* Lässt es die volle Breite des Eltern-Containers einnehmen */
   height: 100%; /* Lässt es die volle Höhe des Eltern-Containers einnehmen */
-  /* Optional: Wenn Sie Probleme mit zusätzlichem Leerraum im A-Tag haben,
-       können Sie Line-Height oder Text-Decoration entfernen */
   line-height: 0;
   text-decoration: none;
 }
@@ -177,12 +167,7 @@
     padding: var(--dl-layout-space-threeunits) var(--dl-layout-space-oneandhalfunits);
   }
 }
-.leistungen1-tab-horizontal1,
-.leistungen1-tab-horizontal2,
-.leistungen1-tab-horizontal3,
-.leistungen3-tab-horizontal1,
-.leistungen3-tab-horizontal2,
-.leistungen3-tab-horizontal3 {
+.leistungen-tab {
   gap: var(--dl-layout-space-twounits);
   cursor: pointer;
   display: flex;
@@ -191,32 +176,18 @@
   align-items: flex-start;
   flex-shrink: 0;
 }
-.leistungen1-divider-container1,
-.leistungen1-divider-container2,
-.leistungen1-divider-container3,
-.leistungen3-divider-container1,
-.leistungen3-divider-container2,
-.leistungen3-divider-container3 {
+.leistungen-divider-container {
   display: flex;
   align-self: stretch;
   align-items: flex-start;
 }
-.leistungen1-container3,
-.leistungen1-container4,
-.leistungen1-container5,
-.leistungen3-container3,
-.leistungen3-container4,
-.leistungen3-container5 {
+.leistungen-divider-line {
   width: 2px;
   align-self: stretch;
   background-color: var(--dl-color-theme-neutral-dark);
 }
 .leistungen1-content1,
-.leistungen1-content2,
-.leistungen1-content3,
-.leistungen3-content1,
-.leistungen3-content2,
-.leistungen3-content3 {
+.leistungen3-content1 {
   gap: 16px;
   flex: 1;
   display: flex;
@@ -391,13 +362,6 @@
   animation-iteration-count: 1;
   animation-timing-function: ease;
 }
-.fuzeile-credits {
-  gap: var(--dl-layout-space-twounits);
-  display: flex;
-  align-self: stretch;
-  align-items: center;
-  flex-direction: column;
-}
 @media (max-width: 991px) {
   .kopfzeile-start-navbar-interactive {
     max-width: auto;
@@ -417,8 +381,8 @@
 .ablauf-container8,
 .ablauf-container9,
 .faqfaq8 {
-  padding-top: var(--dl-layout-space-unit);
-  padding-bottom: var(--dl-layout-space-unit);
+  padding-top: var(--dl-layout-space-halfunit);
+  padding-bottom: var(--dl-layout-space-halfunit);
 }
 .ablauf-container1,
 .ablauf-text11 {
@@ -531,167 +495,150 @@
   }
 }
 @media (max-width: 991px) {
-  .faq-container10 {
-    flex-direction: column;
-  }
-}
-.fuzeile-footer7 {
-  width: 100%;
-  height: auto;
-  position: relative;
-  align-items: center;
-  flex-shrink: 0;
-  padding-top: var(--dl-layout-space-twounits);
-  flex-direction: column;
-  padding-bottom: var(--dl-layout-space-halfunit);
-  justify-content: center;
-}
-.fuzeile-max-width {
-  gap: var(--dl-layout-space-threeunits);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.fuzeile-content {
-  gap: var(--dl-layout-space-twounits);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.fuzeile-logo {
-  gap: 24px;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.fuzeile-container,
-.fuzeile-row {
-  align-items: flex-start;
-  display: flex;
-}
-.fuzeile-row {
-  align-self: stretch;
-  flex-shrink: 0;
-  justify-content: space-between;
-}
-.fuzeile-footer-links {
-  gap: 24px;
-  display: flex;
-  align-items: flex-start;
-}
-@media (max-width: 479px) {
-  .kopfzeile-start-mobile-menu,
-  .kopfzeile-start-navbar-interactive {
-    padding: var(--dl-layout-space-unit);
+  @media (max-width: 479px) {
+    .kopfzeile-start-mobile-menu,
+    .kopfzeile-start-navbar-interactive {
+      padding: var(--dl-layout-space-unit);
+    }
+
+    .slogan-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .ablauf-button,
+    .slogan-button {
+      width: 100%;
+    }
+
+    .leistungen1-container2 {
+      display: block;
+    }
+
+    .leistungen1-tabs-menu {
+      width: auto;
+    }
+
+    .leistungen1-feature1-description {
+      width: auto;
+      overflow: auto;
+    }
+
+    .leistungen1-feature2-title {
+      overflow: auto;
+      word-break: break-all;
+    }
+
+    .leistungen1root-class-name {
+      overflow: visible;
+    }
+
+    .leistungen2-actions {
+      flex-wrap: wrap;
+      align-self: stretch;
+      justify-content: center;
+    }
+
+    .leistungen2-navlink {
+      flex: 1;
+    }
+
+    .faq-max-width,
+    .fuzeile-max-width {
+      gap: var(--dl-layout-space-oneandhalfunits);
+    }
+
+    .faqfaq8 {
+      align-items: center;
+    }
   }
 
-  .slogan-actions {
+  .startseite-container {
     width: 100%;
-    flex-direction: column;
-  }
-
-  .ablauf-button,
-  .slogan-button {
-    width: 100%;
-  }
-
-  .leistungen1-container2 {
-    display: block;
-  }
-
-  .leistungen1-tabs-menu {
-    width: auto;
-  }
-
-  .leistungen1-feature1-description {
-    width: auto;
-    overflow: auto;
-  }
-
-  .leistungen1-feature2-title {
-    overflow: auto;
-    word-break: break-all;
-  }
-
-  .leistungen1-content3 {
-    overflow: auto;
-  }
-
-  .leistungen1root-class-name {
-    overflow: visible;
-  }
-
-  .leistungen2-actions {
-    flex-wrap: wrap;
-    align-self: stretch;
-    justify-content: center;
-  }
-
-  .leistungen2-navlink {
-    flex: 1;
-  }
-
-  .faq-max-width,
-  .fuzeile-max-width {
-    gap: var(--dl-layout-space-oneandhalfunits);
-  }
-
-  .faqfaq8 {
-    align-items: center;
-  }
-}
-
-.startseite-container {
-  width: 100%;
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-}
-
-.startseite-text115 {
-  font-style: normal;
-  font-weight: 300;
-}
-
-.startseite-link {
-  left: 50;
-  width: 50px;
-  bottom: 50;
-  height: 50px;
-  position: fixed;
-  text-align: center;
-  text-decoration: none;
-}
-@media (max-width: 767px) {
-  .ablauf-container2 {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-  }
-  .ablauf-container4,
-  .ablauf-container5,
-  .ablauf-container6,
-  .ablauf-container7,
-  .ablauf-container8,
-  .ablauf-container9 {
-    width: 100%;
-  }
-  .fuzeile-row {
-    gap: var(--dl-layout-space-oneandhalfunits);
+    display: flex;
+    min-height: 100vh;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
   }
+
+  .startseite-text115 {
+    font-style: normal;
+    font-weight: 300;
+  }
+
   .startseite-link {
+    left: 50;
     width: 50px;
+    bottom: 50;
     height: 50px;
+    position: fixed;
+    text-align: center;
+    text-decoration: none;
+  }
+  @media (max-width: 767px) {
+    .ablauf-container2 {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+    .ablauf-container4,
+    .ablauf-container5,
+    .ablauf-container6,
+    .ablauf-container7,
+    .ablauf-container8,
+    .ablauf-container9 {
+      width: 100%;
+    }
+    .fuzeile-row {
+      gap: var(--dl-layout-space-oneandhalfunits);
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .startseite-link {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .testimonial-container {
+    display: flex;
+    flex-wrap: wrap; /* Erlaubt das Umbrechen auf Handys */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px; /* Genug Abstand zum Bildschirmrand */
+    box-sizing: border-box; /* Wichtig, damit Padding die Breite nicht sprengt */
   }
 }
-.testimonial-container {
+.thq-img-scale {
+  transition: 0.3s;
+}
+
+.thq-img-scale:hover {
+  scale: 1.05;
+}
+.thq-mask-image-horizontal {
+  mask-image: linear-gradient(to right, transparent, black 1%, black 99%, transparent);
+}
+.thq-animated-group-horizontal {
+  gap: var(--dl-layout-space-unit);
   display: flex;
-  flex-wrap: wrap; /* Erlaubt das Umbrechen auf Handys */
+  animation: scroll-x 20s linear infinite;
+  min-width: 100%;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 15px; /* Genug Abstand zum Bildschirmrand */
-  box-sizing: border-box; /* Wichtig, damit Padding die Breite nicht sprengt */
+  flex-shrink: 0;
+  justify-content: space-around;
+}
+.thq-animated-group-container-horizontal {
+  gap: var(--dl-layout-space-unit);
+  display: flex;
+  overflow: hidden;
+}
+.thq-animated-group-container-horizontal:hover div {
+  animation-play-state: paused;
+}
+
+@media (max-width: 767px) {
+  .thq-img-scale {
+    width: 100%;
+  }
 }

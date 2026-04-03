@@ -73,8 +73,8 @@ Disallow: /
 3. Kontakt & Rechteinhaber
 ----------------------------------------------------------
 Owner: Dein Geschäftskompass
-Contact: deingeschaeftskompass@outlokk.de
-Last-Updated: 2025-10-09
+Contact: deingeschaeftskompass@outlook.de
+Last-Updated: 2026-04-02
 ----------------------------------------------------------
 4. Hinweise
 ----------------------------------------------------------

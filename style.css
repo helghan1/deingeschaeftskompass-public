@@ -140,10 +140,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.kopfzeile-rest-wrapper {
-  display: contents;
-}
-
 .kopfzeile-rest-container {
   top: 0;
   width: 100%;
@@ -209,32 +205,8 @@ html {
   text-decoration: none;
 }
 
-.kopfzeile-rest-action2 {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-}
-
 .kopfzeile-rest-burger-menu {
   display: none;
-}
-
-.kopfzeile-rest-mobile-menu {
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: auto;
-  display: none;
-  padding: var(--dl-layout-space-twounits);
-  overflow: auto;
-  position: absolute;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--dl-color-theme-neutral-light);
-}
-
-.kopfzeile-rest-burger-menu {
-  display: none; /* Standardmäßig ausblenden */
   cursor: pointer;
   padding: 10px;
 }
@@ -247,7 +219,7 @@ html {
 }
 
 .kopfzeile-rest-mobile-menu {
-  display: none; /* Standardmäßig ausblenden */
+  display: none;
   position: absolute;
   top: 60px;
   left: 0;
@@ -257,6 +229,8 @@ html {
   z-index: 10; /* Um sicherzustellen, dass es über anderen Inhalten liegt */
   padding: 15px;
   flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
   align-items: flex-start;
   visibility: hidden;
   opacity: 0;
@@ -293,79 +267,32 @@ html {
 .kopfzeile-rest-mobile-menu a:last-child {
   margin-bottom: 0;
 }
-
-/* Angepasste Stile für die Links im mobilen Menü */
-.kopfzeile-rest-mobile-menu a {
-  font-size: 1.2em; /* Schriftgröße anpassen, z.B. 1.2em oder 18px */
-  margin-bottom: 15px; /* Abstand nach unten zwischen den Links */
-  text-decoration: none; /* Unterstreichung entfernen, falls gewünscht */
-  color: var(--dl-color-theme-neutral-dark); /* Farbe der Links anpassen */
-  padding-top: 15px; /* Fügt Platz oberhalb des Textes hinzu, damit die Border nicht direkt am Text klebt */
-  width: 100%; /* Stellt sicher, dass die Border über die gesamte Breite des Links geht */
-  border-top: 1px solid #008cbaff; /* Hinzufügen der Border oben */
-  /* Den Wert für --dl-color-theme-neutral-light kannst du anpassen, wenn du eine andere Farbe für die Linie möchtest */
-}
-
-/* Den ersten Link ohne obere Border, da er der oberste ist */
-.kopfzeile-rest-mobile-menu a:first-child {
-  border-top: none;
-  padding-top: 0; /* Entfernt den oberen Padding für den ersten Link */
-}
-
-/* Letzten Link ohne unteren Margin, falls gewünscht */
-.kopfzeile-rest-mobile-menu a:last-child {
-  margin-bottom: 0;
-}
 @media (max-width: 767px) {
+  .kopfzeile-rest-desktop-menu,
+  .kopfzeile-rest-links {
+    display: none;
+  }
   .kopfzeile-rest-navbar-interactive {
     padding-left: var(--dl-layout-space-twounits);
     padding-right: var(--dl-layout-space-twounits);
   }
-  .kopfzeile-rest-links {
-    display: none;
-  }
-  .kopfzeile-rest-buttons {
-    padding-left: var(--dl-layout-space-unit);
-  }
   .kopfzeile-rest-burger-menu {
     display: flex;
-    overflow: auto;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .kopfzeile-rest-mobile-menu {
-    padding-top: var(--dl-layout-space-oneandhalfunits);
-    padding-bottom: var(--dl-layout-space-oneandhalfunits);
+    padding: var(--dl-layout-space-oneandhalfunits);
   }
 }
 
 @media (max-width: 479px) {
   .kopfzeile-rest-navbar-interactive {
     padding: var(--dl-layout-space-unit);
-    padding-right: 16px;
-  }
-  .kopfzeile-rest-buttons {
-    padding-left: var(--dl-layout-space-unit);
   }
   .kopfzeile-rest-mobile-menu {
     padding: var(--dl-layout-space-unit);
-  }
-  .kopfzeile-restroot-class-name {
-    fill: var(--dl-color-theme-neutral-dark);
-    color: var(--dl-color-theme-neutral-dark);
-  }
-  .kopfzeile-restroot-class-name2 {
-    fill: var(--dl-color-theme-neutral-dark);
-    color: var(--dl-color-theme-neutral-dark);
-  }
-}
-/* Media Query für mobile Ansichten */
-@media (max-width: 767px) {
-  .kopfzeile-rest-desktop-menu {
-    display: none; /* Desktop-Menü ausblenden */
-  }
-  .kopfzeile-rest-burger-menu {
-    display: block; /* Burger-Menü anzeigen */
   }
 }
 
@@ -451,7 +378,6 @@ html {
   font-family: STIX Two Text;
   font-weight: 600;
   line-height: 1.5;
-  margin-bottom: 1em; /* Füge etwas Standard-Abstand nach unten hinzu */
 
   /* Responsive Anpassungen für Überschriften
 
@@ -594,49 +520,12 @@ html {
   background-position: 0 100%;
 }
 
-.thq-animated-group-horizontal {
-  gap: var(--dl-layout-space-unit);
-  display: flex;
-  animation: scroll-x 20s linear infinite;
-  min-width: 100%;
-  align-items: center;
-  flex-shrink: 0;
-  justify-content: space-around;
-}
-
-.thq-animated-group-container-horizontal {
-  gap: var(--dl-layout-space-unit);
-  display: flex;
-  overflow: hidden;
-}
-
-.thq-mask-image-horizontal {
-  mask-image: linear-gradient(to right, transparent, black 1%, black 99%, transparent);
-}
-
-.thq-img-scale {
-  transition: 0.3s;
-}
-
-.thq-img-scale:hover {
-  scale: 1.05;
-}
-
 .thq-button-animated {
   outline: none;
   z-index: 1;
   overflow: hidden;
   position: relative;
   border-width: 2px;
-}
-
-.thq-input::placeholder {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.thq-animated-group-container-horizontal:hover div {
-  animation-play-state: paused;
 }
 
 .thq-button-animated:before {
@@ -676,9 +565,6 @@ html {
     grid-gap: var(--dl-layout-space-oneandhalfunits);
     grid-template-columns: 1fr;
   }
-  .thq-img-scale {
-    width: 100%;
-  }
 }
 
 @media (max-width: 479px) {
@@ -694,12 +580,6 @@ html {
   .thq-grid-2 {
     grid-gap: var(--dl-layout-space-unit);
   }
-}
-
-.fuzeile-wrapper {
-  /* Beispielstile: */
-  width: 100%;
-  /* Oder andere Layout-Eigenschaften */
 }
 .fuzeile-footer7 {
   display: flex;
@@ -806,6 +686,14 @@ html {
 
 .fuzeile-footer-links .thq-link:hover {
   color: var(--dl-color-theme-primary); /* Farbe beim Hover, anpassen */
+}
+
+.fuzeile-credits {
+  gap: var(--dl-layout-space-twounits);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Media Query für größere Bildschirme (z.B. Tablet und Desktop) */

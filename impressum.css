@@ -3,11 +3,6 @@
   hyphens: auto;
   word-break: normal;
 }
-.fuzeile-container,
-.fuzeile-logo {
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-}
-.fuzeile-wrapper,
 .impressum-fragment7 {
   display: contents;
 }

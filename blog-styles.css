@@ -1,5 +1,5 @@
 html {
-  font-family: Inter;
+  font-family: Noto Sans;
   font-size: 12px;
 }
 
@@ -129,4 +129,16 @@ ul li::before {
 
 .author-link:hover {
   text-decoration: underline;
+}
+/* Standard für alle Geräte (Mobil zuerst) */
+.desktop-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Nur für Desktops (Bildschirme breiter als 1024px) */
+@media (min-width: 1000px) {
+  .desktop-container {
+    max-width: 70%;
+  }
 }
