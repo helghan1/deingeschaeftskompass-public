@@ -452,14 +452,7 @@
     <script>
       function toggleMobileMenuRest() {
         const mobileMenu = document.getElementById("mobileMenuRest");
-        const mainContent = document.getElementById("mainContent");
         mobileMenu.classList.toggle("open");
-
-        if (mobileMenu.classList.contains("open")) {
-          mainContent.style.marginTop = "auto"; // Oder die Höhe, die dein geöffnetes Menü einnimmt
-        } else {
-          mainContent.style.marginTop = "0";
-        }
       }
     </script>
   </body>

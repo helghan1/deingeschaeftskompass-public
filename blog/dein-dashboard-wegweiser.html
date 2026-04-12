@@ -71,16 +71,18 @@
     </script>
 
     <script type="text/javascript">
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      window.addEventListener("load", function () {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      });
     </script>
     <style data-tag="reset-style-sheet"></style>
 
@@ -830,13 +832,6 @@
       function toggleMobileMenuRest() {
         const mobileMenu = document.getElementById("mobileMenuRest");
         mobileMenu.classList.toggle("open");
-        
-        // Verhindert Scrollen des Bodys wenn Menü offen
-        if (mobileMenu.classList.contains("open")) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'auto';
-        }
       }
     </script>
   </body>

@@ -107,16 +107,18 @@
     </script>
 
     <script type="text/javascript">
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      window.addEventListener("load", function () {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      });
     </script>
     <style data-tag="reset-style-sheet"></style>
 
@@ -583,7 +585,7 @@
           <span id="author-toggle-icon">+</span>
         </div>
 
-        <div id="author-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out">
+        <div id="author-content" class="author-collapsed">
           <div class="author-body">
             <img
               src="/public/Logo48.webp"
@@ -806,14 +808,7 @@
     <script>
       function toggleMobileMenuRest() {
         const mobileMenu = document.getElementById("mobileMenuRest");
-        const mainContent = document.getElementById("mainContent");
         mobileMenu.classList.toggle("open");
-
-        if (mobileMenu.classList.contains("open")) {
-          mainContent.style.marginTop = "auto";
-        } else {
-          mainContent.style.marginTop = "0";
-        }
       }
     </script>
   </body>

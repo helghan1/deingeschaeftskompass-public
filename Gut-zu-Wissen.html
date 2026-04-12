@@ -51,16 +51,18 @@
     </script>
 
     <script type="text/javascript">
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      window.addEventListener("load", function () {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      });
     </script>
 
     <style data-tag="reset-style-sheet"></style>
@@ -322,6 +324,36 @@
                               <b>Steuerungsfähigkeit: Dein Weg zu finanzieller Freiheit</b><br />
                               Kennst du das beklemmende Gefühl, wenn du am Ende des Monats auf dein Geschäftskonto
                               blickst und dich fragst, wo das ganze Geld geblieben ist, obwohl...
+                            </div>
+                          </div>
+                        </a>
+                        <a href="/blog/e-rechnung.html">
+                          <div class="article-item">
+                            <div class="article-image-wrapper">
+                              <img
+                                src="/public/e-rechnung.webp"
+                                alt="Digitale Wende nutzen 🚀 Strukturierte Prozesse und Methoden für die E-Rechnung. Hier klicken und umstellen"
+                                class="article-thumbnail"
+                                loading="lazy"
+                              />
+                              <b>E-Rechnung: Dein Weg zu effizienter Buchhaltung</b><br />
+                              Hast du dich schon einmal gefragt warum manche Unternehmen scheinbar mühelos wachsen,
+                              während andere im Chaos versinken? Der entscheidende...
+                            </div>
+                          </div>
+                        </a>
+                        <a href="/blog/ki-steuererklärung-mit-system.html">
+                          <div class="article-item">
+                            <div class="article-image-wrapper">
+                              <img
+                                src="/public/ki-steuererklärung-mit-system.webp"
+                                alt="🧾 Perplexity Steuermodule funktionieren nur mit klarem Input. Lerne, wie Struktur deine Steuern vereinfacht. Jetzt lesen!"
+                                class="article-thumbnail"
+                                loading="lazy"
+                              />
+                              <b>KI-Steuererklärung mit System</b><br />
+                              Es klingt verlockend. Du öffnest ein KI-Tool, wirfst deine Belege hinein und bekommst am
+                              Ende eine fertige Steuererklärung zurück. Genau das versprechen viele,...
                             </div>
                           </div>
                         </a>
@@ -898,14 +930,7 @@
     <script>
       function toggleMobileMenuRest() {
         const mobileMenu = document.getElementById("mobileMenuRest");
-        const mainContent = document.getElementById("mainContent");
         mobileMenu.classList.toggle("open");
-
-        if (mobileMenu.classList.contains("open")) {
-          mainContent.style.marginTop = "auto";
-        } else {
-          mainContent.style.marginTop = "0";
-        }
       }
     </script>
   </body>

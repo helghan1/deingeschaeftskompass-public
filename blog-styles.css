@@ -142,3 +142,10 @@ ul li::before {
     max-width: 70%;
   }
 }
+.abstract {
+  background-color: #053047;
+  border-left: 4px solid #008cbaff;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}

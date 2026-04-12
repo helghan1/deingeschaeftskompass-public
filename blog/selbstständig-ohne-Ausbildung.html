@@ -44,21 +44,27 @@
           "@type": "WebPage",
           "@id": "https://deingeschaeftskompass.de/blog/selbstständig-ohne-Ausbildung"
         },
-        "description": "Keine Zeit für lange Lehrjahre? Erfahre, was man beim selbstständig werden ohne Ausbildung beachten muss, um durch operative Effizienz schneller zum Markterfolg zu kommen."
+        "description": "Keine Zeit für lange Lehrjahre? Erfahre, was man beim selbstständig werden ohne Ausbildung beachten muss, um durch operative Effizienz schneller zum Markterfolg zu kommen.",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".thq-heading-1", ".abstract"]
+        }
       }
     </script>
 
     <script type="text/javascript">
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      window.addEventListener("load", function () {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WKKNJDLN");
+      });
     </script>
     <style data-tag="reset-style-sheet"></style>
 
@@ -189,6 +195,13 @@
         <h1 class="impressum-text-heading1 thq-heading-1" id="einleitung">
           Selbständig machen ohne Ausbildung: Dein Weg in die Freiheit
         </h1>
+        <br />
+
+        <p class="thq-body-large abstract">
+          <strong>Abstract:</strong> Ein formaler Abschluss ist im modernen Unternehmertum nicht mehr die einzige
+          Eintrittskarte zum Erfolg. Dieser Artikel zeigt, wie man durch gezielte Weiterbildung, operative Systematik
+          und das richtige Mindset auch ohne klassische Ausbildung ein stabiles und profitables Business aufbaut.
+        </p>
         <br />
 
         <p>
@@ -491,7 +504,7 @@
           <span id="author-toggle-icon">+</span>
         </div>
 
-        <div id="author-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out">
+        <div id="author-content" class="author-collapsed">
           <div class="author-body">
             <img
               src="/public/Logo48.webp"
@@ -714,14 +727,7 @@
     <script>
       function toggleMobileMenuRest() {
         const mobileMenu = document.getElementById("mobileMenuRest");
-        const mainContent = document.getElementById("mainContent");
         mobileMenu.classList.toggle("open");
-
-        if (mobileMenu.classList.contains("open")) {
-          mainContent.style.marginTop = "auto";
-        } else {
-          mainContent.style.marginTop = "0";
-        }
       }
     </script>
   </body>
