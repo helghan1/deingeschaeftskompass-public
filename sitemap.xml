@@ -107,7 +107,7 @@
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/betriebswirtschaftliche-kennzahlen</loc>
-    <lastmod>2026-02-15T10:30:00+00:00</lastmod>
+    <lastmod>2026-04-13T10:30:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
@@ -152,12 +152,12 @@
   </url>
   <url>
   <loc>https://deingeschaeftskompass.de/blog/controlling-im-unternehmen</loc>
-    <lastmod>2026-03-01T10:42:00+00:00</lastmod>
+    <lastmod>2026-03-31T10:42:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>
   <loc>https://deingeschaeftskompass.de/blog/controlling-resilienz</loc>
-    <lastmod>2026-02-07T17:16:00+00:00</lastmod>
+    <lastmod>2026-04-13T17:16:00+00:00</lastmod>
     <priority>0.70</priority>
   </url> 
   <url>  
@@ -187,7 +187,7 @@
   </url> 
   <url>
     <loc>https://deingeschaeftskompass.de/blog/finanziell-am-ende-was-tun</loc>
-    <lastmod>2026-03-01T10:00:00+00:00</lastmod>
+    <lastmod>2026-04-13T10:00:00+00:00</lastmod>
     <priority>0.60</priority>
   </url>
     <url>
@@ -237,7 +237,7 @@
   </url>
   <url>
     <loc>https://deingeschaeftskompass.de/blog/controlling-aufbauen</loc>
-    <lastmod>2026-03-08T11:15:00+00:00</lastmod>
+    <lastmod>2026-03-29T11:15:00+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
@@ -250,4 +250,14 @@
     <lastmod>2026-03-23T15:05:00+00:00</lastmod>
     <priority>0.75</priority>
   </url>  
+  <url>
+    <loc>https://deingeschaeftskompass.de/blog/ki-steuererklaerung-mit-system</loc>
+    <lastmod>2026-04-13T10:15:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deingeschaeftskompass.de/blog/e-rechnung</loc>
+    <lastmod>2026-04-11T13:10:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
 </urlset>
