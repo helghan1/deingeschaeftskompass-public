@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <head>
     <link rel="canonical" href="https://deingeschaeftskompass.de/blog/" />
@@ -8,7 +8,11 @@
     <meta name="description" content="" />
 
     <!-- LCP Preload -->
-    <link rel="preload" href="https://deingeschaeftskompass.de/public/.webp" as="image" />
+    <link rel="preload" href="https://deingeschaeftskompass.de/public/.webp" as="image" fetchpriority="high" />
+    <meta property="og:image" content="https://deingeschaeftskompass.de/public/.webp" />
+    <meta property="og:url" content="https://deingeschaeftskompass.de/blog/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Dein Geschäftskompass" />
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="article" />
@@ -36,9 +40,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": "",
-        "image": [
-          "https://deingeschaeftskompass.de/public/.webp"
-        ],
+        "image": ["https://deingeschaeftskompass.de/public/.webp"],
         "url": "https://deingeschaeftskompass.de/blog/",
         "datePublished": "2025-08-13T17:15:00+00:00",
         "dateModified": "2025-08-13T17:15:00+00:00",
@@ -64,10 +66,7 @@
         "description": "",
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": [
-            ".thq-heading-1",
-            ".abstract"
-          ]
+          "cssSelector": [".thq-heading-1", ".abstract"]
         }
       }
     </script>
