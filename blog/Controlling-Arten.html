@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <head>
     <!-- Grundlegende Einstellungen -->
@@ -24,7 +24,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://deingeschaeftskompass.de/blog/controlling-arten" />
     <!-- LCP Preload -->
-    <link rel="preload" href="https://deingeschaeftskompass.de/public/Arten-des-Controllings.webp" as="image" />
+    <link rel="preload" href="https://deingeschaeftskompass.de/public/Arten-des-Controllings.webp" as="image" / fetchpriority="high">
     <meta property="og:image" content="https://deingeschaeftskompass.de/public/Arten-des-Controllings.webp" />
     <meta property="og:site_name" content="Dein Geschäftskompass" />
     <meta property="og:locale" content="de_DE" />
@@ -45,9 +45,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": "Was für Controlling Arten gibt es? Dein Kompass zur Steuerung.",
-        "image": [
-          "https://deingeschaeftskompass.de/public/Arten-des-Controllings.webp"
-        ],
+        "image": ["https://deingeschaeftskompass.de/public/Arten-des-Controllings.webp"],
         "url": "https://deingeschaeftskompass.de/blog/controlling-arten",
         "datePublished": "2025-06-15T12:11:00+00:00",
         "dateModified": "2026-02-07T16:17:00+00:00",
@@ -106,10 +104,7 @@
         ],
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": [
-            ".thq-heading-1",
-            ".abstract"
-          ]
+          "cssSelector": [".thq-heading-1", ".abstract"]
         }
       }
     </script>
@@ -944,9 +939,12 @@
         <div id="author-content" class="author-collapsed">
           <div class="author-body">
             <img
+              alt="Dein Geschäftskompass – zurück zur Startseite."
               src="/public/Logo48.webp"
-              alt="Gründer von Dein Geschäftskompass: Kay Beerbaum - Experte für Controlling"
-              class="author-image"
+              class="kopfzeile-rest-image1"
+              loading="lazy"
+              width="36"
+              height="36"
             />
             <div class="author-info-text">
               <h3>Kay Beerbaum</h3>
