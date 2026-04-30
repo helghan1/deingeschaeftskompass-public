@@ -1,11 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="de">
   <head>
     <link rel="canonical" href="https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser" />
 
-    <title>Dein Dashboard Wegweiser</title>
+    <title>Business Dashboard erstellen: Liquidität, Gewinn & Stundensatz sofort verstehen</title>
 
-    <meta name="description" content="" />
+    <meta name="description" content="Genug von Vermutungen? Ein kostenloses Tool für mehr finanzielle Transparenz in Deinem Unternehmen." />
 
     <!-- Funktionen -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,8 +21,8 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Dein Dashboard Wegweiser" />
-    <meta property="og:description" content="" />
+    <meta property="og:title" content="Business Dashboard erstellen: Liquidität, Gewinn & Stundensatz sofort verstehen" />
+    <meta property="og:description" content="Genug von Vermutungen? Ein kostenloses Tool für mehr finanzielle Transparenz in Deinem Unternehmen." />
     <meta property="og:url" content="https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser" />
     <meta property="og:image" content="https://deingeschaeftskompass.de/public/dein-dashboard-wegweiser.webp" />
     <meta property="og:locale" content="de_DE" />
@@ -30,8 +30,8 @@
 
     <!-- Twitter Meta Tags -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Dein Dashboard Wegweiser" />
-    <meta property="twitter:description" content="" />
+    <meta property="twitter:title" content="Business Dashboard erstellen: Liquidität, Gewinn & Stundensatz sofort verstehen" />
+    <meta property="twitter:description" content="Genug von Vermutungen? Ein kostenloses Tool für mehr finanzielle Transparenz in Deinem Unternehmen." />
     <meta property="twitter:image" content="https://deingeschaeftskompass.de/public/dein-dashboard-wegweiser.webp" />
     <meta property="twitter:url" content="https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser" />
 
@@ -44,13 +44,13 @@
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "Business Dashboard erstellen: Liquidität, Gewinn & Stundensatz sofort verstehen",
         "image": [
           "https://deingeschaeftskompass.de/public/dein-dashboard-wegweiser.webp"
         ],
-        "url": "https://deingeschaeftskompass.de/blog/",
-        "datePublished": "2025-08-13T17:15:00+00:00",
-        "dateModified": "2025-08-13T17:15:00+00:00",
+        "url": "https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser",
+        "datePublished": "2026-04-30T14:05:40+00:00",
+        "dateModified": "2026-04-30T14:05:40+00:00",
         "author": {
           "@type": "Person",
           "@id": "https://deingeschaeftskompass.de/team/kay-beerbaum/#person",
@@ -70,7 +70,7 @@
           "@type": "WebPage",
           "@id": "https://deingeschaeftskompass.de/blog/dein-dashboard-wegweiser"
         },
-        "description": "",
+        "description": "Genug von Vermutungen? Ein kostenloses Tool für mehr finanzielle Transparenz in Deinem Unternehmen.",
       }
     </script>
 
@@ -132,7 +132,51 @@
         color: #ffffff;
       }
       [data-lucide] {
-        display: inline-block;
+        stroke-width: 2.5;
+      }
+
+      /* Tooltip Styles */
+      .tooltip-container {
+        position: relative;
+        cursor: help;
+      }
+      .tooltip-text {
+        visibility: hidden;
+        width: 240px;
+        background-color: #1a1a1a;
+        color: #e2e8f0;
+        text-align: left;
+        border-radius: 12px;
+        padding: 12px;
+        position: absolute;
+        z-index: 100;
+        bottom: 150%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: all 0.2s ease-out;
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.5;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        pointer-events: none;
+        border: 1px solid #333;
+        backdrop-filter: blur(8px);
+      }
+      .tooltip-container:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+        bottom: 125%;
+      }
+      .tooltip-text::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 8px;
+        border-style: solid;
+        border-color: #1a1a1a transparent transparent transparent;
       }
     </style>
   </head>
@@ -250,6 +294,22 @@
       function App() {
         const [activeTab, setActiveTab] = useState('dashboard');
         const [isExporting, setIsExporting] = useState(false);
+        const [isPro, setIsPro] = useState(() => {
+          const saved = localStorage.getItem('dgk_dash_isPro');
+          return saved === 'true';
+        });
+        const [showGuide, setShowGuide] = useState(() => {
+          const saved = localStorage.getItem('dgk_dash_showGuide');
+          return saved === null ? true : saved === 'true';
+        });
+
+        useEffect(() => {
+          localStorage.setItem('dgk_dash_isPro', isPro);
+        }, [isPro]);
+
+        useEffect(() => {
+          localStorage.setItem('dgk_dash_showGuide', showGuide);
+        }, [showGuide]);
         
         // --- STATES mit LocalStorage Initialisierung ---
         const loadState = (key, def) => {
@@ -257,14 +317,14 @@
           return saved !== null ? Number(saved) : def;
         };
 
-        const [bankBalance, setBankBalance] = useState(() => loadState('bankBalance', 8500));
-        const [monthlyRevenue, setMonthlyRevenue] = useState(() => loadState('monthlyRevenue', 5200));
+        const [bankBalance, setBankBalance] = useState(() => loadState('bankBalance', 18000));
+        const [monthlyRevenue, setMonthlyRevenue] = useState(() => loadState('monthlyRevenue', 10000));
         const [fixedCosts, setFixedCosts] = useState(() => loadState('fixedCosts', 1200));
-        const [variableCosts, setVariableCosts] = useState(() => loadState('variableCosts', 400));
-        const [hoursWorked, setHoursWorked] = useState(() => loadState('hoursWorked', 140));
-        const [targetNetIncome, setTargetNetIncome] = useState(() => loadState('targetNetIncome', 3000));
-        const [taxRate, setTaxRate] = useState(() => loadState('taxRate', 35));
-        const [billableHours, setBillableHours] = useState(() => loadState('billableHours', 80));
+        const [variableCosts, setVariableCosts] = useState(() => loadState('variableCosts', 300));
+        const [hoursWorked, setHoursWorked] = useState(() => loadState('hoursWorked', 80));
+        const [targetNetIncome, setTargetNetIncome] = useState(() => loadState('targetNetIncome', 4000));
+        const [taxRate, setTaxRate] = useState(() => loadState('taxRate', 30));
+        const [billableHours, setBillableHours] = useState(() => loadState('billableHours', 70));
 
         // Automatisches Speichern bei Änderung
         useEffect(() => {
@@ -278,25 +338,145 @@
           localStorage.setItem('dgk_dash_billableHours', billableHours);
         }, [bankBalance, monthlyRevenue, fixedCosts, variableCosts, hoursWorked, targetNetIncome, taxRate, billableHours]);
 
-        const totalCosts = fixedCosts + variableCosts;
-        const monthlyProfit = monthlyRevenue - totalCosts;
-        const runwayMonths = totalCosts > 0 ? (bankBalance / totalCosts).toFixed(1) : '0';
+        const n_bankBalance = Number(bankBalance) || 0;
+        const n_monthlyRevenue = Number(monthlyRevenue) || 0;
+        const n_fixedCosts = Number(fixedCosts) || 0;
+        const n_variableCosts = Number(variableCosts) || 0;
+        const n_hoursWorked = Number(hoursWorked) || 0;
+        const n_targetNetIncome = Number(targetNetIncome) || 0;
+        const n_taxRate = Number(taxRate) || 0;
+        const n_billableHours = Number(billableHours) || 0;
+
+        const totalCosts = n_fixedCosts + n_variableCosts;
+        const monthlyProfit = n_monthlyRevenue - totalCosts;
+        const runwayMonths = totalCosts > 0 ? (n_bankBalance / totalCosts).toFixed(1) : '0';
         const isResilient = parseFloat(runwayMonths) >= 3;
-        const effectiveHourlyRate = hoursWorked > 0 ? (monthlyProfit / hoursWorked) : 0;
+        const effectiveHourlyRate = n_hoursWorked > 0 ? (monthlyProfit / n_hoursWorked) : 0;
         
         // Zusätzliche Berechnungen für den "Aha-Effekt"
-        const estimatedTax = monthlyProfit > 0 ? (monthlyProfit * (taxRate / 100)) : 0;
-        const monthlyMinReserve = (monthlyProfit > 0 ? estimatedTax : 0) + (monthlyRevenue * 0.10);
+        const estimatedTax = monthlyProfit > 0 ? (monthlyProfit * (n_taxRate / 100)) : 0;
+        const monthlyMinReserve = (monthlyProfit > 0 ? estimatedTax : 0) + (n_monthlyRevenue * 0.10);
         const netAfterTax = monthlyProfit - estimatedTax;
-        const breakEvenProgress = Math.min(100, (monthlyRevenue / totalCosts) * 100).toFixed(0);
+        const breakEvenProgress = Math.min(100, (totalCosts > 0 ? (n_monthlyRevenue / totalCosts) * 100 : 0)).toFixed(0);
         
-        const grossTarget = targetNetIncome / (1 - (taxRate / 100));
+        const grossTarget = n_taxRate < 100 ? n_targetNetIncome / (1 - (n_taxRate / 100)) : n_targetNetIncome;
         const requiredRevenue = grossTarget + totalCosts;
-        const targetHourlyRate = billableHours > 0 ? (requiredRevenue / billableHours) : 0;
+        const targetHourlyRate = n_billableHours > 0 ? (requiredRevenue / n_billableHours) : 0;
+
+        // Unsichtbare Verluste (Opportunitätskosten)
+        const invisibleLoss = Math.max(0, (targetHourlyRate - effectiveHourlyRate) * n_billableHours);
+
+        // Benchmarking-Werte (%)
+        const profitMargin = n_monthlyRevenue > 0 ? (monthlyProfit / n_monthlyRevenue) * 100 : 0;
+        const liquidityScore = Math.min(100, Math.max(0, (parseFloat(runwayMonths) / 6) * 100)); // Ziel: 6 Monate
+        const profitabilityScore = Math.min(100, Math.max(0, (profitMargin / 20) * 100)); // Ziel: 20% Rendite
+        const efficiencyScore = targetHourlyRate > 0 ? Math.min(100, Math.max(0, (effectiveHourlyRate / targetHourlyRate) * 100)) : 0; // Ziel: 100% vom Ziel-Stundensatz
+
+        // Business Health Score (0-100)
+        const lossPenalty = n_monthlyRevenue > 0 ? Math.min(100, (invisibleLoss / n_monthlyRevenue) * 100) : (invisibleLoss > 0 ? 100 : 0);
+        const healthScore = Math.round((liquidityScore + profitabilityScore + efficiencyScore + (100 - lossPenalty)) / 4);
+
+        const getMarketInsight = (type, value) => {
+          if (type === 'liquidity') {
+            const months = parseFloat(value);
+            if (months < 2) return { text: "Du liegst unter 90% der Selbstständigen", color: "text-red-500" };
+            if (months < 4) return { text: "Solider Durchschnitt (Top 50%)", color: "text-orange-500" };
+            return { text: "Exzellent! Du gehörst zu den Top 10%", color: "text-green-500" };
+          }
+          if (type === 'profitability') {
+            const margin = parseFloat(value);
+            if (margin < 8) return { text: "Du liegst unter 70% der Selbstständigen", color: "text-red-500" };
+            if (margin < 15) return { text: "Guter Durchschnitt (Top 45%)", color: "text-orange-500" };
+            return { text: "Herausragend! Top 10% der Profitabilität", color: "text-green-500" };
+          }
+          if (type === 'efficiency') {
+            const rate = parseFloat(value);
+            if (rate < 60) return { text: "Du liegst unter 80% der Dienstleister", color: "text-red-500" };
+            if (rate < 100) return { text: "Top 40% (Gehobener Durchschnitt)", color: "text-orange-500" };
+            return { text: "Elite: Top 5% der Experten-Honorare", color: "text-green-500" };
+          }
+          return { text: "", color: "" };
+        };
 
         useEffect(() => {
           if (window.lucide) { window.lucide.createIcons(); }
         }, [activeTab]);
+
+        const getRealityChecks = () => {
+          const checks = [];
+          if (n_billableHours > 200) {
+            checks.push("Über 200 abrechenbare Stunden? Das entspricht einer 50h-Woche ohne Admin-Aufwand. Bist du sicher?");
+          }
+          if (n_taxRate < 15 && monthlyProfit > 2000) {
+            checks.push("Deine Steuerquote erscheint sehr niedrig. Selbstständige zahlen meist 25-45% (inkl. Vorsorge/KK).");
+          }
+          if (n_fixedCosts === 0) {
+            checks.push("0€ Fixkosten? Denke an Versicherungen, Software, Telefon und Kontoführungsgebühren.");
+          }
+          if (effectiveHourlyRate > 400) {
+            checks.push(`Ein Stundensatz von ${formatCurrency(effectiveHourlyRate)} ist extrem selten. Hast du alle Arbeitsstunden erfasst?`);
+          }
+          if (profitMargin > 90 && n_monthlyRevenue > 0) {
+            checks.push("Eine Rendite von >90% ist ungewöhnlich. Hast du wirklich alle Betriebsausgaben erfasst?");
+          }
+          return checks;
+        };
+
+        const [showSavedToast, setShowSavedToast] = useState(false);
+        const [history, setHistory] = useState(() => {
+          const saved = localStorage.getItem('dgk_dash_history');
+          return saved ? JSON.parse(saved) : [];
+        });
+
+        const saveSnapshot = () => {
+          const snapshot = {
+            date: new Date().toISOString(),
+            data: {
+              bankBalance: Number(bankBalance),
+              monthlyRevenue: Number(monthlyRevenue),
+              fixedCosts: Number(fixedCosts),
+              variableCosts: Number(variableCosts),
+              hoursWorked: Number(hoursWorked)
+            }
+          };
+          const newHistory = [...history, snapshot].slice(-10);
+          setHistory(newHistory);
+          localStorage.setItem('dgk_dash_history', JSON.stringify(newHistory));
+          setShowSavedToast(true);
+          setTimeout(() => setShowSavedToast(false), 3000);
+        };
+
+        const clearHistory = () => {
+          if (confirm("Möchtest du den gesamten Verlauf wirklich löschen und alle Werte auf Standard zurücksetzen?")) {
+            setHistory([]);
+            localStorage.removeItem('dgk_dash_history');
+            
+            // Zurücksetzen auf Standardwerte (Optimaler grüner Bereich)
+            setBankBalance(18000);
+            setMonthlyRevenue(10000);
+            setFixedCosts(1200);
+            setVariableCosts(300);
+            setHoursWorked(80);
+            setTargetNetIncome(4000);
+            setTaxRate(30);
+            setBillableHours(70);
+          }
+        };
+
+        const lastSnapshot = history.length > 0 ? history[history.length - 1] : null;
+
+        const getDelta = (current, last) => {
+          if (last === null || last === undefined || isNaN(last)) return null;
+          return current - last;
+        };
+
+        const lastProfit = lastSnapshot ? (lastSnapshot.data.monthlyRevenue - (lastSnapshot.data.fixedCosts + lastSnapshot.data.variableCosts)) : null;
+        const lastRunway = lastSnapshot ? (lastSnapshot.data.bankBalance / (lastSnapshot.data.fixedCosts + lastSnapshot.data.variableCosts || 1)) : null;
+        const lastHourlyRate = lastSnapshot ? (lastProfit / (lastSnapshot.data.hoursWorked || 1)) : null;
+
+        const profitDelta = getDelta(monthlyProfit, lastProfit);
+        const runwayDelta = getDelta(parseFloat(runwayMonths), lastRunway);
+        const rateDelta = getDelta(effectiveHourlyRate, lastHourlyRate);
 
         const getNudges = () => {
           const nudges = [];
@@ -437,8 +617,87 @@
             )}
             <div id="pdf-header" className="text-center mb-12">
               <h1 class="impressum-text-heading1 thq-heading-1">Dein Dashboard Wegweiser</h1>
-              <p>Finanzielle Klarheit für dein Business</p>
+              <p>Triff fundierte Entscheidungen zu Liquidität, Preisen und Profitabilität. In weniger als 5 Minuten</p>
               <p>Wähle unter <i>Liquidität; Effizienz & Preisstratgie</i> deine Werte und erhalte dein eigenes Dashboard</p>
+            </div>
+
+            {showGuide && (
+              <div data-html2canvas-ignore className="mb-12 p-8 rounded-3xl bg-[#262626]/50 border border-[#333] relative shadow-xl animate-in fade-in duration-700">
+                <button 
+                  onClick={() => setShowGuide(false)}
+                  className="absolute top-6 right-6 text-[#60e5ff] hover:text-white transition-colors"
+                  title="Anleitung schließen"
+                >
+                  <i data-lucide="x" className="w-5 h-5"></i>
+                </button>
+                
+                <div className="flex flex-col gap-8">
+                  {/* Header */}
+                  <div className="flex items-center gap-2">
+                    <i data-lucide="book-open" className="w-4 h-4 text-[#60e5ff]"></i>
+                    <span className="text-[#60e5ff] text-sm uppercase tracking-[0.2em]">Kurzanleitung</span>
+                  </div>
+
+                  {/* Privacy & Security Note */}
+                  <div className="flex items-start gap-5 pb-6 border-b border-white/10">
+                    <div className="bg-[#60e5ff]/20 p-3 rounded-xl shrink-0">
+                      <i data-lucide="shield-check" className="w-6 h-6 text-[#60e5ff]"></i>
+                    </div>
+                    <div>
+                      <p className="text-white text-lg mb-1">Deine Daten bleiben bei dir</p>
+                      <p className="text-slate-300 text-base leading-relaxed">
+                        Alle Eingaben werden ausschließlich lokal in deinem Browser gespeichert. 
+                        Es findet keine Übertragung auf unsere Server statt. Du behältst die volle Kontrolle über deine Finanzdaten.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Steps */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#60e5ff] text-sm tracking-widest border-b border-[#60e5ff]/30 pb-1">SCHRITT 1</span>
+                      </div>
+                      <p className="text-white text-lg">Zahlen erfassen</p>
+                      <p className="text-slate-300 text-base leading-relaxed">Trage deine aktuellen Werte in den Tabs für Liquidität, Effizienz und Preise ein.</p>
+                    </div>
+                    
+                    <div className="space-y-4 border-l border-white/10 md:pl-10">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#60e5ff] text-sm tracking-widest border-b border-[#60e5ff]/30 pb-1">SCHRITT 2</span>
+                      </div>
+                      <p className="text-white text-lg">Erfolge messen</p>
+                      <p className="text-slate-300 text-base leading-relaxed">Das Dashboard zeigt dir sofort, wo du stehst. Aktiviere den Pro-Modus für zusätzliche Benchmarks.</p>
+                    </div>
+
+                    <div className="space-y-4 border-l border-white/10 md:pl-10">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#60e5ff] text-sm tracking-widest border-b border-[#60e5ff]/30 pb-1">SCHRITT 3</span>
+                      </div>
+                      <p className="text-white text-lg">Historie tracken</p>
+                      <p className="text-slate-300 text-base leading-relaxed">Nutze im Pro-Modus den Speicher-Button, um deine Entwicklung über Zeit zu vergleichen.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Mode Toggle */}
+            <div data-html2canvas-ignore className="flex justify-center mb-8">
+              <div className="bg-[#262626] p-1 rounded-xl border border-[#333] flex gap-1">
+                <button 
+                  onClick={() => setIsPro(false)}
+                  className={`px-8 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${!isPro ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                >
+                  <i data-lucide="layout" className="w-4 h-4"></i> Einfach
+                </button>
+                <button 
+                  onClick={() => setIsPro(true)}
+                  className={`px-8 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${isPro ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                >
+                  <i data-lucide="zap" className="w-4 h-4"></i> Pro
+                </button>
+              </div>
             </div>
 
             {/* Navigation - Dunkle Tabs */}
@@ -467,96 +726,319 @@
 
 {activeTab === 'dashboard' && (
   <>
+    {/* Dashboard Header mit Speicher-Option - NUR PRO */}
+    {isPro && (
+      <div data-html2canvas-ignore className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+        <div className="text-slate-400 text-sm">
+          {lastSnapshot 
+            ? `Zuletzt gespeichert am ${new Date(lastSnapshot.date).toLocaleDateString('de-DE')} um ${new Date(lastSnapshot.date).toLocaleTimeString('de-DE', {hour: '2-digit', minute:'2-digit'})}`
+            : 'Bisher kein Stand gespeichert.'}
+        </div>
+        <div className="flex gap-3">
+          <button 
+            onClick={clearHistory}
+            title="Verlauf löschen"
+            className="flex items-center justify-center w-10 h-10 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-xl border border-red-500/30 transition-all"
+          >
+            <i data-lucide="trash-2" className="w-4 h-4"></i>
+          </button>
+          <button 
+            onClick={saveSnapshot}
+            className="flex items-center gap-2 px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl border border-[#444] transition-all font-bold text-sm shadow-lg group relative"
+          >
+            <i data-lucide="save" className="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+            Fortschritt speichern
+            {showSavedToast && (
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-xs animate-bounce shadow-xl whitespace-nowrap">
+                Gespeichert! ✓
+              </div>
+            )}
+          </button>
+        </div>
+      </div>
+    )}
+
+    {/* Reality Check Alerts */}
+    {getRealityChecks().length > 0 && (
+      <div data-html2canvas-ignore className="mb-10 p-6 rounded-3xl bg-orange-500/10 border-2 border-orange-500/30 flex flex-col gap-4 shadow-xl">
+        <div className="flex items-center gap-3 text-orange-500 font-black uppercase tracking-widest text-sm">
+          <i data-lucide="shield-alert" className="w-5 h-5"></i>
+          Reality Check: Sind deine Eingaben realistisch?
+        </div>
+        <ul className="space-y-2">
+          {getRealityChecks().map((check, idx) => (
+            <li key={idx} className="text-orange-200/80 text-sm flex items-start gap-2">
+              <span className="text-orange-500">•</span> {check}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     {/* Grid Container für die Karten */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       
       {/* Karte 1: Runway */}
-      <div className={`p-10 rounded-3xl border-t-8 card-dark shadow-2xl ${isResilient ? 'border-green-500' : 'border-red-500'}`}>
+      <div className={`p-10 rounded-3xl border-t-8 card-dark shadow-2xl ${parseFloat(runwayMonths) >= 6 ? 'border-green-500' : parseFloat(runwayMonths) >= 3 ? 'border-orange-500' : 'border-red-500'}`}>
         <div className="flex justify-between items-center mb-6">
-          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Runway</span>
-          <i data-lucide={isResilient ? "shield-check" : "alert-triangle"} className={isResilient ? "text-green-500" : "text-red-500"}></i>
+          <div className="tooltip-container">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+              Runway <i data-lucide="help-circle" className="w-3 h-3"></i>
+            </span>
+            <div className="tooltip-text">
+              <strong>Warum ist das wichtig?</strong><br/>
+              Ein zu geringer Runway (&lt; 3 Monate) ist gefährlich. Unvorhergesehene Kosten oder Umsatzeinbrüche führen dann sofort zur Zahlungsunfähigkeit. Ein Puffer von 6 Monaten gibt dir echte strategische Freiheit.
+            </div>
+          </div>
+          <i data-lucide={parseFloat(runwayMonths) >= 3 ? "shield-check" : "alert-triangle"} className={parseFloat(runwayMonths) >= 6 ? 'text-green-500' : parseFloat(runwayMonths) >= 3 ? 'text-orange-500' : 'text-red-500'}></i>
         </div>
         <div className="text-5xl font-black text-white mb-2">{runwayMonths} Monate</div>
-        <p className="text-slate-400 text-lg">Puffer bei 0€ Umsatz</p>
+        <div className="flex justify-between items-end">
+          <p className="text-slate-400 text-lg">Puffer bei 0€ Umsatz</p>
+          {isPro && runwayDelta !== null && (
+            <span className={`text-sm font-bold ${runwayDelta >= 0 ? "text-green-500" : "text-red-500"}`}>
+              {runwayDelta >= 0 ? "↑" : "↓"} {Math.abs(runwayDelta).toFixed(1)}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Karte 2: Eff. Stundensatz */}
-      <div className="p-10 rounded-3xl border-t-8 border-blue-400 card-dark shadow-2xl">
+      <div className="p-10 rounded-3xl border-t-8 border-[#008cba] card-dark shadow-2xl">
         <div className="flex justify-between items-center mb-6">
-          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Eff. Stundensatz</span>
-          <i data-lucide="clock" className="text-blue-400"></i>
+          <div className="tooltip-container">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+              Eff. Stundensatz <i data-lucide="help-circle" className="w-3 h-3"></i>
+            </span>
+            <div className="tooltip-text">
+              <strong>Was sagt das aus?</strong><br/>
+              Hier siehst du, what du wirklich pro Stunde verdienst, nachdem alle Kosten und die unbezahlte Admin-Zeit abgezogen wurden. Liegt er unter deinem Ziel, subventionierst du dein eigenes Unternehmen.
+            </div>
+          </div>
+          <i data-lucide="clock" className="text-[#008cba]"></i>
         </div>
         <div className="text-5xl font-black text-white mb-2">{formatCurrency(effectiveHourlyRate)}</div>
-        <p className="text-slate-400 text-lg">Pro Arbeitsstunde</p>
+        <div className="flex justify-between items-end">
+          <p className="text-slate-400 text-lg">Pro Arbeitsstunde</p>
+          {isPro && rateDelta !== null && (
+            <span className={`text-sm font-bold ${rateDelta >= 0 ? "text-green-500" : "text-red-500"}`}>
+              {rateDelta >= 0 ? "↑" : "↓"} {formatCurrency(Math.abs(rateDelta))}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Karte 3: Monatsgewinn */}
-      <div className="p-10 rounded-3xl border-t-8 border-indigo-500 card-dark shadow-2xl">
+      <div className="p-10 rounded-3xl border-t-8 border-[#008cba] card-dark shadow-2xl">
         <div className="flex justify-between items-center mb-6">
-          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Monatsgewinn</span>
-          <i data-lucide="trending-up" className="text-indigo-500"></i>
+          <div className="tooltip-container">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+              Monatsgewinn <i data-lucide="help-circle" className="w-3 h-3"></i>
+            </span>
+            <div className="tooltip-text">
+              <strong>Dein Treibstoff</strong><br/>
+              Der Reingewinn vor Steuern. Ein dauerhaft niedriger Gewinn verhindert Investitionen in Wachstum und macht dich anfällig für Krisen. Es ist das Geld, das nach Abzug aller Betriebskosten übrig bleibt.
+            </div>
+          </div>
+          <i data-lucide="trending-up" className="text-[#008cba]"></i>
         </div>
         <div className="text-5xl font-black text-white mb-2">{formatCurrency(monthlyProfit)}</div>
-        <p className="text-slate-400 text-lg">Reingewinn (v. St.)</p>
+        <div className="flex justify-between items-end">
+          <p className="text-slate-400 text-lg">Reingewinn (v. St.)</p>
+          {isPro && profitDelta !== null && (
+            <span className={`text-sm font-bold ${profitDelta >= 0 ? "text-green-500" : "text-red-500"}`}>
+              {profitDelta >= 0 ? "↑" : "↓"} {formatCurrency(Math.abs(profitDelta))}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Karte 4: Mindestrücklage */}
-      <div className="p-10 rounded-3xl border-t-8 border-orange-400 card-dark shadow-2xl">
+      <div className="p-10 rounded-3xl border-t-8 border-[#008cba] card-dark shadow-2xl">
         <div className="flex justify-between items-center mb-6">
-          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Mindestrücklage</span>
-          <i data-lucide="landmark" className="text-orange-400"></i>
+          <div className="tooltip-container">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+              Mindestrücklage <i data-lucide="help-circle" className="w-3 h-3"></i>
+            </span>
+            <div className="tooltip-text">
+              <strong>Vorsicht vor dem Fiskus</strong><br/>
+              Diese Summe solltest du monatlich beiseite legen, um Steuernachzahlungen und Reparaturen abzufangen. Wer das ignoriert, bekommt spätestens bei der nächsten Steuererklärung Probleme.
+            </div>
+          </div>
+          <i data-lucide="landmark" className="text-[#008cba]"></i>
         </div>
         <div className="text-5xl font-black text-white mb-2">{formatCurrency(monthlyMinReserve)}</div>
         <p className="text-slate-400 text-lg">Empfohlene Sparrate*</p>
       </div>
 
       {/* Karte 5: Break-Even Status */}
-      <div className="p-10 rounded-3xl border-t-8 border-teal-400 card-dark shadow-2xl md:col-span-2">
+      <div className="p-10 rounded-3xl border-t-8 border-[#008cba] card-dark shadow-2xl">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Kostendeckung</span>
+          <div className="tooltip-container">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+              Kostendeckung <i data-lucide="help-circle" className="w-3 h-3"></i>
+            </span>
+            <div className="tooltip-text">
+              <strong>Die Nulllinie</strong><br/>
+              Unter 100% zahlst du jeden Monat drauf. Ziel muss es sein, die Fixkosten schnellstmöglich zu decken, um aus der Gefahrenzone zu kommen und echtes Geld zu verdienen.
+            </div>
+          </div>
           <span className="text-white font-bold">{breakEvenProgress}%</span>
         </div>
         <div className="w-full bg-slate-700 h-4 rounded-full mb-6 overflow-hidden">
           <div 
-            className="bg-teal-400 h-full transition-all duration-1000" 
+            className="bg-[#008cba] h-full transition-all duration-1000" 
             style={{ width: `${breakEvenProgress}%` }}
           ></div>
         </div>
         <p className="text-slate-400">
           {monthlyRevenue >= totalCosts 
-            ? "✅ Du arbeitest diesen Monat profitabel!" 
-            : `Dir fehlen noch ${formatCurrency(totalCosts - monthlyRevenue)} bis zur Gewinnschwelle.`}
+            ? "✅ Du arbeitest profitabel!" 
+            : `Dir fehlen noch ${formatCurrency(totalCosts - monthlyRevenue)}.`}
         </p>
+      </div>
+
+      {/* Karte 6: Unsichtbare Verluste */}
+      <div className={`p-10 rounded-3xl border-t-8 ${invisibleLoss > 0 ? 'border-red-500' : 'border-[#008cba]'} card-dark shadow-2xl`}>
+        <div className="flex justify-between items-center mb-6">
+          <div className="tooltip-container">
+            <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+              Unsichtbare Verluste <i data-lucide="help-circle" className="w-3 h-3"></i>
+            </span>
+            <div className="tooltip-text">
+              <strong>Verlorenes Einkommen</strong><br/>
+              Dieser Betrag entgeht dir aktuell jeden Monat, weil dein realer Stundensatz unter deinem kalkulierten Ziel-Satz liegt. Er zeigt das Potenzial, das du durch Preisoptimierung oder Effizienzsteigerung heben kannst.
+            </div>
+          </div>
+          <i data-lucide="trending-down" className={invisibleLoss > 0 ? 'text-red-500' : 'text-[#008cba]'}></i>
+        </div>
+        <div className={`text-5xl font-black ${invisibleLoss > 0 ? 'text-red-500' : 'text-white'} mb-2`}>{formatCurrency(invisibleLoss)}</div>
+        <p className="text-slate-400 text-lg">Verlorenes Einkommen / Monat</p>
       </div>
     </div> {/* Ende des Grids */}
 
-    {/* Strategische Handlungsanalyse */}
-    <div className="mt-12 p-10 rounded-3xl card-dark border border-[#333] shadow-2xl">
-      <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 flex items-center gap-3">
-        <i data-lucide="brain-circuit" className="text-[#008cba]"></i>
-        Strategische Handlungsanalyse
-      </h3>
-      <div className="space-y-6">
-        {getNudges().map((nudge, idx) => (
-          <div key={idx} className={`flex gap-6 p-6 rounded-2xl border-l-8 ${
-            nudge.type === 'warning' ? 'bg-orange-500/10 border-orange-500' :
-            nudge.type === 'danger' ? 'bg-red-500/10 border-red-500' :
-            nudge.type === 'success' ? 'bg-green-500/10 border-green-500' :
-            'bg-blue-500/10 border-blue-500'
-          }`}>
-            <div className="mt-1 shrink-0">
-              <i data-lucide={nudge.icon} className={
-                nudge.type === 'warning' ? 'text-orange-500' :
-                nudge.type === 'danger' ? 'text-red-500' :
-                nudge.type === 'success' ? 'text-green-500' :
-                'text-blue-500'
-              }></i>
-            </div>
-            <p className="text-lg font-medium leading-relaxed">{nudge.text}</p>
+    {isPro && (
+      <>
+        {/* Business Health Score Banner */}
+        <div className="mb-12 p-8 rounded-3xl card-dark border-2 border-[#333] flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-[#262626] to-[#1a1a1a] shadow-2xl">
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-2xl font-black mb-2 flex items-center justify-center md:justify-start gap-3">
+              <i data-lucide="activity" className={healthScore > 70 ? 'text-green-500' : healthScore > 40 ? 'text-orange-500' : 'text-red-500'}></i>
+              Business Health Score
+            </h3>
+            <p className="text-slate-400 max-w-lg">Dein aggregierter Statusbericht basierend auf Liquidität, Rendite, Effizienz und unsichtbaren Verlusten.</p>
           </div>
-        ))}
-      </div>
-    </div>
+          <div className="flex items-center gap-8 px-6 py-4 bg-black/30 rounded-2xl border border-[#333]">
+            <div className="text-center">
+              <div className={`text-6xl font-black ${healthScore > 70 ? 'text-green-500' : healthScore > 40 ? 'text-orange-500' : 'text-red-500'}`}>
+                {healthScore}%
+              </div>
+              <div className="text-slate-500 uppercase tracking-widest font-bold text-xs mt-1">Gesamtstatus</div>
+            </div>
+            <div className="w-20 h-20 rounded-full border-4 border-slate-800 flex items-center justify-center relative overflow-hidden bg-slate-900/50">
+                <div 
+                  className={`absolute bottom-0 w-full transition-all duration-1000 ${healthScore > 70 ? 'bg-green-500' : healthScore > 40 ? 'bg-orange-500' : 'bg-red-500'}`}
+                  style={{ height: `${healthScore}%`, opacity: 0.15 }}
+                ></div>
+                <i data-lucide={healthScore > 70 ? "check-circle-2" : healthScore > 40 ? "alert-circle" : "x-circle"} className={`w-10 h-10 ${healthScore > 70 ? 'text-green-500' : healthScore > 40 ? 'text-orange-500' : 'text-red-500'}`}></i>
+            </div>
+          </div>
+        </div>
+
+        {/* Benchmarking Sektion */}
+        <div className="mt-12 p-10 rounded-3xl card-dark border border-[#333] shadow-2xl">
+          <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 flex items-center gap-3">
+            <i data-lucide="bar-chart-3" className="text-[#008cba]"></i>
+            Business Benchmarking (Ziel-Vergleich)
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            {/* Liquiditäts-Benchmark */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-end">
+                <span className="text-slate-400 font-bold text-sm uppercase tracking-wider">Liquidität</span>
+                <span className="text-white font-black text-2xl">{liquidityScore.toFixed(0)}%</span>
+              </div>
+              <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                <div 
+                  className={`h-full transition-all duration-1000 ${liquidityScore > 80 ? 'bg-green-500' : liquidityScore > 40 ? 'bg-orange-500' : 'bg-red-500'}`}
+                  style={{ width: `${liquidityScore}%` }}
+                ></div>
+              </div>
+              <p className={`text-sm font-bold ${getMarketInsight('liquidity', runwayMonths).color}`}>
+                {getMarketInsight('liquidity', runwayMonths).text}
+              </p>
+              <p className="text-xs text-slate-500 italic">Ziel: 6 Monate Puffer</p>
+            </div>
+
+            {/* Rentabilitäts-Benchmark */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-end">
+                <span className="text-slate-400 font-bold text-sm uppercase tracking-wider">Rentabilität</span>
+                <span className="text-white font-black text-2xl">{profitabilityScore.toFixed(0)}%</span>
+              </div>
+              <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                <div 
+                  className={`h-full transition-all duration-1000 ${profitabilityScore > 80 ? 'bg-green-500' : profitabilityScore > 40 ? 'bg-orange-500' : 'bg-red-500'}`}
+                  style={{ width: `${profitabilityScore}%` }}
+                ></div>
+              </div>
+              <p className={`text-sm font-bold ${getMarketInsight('profitability', profitMargin).color}`}>
+                {getMarketInsight('profitability', profitMargin).text}
+              </p>
+              <p className="text-xs text-slate-500 italic">Ziel: 20% Umsatzrendite</p>
+            </div>
+
+            {/* Effizienz-Benchmark */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-end">
+                <span className="text-slate-400 font-bold text-sm uppercase tracking-wider">Stundensatz-Effizienz</span>
+                <span className="text-white font-black text-2xl">{efficiencyScore.toFixed(0)}%</span>
+              </div>
+              <div className="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                <div 
+                  className={`h-full transition-all duration-1000 ${efficiencyScore > 80 ? 'bg-green-500' : efficiencyScore > 40 ? 'bg-orange-500' : 'bg-red-500'}`}
+                  style={{ width: `${efficiencyScore}%` }}
+                ></div>
+              </div>
+              <p className={`text-sm font-bold ${getMarketInsight('efficiency', effectiveHourlyRate).color}`}>
+                {getMarketInsight('efficiency', effectiveHourlyRate).text}
+              </p>
+              <p className="text-xs text-slate-500 italic">Ziel: Erreichen des Ziel-Stundensatzes</p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Strategische Handlungsanalyse */}
+        <div className="mt-12 p-10 rounded-3xl card-dark border border-[#333] shadow-2xl">
+          <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 flex items-center gap-3">
+            <i data-lucide="brain-circuit" className="text-[#008cba]"></i>
+            Strategische Handlungsanalyse
+          </h3>
+          <div className="space-y-6">
+            {getNudges().map((nudge, idx) => (
+              <div key={idx} className={`flex gap-6 p-6 rounded-2xl border-l-8 ${
+                nudge.type === 'warning' ? 'bg-orange-500/10 border-orange-500' :
+                nudge.type === 'danger' ? 'bg-red-500/10 border-red-500' :
+                nudge.type === 'success' ? 'bg-green-500/10 border-green-500' :
+                'bg-[#008cba]/10 border-[#008cba]'
+              }`}>
+                <div className="mt-1 shrink-0">
+                  <i data-lucide={nudge.icon} className={
+                    nudge.type === 'warning' ? 'text-orange-500' :
+                    nudge.type === 'danger' ? 'text-red-500' :
+                    nudge.type === 'success' ? 'text-green-500' :
+                    'text-[#008cba]'
+                  }></i>
+                </div>
+                <p className="text-lg font-medium leading-relaxed">{nudge.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
   </>
 )}
               {/* Liquidität Tab */}
@@ -566,15 +1048,15 @@
                     <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">Eingabe Finanzstatus</h3>
                     <div className="input-group">
                       <label>Kontostand aktuell (€)</label>
-                      <input type="number" value={bankBalance} onChange={e => setBankBalance(Number(e.target.value))} />
+                      <input type="number" value={bankBalance} onChange={e => setBankBalance(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Fixkosten pro Monat (€)</label>
-                      <input type="number" value={fixedCosts} onChange={e => setFixedCosts(Number(e.target.value))} />
+                      <input type="number" value={fixedCosts} onChange={e => setFixedCosts(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Variable Kosten pro Monat (€)</label>
-                      <input type="number" value={variableCosts} onChange={e => setVariableCosts(Number(e.target.value))} />
+                      <input type="number" value={variableCosts} onChange={e => setVariableCosts(e.target.value)} />
                     </div>
                   </div>
                   <div className="bg-[#111] p-10 rounded-3xl border border-[#333] flex flex-col justify-center text-center">
@@ -594,15 +1076,15 @@
                     <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">Wunsch-Szenario</h3>
                     <div className="input-group">
                       <label>Wunsch-Netto (€) pro Monat</label>
-                      <input type="number" value={targetNetIncome} onChange={e => setTargetNetIncome(Number(e.target.value))} />
+                      <input type="number" value={targetNetIncome} onChange={e => setTargetNetIncome(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Steuer-/Abgabenquote (%)</label>
-                      <input type="number" value={taxRate} onChange={e => setTaxRate(Number(e.target.value))} />
+                      <input type="number" value={taxRate} onChange={e => setTaxRate(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Abrechenbare Stunden / Monat</label>
-                      <input type="number" value={billableHours} onChange={e => setBillableHours(Number(e.target.value))} />
+                      <input type="number" value={billableHours} onChange={e => setBillableHours(e.target.value)} />
                     </div>
                   </div>
                   <div className="bg-[#008cba] p-10 rounded-3xl flex flex-col justify-center text-center shadow-inner">
@@ -623,11 +1105,11 @@
                   <div className="space-y-6 mb-10">
                     <div className="input-group">
                       <label>Tatsächlicher Monatsumsatz (€)</label>
-                      <input type="number" value={monthlyRevenue} onChange={e => setMonthlyRevenue(Number(e.target.value))} />
+                      <input type="number" value={monthlyRevenue} onChange={e => setMonthlyRevenue(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Gesamte Arbeitsstunden (inkl. Orga/Admin) pro Monat</label>
-                      <input type="number" value={hoursWorked} onChange={e => setHoursWorked(Number(e.target.value))} />
+                      <input type="number" value={hoursWorked} onChange={e => setHoursWorked(e.target.value)} />
                     </div>
                   </div>
                   <div className="p-10 bg-[#111] border border-[#333] rounded-3xl text-center">
