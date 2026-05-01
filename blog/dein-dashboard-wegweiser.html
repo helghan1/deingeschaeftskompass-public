@@ -125,6 +125,73 @@
         background-color: #ffffff;
         box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.3);
       }
+      
+      /* Slider Styles */
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 6px;
+        background: #333;
+        border-radius: 5px;
+        outline: none;
+        margin: 15px 0;
+        transition: all 0.2s;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        background: #008cba;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 5px rgba(0, 140, 186, 0.5);
+        transition: all 0.2s;
+      }
+      input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+        background: #60e5ff;
+      }
+      input[type="range"]::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        background: #008cba;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 5px rgba(0, 140, 186, 0.5);
+      }
+
+      /* Flip Animation Styles */
+      .flip-container {
+        perspective: 2000px;
+        width: 100%;
+        min-height: 800px;
+      }
+      .flip-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+      .flip-inner.flipped {
+        transform: rotateY(180deg);
+      }
+      .flip-front, .flip-back {
+        width: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      .flip-back {
+        transform: rotateY(180deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
+
       /* Dashboard Karten Design für dunklen Hintergrund */
       .card-dark {
         background-color: #262626;
@@ -177,6 +244,109 @@
         border-width: 8px;
         border-style: solid;
         border-color: #1a1a1a transparent transparent transparent;
+      }
+      /* Premium Flip Button (Uiverse logic) */
+      .dgk-flip-btn {
+        --border-radius: 16px;
+        --padding: 4px;
+        --transition: 0.4s;
+        --button-color: #1a1a1a;
+        --highlight-color-hue: 200deg;
+
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6rem 1.5rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.875rem;
+        font-weight: 900;
+        background-color: var(--button-color);
+        border: solid 1px rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all var(--transition);
+        box-shadow: 
+          inset 0px 1px 1px rgba(255, 255, 255, 0.1),
+          0px 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .dgk-flip-btn::before {
+        content: "";
+        position: absolute;
+        inset: calc(0px - var(--padding));
+        border-radius: calc(var(--border-radius) + var(--padding));
+        pointer-events: none;
+        background-image: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        z-index: -1;
+        transition: all var(--transition);
+      }
+
+      .dgk-flip-btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background-image: linear-gradient(
+          0deg,
+          #fff,
+          hsl(var(--highlight-color-hue), 100%, 70%),
+          hsla(var(--highlight-color-hue), 100%, 70%, 50%),
+          8%,
+          transparent
+        );
+        opacity: 0;
+        transition: all var(--transition);
+      }
+
+      .dgk-flip-btn:hover {
+        border: solid 1px hsla(var(--highlight-color-hue), 100%, 80%, 0.4);
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      .dgk-flip-btn:hover::after {
+        opacity: 1;
+        mask-image: linear-gradient(0deg, #fff, transparent);
+      }
+
+      .btn-letter {
+        position: relative;
+        display: inline-block;
+        color: rgba(255,255,255,0.6);
+        animation: letter-anim 3s ease-in-out infinite;
+        transition: all var(--transition);
+      }
+
+      @keyframes letter-anim {
+        50% {
+          text-shadow: 0 0 5px hsla(var(--highlight-color-hue), 100%, 70%, 0.8);
+          color: #fff;
+        }
+      }
+
+      .btn-svg {
+        height: 18px;
+        width: 18px;
+        margin-right: 0.75rem;
+        stroke: #ed982b;
+        transition: all var(--transition);
+        filter: drop-shadow(0 0 2px rgba(237, 152, 43, 0.5));
+      }
+
+      .dgk-flip-btn:hover .btn-svg {
+        stroke: #fff;
+        filter: drop-shadow(0 0 5px #ed982b);
+      }
+
+      .dgk-flip-btn:active {
+        transform: translateX(-50%) translateY(1px);
+        background-color: hsla(var(--highlight-color-hue), 50%, 20%, 0.5);
       }
     </style>
   </head>
@@ -294,6 +464,7 @@
       function App() {
         const [activeTab, setActiveTab] = useState('dashboard');
         const [isExporting, setIsExporting] = useState(false);
+        const [isFlipped, setIsFlipped] = useState(false);
         const [isPro, setIsPro] = useState(() => {
           const saved = localStorage.getItem('dgk_dash_isPro');
           return saved === 'true';
@@ -311,20 +482,43 @@
           localStorage.setItem('dgk_dash_showGuide', showGuide);
         }, [showGuide]);
         
+        // --- DEFAULTS ---
+        const DEFAULTS = {
+          bankBalance: 45000,
+          monthlyRevenue: 15500,
+          fixedCosts: 2500,
+          variableCosts: 1000,
+          hoursWorked: 120,
+          targetNetIncome: 5500,
+          taxRate: 30,
+          billableHours: 80
+        };
+
         // --- STATES mit LocalStorage Initialisierung ---
         const loadState = (key, def) => {
           const saved = localStorage.getItem('dgk_dash_' + key);
           return saved !== null ? Number(saved) : def;
         };
 
-        const [bankBalance, setBankBalance] = useState(() => loadState('bankBalance', 18000));
-        const [monthlyRevenue, setMonthlyRevenue] = useState(() => loadState('monthlyRevenue', 10000));
-        const [fixedCosts, setFixedCosts] = useState(() => loadState('fixedCosts', 1200));
-        const [variableCosts, setVariableCosts] = useState(() => loadState('variableCosts', 300));
-        const [hoursWorked, setHoursWorked] = useState(() => loadState('hoursWorked', 80));
-        const [targetNetIncome, setTargetNetIncome] = useState(() => loadState('targetNetIncome', 4000));
-        const [taxRate, setTaxRate] = useState(() => loadState('taxRate', 30));
-        const [billableHours, setBillableHours] = useState(() => loadState('billableHours', 70));
+        const [bankBalance, setBankBalance] = useState(() => loadState('bankBalance', DEFAULTS.bankBalance));
+        const [monthlyRevenue, setMonthlyRevenue] = useState(() => loadState('monthlyRevenue', DEFAULTS.monthlyRevenue));
+        const [fixedCosts, setFixedCosts] = useState(() => loadState('fixedCosts', DEFAULTS.fixedCosts));
+        const [variableCosts, setVariableCosts] = useState(() => loadState('variableCosts', DEFAULTS.variableCosts));
+        const [hoursWorked, setHoursWorked] = useState(() => loadState('hoursWorked', DEFAULTS.hoursWorked));
+        const [targetNetIncome, setTargetNetIncome] = useState(() => loadState('targetNetIncome', DEFAULTS.targetNetIncome));
+        const [taxRate, setTaxRate] = useState(() => loadState('taxRate', DEFAULTS.taxRate));
+        const [billableHours, setBillableHours] = useState(() => loadState('billableHours', DEFAULTS.billableHours));
+
+        const isModified = () => {
+          return Number(bankBalance) !== DEFAULTS.bankBalance ||
+                 Number(monthlyRevenue) !== DEFAULTS.monthlyRevenue ||
+                 Number(fixedCosts) !== DEFAULTS.fixedCosts ||
+                 Number(variableCosts) !== DEFAULTS.variableCosts ||
+                 Number(hoursWorked) !== DEFAULTS.hoursWorked ||
+                 Number(targetNetIncome) !== DEFAULTS.targetNetIncome ||
+                 Number(taxRate) !== DEFAULTS.taxRate ||
+                 Number(billableHours) !== DEFAULTS.billableHours;
+        };
 
         // Automatisches Speichern bei Änderung
         useEffect(() => {
@@ -364,13 +558,17 @@
         const targetHourlyRate = n_billableHours > 0 ? (requiredRevenue / n_billableHours) : 0;
 
         // Unsichtbare Verluste (Opportunitätskosten)
-        const invisibleLoss = Math.max(0, (targetHourlyRate - effectiveHourlyRate) * n_billableHours);
+        const invisibleLoss = Math.max(0, requiredRevenue - n_monthlyRevenue);
+        const utilizationRate = n_hoursWorked > 0 ? (n_billableHours / n_hoursWorked) * 100 : 0;
 
         // Benchmarking-Werte (%)
         const profitMargin = n_monthlyRevenue > 0 ? (monthlyProfit / n_monthlyRevenue) * 100 : 0;
         const liquidityScore = Math.min(100, Math.max(0, (parseFloat(runwayMonths) / 6) * 100)); // Ziel: 6 Monate
         const profitabilityScore = Math.min(100, Math.max(0, (profitMargin / 20) * 100)); // Ziel: 20% Rendite
-        const efficiencyScore = targetHourlyRate > 0 ? Math.min(100, Math.max(0, (effectiveHourlyRate / targetHourlyRate) * 100)) : 0; // Ziel: 100% vom Ziel-Stundensatz
+        
+        // Effizienz-Vergleich auf Basis der abrechenbaren Stunden
+        const actualBillableRate = n_billableHours > 0 ? (monthlyProfit / n_billableHours) : 0;
+        const efficiencyScore = targetHourlyRate > 0 ? Math.min(100, Math.max(0, (actualBillableRate / targetHourlyRate) * 100)) : 0; 
 
         // Business Health Score (0-100)
         const lossPenalty = n_monthlyRevenue > 0 ? Math.min(100, (invisibleLoss / n_monthlyRevenue) * 100) : (invisibleLoss > 0 ? 100 : 0);
@@ -400,7 +598,7 @@
 
         useEffect(() => {
           if (window.lucide) { window.lucide.createIcons(); }
-        }, [activeTab]);
+        }, [activeTab, isFlipped]);
 
         const getRealityChecks = () => {
           const checks = [];
@@ -436,7 +634,10 @@
               monthlyRevenue: Number(monthlyRevenue),
               fixedCosts: Number(fixedCosts),
               variableCosts: Number(variableCosts),
-              hoursWorked: Number(hoursWorked)
+              hoursWorked: Number(hoursWorked),
+              targetNetIncome: Number(targetNetIncome),
+              taxRate: Number(taxRate),
+              billableHours: Number(billableHours)
             }
           };
           const newHistory = [...history, snapshot].slice(-10);
@@ -451,15 +652,15 @@
             setHistory([]);
             localStorage.removeItem('dgk_dash_history');
             
-            // Zurücksetzen auf Standardwerte (Optimaler grüner Bereich)
-            setBankBalance(18000);
-            setMonthlyRevenue(10000);
-            setFixedCosts(1200);
-            setVariableCosts(300);
-            setHoursWorked(80);
-            setTargetNetIncome(4000);
-            setTaxRate(30);
-            setBillableHours(70);
+            // Zurücksetzen auf Standardwerte
+            setBankBalance(DEFAULTS.bankBalance);
+            setMonthlyRevenue(DEFAULTS.monthlyRevenue);
+            setFixedCosts(DEFAULTS.fixedCosts);
+            setVariableCosts(DEFAULTS.variableCosts);
+            setHoursWorked(DEFAULTS.hoursWorked);
+            setTargetNetIncome(DEFAULTS.targetNetIncome);
+            setTaxRate(DEFAULTS.taxRate);
+            setBillableHours(DEFAULTS.billableHours);
           }
         };
 
@@ -530,7 +731,10 @@
             { id: 'pricing', label: 'Preisstrategie' }
           ];
           const originalTab = activeTab;
+          const originalFlipped = isFlipped;
           const canvases = [];
+          
+          setIsFlipped(false);
           
 
           try {
@@ -602,6 +806,7 @@
             alert("Der Export ist fehlgeschlagen. Bitte versuchen Sie es erneut.");
           } finally {
             setActiveTab(originalTab);
+            setIsFlipped(originalFlipped);
             setIsExporting(false);
           }
         };
@@ -682,47 +887,52 @@
               </div>
             )}
 
-            {/* Mode Toggle */}
             <div data-html2canvas-ignore className="flex justify-center mb-8">
               <div className="bg-[#262626] p-1 rounded-xl border border-[#333] flex gap-1">
                 <button 
                   onClick={() => setIsPro(false)}
-                  className={`px-8 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${!isPro ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                  className={`px-8 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${!isPro ? 'bg-[#008cba] text-black shadow-lg' : 'text-slate-400 hover:text-white'}`}
                 >
-                  <i data-lucide="layout" className="w-4 h-4"></i> Einfach
+                  <i data-lucide="eye" className="w-4 h-4"></i> Einfach
                 </button>
                 <button 
                   onClick={() => setIsPro(true)}
-                  className={`px-8 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${isPro ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                  className={`px-8 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${isPro ? 'bg-[#008cba] text-black shadow-lg' : 'text-slate-400 hover:text-white'}`}
                 >
-                  <i data-lucide="zap" className="w-4 h-4"></i> Pro
+                  <i data-lucide="rocket" className="w-4 h-4"></i> Experte
                 </button>
               </div>
             </div>
 
-            {/* Navigation - Dunkle Tabs */}
-            <div data-html2canvas-ignore className="flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333]">
-              {[
-                { id: 'dashboard', label: 'Dashboard', icon: 'layout' },
-                { id: 'liquidity', label: 'Liquidität', icon: 'wallet' },
-                { id: 'efficiency', label: 'Effizienz', icon: 'zap' },
-                { id: 'pricing', label: 'Preisstrategie', icon: 'calculator' }
-              ].map(tab => (
-                <button 
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-lg transition-all ${activeTab === tab.id ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-[#333]'}`}
-                >
-                  <i data-lucide={tab.icon} className="w-5 h-5"></i> {tab.label}
-                </button>
-              ))}
-            </div>
+            <div className="flip-container">
+              <div className={`flip-inner ${isFlipped ? 'flipped' : ''}`}>
+                
+                {/* FRONT SIDE */}
+                <div className="flip-front">
+                  {/* Navigation - Dunkle Tabs */}
+                  <div data-html2canvas-ignore className="flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333]">
+                    {[
+                      { id: 'dashboard', label: 'Dashboard', icon: 'layout' },
+                      { id: 'liquidity', label: 'Liquidität', icon: 'wallet' },
+                      { id: 'efficiency', label: 'Effizienz', icon: 'zap' },
+                      { id: 'pricing', label: 'Preisstrategie', icon: 'calculator' },
+                      ...(isPro ? [{ id: 'history_tab', label: 'Historie', icon: 'history' }] : [])
+                    ].map(tab => (
+                      <button 
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-lg transition-all ${activeTab === tab.id ? 'bg-[#008cba] text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-[#333]'}`}
+                      >
+                        <i data-lucide={tab.icon} className="w-5 h-5"></i> {tab.label}
+                      </button>
+                    ))}
+                  </div>
 
-            <div id="pdf-content" className="space-y-8 relative">
-              {/* Logo in der rechten Ecke */}
-              <div className="absolute top-0 right-0 z-10">
-                <img src="/public/Logo48.webp" alt="Logo" className="w-12 h-12" />
-              </div>
+                  <div id="pdf-content" className="space-y-8 relative">
+                    {/* Logo in der rechten Ecke */}
+                    <div className="absolute top-0 right-0 z-10">
+                      <img src="/public/Logo48.webp" alt="Logo" className="w-12 h-12" />
+                    </div>
 
 {activeTab === 'dashboard' && (
   <>
@@ -906,14 +1116,14 @@
               Unsichtbare Verluste <i data-lucide="help-circle" className="w-3 h-3"></i>
             </span>
             <div className="tooltip-text">
-              <strong>Verlorenes Einkommen</strong><br/>
-              Dieser Betrag entgeht dir aktuell jeden Monat, weil dein realer Stundensatz unter deinem kalkulierten Ziel-Satz liegt. Er zeigt das Potenzial, das du durch Preisoptimierung oder Effizienzsteigerung heben kannst.
+              <strong>Strategische Lücke</strong><br/>
+              Dieser Betrag fehlt dir aktuell jeden Monat, um dein gestecktes Wunsch-Einkommen unter Berücksichtigung aller Kosten, Steuern und deiner Ziel-Arbeitszeit zu erreichen. Er zeigt das Potenzial, das du durch Preisoptimierung oder Akquise heben kannst.
             </div>
           </div>
           <i data-lucide="trending-down" className={invisibleLoss > 0 ? 'text-red-500' : 'text-[#008cba]'}></i>
         </div>
         <div className={`text-5xl font-black ${invisibleLoss > 0 ? 'text-red-500' : 'text-white'} mb-2`}>{formatCurrency(invisibleLoss)}</div>
-        <p className="text-slate-400 text-lg">Verlorenes Einkommen / Monat</p>
+        <p className="text-slate-400 text-lg">Strategische Lücke zum Zielumsatz</p>
       </div>
     </div> {/* Ende des Grids */}
 
@@ -1001,8 +1211,8 @@
                   style={{ width: `${efficiencyScore}%` }}
                 ></div>
               </div>
-              <p className={`text-sm font-bold ${getMarketInsight('efficiency', effectiveHourlyRate).color}`}>
-                {getMarketInsight('efficiency', effectiveHourlyRate).text}
+              <p className={`text-sm font-bold ${getMarketInsight('efficiency', actualBillableRate).color}`}>
+                {getMarketInsight('efficiency', actualBillableRate).text}
               </p>
               <p className="text-xs text-slate-500 italic">Ziel: Erreichen des Ziel-Stundensatzes</p>
             </div>
@@ -1049,14 +1259,17 @@
                     <div className="input-group">
                       <label>Kontostand aktuell (€)</label>
                       <input type="number" value={bankBalance} onChange={e => setBankBalance(e.target.value)} />
+                      <input type="range" min="0" max="100000" step="500" value={bankBalance} onChange={e => setBankBalance(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Fixkosten pro Monat (€)</label>
                       <input type="number" value={fixedCosts} onChange={e => setFixedCosts(e.target.value)} />
+                      <input type="range" min="0" max="10000" step="100" value={fixedCosts} onChange={e => setFixedCosts(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Variable Kosten pro Monat (€)</label>
                       <input type="number" value={variableCosts} onChange={e => setVariableCosts(e.target.value)} />
+                      <input type="range" min="0" max="10000" step="100" value={variableCosts} onChange={e => setVariableCosts(e.target.value)} />
                     </div>
                   </div>
                   <div className="bg-[#111] p-10 rounded-3xl border border-[#333] flex flex-col justify-center text-center">
@@ -1077,14 +1290,17 @@
                     <div className="input-group">
                       <label>Wunsch-Netto (€) pro Monat</label>
                       <input type="number" value={targetNetIncome} onChange={e => setTargetNetIncome(e.target.value)} />
+                      <input type="range" min="0" max="20000" step="100" value={targetNetIncome} onChange={e => setTargetNetIncome(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Steuer-/Abgabenquote (%)</label>
                       <input type="number" value={taxRate} onChange={e => setTaxRate(e.target.value)} />
+                      <input type="range" min="0" max="100" step="1" value={taxRate} onChange={e => setTaxRate(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Abrechenbare Stunden / Monat</label>
                       <input type="number" value={billableHours} onChange={e => setBillableHours(e.target.value)} />
+                      <input type="range" min="0" max="300" step="1" value={billableHours} onChange={e => setBillableHours(e.target.value)} />
                     </div>
                   </div>
                   <div className="bg-[#008cba] p-10 rounded-3xl flex flex-col justify-center text-center shadow-inner">
@@ -1106,29 +1322,231 @@
                     <div className="input-group">
                       <label>Tatsächlicher Monatsumsatz (€)</label>
                       <input type="number" value={monthlyRevenue} onChange={e => setMonthlyRevenue(e.target.value)} />
+                      <input type="range" min="0" max="50000" step="500" value={monthlyRevenue} onChange={e => setMonthlyRevenue(e.target.value)} />
                     </div>
                     <div className="input-group">
                       <label>Gesamte Arbeitsstunden (inkl. Orga/Admin) pro Monat</label>
                       <input type="number" value={hoursWorked} onChange={e => setHoursWorked(e.target.value)} />
+                      <input type="range" min="0" max="400" step="1" value={hoursWorked} onChange={e => setHoursWorked(e.target.value)} />
                     </div>
                   </div>
                   <div className="p-10 bg-[#111] border border-[#333] rounded-3xl text-center">
                     <p className="text-slate-400 font-bold uppercase text-sm tracking-widest mb-2">Reale Netto-Stundenvergütung</p>
-                    <p className="text-6xl font-black text-blue-400">{formatCurrency(effectiveHourlyRate)}</p>
+                    <p className="text-6xl font-black text-[#60e5ff]">{formatCurrency(effectiveHourlyRate)}</p>
                   </div>
                 </div>
               )}
-                <br /><p data-html2canvas-ignore><i>*Die Mindestrücklage basiert auf Steuerschätzung + 10% Umsatzpuffer für Sicherheit.</i></p>
-            </div>
+
+              {/* Historie Tab (Nur Pro) */}
+              {activeTab === 'history_tab' && isPro && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl">
+                    <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 flex items-center gap-3 text-white">
+                      <i data-lucide="history" className="text-[#60e5ff]"></i>
+                      Entwicklungstrends
+                    </h3>
+                    
+                    {history.length < 2 ? (
+                      <div className="text-center py-20 text-slate-500 bg-black/20 rounded-3xl border border-dashed border-[#333]">
+                        <i data-lucide="info" className="w-12 h-12 mx-auto mb-4 opacity-20 text-[#60e5ff]"></i>
+                        <p className="text-xl text-slate-300 mb-2">Noch nicht genügend Daten vorhanden.</p>
+                        <p className="text-sm">Speichere mindestens zwei Snapshots im Dashboard-Tab, um Trends zu sehen.</p>
+                      </div>
+                    ) : (
+                      <div className="space-y-12">
+                        {/* Grafik-Container */}
+                        <div className="h-80 flex items-end gap-2 md:gap-4 px-4 border-b border-[#333] pb-4 pt-10">
+                          {history.map((snapshot, idx) => {
+                            const profit = snapshot.data.monthlyRevenue - (snapshot.data.fixedCosts + snapshot.data.variableCosts);
+                            const revenue = snapshot.data.monthlyRevenue;
+                            const maxVal = Math.max(...history.map(s => s.data.monthlyRevenue)) * 1.2;
+                            const profitHeight = (profit / maxVal) * 100;
+                            const revenueHeight = (revenue / maxVal) * 100;
+                            
+                            return (
+                              <div key={idx} className="flex-1 flex flex-col items-center gap-2 group relative h-full justify-end">
+                                {/* Tooltip */}
+                                <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#60e5ff] text-black px-3 py-1.5 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none whitespace-nowrap text-xs font-black">
+                                  {formatCurrency(revenue)} / {formatCurrency(profit)}
+                                </div>
+                                <div className="w-full flex items-end gap-1 h-full max-h-[250px]">
+                                  {/* Umsatz Bar */}
+                                  <div 
+                                    className="flex-1 bg-slate-700/50 rounded-t-sm transition-all duration-700 hover:bg-slate-600"
+                                    style={{ height: `${revenueHeight}%` }}
+                                  ></div>
+                                  {/* Gewinn Bar */}
+                                  <div 
+                                    className={`flex-1 rounded-t-sm transition-all duration-700 ${profit >= 0 ? 'bg-[#60e5ff]' : 'bg-red-500'}`}
+                                    style={{ height: `${Math.max(5, Math.abs(profitHeight))}%` }}
+                                  ></div>
+                                </div>
+                                <div className="text-[10px] text-slate-500 rotate-45 mt-6 whitespace-nowrap origin-left">
+                                  {new Date(snapshot.date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="flex justify-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                          <div className="flex items-center gap-2"><span className="w-3 h-3 bg-slate-700 rounded-sm"></span> Umsatz</div>
+                          <div className="flex items-center gap-2"><span className="w-3 h-3 bg-[#60e5ff] rounded-sm"></span> Gewinn</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Detailtabelle */}
+                  <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl overflow-hidden">
+                    <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 text-white">Verlaufshistorie</h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left border-collapse">
+                        <thead>
+                          <tr className="text-slate-500 text-xs uppercase tracking-[0.2em] border-b border-[#333]">
+                            <th className="py-4 px-4 font-black">Datum</th>
+                            <th className="py-4 px-4 font-black">Kontostand</th>
+                            <th className="py-4 px-4 font-black">Umsatz</th>
+                            <th className="py-4 px-4 font-black">Gewinn</th>
+                            <th className="py-4 px-4 font-black">Stundensatz</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[...history].reverse().map((snapshot, idx) => {
+                            const profit = snapshot.data.monthlyRevenue - (snapshot.data.fixedCosts + snapshot.data.variableCosts);
+                            const rate = snapshot.data.hoursWorked > 0 ? profit / snapshot.data.hoursWorked : 0;
+                            return (
+                              <tr key={idx} className="border-b border-white/5 hover:bg-[#60e5ff]/5 transition-colors group">
+                                <td className="py-4 px-4 text-white text-sm">{new Date(snapshot.date).toLocaleDateString('de-DE')}</td>
+                                <td className="py-4 px-4 text-slate-400 text-sm">{formatCurrency(snapshot.data.bankBalance)}</td>
+                                <td className="py-4 px-4 text-slate-400 text-sm">{formatCurrency(snapshot.data.monthlyRevenue)}</td>
+                                <td className={`py-4 px-4 text-sm ${profit >= 0 ? 'text-green-400' : 'text-red-400'}`}>{formatCurrency(profit)}</td>
+                                <td className="py-4 px-4 text-[#60e5ff] text-sm font-black">{formatCurrency(rate)}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              )}
+                  <br /><p data-html2canvas-ignore><i>*Die Mindestrücklage basiert auf Steuerschätzung + 10% Umsatzpuffer für Sicherheit.</i></p>
+                  </div> {/* END pdf-content */}
+                </div> {/* END FRONT SIDE */}
+
+                {/* BACK SIDE - OPTIMIZED SETUP */}
+                <div className="flip-back">
+                  <div className="p-12 rounded-[40px] bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-4 border-[#60e5ff]/30 shadow-[0_0_50px_rgba(96,229,255,0.15)] relative overflow-hidden">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#60e5ff]/5 rounded-full blur-3xl"></div>
+                    <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[#008cba]/5 rounded-full blur-3xl"></div>
+                    
+                    <div className="text-center mb-16">
+                      <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#60e5ff]/10 border border-[#60e5ff]/20 text-[#60e5ff] text-xs font-black uppercase tracking-[0.3em] mb-6">
+                        <i data-lucide="sparkles" className="w-3 h-3"></i> Vision & Strategie
+                      </div>
+                      <h2 className="text-5xl font-black text-white mb-4">Dein Optimales Setup</h2>
+                      <p className="text-slate-400 text-xl max-w-2xl mx-auto">Basierend auf deinem Wunsch-Netto von {formatCurrency(targetNetIncome)} zeigen wir dir hier den Weg zur maximalen Profitabilität.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                      {/* Ideal Preis Card */}
+                      <div className="p-10 rounded-3xl bg-white/5 border border-white/10 hover:border-[#60e5ff]/50 transition-all group">
+                        <div className="w-14 h-14 bg-[#60e5ff]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                          <i data-lucide="tag" className="w-7 h-7 text-[#60e5ff]"></i>
+                        </div>
+                        <h3 className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-2">Idealer Stundensatz</h3>
+                        <div className="text-4xl font-black text-white mb-4">{formatCurrency(targetHourlyRate)}</div>
+                        <p className="text-slate-500 text-sm leading-relaxed">Dein Schlüssel zur Freiheit. Dieser Satz deckt alle Kosten, Steuern und deinen Wunsch-Gewinn ab.</p>
+                      </div>
+
+                      {/* Ideal Stunden Card */}
+                      <div className="p-10 rounded-3xl bg-white/5 border border-white/10 hover:border-[#60e5ff]/50 transition-all group">
+                        <div className="w-14 h-14 bg-[#008cba]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                          <i data-lucide="clock-4" className="w-7 h-7 text-[#008cba]"></i>
+                        </div>
+                        <h3 className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-2">Optimale Arbeitszeit</h3>
+                        <div className="text-4xl font-black text-white mb-4">{billableHours} Std. <span className="text-lg text-slate-500">/ Monat</span></div>
+                        <p className="text-slate-500 text-sm leading-relaxed">Fokussierte abrechenbare Zeit. Mit deiner aktuellen Auslastung von {utilizationRate.toFixed(0)}% bleibt genug Raum für Strategie und Wachstum.</p>
+                      </div>
+
+                      {/* Zielstruktur Card */}
+                      <div className="p-10 rounded-3xl bg-white/5 border border-white/10 hover:border-[#60e5ff]/50 transition-all group">
+                        <div className="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                          <i data-lucide="pie-chart" className="w-7 h-7 text-green-500"></i>
+                        </div>
+                        <h3 className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-2">Ziel-Umsatz</h3>
+                        <div className="text-4xl font-black text-white mb-4">{formatCurrency(requiredRevenue)}</div>
+                        <p className="text-slate-500 text-sm leading-relaxed">Dein monatliches Umsatzziel, um deine Lebensqualität nachhaltig zu sichern.</p>
+                      </div>
+                    </div>
+
+                    {/* Breakdown der Zielstruktur */}
+                    <div className="mt-16 p-10 rounded-3xl bg-black/40 border border-white/5">
+                      <h3 className="text-2xl font-black text-white mb-10 text-center">Strategische Gewinn-Verteilung</h3>
+                      <div className="flex h-12 w-full rounded-2xl overflow-hidden shadow-2xl">
+                        <div 
+                          className="bg-[#60e5ff] flex items-center justify-center text-black font-black text-xs group relative" 
+                          style={{ width: `${(targetNetIncome / requiredRevenue * 100) || 40}%` }}
+                        >
+                          {Math.round(targetNetIncome / requiredRevenue * 100) || 40}% Netto
+                          <div className="absolute -top-10 bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Dein Gehalt</div>
+                        </div>
+                        <div 
+                          className="bg-[#008cba] flex items-center justify-center text-white font-black text-xs group relative" 
+                          style={{ width: `${(taxRate / 100 * (requiredRevenue - totalCosts) / requiredRevenue * 100) || 25}%` }}
+                        >
+                          Steuern
+                          <div className="absolute -top-10 bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Finanzamt Puffer</div>
+                        </div>
+                        <div 
+                          className="bg-slate-700 flex items-center justify-center text-white font-black text-xs group relative" 
+                          style={{ width: `${(totalCosts / requiredRevenue * 100) || 35}%` }}
+                        >
+                          Kosten
+                          <div className="absolute -top-10 bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Betriebsausgaben</div>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 gap-4 mt-8 text-center text-sm font-bold uppercase tracking-widest">
+                        <div className="text-[#60e5ff]">Lebensqualität</div>
+                        <div className="text-[#008cba]">Sicherheit</div>
+                        <div className="text-slate-500">Infrastruktur</div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-16 text-center">
+                      <p className="text-slate-500 italic mb-8">"Zahlen sind die Sprache deines Unternehmens. Wenn du sie verstehst, kannst du die Zukunft schreiben."</p>
+                    </div>
+                  </div>
+                </div> {/* END BACK SIDE */}
+
+              </div> {/* END FLIP INNER */}
+            </div> {/* END FLIP CONTAINER */}
+            <br />
+            <p data-html2canvas-ignore className="text-center text-slate-400 mt-4"><i>Hinweis: Speicherung nur in deinem Browser, volle Kontrolle über deine Informationen.</i></p>
+
+            {/* FLOATING ACTION BUTTON (FLIP) */}
+            {(isModified() || isFlipped) && (
               <button 
                 data-html2canvas-ignore
-                onClick={exportToPDF}
-                disabled={isExporting}
-                className="mt-6 px-8 py-3 bg-[#008cba] hover:bg-[#086f96] text-white rounded-xl font-bold flex items-center gap-2 mx-auto transition-all shadow-lg active:scale-95"
+                onClick={() => setIsFlipped(!isFlipped)}
+                className="dgk-flip-btn animate-in fade-in slide-in-from-bottom-8 duration-700"
+                style={{ '--highlight-color-hue': isFlipped ? '140deg' : '200deg' }}
               >
-                <i data-lucide="file-down"></i> PDF Export (Alle Tabs)
+                <i data-lucide={isFlipped ? "layout-dashboard" : "refresh-cw"} className={`btn-svg ${isFlipped ? '' : 'animate-spin-slow'}`}></i>
+                <div className="flex">
+                  {(isFlipped ? "Zurück zur Eingabe" : "Ziel anzeigen").split('').map((char, i) => (
+                    <span 
+                      key={i} 
+                      className="btn-letter font-black tracking-wider" 
+                      style={{ animationDelay: `${i * 0.08}s` }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  ))}
+                </div>
               </button>
-              <br /><p data-html2canvas-ignore className="text-center text-slate-400 mt-4"><i>Hinweis: Speicherung nur in deinem Browser, volle Kontrolle über deine Informationen.</i></p>
+            )}
           </div>
         );
       }
@@ -1139,7 +1557,7 @@
 
       <!--Fußzeilen component-->
 
-      <section class="fuzeile-wrapper">
+      <section class="fuzeile-wrapper" style="position: relative; z-index: 1001; background: #191818;">
         <div class="thq-divider-horizontal"></div>
         <footer class="fuzeile-footer7 thq-section-padding">
           <div class="fuzeile-max-width thq-section-max-width">
