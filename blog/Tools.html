@@ -204,6 +204,49 @@
           padding: 12px 15px; /* Etwas mehr Polsterung für mobile Buttons */
         }
       }
+
+      /* Tooltip Styling */
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 100;
+        bottom: 125%; /* Position above the button */
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        pointer-events: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -318,36 +361,52 @@
                         <img src="/public/Logo.webp" alt="" />
                       </div>
                       <div class="tools-buttons-wrapper">
-                        <button
-                          class="thq-button-animated thq-button-outline"
-                          onclick="window.location.href = 'dein-effizienz-radar.html'"
-                        >
-                          <span class="thq-body-small">Effizienz Radar</span>
-                        </button>
-                        <button
-                          class="thq-button-animated thq-button-outline"
-                          onclick="window.location.href = 'Kalkulator.html'"
-                        >
-                          <span class="thq-body-small">Effizienz Kalkulator</span>
-                        </button>
-                        <button
-                          class="thq-button-animated thq-button-outline"
-                          onclick="window.location.href = 'dein-strategie-navigator.html'"
-                        >
-                          <span class="thq-body-small">Strategie Navigator</span>
-                        </button>
-                        <button
-                          class="thq-button-animated thq-button-outline"
-                          onclick="window.location.href = 'dein-dashboard-wegweiser.html'"
-                        >
-                          <span class="thq-body-small">Dashboard Wegweiser</span>
-                        </button>
-                        <button
-                          class="thq-button-animated thq-button-outline"
-                          onclick="window.location.href = 'Quiz.html'"
-                        >
-                          <span class="thq-body-small">Entscheidungs-Quiz</span>
-                        </button>
+                        <div class="tooltip">
+                          <button
+                            class="thq-button-animated thq-button-outline"
+                            onclick="window.location.href = 'dein-effizienz-radar.html'"
+                          >
+                            <span class="thq-body-small">Effizienz Radar</span>
+                          </button>
+                          <span class="tooltiptext"
+                            >Finde versteckte Prozessbremsen und erkenne sofort Optimierungspotenziale.</span
+                          >
+                        </div>
+
+                        <div class="tooltip">
+                          <button
+                            class="thq-button-animated thq-button-outline"
+                            onclick="window.location.href = 'Kalkulator.html'"
+                          >
+                            <span class="thq-body-small">Effizienz Kalkulator</span>
+                          </button>
+                          <span class="tooltiptext">Berechne deine Einsparpotenziale und maximiere deinen Gewinn.</span>
+                        </div>
+
+                        <div class="tooltip">
+                          <button
+                            class="thq-button-animated thq-button-outline"
+                            onclick="window.location.href = 'dein-strategie-navigator.html'"
+                          >
+                            <span class="thq-body-small">Strategie Navigator</span>
+                          </button>
+                          <span class="tooltiptext"
+                            >Plane deine nächsten strategischen Schritte mit präzisen Daten.</span
+                          >
+                        </div>
+
+                        <div class="tooltip">
+                          <button
+                            class="thq-button-animated thq-button-outline"
+                            onclick="window.location.href = 'Quiz.html'"
+                          >
+                            <span class="thq-body-small">Entscheidungs-Quiz</span>
+                          </button>
+                          <span class="tooltiptext"
+                            >Triffst du die richtigen Entscheidungen für Strategieplanung, Prozessanalyse &
+                            Controlling?</span
+                          >
+                        </div>
                       </div>
                     </div>
                   </span>

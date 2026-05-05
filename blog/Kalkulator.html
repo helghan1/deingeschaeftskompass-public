@@ -519,14 +519,21 @@
           </div>
 
           <p class="interpretation-display">
-            Diese Zahlen sind eine Schätzung, die auf deinen Angaben und unserer Erfahrung basieren. Sie zeigen dir,
-            welches ungenutzte Potenzial in deinen aktuellen Abläufen schlummert.<br /><br />
-            Es ist völlig normal, dass sich im Betriebsalltag Ineffizienzen einschleichen. Die gute Nachricht ist: Dein
-            Geschäftskompass hilft dir, diese unnötigen Zeit- und Kostenfresser systematisch zu eliminieren und deine
-            Ressourcen auf das zu konzentrieren, was wirklich zählt.
+            Das ist dein Potenzial. Bereit, es auch wirklich freizusetzen? Der nächste Schritt dauert weniger als 5
+            Minuten: Nutze den Strategie Navigator, um dein individuelles Dashboard zu erstellen. Erlebe live, wie du
+            Zeitfresser eliminierst und deine Profitabilität auf das nächste Level hebst. Dein Fahrplan zu mehr Freiraum
+            startet hier
           </p>
 
-          <a href="/kontakt.html" class="cta-button">Jetzt unverbindlich Anfragen.</a>
+          <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a
+              href="/blog/Dein-Strategie-Navigator.html?tab=efficiency"
+              class="cta-button"
+              style="background-color: #60e5ff; color: #191818"
+            >
+              Zum Strategie Navigator <i class="icon-nav"></i>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -911,6 +918,19 @@
         const resultsSection = document.getElementById("resultsSection");
         if (questionsContainer) questionsContainer.style.display = "none";
         if (resultsSection) resultsSection.style.display = "block";
+
+        // Speichere Ergebnisse für den Strategie Navigator
+        const efficiencyData = {
+          hoursMonth: savedHoursPerMonth.toFixed(0),
+          hoursYear: savedHoursPerYear.toFixed(0),
+          hours5Years: savedHoursOver5Years.toFixed(0),
+          costMonth: savedCostPerMonth.toFixed(2),
+          costYear: savedCostPerYear.toFixed(2),
+          cost5Years: savedCostOver5Years.toFixed(2),
+          radarScore: initialRadarScore,
+          timestamp: new Date().toISOString(),
+        };
+        localStorage.setItem("dgk_efficiency_potential", JSON.stringify(efficiencyData));
       }
     </script>
   </body>
