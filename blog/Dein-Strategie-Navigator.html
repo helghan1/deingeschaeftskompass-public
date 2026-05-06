@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="de">
   <head>
     <!-- Grundlegende Einstellungen -->
@@ -272,6 +272,17 @@
         border: 1px solid #333;
         backdrop-filter: blur(8px);
       }
+
+      /* Mobile Optimierung für Tooltips */
+      @media (max-width: 640px) {
+        .tooltip-text {
+          width: 200px;
+          max-width: 80vw;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
       .tooltip-container:hover .tooltip-text {
         visibility: visible;
         opacity: 1;
@@ -1154,7 +1165,7 @@
           if (window.lucide) {
             window.lucide.createIcons();
           }
-        }, [activeTab, isFlipped]);
+        }, [activeTab, isFlipped, isPro, efficiencyPotential]);
 
         const getRealityChecks = () => {
           const checks = [];
@@ -1693,7 +1704,7 @@
                                 <div className="tooltip-text">
                                   <strong>Was sagt das aus?</strong>
                                   <br />
-                                  Hier siehst du, what du wirklich pro Stunde verdienst, nachdem alle Kosten und die
+                                  Hier siehst du, was du wirklich pro Stunde verdienst, nachdem alle Kosten und die
                                   unbezahlte Admin-Zeit abgezogen wurden. Liegt er unter deinem Ziel, subventionierst du
                                   dein eigenes Unternehmen.
                                 </div>
@@ -3336,9 +3347,6 @@
                                 {isAnnual ? "Jahreswerte" : "Monatswerte"}{" "}
                                 <i data-lucide="refresh-cw" className="inline w-3 h-3 ml-1"></i>
                               </button>
-                              <span className="bg-black/20 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10">
-                                Vorschau
-                              </span>
                             </div>
                           </div>
 

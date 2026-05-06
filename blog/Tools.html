@@ -194,14 +194,22 @@
 
         .tools-buttons-wrapper {
           width: 100%; /* Buttons nehmen die volle Breite des Containers ein */
+          display: flex;
+          flex-direction: column;
           align-items: center; /* Buttons mittig zentrieren auf Mobil */
         }
 
+        .tooltip {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
         .tools-buttons-wrapper .thq-button-animated {
-          width: 80%; /* Beispielbreite für die Buttons auf Mobilgeräten */
-          max-width: 300px; /* Max. Breite, damit sie nicht zu breit werden */
+          width: 90%; /* Erhöht von 80% für bessere Lesbarkeit auf Mobil */
+          max-width: 500px; /* Erhöht von 300px */
           text-align: center;
-          padding: 12px 15px; /* Etwas mehr Polsterung für mobile Buttons */
+          padding: 14px 20px; /* Mehr Polsterung für bessere Haptik */
         }
       }
 
