@@ -401,6 +401,46 @@
         transform: translateX(-50%) translateY(1px);
         background-color: hsla(var(--highlight-color-hue), 50%, 20%, 0.5);
       }
+
+      .sticky-tabs-container {
+        position: sticky !important;
+        top: 70px !important;
+        z-index: 40 !important;
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        padding: 0.6rem !important;
+        background-color: #262626 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+        transition: all 0.3s ease;
+      }
+
+      .sticky-tabs-container.is-sticky {
+        padding: 0.4rem !important;
+        padding-top: 20px !important;
+        background-color: rgba(38, 38, 38, 0.95) !important;
+        backdrop-filter: blur(8px);
+      }
+
+      .sticky-tabs-container button {
+        padding: 0.6rem 0.4rem !important;
+        flex: 1;
+        justify-content: center;
+        gap: 0 !important;
+        font-size: 0.75rem !important;
+        border-radius: 12px !important;
+      }
+
+      .sticky-tabs-container.is-sticky button span {
+        display: none; /* Hide labels when sticky on mobile */
+      }
+
+      .sticky-tabs-container.is-sticky i {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+      }
     </style>
   </head>
 
@@ -760,6 +800,22 @@
           const saved = localStorage.getItem("dgk_efficiency_potential");
           return saved ? JSON.parse(saved) : null;
         });
+        const [isSticky, setIsSticky] = useState(false);
+        const tabsRef = React.useRef(null);
+
+        useEffect(() => {
+          const handleScroll = () => {
+            if (tabsRef.current) {
+              const rect = tabsRef.current.getBoundingClientRect();
+              // If the top of the tabs reaches the sticky position (72px from top)
+              // We use a small buffer to trigger the state change
+              setIsSticky(rect.top <= 73);
+            }
+          };
+          window.addEventListener("scroll", handleScroll);
+          handleScroll(); // Initial check
+          return () => window.removeEventListener("scroll", handleScroll);
+        }, []);
 
         useEffect(() => {
           const params = new URLSearchParams(window.location.search);
@@ -1563,8 +1619,10 @@
                 <div className="flip-front">
                   {/* Navigation - Dunkle Tabs */}
                   <div
+                    ref={tabsRef}
+                    id="sticky-tabs"
                     data-html2canvas-ignore
-                    className="flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333]"
+                    className={`flex flex-wrap justify-center gap-3 mb-12 p-3 bg-[#262626] rounded-2xl border border-[#333] sticky-tabs-container ${isSticky ? "is-sticky" : ""}`}
                   >
                     {[
                       { id: "dashboard", label: "Dashboard", icon: "layout" },
@@ -1583,7 +1641,7 @@
                         onClick={() => setActiveTab(tab.id)}
                         className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-lg transition-all ${activeTab === tab.id ? "bg-[#008cba] text-white shadow-lg" : "text-slate-400 hover:text-white hover:bg-[#333]"}`}
                       >
-                        <i data-lucide={tab.icon} className="w-5 h-5"></i> {tab.label}
+                        <i data-lucide={tab.icon} className="w-5 h-5"></i> <span>{tab.label}</span>
                       </button>
                     ))}
                   </div>

@@ -689,8 +689,9 @@ details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] 
     align-items: center;
     justify-content: center;
   }
+  .kopfzeile-rest-navbar-interactive,
   .kopfzeile-rest-mobile-menu {
-    padding: var(--dl-layout-space-oneandhalfunits);
+    padding: var(--dl-layout-space-unit);
   }
 }
 
