@@ -405,7 +405,7 @@
       .sticky-tabs-container {
         position: sticky !important;
         top: 70px !important;
-        z-index: 40 !important;
+        z-index: 1000 !important;
         margin-left: -1rem !important;
         margin-right: -1rem !important;
         border-radius: 0 !important;
@@ -414,12 +414,13 @@
         padding: 0.6rem !important;
         background-color: #262626 !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
-        transition: all 0.3s ease;
+        transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, top 0.3s ease !important;
+        transform: translateZ(0);
+        will-change: transform, top;
       }
 
       .sticky-tabs-container.is-sticky {
         padding: 0.4rem !important;
-        padding-top: 20px !important;
         background-color: rgba(38, 38, 38, 0.95) !important;
         backdrop-filter: blur(8px);
       }
@@ -440,6 +441,19 @@
       .sticky-tabs-container.is-sticky i {
         width: 1.25rem !important;
         height: 1.25rem !important;
+      }
+
+      /* Firefox & General Fallback: Disable 3D context when sticky to allow position:sticky to work */
+      .flip-container.sticky-logic-active {
+        perspective: none !important;
+      }
+      .flip-container.sticky-logic-active .flip-inner {
+        transform: none !important;
+        transform-style: flat !important;
+      }
+      .flip-container.sticky-logic-active .flip-front {
+        backface-visibility: visible !important;
+        position: relative !important;
       }
     </style>
   </head>
@@ -711,6 +725,275 @@
         );
       }
 
+      function LiquidityProjectionChart({ data, labels }) {
+        const chartRef = React.useRef(null);
+        const chartInstance = React.useRef(null);
+
+        React.useEffect(() => {
+          if (chartRef.current && window.Chart) {
+            const ctx = chartRef.current.getContext("2d");
+            if (chartInstance.current) chartInstance.current.destroy();
+
+            chartInstance.current = new Chart(ctx, {
+              type: "line",
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    label: "Kontostand (€)",
+                    data: data,
+                    borderColor: "#008cba",
+                    backgroundColor: "rgba(0, 140, 186, 0.1)",
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: (ctx) => (ctx.dataIndex === 0 ? 8 : 4),
+                    pointBackgroundColor: (ctx) => (ctx.dataIndex === 0 ? "#ed982b" : "#008cba"),
+                    pointBorderColor: "#fff",
+                    pointBorderWidth: (ctx) => (ctx.dataIndex === 0 ? 3 : 1),
+                    pointHoverRadius: 10,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: false,
+                    grid: { color: "rgba(255,255,255,0.05)" },
+                    ticks: { color: "#94a3b8", callback: (v) => v.toLocaleString("de-DE") + " €" },
+                  },
+                  x: { grid: { color: "rgba(255,255,255,0.05)" }, ticks: { color: "#94a3b8" } },
+                },
+                plugins: {
+                  legend: { display: false },
+                  tooltip: {
+                    callbacks: {
+                      label: (context) => ` Kontostand: ${context.parsed.y.toLocaleString("de-DE")} €`,
+                    },
+                  },
+                },
+              },
+            });
+          }
+          return () => {
+            if (chartInstance.current) chartInstance.current.destroy();
+          };
+        }, [data]);
+
+        return (
+          <div className="h-64 w-full">
+            <canvas ref={chartRef}></canvas>
+          </div>
+        );
+      }
+
+      function Wizard({ isOpen, onFinish, currentValues, setters }) {
+        const [step, setStep] = React.useState(1);
+        const totalSteps = 6;
+        const progress = (step / totalSteps) * 100;
+
+        React.useEffect(() => {
+          if (isOpen && window.lucide) {
+            window.lucide.createIcons();
+          }
+        }, [isOpen, step]);
+
+        if (!isOpen) return null;
+
+        const handleNext = () => {
+          if (step < totalSteps) setStep(step + 1);
+          else onFinish();
+        };
+
+        const handleBack = () => {
+          if (step > 1) setStep(step - 1);
+        };
+
+        return (
+          <div className="fixed inset-0 z-[2000] flex items-start justify-center p-4 pt-12 md:pt-24 bg-black/40 backdrop-blur-sm animate-in fade-in duration-500">
+            <div className="bg-[#1a1a1a] border border-[#333] w-full max-w-xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative">
+              <div
+                className="absolute top-0 left-0 h-1.5 bg-[#008cba] transition-all duration-500 shadow-[0_0_10px_#008cba]"
+                style={{ width: `${progress}%` }}
+              ></div>
+
+              <div className="p-10 md:p-14">
+                <div className="flex justify-between items-center mb-10">
+                  <span className="text-slate-500 text-xs font-bold uppercase tracking-[0.2em]">
+                    Schritt {step} von {totalSteps}
+                  </span>
+                  <button
+                    onClick={onFinish}
+                    className="text-slate-500 hover:text-white transition-colors text-sm font-bold"
+                  >
+                    Überspringen
+                  </button>
+                </div>
+
+                <div className="min-h-[320px] flex flex-col justify-center">
+                  {step === 1 && (
+                    <div className="animate-in slide-in-from-right duration-500">
+                      <div className="w-16 h-16 bg-[#008cba]/20 text-[#008cba] rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="sparkles" className="w-8 h-8"></i>
+                      </div>
+                      <h2 className="text-4xl font-black text-white mb-6 leading-tight">
+                        Willkommen beim Strategie-Navigator!
+                      </h2>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                        Schön, dass du da bist. Dieses Tool hilft dir, deine Unternehmensfinanzen wie ein Profi zu
+                        steuern.
+                      </p>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                        Lass uns gemeinsam in 60 Sekunden dein Dashboard einrichten. Keine Sorge: Deine Daten werden nur{" "}
+                        <strong className="text-white font-bold">lokal in deinem Browser</strong> gespeichert.
+                      </p>
+                    </div>
+                  )}
+
+                  {step === 2 && (
+                    <div className="animate-in slide-in-from-right duration-500">
+                      <div className="w-16 h-16 bg-[#008cba]/20 text-[#008cba] rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="wallet" className="w-8 h-8"></i>
+                      </div>
+                      <h2 className="text-4xl font-black text-white mb-6 leading-tight">Basis schaffen</h2>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                        Lass uns mit deiner Basis starten: Dein{" "}
+                        <strong className="text-white font-bold">Kontostand</strong> hilft uns, deinen finanziellen
+                        Puffer (Runway) zu berechnen.
+                      </p>
+                      <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
+                        <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
+                          Aktueller Kontostand (€)
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="number"
+                            value={currentValues.bankBalance}
+                            onChange={(e) => setters.setBankBalance(e.target.value)}
+                            className="w-full bg-transparent border-b-2 border-slate-700 rounded-none px-0 py-4 text-4xl font-black text-white outline-none focus:border-[#008cba] transition-all"
+                            autoFocus
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {step === 3 && (
+                    <div className="animate-in slide-in-from-right duration-500">
+                      <div className="w-16 h-16 bg-[#008cba]/20 text-[#008cba] rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="trending-up" className="w-8 h-8"></i>
+                      </div>
+                      <h2 className="text-4xl font-black text-white mb-6 leading-tight">Umsatz erfassen</h2>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                        Was ist dein durchschnittlicher{" "}
+                        <strong className="text-white font-bold">Umsatz pro Monat</strong>? Dies ist die Basis für deine
+                        Liquiditätsvorschau.
+                      </p>
+                      <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
+                        <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
+                          Monatlicher Umsatz (€)
+                        </label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={currentValues.monthlyRevenue}
+                          onChange={(e) => setters.setMonthlyRevenue(Math.max(0, Number(e.target.value)))}
+                          className="w-full bg-transparent border-b-2 border-slate-700 rounded-none px-0 py-4 text-4xl font-black text-white outline-none focus:border-[#008cba] transition-all"
+                          autoFocus
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {step === 4 && (
+                    <div className="animate-in slide-in-from-right duration-500">
+                      <div className="w-16 h-16 bg-[#008cba]/20 text-[#008cba] rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="lock" className="w-8 h-8"></i>
+                      </div>
+                      <h2 className="text-4xl font-black text-white mb-6 leading-tight">Fixkosten</h2>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                        Was zahlst du jeden Monat sicher aus (Miete, Tools, Versicherungen)? Gib hier die{" "}
+                        <strong className="text-white font-bold">Gesamtsumme</strong> an.
+                      </p>
+                      <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
+                        <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
+                          Fixkosten (€)
+                        </label>
+                        <input
+                          type="number"
+                          value={currentValues.fixedCosts}
+                          onChange={(e) => setters.setFixedCosts(e.target.value)}
+                          className="w-full bg-transparent border-b-2 border-slate-700 rounded-none px-0 py-4 text-4xl font-black text-white outline-none focus:border-[#008cba] transition-all"
+                          autoFocus
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {step === 5 && (
+                    <div className="animate-in slide-in-from-right duration-500">
+                      <div className="w-16 h-16 bg-[#008cba]/20 text-[#008cba] rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="shopping-cart" className="w-8 h-8"></i>
+                      </div>
+                      <h2 className="text-4xl font-black text-white mb-6 leading-tight">Variable Kosten</h2>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                        Hast du Kosten, die nur bei Aufträgen anfallen (Wareneinkauf, Sub-Unternehmer)? Falls nicht,
+                        setze <strong className="text-white font-bold">0€</strong> ein.
+                      </p>
+                      <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
+                        <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
+                          Variable Kosten (€)
+                        </label>
+                        <input
+                          type="number"
+                          value={currentValues.variableCosts}
+                          onChange={(e) => setters.setVariableCosts(e.target.value)}
+                          className="w-full bg-transparent border-b-2 border-slate-700 rounded-none px-0 py-4 text-4xl font-black text-white outline-none focus:border-[#008cba] transition-all"
+                          autoFocus
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {step === 6 && (
+                    <div className="animate-in zoom-in duration-500 text-center">
+                      <div className="w-24 h-24 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_0_40px_rgba(34,197,94,0.2)]">
+                        <i data-lucide="check" className="w-12 h-12"></i>
+                      </div>
+                      <h2 className="text-4xl font-black text-white mb-6 leading-tight">Alles fertig!</h2>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-10">
+                        Dein Strategie-Navigator ist bereit. Du kannst nun deine{" "}
+                        <strong className="text-white font-bold">Profitabilität</strong> und{" "}
+                        <strong className="text-white font-bold">Liquidität</strong> in Echtzeit verfolgen.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex gap-6 mt-16">
+                  {step > 1 && (
+                    <button
+                      onClick={handleBack}
+                      className="flex-1 py-5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-bold transition-all border border-[#444] shadow-lg"
+                    >
+                      Zurück
+                    </button>
+                  )}
+                  <button
+                    onClick={handleNext}
+                    className="flex-[2] py-5 bg-[#008cba] hover:bg-[#60e5ff] text-black rounded-2xl font-black text-xl transition-all shadow-xl shadow-[#008cba]/20 flex items-center justify-center gap-3"
+                  >
+                    {step === totalSteps ? "Dashboard erkunden" : "Weiter"}
+                    <i data-lucide="arrow-right" className="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       function SimCashflowRunwayChart({ istCashflow, simCashflow, istRunway, simRunway, isAnnual }) {
         const chartRef = React.useRef(null);
         const chartInstance = React.useRef(null);
@@ -801,15 +1084,15 @@
           return saved ? JSON.parse(saved) : null;
         });
         const [isSticky, setIsSticky] = useState(false);
+        const [showWizard, setShowWizard] = useState(false);
         const tabsRef = React.useRef(null);
 
         useEffect(() => {
           const handleScroll = () => {
             if (tabsRef.current) {
               const rect = tabsRef.current.getBoundingClientRect();
-              // If the top of the tabs reaches the sticky position (72px from top)
-              // We use a small buffer to trigger the state change
-              setIsSticky(rect.top <= 73);
+              // If the top of the tabs reaches the sticky position (70px from top)
+              setIsSticky(rect.top <= 70);
             }
           };
           window.addEventListener("scroll", handleScroll);
@@ -940,6 +1223,15 @@
           loadState("revenueBufferPercent", DEFAULTS.revenueBufferPercent),
         );
 
+        const [seasonalFactors, setSeasonalFactors] = useState(() => {
+          const saved = localStorage.getItem("dgk_dash_seasonalFactors");
+          return saved ? JSON.parse(saved) : new Array(12).fill(100);
+        });
+
+        useEffect(() => {
+          localStorage.setItem("dgk_dash_seasonalFactors", JSON.stringify(seasonalFactors));
+        }, [seasonalFactors]);
+
         const isModified = () => {
           return (
             Number(bankBalance) !== DEFAULTS.bankBalance ||
@@ -1040,6 +1332,25 @@
         const totalCosts = n_fixedCosts + n_variableCosts;
         const monthlyProfit = n_monthlyRevenue - totalCosts;
         const runwayMonths = totalCosts > 0 ? (n_bankBalance / totalCosts).toFixed(1) : "0";
+
+        const currentMonthIdx = new Date().getMonth();
+        const monthNames = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+
+        const { projectedLiquidity, projectionLabels } = React.useMemo(() => {
+          let currentBalance = Number(bankBalance);
+          const projection = [];
+          const labels = [];
+          for (let i = 0; i < 12; i++) {
+            const monthIdx = (currentMonthIdx + i) % 12;
+            const factor = (seasonalFactors[monthIdx] || 100) / 100;
+            const rev = Number(monthlyRevenue) * factor;
+            const costs = Number(totalCosts);
+            currentBalance += rev - costs;
+            projection.push(currentBalance);
+            labels.push(monthNames[monthIdx]);
+          }
+          return { projectedLiquidity: projection, projectionLabels: labels };
+        }, [bankBalance, monthlyRevenue, totalCosts, seasonalFactors, currentMonthIdx]);
         const isResilient = parseFloat(runwayMonths) >= 3;
 
         // --- SIMULATION LOGIK ---
@@ -1463,6 +1774,15 @@
 
         return (
           <div className="max-w-6xl mx-auto px-4">
+            <Wizard
+              isOpen={showWizard}
+              onFinish={() => {
+                setShowWizard(false);
+                localStorage.setItem("dgk_wizard_seen", "true");
+              }}
+              currentValues={{ bankBalance, monthlyRevenue, fixedCosts, variableCosts }}
+              setters={{ setBankBalance, setMonthlyRevenue, setFixedCosts, setVariableCosts }}
+            />
             {isExporting && (
               <div
                 data-html2canvas-ignore
@@ -1567,6 +1887,30 @@
                     </div>
                   </div>
 
+                  {/* Tutorial CTA */}
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-[2rem] bg-gradient-to-br from-[#008cba]/20 to-[#60e5ff]/10 border border-[#008cba]/30 shadow-lg mt-4">
+                    <div className="flex-1 text-center md:text-left">
+                      <h4 className="text-xl font-black text-white mb-2 flex items-center justify-center md:justify-start gap-2">
+                        <i data-lucide="sparkles" className="w-5 h-5 text-[#60e5ff]"></i>
+                        Lieber geführt starten?
+                      </h4>
+                      <p className="text-slate-300">
+                        Unser interaktiver Setup-Wizard hilft dir, die wichtigsten Kennzahlen in 60 Sekunden
+                        einzurichten.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setShowWizard(true)}
+                      className="px-10 py-4 bg-[#008cba] hover:bg-[#60e5ff] text-black font-black rounded-2xl transition-all shadow-xl shadow-[#008cba]/20 flex items-center gap-3 whitespace-nowrap group"
+                    >
+                      <i
+                        data-lucide="play"
+                        className="w-5 h-5 fill-current group-hover:scale-110 transition-transform"
+                      ></i>
+                      Tutorial starten
+                    </button>
+                  </div>
+
                   {/* Mode Hint */}
                   <div className="bg-[#008cba]/10 border border-[#008cba]/30 rounded-2xl p-6 mt-4">
                     <h5 className="text-[#60e5ff] font-bold mb-4 flex items-center gap-2">
@@ -1613,8 +1957,10 @@
                 {isExporting ? "Generiere..." : "PDF Download"}
               </button>
             </div>
-            <div className="flip-container">
-              <div className={`flip-inner ${isFlipped ? "flipped" : ""}`}>
+            <div className={`flip-container ${!isFlipped ? "sticky-logic-active" : ""}`}>
+              <div
+                className={`flip-inner ${isFlipped ? "flipped" : ""} ${!isFlipped ? "transform-none" : ""}`}
+              >
                 {/* FRONT SIDE */}
                 <div className="flip-front">
                   {/* Navigation - Dunkle Tabs */}
@@ -2083,124 +2429,218 @@
                     )}
                     {/* Liquidität Tab */}
                     {activeTab === "liquidity" && (
-                      <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-6">
-                          <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">Eingabe Finanzstatus</h3>
-                          <div className="input-group">
-                            <label>Kontostand aktuell (€)</label>
-                            <input type="number" value={bankBalance} onChange={(e) => setBankBalance(e.target.value)} />
-                            <input
-                              type="range"
-                              min="-1000000"
-                              max="10000000"
-                              step="500"
-                              value={bankBalance}
-                              onChange={(e) => setBankBalance(e.target.value)}
-                            />
+                      <div className="space-y-12">
+                        <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-12">
+                          <div className="space-y-6">
+                            <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">
+                              Eingabe Finanzstatus
+                            </h3>
+                            <div className="input-group">
+                              <label>Kontostand aktuell (€)</label>
+                              <input
+                                type="number"
+                                value={bankBalance}
+                                onChange={(e) => setBankBalance(e.target.value)}
+                              />
+                              <input
+                                type="range"
+                                min="-1000000"
+                                max="10000000"
+                                step="500"
+                                value={bankBalance}
+                                onChange={(e) => setBankBalance(e.target.value)}
+                              />
+                            </div>
+                            {!isPro && (
+                              <>
+                                <div className="input-group">
+                                  <label>Fixkosten pro Monat (€)</label>
+                                  <input
+                                    type="number"
+                                    value={fixedCosts}
+                                    onChange={(e) => setFixedCosts(e.target.value)}
+                                  />
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="1000000"
+                                    step="100"
+                                    value={fixedCosts}
+                                    onChange={(e) => setFixedCosts(e.target.value)}
+                                  />
+                                </div>
+                                <div className="input-group">
+                                  <label>Variable Kosten pro Monat (€)</label>
+                                  <input
+                                    type="number"
+                                    value={variableCosts}
+                                    onChange={(e) => setVariableCosts(e.target.value)}
+                                  />
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="10000"
+                                    step="100"
+                                    value={variableCosts}
+                                    onChange={(e) => setVariableCosts(e.target.value)}
+                                  />
+                                </div>
+                              </>
+                            )}
+                            {isPro && (
+                              <>
+                                <div className="input-group">
+                                  <label>Finanzierung / Kreditrate (€)</label>
+                                  <input
+                                    type="number"
+                                    value={financing}
+                                    onChange={(e) => setFinancing(e.target.value)}
+                                  />
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="1000000"
+                                    step="100"
+                                    value={financing}
+                                    onChange={(e) => setFinancing(e.target.value)}
+                                  />
+                                </div>
+                                <div className="input-group">
+                                  <label>Raumkosten (€)</label>
+                                  <input
+                                    type="number"
+                                    value={rentCosts}
+                                    onChange={(e) => setRentCosts(e.target.value)}
+                                  />
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="1000000"
+                                    step="100"
+                                    value={rentCosts}
+                                    onChange={(e) => setRentCosts(e.target.value)}
+                                  />
+                                </div>
+                                <div className="input-group">
+                                  <div className="tooltip-container">
+                                    <label className="flex items-center gap-2">
+                                      Steuersatz (%) <i data-lucide="help-circle" className="w-3 h-3"></i>
+                                    </label>
+                                    <div className="tooltip-text">
+                                      <strong>Vorsicht vor dem Fiskus</strong>
+                                      <br />
+                                      Gib hier deinen voraussichtlichen Steuersatz (z.B. Einkommensteuer &
+                                      Gewerbesteuer) ein. Er wird für die Berechnung der Rücklagen genutzt.
+                                    </div>
+                                  </div>
+                                  <input type="number" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} />
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    value={taxRate}
+                                    onChange={(e) => setTaxRate(e.target.value)}
+                                  />
+                                </div>
+                                <div className="input-group">
+                                  <label>Umsatzpuffer für Sicherheit (%)</label>
+                                  <input
+                                    type="number"
+                                    value={revenueBufferPercent}
+                                    onChange={(e) => setRevenueBufferPercent(e.target.value)}
+                                  />
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="50"
+                                    step="1"
+                                    value={revenueBufferPercent}
+                                    onChange={(e) => setRevenueBufferPercent(e.target.value)}
+                                  />
+                                </div>
+                              </>
+                            )}
                           </div>
-                          {!isPro && (
-                            <>
-                              <div className="input-group">
-                                <label>Fixkosten pro Monat (€)</label>
-                                <input
-                                  type="number"
-                                  value={fixedCosts}
-                                  onChange={(e) => setFixedCosts(e.target.value)}
-                                />
-                                <input
-                                  type="range"
-                                  min="0"
-                                  max="1000000"
-                                  step="100"
-                                  value={fixedCosts}
-                                  onChange={(e) => setFixedCosts(e.target.value)}
-                                />
-                              </div>
-                              <div className="input-group">
-                                <label>Variable Kosten pro Monat (€)</label>
-                                <input
-                                  type="number"
-                                  value={variableCosts}
-                                  onChange={(e) => setVariableCosts(e.target.value)}
-                                />
-                                <input
-                                  type="range"
-                                  min="0"
-                                  max="10000"
-                                  step="100"
-                                  value={variableCosts}
-                                  onChange={(e) => setVariableCosts(e.target.value)}
-                                />
-                              </div>
-                            </>
-                          )}
-                          {isPro && (
-                            <>
-                              <div className="input-group">
-                                <label>Finanzierung (€)</label>
-                                <input type="number" value={financing} onChange={(e) => setFinancing(e.target.value)} />
-                                <input
-                                  type="range"
-                                  min="0"
-                                  max="1000000"
-                                  step="100"
-                                  value={financing}
-                                  onChange={(e) => setFinancing(e.target.value)}
-                                />
-                              </div>
-                              <div className="input-group">
-                                <label>Raumkosten (€)</label>
-                                <input type="number" value={rentCosts} onChange={(e) => setRentCosts(e.target.value)} />
-                                <input
-                                  type="range"
-                                  min="0"
-                                  max="1000000"
-                                  step="100"
-                                  value={rentCosts}
-                                  onChange={(e) => setRentCosts(e.target.value)}
-                                />
-                              </div>
-                              <div className="input-group">
-                                <label>Steuersatz (%)</label>
-                                <input type="number" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} />
-                                <input
-                                  type="range"
-                                  min="0"
-                                  max="100"
-                                  step="1"
-                                  value={taxRate}
-                                  onChange={(e) => setTaxRate(e.target.value)}
-                                />
-                              </div>
-                              <div className="input-group">
-                                <label>Umsatzpuffer für Sicherheit (%)</label>
-                                <input
-                                  type="number"
-                                  value={revenueBufferPercent}
-                                  onChange={(e) => setRevenueBufferPercent(e.target.value)}
-                                />
-                                <input
-                                  type="range"
-                                  min="0"
-                                  max="50"
-                                  step="1"
-                                  value={revenueBufferPercent}
-                                  onChange={(e) => setRevenueBufferPercent(e.target.value)}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </div>
-                        <div className="bg-[#111] p-10 rounded-3xl border border-[#333] flex flex-col justify-center text-center">
-                          <p className="text-[#008cba] font-bold uppercase tracking-widest text-sm mb-4">
-                            Monatliche Burn-Rate
-                          </p>
-                          <p className="text-6xl font-black text-white">{formatCurrency(totalCosts)}</p>
-                          <div className="mt-10 p-6 bg-[#191818] rounded-2xl border border-[#333]">
-                            <p className="text-xl italic text-slate-300">
-                              "Dein Polster reicht für{" "}
-                              <span className="text-white font-bold">{runwayMonths} Monate</span> ohne Umsatz."
+                          <div className="bg-[#111] p-10 rounded-3xl border border-[#333] flex flex-col justify-center text-center">
+                            <p className="text-[#008cba] font-bold uppercase tracking-widest text-sm mb-4">
+                              Monatliche Burn-Rate
                             </p>
+                            <p className="text-6xl font-black text-white">{formatCurrency(totalCosts)}</p>
+                            <div className="mt-10 p-6 bg-[#191818] rounded-2xl border border-[#333]">
+                              <p className="text-xl italic text-slate-300">
+                                "Dein Polster reicht für{" "}
+                                <span className="text-white font-bold">{runwayMonths} Monate</span> ohne Umsatz."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Saisonale Liquiditätsplanung */}
+                        <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl">
+                          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+                            <div>
+                              <h3 className="text-2xl font-black mb-2">12-Monats Liquiditätsvorschau</h3>
+                              <p className="text-slate-400">
+                                Simuliere saisonale Schwankungen und erkenne Liquiditätsengpässe frühzeitig.
+                              </p>
+                            </div>
+                            <button
+                              onClick={() => setSeasonalFactors(new Array(12).fill(100))}
+                              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-sm transition-all border border-[#444] font-bold flex items-center gap-2"
+                            >
+                              <i data-lucide="refresh-cw" className="w-3 h-3"></i>
+                              Reset Faktoren
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                            <div className="lg:col-span-2 bg-[#111] p-8 rounded-2xl border border-[#333]">
+                              <LiquidityProjectionChart data={projectedLiquidity} labels={projectionLabels} />
+                            </div>
+                            <div className="bg-[#191818] p-6 rounded-2xl border border-[#333]">
+                              <h4 className="text-sm font-bold uppercase tracking-widest text-[#008cba] mb-6 flex items-center gap-2">
+                                <i data-lucide="trending-up" className="w-4 h-4"></i>
+                                Saison-Anpassung (%)
+                              </h4>
+                              <div className="grid grid-cols-3 gap-x-4 gap-y-6">
+                                {[
+                                  "Jan",
+                                  "Feb",
+                                  "Mär",
+                                  "Apr",
+                                  "Mai",
+                                  "Jun",
+                                  "Jul",
+                                  "Aug",
+                                  "Sep",
+                                  "Okt",
+                                  "Nov",
+                                  "Dez",
+                                ].map((m, i) => (
+                                  <div key={m} className="space-y-1 text-center">
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
+                                      {m}
+                                    </span>
+                                    <input
+                                      type="number"
+                                      value={seasonalFactors[i]}
+                                      onChange={(e) => {
+                                        const newFactors = [...seasonalFactors];
+                                        newFactors[i] = Number(e.target.value);
+                                        setSeasonalFactors(newFactors);
+                                      }}
+                                      className="w-full bg-slate-900 border border-slate-700 rounded-lg text-center py-1 text-sm text-white focus:border-[#008cba] outline-none transition-colors"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="mt-8 pt-6 border-t border-white/10">
+                                <p className="text-[11px] text-slate-500 leading-relaxed italic">
+                                  * Erwarteter Prozentsatz vom Durchschnittsumsatz (z.B. 120 für Dez, 80 für Aug).
+                                </p>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -2228,7 +2668,17 @@
                             />
                           </div>
                           <div className="input-group">
-                            <label>Steuer-/Abgabenquote (%)</label>
+                            <div className="tooltip-container">
+                              <label className="flex items-center gap-2">
+                                Steuer-/Abgabenquote (%) <i data-lucide="help-circle" className="w-3 h-3"></i>
+                              </label>
+                              <div className="tooltip-text">
+                                <strong>Vorsicht vor dem Fiskus</strong>
+                                <br />
+                                Gib hier deinen voraussichtlichen Steuersatz (z.B. Einkommensteuer & Gewerbesteuer) ein.
+                                Er wird für die Berechnung deines nötigen Brutto-Umsatzes und der Rücklagen genutzt.
+                              </div>
+                            </div>
                             <input type="number" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} />
                             <input
                               type="range"
@@ -2344,8 +2794,9 @@
                             <label>Tatsächlicher Monatsumsatz (€)</label>
                             <input
                               type="number"
+                              min="0"
                               value={monthlyRevenue}
-                              onChange={(e) => setMonthlyRevenue(e.target.value)}
+                              onChange={(e) => setMonthlyRevenue(Math.max(0, Number(e.target.value)))}
                             />
                             <input
                               type="range"
@@ -2353,7 +2804,7 @@
                               max="5000000"
                               step="500"
                               value={monthlyRevenue}
-                              onChange={(e) => setMonthlyRevenue(e.target.value)}
+                              onChange={(e) => setMonthlyRevenue(Math.max(0, Number(e.target.value)))}
                             />
                           </div>
                           <div className="input-group">
