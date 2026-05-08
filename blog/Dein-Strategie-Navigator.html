@@ -8,15 +8,42 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://deingeschaeftskompass.de/blog/dein-strategie-navigator" />
 
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://deingeschaeftskompass.de; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com; frame-src https://www.googletagmanager.com;"
+    />
+
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Funktionen -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin="anonymous" defer></script>
+    <script
+      src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone@7.22.5/babel.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/lucide@0.244.0/dist/umd/lucide.min.js" crossorigin="anonymous" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
 
     <!-- Titel & Beschreibung -->
     <title>Dein Strategie Navigator: Mehr Erfolg durch smarte Finanz-Simulation.</title>
@@ -108,8 +135,59 @@
               "Liquiditätssimulation",
               "Preisstrategie-Rechner",
               "Effizienz-Analyse",
-              "Individuelles Dashboard"^,
+              "Individuelles Dashboard",
               "Soll-Ist Vergleiche"
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "name": "So nutzt du den Strategie Navigator",
+            "description": "In 3 einfachen Schritten dein Business-Szenario simulieren.",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "name": "Ist-Zustand erfassen",
+                "text": "Trage deine aktuellen Kennzahlen wie Umsatz, Fixkosten und Arbeitsstunden in das Dashboard ein."
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Szenarien simulieren",
+                "text": "Passe Variablen wie Preise, Kosten oder Investitionen an, um die Auswirkungen auf deinen Gewinn zu sehen."
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Ergebnisse analysieren",
+                "text": "Vergleiche den Ist-Zustand mit der Simulation und leite strategische Entscheidungen für dein Unternehmen ab."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Was ist eine Finanz-Simulation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Eine Finanz-Simulation erlaubt es Unternehmern, 'Was-wäre-wenn'-Szenarien durchzuspielen, um die Auswirkungen von Preisänderungen oder Investitionen vorab zu prüfen."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Wie hilft der Strategie Navigator bei der Liquiditätsplanung?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Das Tool berechnet basierend auf deinen Eingaben die monatliche Liquiditätsentwicklung und zeigt kritische Engpässe frühzeitig auf."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Ist der Strategie Navigator kostenlos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja, der Strategie Navigator ist kostenlos und ohne Anmeldung direkt im Browser nutzbar."
+                }
+              }
             ]
           }
         ]
@@ -414,7 +492,11 @@
         padding: 0.6rem !important;
         background-color: #262626 !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
-        transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, top 0.3s ease !important;
+        transition:
+          background-color 0.3s ease,
+          padding 0.3s ease,
+          box-shadow 0.3s ease,
+          top 0.3s ease !important;
         transform: translateZ(0);
         will-change: transform, top;
       }
@@ -454,6 +536,67 @@
       .flip-container.sticky-logic-active .flip-front {
         backface-visibility: visible !important;
         position: relative !important;
+      }
+
+      /* Export Dropdown Styles */
+      .export-dropdown {
+        position: relative;
+      }
+      .export-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.75rem;
+        background: rgba(26, 26, 26, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.25rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        min-width: 220px;
+        z-index: 2000;
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+        transform-origin: top right;
+        animation: dropdownScale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      @keyframes dropdownScale {
+        from {
+          opacity: 0;
+          transform: scale(0.95) translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .export-item {
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        color: #e2e8f0;
+        font-size: 0.875rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        text-align: left;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+      }
+      .export-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #60e5ff;
+      }
+      .export-item i {
+        width: 1.1rem;
+        height: 1.1rem;
+        opacity: 0.7;
+      }
+      .export-item:hover i {
+        opacity: 1;
+      }
+      .export-item:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
     </style>
   </head>
@@ -545,6 +688,59 @@
 
     <script type="text/babel">
       const { useState, useEffect } = React;
+
+      class GlobalErrorBoundary extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { hasError: false };
+        }
+        static getDerivedStateFromError(error) {
+          return { hasError: true };
+        }
+        componentDidCatch(error, errorInfo) {
+          console.error("Dashboard Error:", error, errorInfo);
+        }
+        render() {
+          if (this.state.hasError) {
+            return (
+              <div className="flex flex-col items-center justify-center py-20 text-center px-4 bg-slate-900 rounded-3xl border border-red-500/30">
+                <div className="w-16 h-16 bg-red-500/20 text-red-500 rounded-2xl flex items-center justify-center mb-6">
+                  <i data-lucide="alert-triangle" className="w-8 h-8"></i>
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-4">Hoppla! Etwas ist schiefgelaufen.</h2>
+                <p className="text-slate-400 mb-8 max-w-md">
+                  Es gab ein technisches Problem beim Laden deines Dashboards. Möglicherweise sind gespeicherte Daten
+                  fehlerhaft.
+                </p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => window.location.reload()}
+                    className="px-6 py-3 bg-[#008cba] text-white rounded-xl font-bold hover:bg-[#60e5ff] transition-all"
+                  >
+                    Seite neu laden
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (
+                        confirm("Möchtest du wirklich alle lokalen Daten löschen? Dies setzt das Dashboard zurück.")
+                      ) {
+                        Object.keys(localStorage).forEach((key) => {
+                          if (key.startsWith("dgk_")) localStorage.removeItem(key);
+                        });
+                        window.location.reload();
+                      }
+                    }}
+                    className="px-6 py-3 bg-red-600/20 text-red-400 rounded-xl font-bold hover:bg-red-600/40 transition-all border border-red-600/30"
+                  >
+                    Daten zurücksetzen
+                  </button>
+                </div>
+              </div>
+            );
+          }
+          return this.props.children;
+        }
+      }
       function SimProfitChart({ istUmsatz, simUmsatz, istNetto, simNetto }) {
         const chartRef = React.useRef(null);
         const chartInstance = React.useRef(null);
@@ -1070,6 +1266,7 @@
       function App() {
         const [activeTab, setActiveTab] = useState("dashboard");
         const [isExporting, setIsExporting] = useState(false);
+        const [showExportDropdown, setShowExportDropdown] = useState(false);
         const [isFlipped, setIsFlipped] = useState(false);
         const [isPro, setIsPro] = useState(() => {
           const saved = localStorage.getItem("dgk_dash_isPro");
@@ -1080,12 +1277,28 @@
           return saved === null ? true : saved === "true";
         });
         const [efficiencyPotential, setEfficiencyPotential] = useState(() => {
-          const saved = localStorage.getItem("dgk_efficiency_potential");
-          return saved ? JSON.parse(saved) : null;
+          try {
+            const saved = localStorage.getItem("dgk_efficiency_potential");
+            return saved ? JSON.parse(saved) : null;
+          } catch (e) {
+            console.error("Error parsing efficiency potential", e);
+            return null;
+          }
         });
         const [isSticky, setIsSticky] = useState(false);
         const [showWizard, setShowWizard] = useState(false);
         const tabsRef = React.useRef(null);
+        const exportDropdownRef = React.useRef(null);
+
+        useEffect(() => {
+          const handleClickOutside = (event) => {
+            if (exportDropdownRef.current && !exportDropdownRef.current.contains(event.target)) {
+              setShowExportDropdown(false);
+            }
+          };
+          document.addEventListener("mousedown", handleClickOutside);
+          return () => document.removeEventListener("mousedown", handleClickOutside);
+        }, []);
 
         useEffect(() => {
           const handleScroll = () => {
@@ -1108,9 +1321,13 @@
           }
 
           // Re-load efficiency potential in case it changed
-          const saved = localStorage.getItem("dgk_efficiency_potential");
-          if (saved) {
-            setEfficiencyPotential(JSON.parse(saved));
+          try {
+            const saved = localStorage.getItem("dgk_efficiency_potential");
+            if (saved) {
+              setEfficiencyPotential(JSON.parse(saved));
+            }
+          } catch (e) {
+            console.error("Error reloading efficiency potential", e);
           }
         }, []);
 
@@ -1191,8 +1408,15 @@
 
         // --- STATES mit LocalStorage Initialisierung ---
         const loadState = (key, def) => {
-          const saved = localStorage.getItem("dgk_dash_" + key);
-          return saved !== null ? Number(saved) : def;
+          try {
+            const saved = localStorage.getItem("dgk_dash_" + key);
+            if (saved === null) return def;
+            const parsed = Number(saved);
+            return isNaN(parsed) ? def : parsed;
+          } catch (e) {
+            console.error("Error loading state for " + key, e);
+            return def;
+          }
         };
 
         const [bankBalance, setBankBalance] = useState(() => loadState("bankBalance", DEFAULTS.bankBalance));
@@ -1224,13 +1448,27 @@
         );
 
         const [seasonalFactors, setSeasonalFactors] = useState(() => {
-          const saved = localStorage.getItem("dgk_dash_seasonalFactors");
-          return saved ? JSON.parse(saved) : new Array(12).fill(100);
+          try {
+            const saved = localStorage.getItem("dgk_dash_seasonalFactors_v2");
+            return saved ? JSON.parse(saved) : new Array(12).fill(0);
+          } catch (e) {
+            console.error("Error parsing seasonal factors", e);
+            return new Array(12).fill(0);
+          }
+        });
+
+        const [taxPaymentRhythm, setTaxPaymentRhythm] = useState(() => {
+          const saved = localStorage.getItem("dgk_dash_taxPaymentRhythm");
+          return saved || "monthly";
         });
 
         useEffect(() => {
-          localStorage.setItem("dgk_dash_seasonalFactors", JSON.stringify(seasonalFactors));
+          localStorage.setItem("dgk_dash_seasonalFactors_v2", JSON.stringify(seasonalFactors));
         }, [seasonalFactors]);
+
+        useEffect(() => {
+          localStorage.setItem("dgk_dash_taxPaymentRhythm", taxPaymentRhythm);
+        }, [taxPaymentRhythm]);
 
         const isModified = () => {
           return (
@@ -1340,17 +1578,55 @@
           let currentBalance = Number(bankBalance);
           const projection = [];
           const labels = [];
+          let accruedTax = 0;
+
+          // Cash-relevante Kosten = Gesamtkosten minus Abschreibungen
+          const cashCosts = totalCosts - n_depreciation;
+
           for (let i = 0; i < 12; i++) {
             const monthIdx = (currentMonthIdx + i) % 12;
-            const factor = (seasonalFactors[monthIdx] || 100) / 100;
+            const factorRaw = Number(seasonalFactors[monthIdx]) || 0;
+            const factor = Math.max(0, 100 + factorRaw) / 100;
             const rev = Number(monthlyRevenue) * factor;
-            const costs = Number(totalCosts);
-            currentBalance += rev - costs;
+
+            // Steuer-Basis ist der Gewinn (Umsatz - alle Kosten inkl. Abschreibung)
+            const monthlyProfitForTax = rev - totalCosts;
+            const taxThisMonth = monthlyProfitForTax > 0 ? monthlyProfitForTax * (n_taxRate / 100) : 0;
+            accruedTax += taxThisMonth;
+
+            let taxPayment = 0;
+            if (taxPaymentRhythm === "monthly") {
+              taxPayment = taxThisMonth;
+              accruedTax = 0;
+            } else if (taxPaymentRhythm === "quarterly") {
+              // Quartalszahlungen in Mär(2), Jun(5), Sep(8), Dez(11)
+              if ([2, 5, 8, 11].includes(monthIdx)) {
+                taxPayment = accruedTax;
+                accruedTax = 0;
+              }
+            } else if (taxPaymentRhythm === "annual") {
+              // Einmalzahlung im Dezember
+              if (monthIdx === 11) {
+                taxPayment = accruedTax;
+                accruedTax = 0;
+              }
+            }
+
+            currentBalance += rev - cashCosts - taxPayment;
             projection.push(currentBalance);
             labels.push(monthNames[monthIdx]);
           }
           return { projectedLiquidity: projection, projectionLabels: labels };
-        }, [bankBalance, monthlyRevenue, totalCosts, seasonalFactors, currentMonthIdx]);
+        }, [
+          bankBalance,
+          monthlyRevenue,
+          totalCosts,
+          n_depreciation,
+          n_taxRate,
+          seasonalFactors,
+          currentMonthIdx,
+          taxPaymentRhythm,
+        ]);
         const isResilient = parseFloat(runwayMonths) >= 3;
 
         // --- SIMULATION LOGIK ---
@@ -1683,7 +1959,72 @@
 
         const formatCurrency = (v) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(v);
 
+        const exportToJSON = () => {
+          const data = {
+            bankBalance,
+            monthlyRevenue,
+            fixedCosts,
+            variableCosts,
+            hoursWorked,
+            targetNetIncome,
+            taxRate,
+            billableHours,
+            financing,
+            rentCosts,
+            employees,
+            personnelCosts,
+            cogs,
+            marketingCosts,
+            otherCosts,
+            depreciation,
+            revenueBufferPercent,
+            seasonalFactors,
+            isPro,
+            exportDate: new Date().toISOString(),
+          };
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `Strategie-Navigator-Backup-${new Date().toISOString().split("T")[0]}.json`;
+          a.click();
+          setShowExportDropdown(false);
+        };
+
+        const exportToCSV = () => {
+          const rows = [
+            ["Kennzahl", "Wert"],
+            ["Kontostand", bankBalance],
+            ["Monatsumsatz", monthlyRevenue],
+            ["Fixkosten", fixedCosts],
+            ["Variable Kosten", variableCosts],
+            ["Arbeitsstunden pro Woche", hoursWorked],
+            ["Ziel-Netto pro Monat", targetNetIncome],
+            ["Steuersatz (%)", taxRate],
+            ["Abrechenbare Stunden pro Monat", billableHours],
+            ["Finanzierung / Kredite", financing],
+            ["Raumkosten", rentCosts],
+            ["Anzahl Mitarbeiter", employees],
+            ["Personalkosten", personnelCosts],
+            ["Wareneinsatz / COGS", cogs],
+            ["Marketingkosten", marketingCosts],
+            ["Andere Kosten", otherCosts],
+            ["Abschreibungen", depreciation],
+            ["Liquiditaetspuffer (%)", revenueBufferPercent],
+          ];
+          const csvContent = "\uFEFF" + rows.map((e) => e.join(";")).join("\n");
+          const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `Strategie-Navigator-Daten-${new Date().toISOString().split("T")[0]}.csv`;
+          a.click();
+          setShowExportDropdown(false);
+        };
+
         const exportToPDF = async () => {
+          setShowExportDropdown(false);
+          if (isExporting) return;
           setIsExporting(true);
           const { jsPDF } = window.jspdf;
           const tabsToExport = [
@@ -1948,19 +2289,36 @@
                 </button>
               </div>
 
-              <button
-                onClick={exportToPDF}
-                disabled={isExporting}
-                className="px-6 py-2 hover:bg-[#60e5ff] hover:text-black hover:font-bold text-gray-300 rounded-xl flex items-center gap-2 transition-all shadow-lg border border-[#008cba]/50 disabled:opacity-50"
-              >
-                <i data-lucide="download" className="w-4 h-4"></i>
-                {isExporting ? "Generiere..." : "PDF Download"}
-              </button>
+              <div ref={exportDropdownRef} className="export-dropdown">
+                <button
+                  onClick={() => setShowExportDropdown(!showExportDropdown)}
+                  disabled={isExporting}
+                  className="px-6 py-2 hover:bg-[#60e5ff] hover:text-black hover:font-bold text-gray-300 rounded-xl flex items-center gap-2 transition-all shadow-lg border border-[#008cba]/50 disabled:opacity-50"
+                >
+                  <i data-lucide={showExportDropdown ? "chevron-up" : "download"} className="w-4 h-4"></i>
+                  {isExporting ? "Export läuft..." : "Export"}
+                </button>
+
+                {showExportDropdown && (
+                  <div className="export-menu">
+                    <button onClick={exportToPDF} className="export-item">
+                      <i data-lucide="file-text"></i>
+                      <span>PDF Dashboard</span>
+                    </button>
+                    <button onClick={exportToCSV} className="export-item">
+                      <i data-lucide="file-spreadsheet"></i>
+                      <span>CSV (Excel-Export)</span>
+                    </button>
+                    <button onClick={exportToJSON} className="export-item">
+                      <i data-lucide="file-code"></i>
+                      <span>JSON Backup</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
             <div className={`flip-container ${!isFlipped ? "sticky-logic-active" : ""}`}>
-              <div
-                className={`flip-inner ${isFlipped ? "flipped" : ""} ${!isFlipped ? "transform-none" : ""}`}
-              >
+              <div className={`flip-inner ${isFlipped ? "flipped" : ""} ${!isFlipped ? "transform-none" : ""}`}>
                 {/* FRONT SIDE */}
                 <div className="flip-front">
                   {/* Navigation - Dunkle Tabs */}
@@ -2585,12 +2943,36 @@
                                 Simuliere saisonale Schwankungen und erkenne Liquiditätsengpässe frühzeitig.
                               </p>
                             </div>
+                            <div className="flex items-center gap-4 bg-slate-900/50 p-2 rounded-xl border border-white/5">
+                              <span className="text-[10px] text-slate-500 uppercase font-bold pl-2">
+                                Steuer-Zahlweise:
+                              </span>
+                              <div className="flex gap-1">
+                                {[
+                                  { id: "monthly", label: "Monatlich" },
+                                  { id: "quarterly", label: "Quartal" },
+                                  { id: "annual", label: "Jährlich" },
+                                ].map((r) => (
+                                  <button
+                                    key={r.id}
+                                    onClick={() => setTaxPaymentRhythm(r.id)}
+                                    className={`px-3 py-1 rounded-lg text-[10px] font-bold transition-all ${
+                                      taxPaymentRhythm === r.id
+                                        ? "bg-[#008cba] text-black shadow-lg"
+                                        : "text-slate-400 hover:text-white"
+                                    }`}
+                                  >
+                                    {r.label}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
                             <button
-                              onClick={() => setSeasonalFactors(new Array(12).fill(100))}
+                              onClick={() => setSeasonalFactors(new Array(12).fill(0))}
                               className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-sm transition-all border border-[#444] font-bold flex items-center gap-2"
                             >
                               <i data-lucide="refresh-cw" className="w-3 h-3"></i>
-                              Reset Faktoren
+                              Faktoren zurücksetzen (0%)
                             </button>
                           </div>
 
@@ -2601,7 +2983,7 @@
                             <div className="bg-[#191818] p-6 rounded-2xl border border-[#333]">
                               <h4 className="text-sm font-bold uppercase tracking-widest text-[#008cba] mb-6 flex items-center gap-2">
                                 <i data-lucide="trending-up" className="w-4 h-4"></i>
-                                Saison-Anpassung (%)
+                                Saison-Anpassung (+/- %)
                               </h4>
                               <div className="grid grid-cols-3 gap-x-4 gap-y-6">
                                 {[
@@ -2627,7 +3009,7 @@
                                       value={seasonalFactors[i]}
                                       onChange={(e) => {
                                         const newFactors = [...seasonalFactors];
-                                        newFactors[i] = Number(e.target.value);
+                                        newFactors[i] = e.target.value;
                                         setSeasonalFactors(newFactors);
                                       }}
                                       className="w-full bg-slate-900 border border-slate-700 rounded-lg text-center py-1 text-sm text-white focus:border-[#008cba] outline-none transition-colors"
@@ -2637,7 +3019,8 @@
                               </div>
                               <div className="mt-8 pt-6 border-t border-white/10">
                                 <p className="text-[11px] text-slate-500 leading-relaxed italic">
-                                  * Erwarteter Prozentsatz vom Durchschnittsumsatz (z.B. 120 für Dez, 80 für Aug).
+                                  * Abweichung vom Durchschnittsumsatz (z.B. +20 für 20% Plus, -100 für gar kein
+                                  Umsatz).
                                 </p>
                               </div>
                             </div>
@@ -2770,15 +3153,66 @@
                             </>
                           )}
                         </div>
-                        <div className="bg-[#008cba] p-10 rounded-3xl flex flex-col justify-center text-center shadow-inner">
-                          <p className="text-white/80 font-bold uppercase tracking-widest text-sm mb-4">
-                            Nötiger Stundensatz
-                          </p>
-                          <p className="text-7xl font-black text-white">{formatCurrency(targetHourlyRate)}</p>
-                          <p className="text-white/90 text-lg mt-8 leading-relaxed font-medium">
-                            Erforderlicher Monatsumsatz: <br />
-                            <span className="text-2xl font-black">{formatCurrency(requiredRevenue)}</span>
-                          </p>
+                        <div className="bg-[#008cba] p-10 rounded-3xl flex flex-col justify-between text-center shadow-inner min-h-[500px]">
+                          <div>
+                            <p className="text-white/80 font-bold uppercase tracking-widest text-sm mb-4">
+                              Nötiger Stundensatz
+                            </p>
+                            <p className="text-7xl font-black text-white">{formatCurrency(targetHourlyRate)}</p>
+                            <p className="text-white/70 text-xs mt-2 uppercase tracking-widest font-bold">
+                              Tagessatz (8h): {formatCurrency(targetHourlyRate * 8)}
+                            </p>
+                          </div>
+
+                          <div className="space-y-6 mt-10 py-8 border-y border-white/20">
+                            <div>
+                              <p className="text-white/70 text-xs uppercase tracking-widest font-bold mb-1">
+                                Erforderlicher Monatsumsatz
+                              </p>
+                              <p className="text-3xl font-black text-white">{formatCurrency(requiredRevenue)}</p>
+                            </div>
+                            <div className="flex justify-around gap-4">
+                              <div>
+                                <p className="text-white/70 text-[10px] uppercase tracking-widest font-bold mb-1">
+                                  Steuer-Reserve
+                                </p>
+                                <p className="text-lg font-bold text-white">
+                                  {formatCurrency(grossTarget - n_targetNetIncome)}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-white/70 text-[10px] uppercase tracking-widest font-bold mb-1">
+                                  Kosten-Deckung
+                                </p>
+                                <p className="text-lg font-bold text-white">{formatCurrency(totalCosts)}</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="mt-6">
+                            <div className="bg-black/20 p-4 rounded-2xl">
+                              <p className="text-white/70 text-[10px] uppercase tracking-widest font-bold mb-2 text-left">
+                                Stundensatz-Vergleich
+                              </p>
+                              <div className="flex items-end justify-between gap-4">
+                                <div className="flex-1 text-left">
+                                  <p className="text-white/60 text-[10px]">Aktuell erzielt:</p>
+                                  <p className="text-xl font-bold text-white/90">
+                                    {formatCurrency(actualBillableRate)}
+                                  </p>
+                                </div>
+                                <div className="text-right">
+                                  <p className="text-white/60 text-[10px]">Differenz:</p>
+                                  <p
+                                    className={`text-xl font-bold ${actualBillableRate >= targetHourlyRate ? "text-green-300" : "text-red-300"}`}
+                                  >
+                                    {actualBillableRate >= targetHourlyRate ? "+" : ""}
+                                    {formatCurrency(actualBillableRate - targetHourlyRate)}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
@@ -3015,9 +3449,15 @@
 
                         {/* Detailtabelle */}
                         <div className="p-10 rounded-3xl card-dark border border-[#333] shadow-2xl overflow-hidden">
-                          <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4 text-white">
-                            Verlaufshistorie
-                          </h3>
+                          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-[#333] pb-4">
+                            <h3 className="text-2xl font-black text-white">Verlaufshistorie</h3>
+                            <div className="flex items-center gap-2 px-4 py-2 bg-[#60e5ff]/10 border border-[#60e5ff]/20 rounded-xl">
+                              <i data-lucide="info" className="w-4 h-4 text-[#60e5ff]"></i>
+                              <span className="text-xs font-bold text-[#60e5ff] uppercase tracking-wider">
+                                Hinweis: Es werden maximal die letzten 10 Einträge gespeichert.
+                              </span>
+                            </div>
+                          </div>
                           <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
                               <thead>
@@ -3860,7 +4300,14 @@
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            {/* IST ZUSTAND */}
                             <div className="space-y-6">
+                              <div className="flex items-center gap-2 mb-4 md:hidden">
+                                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                                  <i data-lucide="activity" className="w-4 h-4 text-white"></i>
+                                </div>
+                                <h4 className="text-xl font-black uppercase tracking-widest text-white">Ist-Zustand</h4>
+                              </div>
                               <div className="flex justify-between items-end border-b border-white/10 pb-2">
                                 <span className="opacity-80 font-bold uppercase text-xs tracking-widest">
                                   Umsatz {isAnnual ? "(pro Jahr)" : "(pro Monat)"}
@@ -3923,7 +4370,19 @@
                               </div>
                             </div>
 
+                            {/* TRENNLINIE MOBIL */}
+                            <div className="md:hidden border-t border-white/20 pt-8 mt-4"></div>
+
+                            {/* SIMULATION */}
                             <div className="space-y-6">
+                              <div className="flex items-center gap-2 mb-4 md:hidden">
+                                <div className="w-8 h-8 rounded-lg bg-[#60e5ff]/20 flex items-center justify-center">
+                                  <i data-lucide="play" className="w-4 h-4 text-[#60e5ff]"></i>
+                                </div>
+                                <h4 className="text-xl font-black uppercase tracking-widest text-[#60e5ff]">
+                                  Simulation
+                                </h4>
+                              </div>
                               <div className="flex justify-between items-end border-b border-white/10 pb-2">
                                 <span className="opacity-80 font-bold uppercase text-xs tracking-widest">
                                   Simulierter Umsatz {isAnnual ? "(pro Jahr)" : "(pro Monat)"}
@@ -4234,7 +4693,11 @@
       }
 
       const root = ReactDOM.createRoot(document.getElementById("react-root"));
-      root.render(<App />);
+      root.render(
+        <GlobalErrorBoundary>
+          <App />
+        </GlobalErrorBoundary>,
+      );
     </script>
 
     <!--Fußzeilen component-->
@@ -4254,7 +4717,7 @@
                 "
                 class="fuzeile-social-button"
               >
-                <img src="/public/instagram.webp" alt="Instagram" class="fuzeile-social-icon" />
+                <img src="/public/instagram.webp" alt="Instagram" class="fuzeile-social-icon" loading="lazy" />
               </a>
               - oder teile deine Begeisterung auf:
               <a
@@ -4265,7 +4728,7 @@
                 "
                 class="fuzeile-social-button"
               >
-                <img src="/public/facebook.webp" alt="Facebook" class="fuzeile-social-icon" />
+                <img src="/public/facebook.webp" alt="Facebook" class="fuzeile-social-icon" loading="lazy" />
               </a>
               <a
                 href="#"
@@ -4275,7 +4738,7 @@
                 "
                 class="fuzeile-social-button"
               >
-                <img src="/public/reddit.webp" alt="Reddit" class="fuzeile-social-icon" />
+                <img src="/public/reddit.webp" alt="Reddit" class="fuzeile-social-icon" loading="lazy" />
               </a>
               <a
                 href="#"
@@ -4285,7 +4748,7 @@
                 "
                 class="fuzeile-social-button"
               >
-                <img src="/public/whatsapp.webp" alt="WhatsApp" class="fuzeile-social-icon" />
+                <img src="/public/whatsapp.webp" alt="WhatsApp" class="fuzeile-social-icon" loading="lazy" />
               </a>
               <a
                 href="#"
@@ -4295,7 +4758,7 @@
                 "
                 class="fuzeile-social-button"
               >
-                <img src="/public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon" />
+                <img src="/public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon" loading="lazy" />
               </a>
               <a
                 href="#"
@@ -4305,10 +4768,10 @@
                 "
                 class="fuzeile-social-button"
               >
-                <img src="/public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon" />
+                <img src="/public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon" loading="lazy" />
               </a>
               <button class="fuzeile-share-button" onclick="sharePage()">
-                <img src="/public/share.webp" alt="Teilen" class="fuzeile-social-icon" />
+                <img src="/public/share.webp" alt="Teilen" class="fuzeile-social-icon" loading="lazy" />
               </button>
             </div>
           </div>
