@@ -334,7 +334,7 @@
         border-radius: 12px;
         padding: 12px;
         position: absolute;
-        z-index: 100;
+        z-index: 3000;
         bottom: 150%;
         left: 50%;
         transform: translateX(-50%);
@@ -776,7 +776,10 @@
                   y: {
                     beginAtZero: true,
                     grid: { color: "rgba(255,255,255,0.05)" },
-                    ticks: { color: "#94a3b8", callback: (v) => v.toLocaleString("de-DE") + " €" },
+                    ticks: {
+                      color: "#94a3b8",
+                      callback: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 0 }) + " €",
+                    },
                   },
                   x: { grid: { display: false }, ticks: { color: "#ffffff", font: { weight: "bold" } } },
                 },
@@ -836,7 +839,7 @@
                   tooltip: {
                     callbacks: {
                       label: function (context) {
-                        return " " + context.formattedValue + " €";
+                        return " " + Math.round(context.parsed).toLocaleString("de-DE") + " €";
                       },
                     },
                   },
@@ -899,7 +902,10 @@
                   y: {
                     beginAtZero: true,
                     grid: { color: "rgba(255,255,255,0.05)" },
-                    ticks: { color: "#94a3b8", callback: (v) => v.toLocaleString("de-DE") + " €" },
+                    ticks: {
+                      color: "#94a3b8",
+                      callback: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 0 }) + " €",
+                    },
                   },
                   x: { grid: { color: "rgba(255,255,255,0.05)" }, ticks: { color: "#94a3b8" } },
                 },
@@ -957,7 +963,10 @@
                   y: {
                     beginAtZero: false,
                     grid: { color: "rgba(255,255,255,0.05)" },
-                    ticks: { color: "#94a3b8", callback: (v) => v.toLocaleString("de-DE") + " €" },
+                    ticks: {
+                      color: "#94a3b8",
+                      callback: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 0 }) + " €",
+                    },
                   },
                   x: { grid: { color: "rgba(255,255,255,0.05)" }, ticks: { color: "#94a3b8" } },
                 },
@@ -965,7 +974,7 @@
                   legend: { display: false },
                   tooltip: {
                     callbacks: {
-                      label: (context) => ` Kontostand: ${context.parsed.y.toLocaleString("de-DE")} €`,
+                      label: (context) => ` Kontostand: ${Math.round(context.parsed.y).toLocaleString("de-DE")} €`,
                     },
                   },
                 },
@@ -1059,15 +1068,29 @@
                         Puffer (Runway) zu berechnen.
                       </p>
                       <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
-                        <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
+                        <label className="flex justify-between items-center text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
                           Aktueller Kontostand (€)
+                          <button
+                            onClick={() => setShowAccountManager(true)}
+                            className="text-[10px] bg-[#ed982b] hover:bg-[#f3a847] text-black px-4 py-1.5 rounded-xl transition-all uppercase font-black flex items-center gap-2 shadow-[0_4px_0_#9a5612] hover:shadow-[0_2px_0_#9a5612] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none"
+                          >
+                            <i data-lucide="plus-circle" className="w-3.5 h-3.5"></i>
+                            {accounts.length > 1 ? `${accounts.length} Konten` : "Mehrere Konten / CSV Import"}
+                          </button>
                         </label>
                         <div className="relative">
                           <input
                             type="number"
                             value={currentValues.bankBalance}
-                            onChange={(e) => setters.setBankBalance(e.target.value)}
-                            className="w-full bg-transparent border-b-2 border-slate-700 rounded-none px-0 py-4 text-4xl font-black text-white outline-none focus:border-[#008cba] transition-all"
+                            onChange={(e) => {
+                              const val = e.target.value;
+                              setters.setBankBalance(val);
+                              if (accounts.length <= 1) {
+                                setAccounts([{ ...accounts[0], balance: Number(val) || 0 }]);
+                              }
+                            }}
+                            disabled={accounts.length > 1}
+                            className={`w-full bg-transparent border-b-2 border-slate-700 rounded-none px-0 py-4 text-4xl font-black text-white outline-none focus:border-[#008cba] transition-all ${accounts.length > 1 ? "opacity-50 cursor-not-allowed" : ""}`}
                             autoFocus
                           />
                         </div>
@@ -1088,7 +1111,7 @@
                       </p>
                       <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
                         <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
-                          Monatlicher Umsatz (€)
+                          Monatlicher Umsatz (€ p.M.)
                         </label>
                         <input
                           type="number"
@@ -1114,7 +1137,7 @@
                       </p>
                       <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
                         <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
-                          Fixkosten (€)
+                          Fixkosten (€ p.M.)
                         </label>
                         <input
                           type="number"
@@ -1139,7 +1162,7 @@
                       </p>
                       <div className="bg-[#262626] p-8 rounded-3xl border border-[#333] shadow-inner">
                         <label className="block text-[#008cba] text-xs font-black mb-4 uppercase tracking-widest">
-                          Variable Kosten (€)
+                          Variable Kosten (€ p.M.)
                         </label>
                         <input
                           type="number"
@@ -1234,7 +1257,10 @@
                     display: true,
                     position: "left",
                     grid: { color: "rgba(255,255,255,0.05)" },
-                    ticks: { color: "#94a3b8", callback: (v) => v.toLocaleString("de-DE") + " €" },
+                    ticks: {
+                      color: "#94a3b8",
+                      callback: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 0 }) + " €",
+                    },
                   },
                   y1: {
                     type: "linear",
@@ -1446,6 +1472,16 @@
         const [revenueBufferPercent, setRevenueBufferPercent] = useState(() =>
           loadState("revenueBufferPercent", DEFAULTS.revenueBufferPercent),
         );
+        const [accounts, setAccounts] = useState(() => {
+          try {
+            const saved = localStorage.getItem("dgk_dash_accounts");
+            return saved ? JSON.parse(saved) : [{ id: 1, name: "Hauptkonto", balance: DEFAULTS.bankBalance }];
+          } catch (e) {
+            return [{ id: 1, name: "Hauptkonto", balance: DEFAULTS.bankBalance }];
+          }
+        });
+        const [showAccountManager, setShowAccountManager] = useState(false);
+        const [csvImportData, setCsvImportData] = useState(null); // { accountId, rows, headers }
 
         const [seasonalFactors, setSeasonalFactors] = useState(() => {
           try {
@@ -1511,6 +1547,7 @@
           localStorage.setItem("dgk_dash_otherCosts", otherCosts);
           localStorage.setItem("dgk_dash_depreciation", depreciation);
           localStorage.setItem("dgk_dash_revenueBufferPercent", revenueBufferPercent);
+          localStorage.setItem("dgk_dash_accounts", JSON.stringify(accounts));
         }, [
           bankBalance,
           monthlyRevenue,
@@ -1529,7 +1566,16 @@
           otherCosts,
           depreciation,
           revenueBufferPercent,
+          accounts,
         ]);
+
+        // Synchronize bankBalance sum when accounts change
+        useEffect(() => {
+          const total = accounts.reduce((sum, acc) => sum + (Number(acc.balance) || 0), 0);
+          if (total !== Number(bankBalance)) {
+            setBankBalance(total);
+          }
+        }, [accounts]);
 
         // NEU: Synchronisierung der einfachen Kostenfelder im Expertenmodus
         useEffect(() => {
@@ -1674,17 +1720,19 @@
           sim_InvestCosts;
         const simulatedProfit = sim_Revenue - sim_Costs;
         const simProfitDelta = simulatedProfit - monthlyProfit;
-        const effectiveHourlyRate = n_hoursWorked > 0 ? monthlyProfit / n_hoursWorked : 0;
 
-        // Zusätzliche Berechnungen für den "Aha-Effekt"
+        // Definitionen für Brutto- und Netto-Gewinn (Ist & Simulation)
         const estimatedTax = monthlyProfit > 0 ? monthlyProfit * (n_taxRate / 100) : 0;
+        const netProfit = monthlyProfit - estimatedTax;
+
+        // Effektiver Netto-Verdienst pro Arbeitsstunde (wirklich "Netto")
+        const effectiveNetEarnings = n_hoursWorked > 0 ? netProfit / n_hoursWorked : 0;
+
         const monthlyMinReserve =
           (monthlyProfit > 0 ? estimatedTax : 0) + n_monthlyRevenue * (n_revenueBufferPercent / 100);
-        const netAfterTax = monthlyProfit - estimatedTax;
-        // Definitionen für Brutto- und Netto-Gewinn (Ist & Simulation)
+        const netAfterTax = netProfit;
         const grossProfit = monthlyProfit;
         const taxAmount = estimatedTax;
-        const netProfit = netAfterTax;
 
         const sim_GrossProfit = simulatedProfit;
         const sim_TaxAmount = sim_GrossProfit > 0 ? sim_GrossProfit * (n_taxRate / 100) : 0;
@@ -1808,7 +1856,7 @@
           if (window.lucide) {
             window.lucide.createIcons();
           }
-        }, [activeTab, isFlipped, isPro, efficiencyPotential]);
+        }, [activeTab, isFlipped, isPro, efficiencyPotential, showAccountManager, csvImportData, accounts]);
 
         const getRealityChecks = () => {
           const checks = [];
@@ -1825,9 +1873,9 @@
           if (n_fixedCosts === 0) {
             checks.push("0€ Fixkosten? Denke an Versicherungen, Software, Telefon und Kontoführungsgebühren.");
           }
-          if (effectiveHourlyRate > 400) {
+          if (effectiveNetEarnings > 300) {
             checks.push(
-              `Ein Stundensatz von ${formatCurrency(effectiveHourlyRate)} ist extrem selten. Hast du alle Arbeitsstunden erfasst?`,
+              `Ein Netto-Stundenverdienst von ${formatCurrency(effectiveNetEarnings, 2)} ist extrem selten. Hast du alle Arbeitsstunden erfasst?`,
             );
           }
           if (profitMargin > 90 && n_monthlyRevenue > 0) {
@@ -1908,41 +1956,48 @@
         const lastProfit = lastSnapshot
           ? lastSnapshot.data.monthlyRevenue - (lastSnapshot.data.fixedCosts + lastSnapshot.data.variableCosts)
           : null;
+        const lastNetProfit = lastProfit !== null ? lastProfit * (1 - (lastSnapshot.data.taxRate || 0) / 100) : null;
         const lastRunway = lastSnapshot
           ? lastSnapshot.data.bankBalance / (lastSnapshot.data.fixedCosts + lastSnapshot.data.variableCosts || 1)
           : null;
-        const lastHourlyRate = lastSnapshot ? lastProfit / (lastSnapshot.data.hoursWorked || 1) : null;
+        const lastEarnings = lastNetProfit !== null ? lastNetProfit / (lastSnapshot.data.hoursWorked || 1) : null;
 
         const profitDelta = getDelta(monthlyProfit, lastProfit);
         const runwayDelta = getDelta(parseFloat(runwayMonths), lastRunway);
-        const rateDelta = getDelta(effectiveHourlyRate, lastHourlyRate);
+        const earningsDelta = getDelta(effectiveNetEarnings, lastEarnings);
 
         const getNudges = () => {
           const nudges = [];
-          if (parseFloat(runwayMonths) < 1) {
+          const currentRunway = parseFloat(runwayMonths);
+
+          if (currentRunway < 1) {
+            const gap3Months = Math.max(0, totalCosts * 3 - n_bankBalance);
             nudges.push({
               type: "danger",
-              text: "Existenzrisiko: Deine Liquidität reicht für weniger als einen Monat. Du solltest sofort unnötige Kosten stoppen und offene Forderungen eintreiben.",
+              text: `Existenzrisiko: Deine Liquidität reicht für weniger als einen Monat. Erhöhe deinen Puffer um mindestens ${formatCurrency(gap3Months)}, um eine Sicherheit von 3 Monaten zu erreichen.`,
               icon: "shield-alert",
             });
-          } else if (parseFloat(runwayMonths) < 3) {
+          } else if (currentRunway < 3) {
+            const gap6Months = Math.max(0, totalCosts * 6 - n_bankBalance);
             nudges.push({
               type: "warning",
-              text: "Liquiditätswarnung: Dein Puffer ist mit unter 3 Monaten zu gering. Versuche, deine Rücklagen systematisch zu erhöhen.",
+              text: `Liquiditätswarnung: Dein Puffer ist mit unter 3 Monaten zu gering. Baue deine Rücklagen um weitere ${formatCurrency(gap6Months)} auf, um das Ziel von 6 Monaten Sicherheit zu erreichen.`,
               icon: "alert-triangle",
             });
           }
 
           if (monthlyProfit < 0) {
+            const breakEvenGap = Math.abs(monthlyProfit);
             nudges.push({
               type: "danger",
-              text: "Verlustzone: Deine Ausgaben übersteigen deine Einnahmen. Prüfe deine Kostenstruktur oder korrigiere deine Preise nach oben.",
+              text: `Verlustzone: Deine Ausgaben übersteigen deine Einnahmen. Steigere deinen monatlichen Rohertrag um mindestens ${formatCurrency(breakEvenGap)}, um die Gewinnschwelle (Break-Even) zu erreichen.`,
               icon: "trending-down",
             });
-          } else if (effectiveHourlyRate < targetHourlyRate * 0.8 && targetHourlyRate > 0) {
+          } else if (actualBillableRate < targetHourlyRate * 0.9 && targetHourlyRate > 0) {
+            const billableRateGap = targetHourlyRate - actualBillableRate;
             nudges.push({
               type: "info",
-              text: "Effizienz-Lücke: Dein realer Stundensatz liegt deutlich unter deinem Ziel. Prüfe, ob du zu viel Zeit in unbezahlte Tätigkeiten investierst.",
+              text: `Stundensatz-Lücke: Dein erzielter Stundensatz liegt unter deinem Ziel. Steigere deinen Stundensatz um ${formatCurrency(billableRateGap, 2)}, um dein Wunsch-Netto zu erreichen.`,
               icon: "clock",
             });
           }
@@ -1957,7 +2012,13 @@
           return nudges;
         };
 
-        const formatCurrency = (v) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(v);
+        const formatCurrency = (v, d = 0) =>
+          new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR",
+            minimumFractionDigits: d,
+            maximumFractionDigits: d,
+          }).format(v);
 
         const exportToJSON = () => {
           const data = {
@@ -2067,8 +2128,27 @@
 
             // 3. Gesamthöhe berechnen (A4 Breite = 210mm als Basis)
             const pdfWidth = 210;
-            let currentY = 0;
-            const spacing = 10; // 10mm Abstand zwischen den Sektionen
+            const parseCSV = (text) => {
+              const lines = text.split(/\r?\n/).filter((l) => l.trim() !== "");
+              if (lines.length === 0) return [];
+              const delimiter = lines[0].includes(";") ? ";" : ",";
+              return lines.map((line) => line.split(delimiter).map((c) => c.trim().replace(/^"|"$/g, "")));
+            };
+
+            const handleCSVUpload = (accountId, file) => {
+              if (!file) return;
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                const text = e.target.result;
+                const rows = parseCSV(text);
+                if (rows.length < 2) {
+                  alert("CSV-Datei scheint leer oder ungültig zu sein.");
+                  return;
+                }
+                setCsvImportData({ accountId, headers: rows[0], rows: rows.slice(1), selectedCol: -1 });
+              };
+              reader.readAsText(file);
+            };
 
             const imagesData = canvases.map((canvas, index) => {
               const imgHeight = (canvas.height * pdfWidth) / canvas.width;
@@ -2461,7 +2541,7 @@
                             <div className="flex justify-between items-center mb-6">
                               <div className="tooltip-container">
                                 <span className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
-                                  Eff. Stundensatz <i data-lucide="help-circle" className="w-3 h-3"></i>
+                                  Eff. Stundenverdienst (Netto) <i data-lucide="help-circle" className="w-3 h-3"></i>
                                 </span>
                                 <div className="tooltip-text">
                                   <strong>Was sagt das aus?</strong>
@@ -2474,15 +2554,15 @@
                               <i data-lucide="clock" className="text-[#008cba]"></i>
                             </div>
                             <div className="text-5xl font-black text-white mb-2">
-                              {formatCurrency(effectiveHourlyRate)}
+                              {formatCurrency(effectiveNetEarnings, 2)}
                             </div>
                             <div className="flex justify-between items-end">
-                              <p className="text-slate-400 text-lg">Pro Arbeitsstunde</p>
-                              {isPro && rateDelta !== null && (
+                              <p className="text-slate-400 text-lg">Pro Arbeitsstunde (Netto)</p>
+                              {isPro && earningsDelta !== null && (
                                 <span
-                                  className={`text-sm font-bold ${rateDelta >= 0 ? "text-green-500" : "text-red-500"}`}
+                                  className={`text-sm font-bold ${earningsDelta >= 0 ? "text-green-500" : "text-red-500"}`}
                                 >
-                                  {rateDelta >= 0 ? "↑" : "↓"} {formatCurrency(Math.abs(rateDelta))}
+                                  {earningsDelta >= 0 ? "↑" : "↓"} {formatCurrency(Math.abs(earningsDelta), 2)}
                                 </span>
                               )}
                             </div>
@@ -2794,25 +2874,55 @@
                               Eingabe Finanzstatus
                             </h3>
                             <div className="input-group">
-                              <label>Kontostand aktuell (€)</label>
+                              <label className="flex justify-between items-center">
+                                Kontostand aktuell (€)
+                                <button
+                                  onClick={() => setShowAccountManager(true)}
+                                  className="text-[10px] bg-[#ed982b] hover:bg-[#f3a847] text-black px-4 py-1.5 rounded-xl transition-all uppercase font-black flex items-center gap-2 shadow-[0_4px_0_#9a5612] hover:shadow-[0_2px_0_#9a5612] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none"
+                                >
+                                  <i data-lucide="plus-circle" className="w-3.5 h-3.5"></i>
+                                  {accounts.length > 1 ? `${accounts.length} Konten` : "Konten / CSV Import"}
+                                </button>
+                              </label>
                               <input
                                 type="number"
                                 value={bankBalance}
-                                onChange={(e) => setBankBalance(e.target.value)}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setBankBalance(val);
+                                  // Sync back to first account if only one exists
+                                  if (accounts.length <= 1) {
+                                    setAccounts([{ ...accounts[0], balance: Number(val) || 0 }]);
+                                  }
+                                }}
+                                disabled={accounts.length > 1}
+                                className={accounts.length > 1 ? "opacity-50 cursor-not-allowed" : ""}
                               />
+                              {accounts.length > 1 && (
+                                <p className="text-[10px] text-slate-500 mt-1 italic">
+                                  * Summe aus {accounts.length} Konten. Bearbeitung über "Details".
+                                </p>
+                              )}
                               <input
                                 type="range"
                                 min="-1000000"
                                 max="10000000"
                                 step="500"
                                 value={bankBalance}
-                                onChange={(e) => setBankBalance(e.target.value)}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setBankBalance(val);
+                                  if (accounts.length <= 1) {
+                                    setAccounts([{ ...accounts[0], balance: Number(val) || 0 }]);
+                                  }
+                                }}
+                                disabled={accounts.length > 1}
                               />
                             </div>
                             {!isPro && (
                               <>
                                 <div className="input-group">
-                                  <label>Fixkosten pro Monat (€)</label>
+                                  <label>Fixkosten (€ p.M.)</label>
                                   <input
                                     type="number"
                                     value={fixedCosts}
@@ -2828,7 +2938,7 @@
                                   />
                                 </div>
                                 <div className="input-group">
-                                  <label>Variable Kosten pro Monat (€)</label>
+                                  <label>Variable Kosten (€ p.M.)</label>
                                   <input
                                     type="number"
                                     value={variableCosts}
@@ -2848,7 +2958,7 @@
                             {isPro && (
                               <>
                                 <div className="input-group">
-                                  <label>Finanzierung / Kreditrate (€)</label>
+                                  <label>Finanzierung / Kreditrate (€ p.M.)</label>
                                   <input
                                     type="number"
                                     value={financing}
@@ -2864,7 +2974,7 @@
                                   />
                                 </div>
                                 <div className="input-group">
-                                  <label>Raumkosten (€)</label>
+                                  <label>Raumkosten (€ p.M.)</label>
                                   <input
                                     type="number"
                                     value={rentCosts}
@@ -3035,7 +3145,7 @@
                         <div className="space-y-6">
                           <h3 className="text-2xl font-black mb-8 border-b border-[#333] pb-4">Wunsch-Szenario</h3>
                           <div className="input-group">
-                            <label>Wunsch-Netto (€) pro Monat</label>
+                            <label>Wunsch-Netto (€ p.M.)</label>
                             <input
                               type="number"
                               value={targetNetIncome}
@@ -3073,7 +3183,16 @@
                             />
                           </div>
                           <div className="input-group">
-                            <label>Abrechenbare Stunden / Monat</label>
+                            <label className="flex items-center gap-2">
+                              Abrechenbare Stunden (selbst) (Std. p.M.)
+                              <span className="tooltip-container">
+                                <i data-lucide="help-circle" className="w-3 h-3 cursor-help opacity-70"></i>
+                                <span className="tooltip-text font-normal text-[11px]">
+                                  Nur deine eigenen abrechenbaren Stunden. Dies bestimmt, wie viel du pro Stunde vom
+                                  Kunden verlangen musst, um dein Ziel zu erreichen.
+                                </span>
+                              </span>
+                            </label>
                             <input
                               type="number"
                               value={billableHours}
@@ -3091,7 +3210,7 @@
                           {isPro && (
                             <>
                               <div className="input-group">
-                                <label>Wareneinsatz (€)</label>
+                                <label>Wareneinsatz (€ p.M.)</label>
                                 <input type="number" value={cogs} onChange={(e) => setCogs(e.target.value)} />
                                 <input
                                   type="range"
@@ -3103,7 +3222,7 @@
                                 />
                               </div>
                               <div className="input-group">
-                                <label>Werbekosten (€)</label>
+                                <label>Werbekosten (€ p.M.)</label>
                                 <input
                                   type="number"
                                   value={marketingCosts}
@@ -3119,7 +3238,7 @@
                                 />
                               </div>
                               <div className="input-group">
-                                <label>S. Aufwendungen (€)</label>
+                                <label>S. Aufwendungen (€ p.M.)</label>
                                 <input
                                   type="number"
                                   value={otherCosts}
@@ -3135,7 +3254,7 @@
                                 />
                               </div>
                               <div className="input-group">
-                                <label>Abschreibungen (€)</label>
+                                <label>Abschreibungen (€ p.M.)</label>
                                 <input
                                   type="number"
                                   value={depreciation}
@@ -3155,12 +3274,25 @@
                         </div>
                         <div className="bg-[#008cba] p-10 rounded-3xl flex flex-col justify-between text-center shadow-inner min-h-[500px]">
                           <div>
-                            <p className="text-white/80 font-bold uppercase tracking-widest text-sm mb-4">
+                            <p className="text-white/80 font-bold uppercase tracking-widest text-sm mb-4 flex items-center justify-center gap-2">
                               Nötiger Stundensatz
+                              <span className="tooltip-container">
+                                <i
+                                  data-lucide="help-circle"
+                                  className="w-3 h-3 cursor-help opacity-70 hover:opacity-100 transition-opacity"
+                                ></i>
+                                <span className="tooltip-text font-normal text-left text-[11px] leading-relaxed">
+                                  <strong>Der feine Unterschied:</strong>
+                                  <br />
+                                  Der <b>Stundensatz</b> ist dein Preis am Markt (Umsatz pro abrechenbare Stunde). Dein{" "}
+                                  <b>Stundenverdienst</b> ist das, was nach Abzug aller Kosten und Steuern pro
+                                  tatsächlich investierter Stunde (inkl. Admin) bei dir bleibt.
+                                </span>
+                              </span>
                             </p>
-                            <p className="text-7xl font-black text-white">{formatCurrency(targetHourlyRate)}</p>
+                            <p className="text-7xl font-black text-white">{formatCurrency(targetHourlyRate, 2)}</p>
                             <p className="text-white/70 text-xs mt-2 uppercase tracking-widest font-bold">
-                              Tagessatz (8h): {formatCurrency(targetHourlyRate * 8)}
+                              Tagessatz (8h): {formatCurrency(targetHourlyRate * 8, 2)}
                             </p>
                           </div>
 
@@ -3198,7 +3330,7 @@
                                 <div className="flex-1 text-left">
                                   <p className="text-white/60 text-[10px]">Aktuell erzielt:</p>
                                   <p className="text-xl font-bold text-white/90">
-                                    {formatCurrency(actualBillableRate)}
+                                    {formatCurrency(actualBillableRate, 2)}
                                   </p>
                                 </div>
                                 <div className="text-right">
@@ -3207,11 +3339,16 @@
                                     className={`text-xl font-bold ${actualBillableRate >= targetHourlyRate ? "text-green-300" : "text-red-300"}`}
                                   >
                                     {actualBillableRate >= targetHourlyRate ? "+" : ""}
-                                    {formatCurrency(actualBillableRate - targetHourlyRate)}
+                                    {formatCurrency(actualBillableRate - targetHourlyRate, 2)}
                                   </p>
                                 </div>
                               </div>
                             </div>
+                            <p className="mt-5 text-[10px] text-white/40 italic leading-tight text-left px-2 border-t border-white/10 pt-4">
+                              * Hinweis: Der <b>Stundensatz</b> ist dein Honorar pro verrechnete Stunde. Dein realer{" "}
+                              <b>Stundenverdienst</b> (siehe Dashboard) ist dein echter Netto-Gewinn pro investierter
+                              Arbeitsstunde.
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -3225,7 +3362,7 @@
                         </h3>
                         <div className="space-y-6 mb-10">
                           <div className="input-group">
-                            <label>Tatsächlicher Monatsumsatz (€)</label>
+                            <label>Tatsächlicher Monatsumsatz (€ p.M.)</label>
                             <input
                               type="number"
                               min="0"
@@ -3242,7 +3379,16 @@
                             />
                           </div>
                           <div className="input-group">
-                            <label>Gesamte Arbeitsstunden (inkl. Orga/Admin) pro Monat</label>
+                            <label className="flex items-center gap-2">
+                              Gesamte Arbeitszeit (selbst) (Std. p.M.)
+                              <span className="tooltip-container">
+                                <i data-lucide="help-circle" className="w-3 h-3 cursor-help opacity-70"></i>
+                                <span className="tooltip-text font-normal text-[11px]">
+                                  Trage hier nur deine eigenen Arbeitsstunden ein (inkl. Admin/Orga). Dies ist die Basis
+                                  für deinen realen Stundenverdienst.
+                                </span>
+                              </span>
+                            </label>
                             <input type="number" value={hoursWorked} onChange={(e) => setHoursWorked(e.target.value)} />
                             <input
                               type="range"
@@ -3268,7 +3414,7 @@
                                 />
                               </div>
                               <div className="input-group">
-                                <label>Personalkosten (€)</label>
+                                <label>Personalkosten (€ p.M.)</label>
                                 <input
                                   type="number"
                                   value={personnelCosts}
@@ -3288,9 +3434,11 @@
                         </div>
                         <div className="p-10 bg-[#111] border border-[#333] rounded-3xl text-center mb-10">
                           <p className="text-slate-400 font-bold uppercase text-sm tracking-widest mb-2">
-                            Reale Netto-Stundenvergütung
+                            Realer Netto-Stundenverdienst
                           </p>
-                          <p className="text-6xl font-black text-[#60e5ff]">{formatCurrency(effectiveHourlyRate)}</p>
+                          <p className="text-6xl font-black text-[#60e5ff]">
+                            {formatCurrency(effectiveNetEarnings, 2)}
+                          </p>
                         </div>
 
                         {/* Effizienz Potenzial Section */}
@@ -3393,54 +3541,154 @@
                             </div>
                           ) : (
                             <div className="space-y-12">
-                              {/* Grafik-Container */}
-                              <div className="h-80 flex items-end gap-2 md:gap-4 px-4 border-b border-[#333] pb-4 pt-10">
-                                {history.map((snapshot, idx) => {
-                                  const profit =
-                                    snapshot.data.monthlyRevenue -
-                                    (snapshot.data.fixedCosts + snapshot.data.variableCosts);
-                                  const revenue = snapshot.data.monthlyRevenue;
-                                  const maxVal = Math.max(...history.map((s) => s.data.monthlyRevenue)) * 1.2;
-                                  const profitHeight = (profit / maxVal) * 100;
-                                  const revenueHeight = (revenue / maxVal) * 100;
-
-                                  return (
-                                    <div
-                                      key={idx}
-                                      className="flex-1 flex flex-col items-center gap-2 group relative h-full justify-end"
+                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                {/* Umsatz & Gewinn Grafik (MIXED CHART) */}
+                                <div className="space-y-6">
+                                  <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 flex items-center gap-2">
+                                    <i data-lucide="trending-up" className="w-4 h-4 text-[#60e5ff]"></i> Umsatz (Säule) & Gewinn (Linie)
+                                  </h4>
+                                  <div className="h-72 relative bg-black/20 rounded-2xl border border-[#333] p-6 overflow-hidden">
+                                    {/* SVG Layer for Line and Points (Secondary Axis) */}
+                                    <svg 
+                                      viewBox="0 0 100 100" 
+                                      preserveAspectRatio="none"
+                                      className="absolute inset-0 w-full h-full pointer-events-none px-6 py-10 overflow-visible"
                                     >
-                                      {/* Tooltip */}
-                                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#60e5ff] text-black px-3 py-1.5 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none whitespace-nowrap text-xs font-black">
-                                        {formatCurrency(revenue)} / {formatCurrency(profit)}
-                                      </div>
-                                      <div className="w-full flex items-end gap-1 h-full max-h-[250px]">
-                                        {/* Umsatz Bar */}
-                                        <div
-                                          className="flex-1 bg-slate-700/50 rounded-t-sm transition-all duration-700 hover:bg-slate-600"
-                                          style={{ height: `${revenueHeight}%` }}
-                                        ></div>
-                                        {/* Gewinn Bar */}
-                                        <div
-                                          className={`flex-1 rounded-t-sm transition-all duration-700 ${profit >= 0 ? "bg-[#60e5ff]" : "bg-red-500"}`}
-                                          style={{ height: `${Math.max(5, Math.abs(profitHeight))}%` }}
-                                        ></div>
-                                      </div>
-                                      <div className="text-[10px] text-slate-500 rotate-45 mt-6 whitespace-nowrap origin-left">
-                                        {new Date(snapshot.date).toLocaleDateString("de-DE", {
-                                          day: "2-digit",
-                                          month: "2-digit",
-                                        })}
-                                      </div>
+                                      {(() => {
+                                        const profits = history.map(s => s.data.monthlyRevenue - (s.data.fixedCosts + s.data.variableCosts));
+                                        const maxProf = Math.max(...profits, 1) * 1.2;
+                                        const minProf = Math.min(...profits, 0) * 1.2;
+                                        const profRange = maxProf - minProf;
+
+                                        const points = history.map((s, i) => {
+                                          const profit = s.data.monthlyRevenue - (s.data.fixedCosts + s.data.variableCosts);
+                                          const x = (i / (history.length - 1 || 1)) * 100;
+                                          const y = 100 - ((profit - minProf) / (profRange || 1)) * 100;
+                                          return { x, y };
+                                        });
+
+                                        const d = points.map((p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`)).join(" ");
+                                        const zeroY = 100 - ((-minProf) / (profRange || 1)) * 100;
+
+                                        return (
+                                          <>
+                                            {/* Null Line for Profit */}
+                                            <line 
+                                              x1="0" y1={zeroY} x2="100" y2={zeroY} 
+                                              stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" strokeDasharray="2"
+                                            />
+                                            {/* The Line */}
+                                            <path 
+                                              d={d} fill="none" stroke="#60e5ff" strokeWidth="2" 
+                                              strokeLinejoin="round" strokeLinecap="round" 
+                                              vectorEffect="non-scaling-stroke"
+                                              className="drop-shadow-[0_0_8px_rgba(96,229,255,0.6)]" 
+                                            />
+                                            {/* The Points */}
+                                            {points.map((p, i) => (
+                                              <circle 
+                                                key={i} cx={p.x} cy={p.y} r="1.5" 
+                                                fill="#60e5ff" stroke="#1a1a1a" strokeWidth="0.5"
+                                                vectorEffect="non-scaling-stroke"
+                                              />
+                                            ))}
+                                          </>
+                                        );
+                                      })()}
+                                    </svg>
+
+                                    {/* Bar Layer (Umsatz - Primary Axis) */}
+                                    <div className="relative h-full flex items-end gap-3 md:gap-6 px-0 pb-4 pt-10">
+                                      {history.map((snapshot, idx) => {
+                                        const revenue = snapshot.data.monthlyRevenue;
+                                        const maxRev = Math.max(...history.map((s) => s.data.monthlyRevenue)) * 1.2 || 1;
+                                        const revenueHeight = (revenue / maxRev) * 100;
+                                        const profit = revenue - (snapshot.data.fixedCosts + snapshot.data.variableCosts);
+
+                                        return (
+                                          <div
+                                            key={idx}
+                                            className="flex-1 flex flex-col items-center gap-2 group relative h-full justify-end"
+                                          >
+                                            {/* Tooltip */}
+                                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white text-black px-3 py-1.5 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none whitespace-nowrap text-[10px] font-black border-2 border-[#60e5ff]">
+                                              <div className="text-slate-500">Umsatz: {formatCurrency(revenue)}</div>
+                                              <div className="text-[#008cba]">Gewinn: {formatCurrency(profit)}</div>
+                                            </div>
+                                            
+                                            {/* Revenue Bar (Säule) */}
+                                            <div className="w-full h-full flex items-end px-1">
+                                              <div
+                                                className="w-full bg-slate-700/20 border-x border-t border-white/10 rounded-t-sm transition-all duration-700 hover:bg-slate-700/40"
+                                                style={{ height: `${revenueHeight}%` }}
+                                              ></div>
+                                            </div>
+
+                                            {/* X-Axis Label */}
+                                            <div className="text-[9px] text-slate-500 rotate-45 mt-4 whitespace-nowrap origin-left">
+                                              {new Date(snapshot.date).toLocaleDateString("de-DE", {
+                                                day: "2-digit",
+                                                month: "2-digit",
+                                              })}
+                                            </div>
+                                          </div>
+                                        );
+                                      })}
                                     </div>
-                                  );
-                                })}
+                                  </div>
+                                </div>
+
+                                {/* Liquidität Grafik (SÄULENDIAGRAMM) */}
+                                <div className="space-y-6">
+                                  <h4 className="text-sm font-bold uppercase tracking-widest text-[#008cba] mb-4 flex items-center gap-2">
+                                    <i data-lucide="wallet" className="w-4 h-4"></i> Liquiditäts-Trend (Säule)
+                                  </h4>
+                                  <div className="h-72 flex items-end gap-3 md:gap-6 px-6 border-b border-[#333] pb-4 pt-10 bg-black/20 rounded-2xl">
+                                    {history.map((snapshot, idx) => {
+                                      const balance = snapshot.data.bankBalance || 0;
+                                      const maxBalance = Math.max(...history.map((s) => s.data.bankBalance || 1)) * 1.2;
+                                      const balanceHeight = (balance / maxBalance) * 100;
+
+                                      return (
+                                        <div
+                                          key={idx}
+                                          className="flex-1 flex flex-col items-center gap-2 group relative h-full justify-end"
+                                        >
+                                          <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#008cba] text-white px-2 py-1 rounded text-[10px] font-black opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none whitespace-nowrap shadow-xl">
+                                            {formatCurrency(balance)}
+                                          </div>
+                                          <div className="w-full h-full flex items-end px-1">
+                                            <div
+                                              className="w-full bg-[#008cba]/30 border-t-4 border-[#008cba] rounded-t-lg transition-all duration-1000 group-hover:bg-[#008cba]/50 shadow-[0_0_15px_rgba(0,140,186,0.2)]"
+                                              style={{ height: `${Math.max(5, balanceHeight)}%` }}
+                                            ></div>
+                                          </div>
+                                          <div className="text-[9px] text-slate-500 rotate-45 mt-4 whitespace-nowrap origin-left">
+                                            {new Date(snapshot.date).toLocaleDateString("de-DE", {
+                                              day: "2-digit",
+                                              month: "2-digit",
+                                            })}
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
                               </div>
-                              <div className="flex justify-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+
+                              <div className="flex flex-wrap justify-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-500 mt-8">
                                 <div className="flex items-center gap-2">
-                                  <span className="w-3 h-3 bg-slate-700 rounded-sm"></span> Umsatz
+                                  <span className="w-3 h-3 bg-slate-700/50 border border-white/20 rounded-sm"></span> Umsatz (Primärachse)
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <span className="w-3 h-3 bg-[#60e5ff] rounded-sm"></span> Gewinn
+                                  <div className="flex items-center">
+                                    <span className="w-4 h-0.5 bg-[#60e5ff]"></span>
+                                    <span className="w-1.5 h-1.5 bg-[#60e5ff] rounded-full -ml-0.5 border border-black"></span>
+                                  </div>
+                                  Gewinn (Sekundärachse)
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="w-3 h-3 bg-[#008cba] rounded-sm"></span> Liquidität
                                 </div>
                               </div>
                             </div>
@@ -3474,7 +3722,9 @@
                                   const profit =
                                     snapshot.data.monthlyRevenue -
                                     (snapshot.data.fixedCosts + snapshot.data.variableCosts);
-                                  const rate = snapshot.data.hoursWorked > 0 ? profit / snapshot.data.hoursWorked : 0;
+                                  const netProfit = profit * (1 - (snapshot.data.taxRate || 0) / 100);
+                                  const earnings =
+                                    snapshot.data.hoursWorked > 0 ? netProfit / snapshot.data.hoursWorked : 0;
                                   return (
                                     <tr
                                       key={idx}
@@ -3495,7 +3745,7 @@
                                         {formatCurrency(profit)}
                                       </td>
                                       <td className="py-4 px-4 text-[#60e5ff] text-sm font-black">
-                                        {formatCurrency(rate)}
+                                        {formatCurrency(earnings, 2)}
                                       </td>
                                     </tr>
                                   );
@@ -3660,7 +3910,7 @@
                                       <i data-lucide="package" className="w-4 h-4"></i> Neues Produkt
                                     </h5>
                                     <div className="input-group">
-                                      <label>Zusätzlicher Umsatz / Monat (€)</label>
+                                      <label>Zusätzlicher Umsatz (€ p.M.)</label>
                                       <input
                                         type="number"
                                         value={simParams.newProdRevenue}
@@ -3676,7 +3926,7 @@
                                       />
                                     </div>
                                     <div className="input-group">
-                                      <label>Zusätzliche Kosten / Monat (€)</label>
+                                      <label>Zusätzliche Kosten (€ p.M.)</label>
                                       <input
                                         type="number"
                                         value={simParams.newProdCosts}
@@ -3700,7 +3950,7 @@
                                       <i data-lucide="megaphone" className="w-4 h-4"></i> Marketing-Planung
                                     </h5>
                                     <div className="input-group">
-                                      <label>Marketing-Budget / Monat (€)</label>
+                                      <label>Marketing-Budget (€ p.M.)</label>
                                       <input
                                         type="number"
                                         value={simParams.marketingSpend}
@@ -3716,7 +3966,7 @@
                                       />
                                     </div>
                                     <div className="input-group">
-                                      <label>Erwarteter Mehr-Umsatz (€)</label>
+                                      <label>Erwarteter Mehr-Umsatz (€ p.M.)</label>
                                       <input
                                         type="number"
                                         value={simParams.marketingRevenue}
@@ -3798,7 +4048,7 @@
                                     <i data-lucide="clock" className="w-4 h-4"></i> Zeit-Effizienz
                                   </h5>
                                   <div className="input-group">
-                                    <label>Veränderung abrechenbare Stunden (h)</label>
+                                    <label>Veränderung abrechenbare Std. (Std. p.M.)</label>
                                     <input
                                       type="number"
                                       value={simParams.billableHoursChange}
@@ -3850,7 +4100,7 @@
                                     />
                                   </div>
                                   <div className="input-group border-t border-white/10 pt-4 mt-2">
-                                    <label>Anzahl neue Mitarbeiter</label>
+                                    <label>Anzahl neue Teammitglieder</label>
                                     <input
                                       type="number"
                                       value={simParams.newEmployeesCount}
@@ -3866,7 +4116,7 @@
                                     />
                                   </div>
                                   <div className="input-group">
-                                    <label>Brutto-Monatsgehalt je Mitarbeiter (€)</label>
+                                    <label>Brutto-Gehalt pro Teammitglied (€ p.M.)</label>
                                     <input
                                       type="number"
                                       value={simParams.newEmployeeSalary}
@@ -3995,7 +4245,7 @@
 
                                   {simParams.nmIsLeasing ? (
                                     <div className="input-group">
-                                      <label>Monatliche Leasing-/Mietrate (€)</label>
+                                      <label>Leasing-/Mietrate (€ p.M.)</label>
                                       <input
                                         type="number"
                                         value={simParams.nmLeasingRate}
@@ -4013,7 +4263,7 @@
                                   ) : (
                                     <>
                                       <div className="input-group">
-                                        <label>Anschaffungskosten (€)</label>
+                                        <label>Anschaffungskosten (einmalig €)</label>
                                         <input
                                           type="number"
                                           value={simParams.nmAcquisitionCosts}
@@ -4071,7 +4321,7 @@
                                     <i data-lucide="monitor"></i> IT / Software
                                   </h5>
                                   <div className="input-group">
-                                    <label>Hardware/Lizenz einmalig (€)</label>
+                                    <label>Hardware/Lizenz (einmalig €)</label>
                                     <input
                                       type="number"
                                       value={simParams.itInvestmentCosts}
@@ -4103,7 +4353,7 @@
                                     />
                                   </div>
                                   <div className="input-group">
-                                    <label>Monatliche Abo-Kosten (€)</label>
+                                    <label>Abo-Kosten (€ p.M.)</label>
                                     <input
                                       type="number"
                                       value={simParams.itAnnualSubscriptionCosts}
@@ -4225,7 +4475,7 @@
                                   )}
 
                                   <div className="input-group border-t border-white/10 pt-4 mt-2">
-                                    <label>KM pro Jahr</label>
+                                    <label>KM pro Jahr (p.a.)</label>
                                     <input
                                       type="number"
                                       value={simParams.nvKmPerYear}
@@ -4519,7 +4769,7 @@
                                 Die simulierte Strategie führt zu einer Gewinnmarge von{" "}
                                 <b>{sim_ProfitMargin.toFixed(1)}%</b>. <br />
                                 {simProfitDelta > 0
-                                  ? `Sie steigert deinen Monatsgewinn um ${((simProfitDelta / (Math.abs(monthlyProfit) || 1)) * 100).toFixed(1)}%.`
+                                  ? `Sie steigert deinen Monatsgewinn um ${((simProfitDelta / (Math.abs(monthlyProfit) || 1)) * 100).toFixed(0)}%.`
                                   : "Prüfe deine Parameter, um die Profitabilität zu sichern."}
                               </p>
                             </div>
@@ -4566,7 +4816,7 @@
                         <h3 className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-2">
                           Idealer Stundensatz
                         </h3>
-                        <div className="text-4xl font-black text-white mb-4">{formatCurrency(targetHourlyRate)}</div>
+                        <div className="text-4xl font-black text-white mb-4">{formatCurrency(targetHourlyRate, 2)}</div>
                         <p className="text-slate-500 text-sm leading-relaxed">
                           Dein Schlüssel zur Freiheit. Dieser Satz deckt alle Kosten, Steuern und deinen Wunsch-Gewinn
                           ab.
@@ -4687,6 +4937,188 @@
                   ))}
                 </div>
               </button>
+            )}
+            {/* ACCOUNT MANAGER MODAL */}
+            {showAccountManager && (
+              <div className="fixed inset-0 z-[4000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+                <div className="bg-[#1a1a1a] border border-[#333] rounded-[32px] w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-in zoom-in duration-300">
+                  {/* Header */}
+                  <div className="p-8 border-b border-[#333] flex justify-between items-center bg-gradient-to-r from-black/40 to-transparent">
+                    <div>
+                      <h3 className="text-2xl font-black text-white">Liquiditäts-Management</h3>
+                      <p className="text-slate-400 text-sm">Verwalte mehrere Konten und importiere Bankdaten lokal.</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setShowAccountManager(false);
+                        setCsvImportData(null);
+                      }}
+                      className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+                    >
+                      <i data-lucide="x" className="w-6 h-6"></i>
+                    </button>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8 overflow-y-auto flex-1 space-y-6">
+                    {/* Account List */}
+                    <div className="space-y-4">
+                      {accounts.map((acc) => (
+                        <div
+                          key={acc.id}
+                          className="bg-black/20 p-5 rounded-2xl border border-white/5 flex items-center justify-between gap-6 hover:border-[#008cba]/30 transition-colors group"
+                        >
+                          <div className="flex-1">
+                            <input
+                              className="bg-transparent text-white font-bold w-full outline-none border-b border-transparent focus:border-[#008cba] transition-all"
+                              value={acc.name}
+                              onChange={(e) => {
+                                const newAccs = accounts.map((a) =>
+                                  a.id === acc.id ? { ...a, name: e.target.value } : a,
+                                );
+                                setAccounts(newAccs);
+                              }}
+                              placeholder="Kontoname..."
+                            />
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative">
+                              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-500">
+                                €
+                              </span>
+                              <input
+                                type="number"
+                                className="bg-[#262626] text-[#60e5ff] font-black pl-7 pr-4 py-2.5 rounded-xl w-36 outline-none border border-white/10 focus:border-[#60e5ff] transition-all text-right"
+                                value={acc.balance}
+                                onChange={(e) => {
+                                  const newAccs = accounts.map((a) =>
+                                    a.id === acc.id ? { ...a, balance: Number(e.target.value) || 0 } : a,
+                                  );
+                                  setAccounts(newAccs);
+                                }}
+                              />
+                            </div>
+                            <label
+                              className="w-10 h-10 flex items-center justify-center bg-[#008cba]/10 text-[#60e5ff] rounded-xl hover:bg-[#008cba]/30 transition-all cursor-pointer"
+                              title="CSV Import für dieses Konto"
+                            >
+                              <i data-lucide="file-up" className="w-5 h-5"></i>
+                              <input
+                                type="file"
+                                accept=".csv"
+                                className="hidden"
+                                onChange={(e) => handleCSVUpload(acc.id, e.target.files[0])}
+                              />
+                            </label>
+                            {accounts.length > 1 && (
+                              <button
+                                onClick={() => setAccounts(accounts.filter((a) => a.id !== acc.id))}
+                                className="w-10 h-10 flex items-center justify-center text-red-400 hover:bg-red-400/10 rounded-xl transition-all"
+                              >
+                                <i data-lucide="trash-2" className="w-5 h-5"></i>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => setAccounts([...accounts, { id: Date.now(), name: "Neues Konto", balance: 0 }])}
+                      className="w-full py-4 border-2 border-dashed border-[#333] hover:border-[#008cba] text-slate-500 hover:text-[#008cba] rounded-2xl transition-all font-bold flex items-center justify-center gap-2 group"
+                    >
+                      <i data-lucide="plus" className="w-5 h-5 group-hover:scale-110 transition-transform"></i> Konto
+                      hinzufügen
+                    </button>
+
+                    {/* CSV Import Step 2: Column Selection */}
+                    {csvImportData && (
+                      <div className="mt-8 p-8 bg-[#008cba]/10 border border-[#008cba]/30 rounded-[24px] animate-in slide-in-from-top-4 duration-500">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-8 h-8 bg-[#60e5ff] text-black rounded-lg flex items-center justify-center">
+                            <i data-lucide="table" className="w-5 h-5"></i>
+                          </div>
+                          <h4 className="text-[#60e5ff] font-black uppercase tracking-widest text-xs">
+                            Spalte für "Kontostand" wählen
+                          </h4>
+                        </div>
+                        <p className="text-[11px] text-slate-400 mb-6 leading-relaxed">
+                          Wir haben die Datei eingelesen. Bitte wähle die Spalte aus, die deinen aktuellen Kontostand
+                          (oder den letzten Umsatzbetrag) enthält. Wir suchen dort automatisch nach dem neuesten Wert.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-8">
+                          {csvImportData.headers.map((h, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => setCsvImportData({ ...csvImportData, selectedCol: idx })}
+                              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                                csvImportData.selectedCol === idx
+                                  ? "bg-[#60e5ff] text-black border-[#60e5ff] shadow-[0_0_15px_rgba(96,229,255,0.3)]"
+                                  : "bg-black/40 text-slate-300 border-white/10 hover:border-white/30"
+                              }`}
+                            >
+                              {h || `Spalte ${idx + 1}`}
+                            </button>
+                          ))}
+                        </div>
+                        {csvImportData.selectedCol !== -1 && (
+                          <div className="flex gap-4">
+                            <button
+                              onClick={() => {
+                                const colIdx = csvImportData.selectedCol;
+                                let detectedBalance = 0;
+                                // Suche den ersten gültigen Betrag von oben (neuester Stand)
+                                for (let i = 0; i < csvImportData.rows.length; i++) {
+                                  const valStr = csvImportData.rows[i][colIdx] || "";
+                                  // Bereinige den Wert (entferne Währungssymbole, Tausenderpunkte, ändere Komma zu Punkt)
+                                  const cleaned = valStr
+                                    .replace(/[^\d,.-]/g, "")
+                                    .replace(/\./g, "")
+                                    .replace(",", ".");
+                                  const val = parseFloat(cleaned);
+                                  if (!isNaN(val)) {
+                                    detectedBalance = val;
+                                    break;
+                                  }
+                                }
+                                const newAccs = accounts.map((a) =>
+                                  a.id === csvImportData.accountId ? { ...a, balance: detectedBalance } : a,
+                                );
+                                setAccounts(newAccs);
+                                setCsvImportData(null);
+                              }}
+                              className="flex-1 py-4 bg-[#60e5ff] text-black font-black rounded-xl hover:scale-[1.02] transition-transform shadow-lg"
+                            >
+                              Import bestätigen
+                            </button>
+                            <button
+                              onClick={() => setCsvImportData(null)}
+                              className="px-8 py-4 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700 transition-colors"
+                            >
+                              Abbrechen
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer Info */}
+                  <div className="p-8 bg-black/40 border-t border-[#333] flex items-start gap-4">
+                    <div className="w-10 h-10 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center shrink-0">
+                      <i data-lucide="shield-check" className="w-6 h-6"></i>
+                    </div>
+                    <div>
+                      <p className="text-[11px] text-slate-300 font-bold mb-1">Datenschutz-Garantie</p>
+                      <p className="text-[10px] text-slate-500 italic leading-relaxed">
+                        Deine Bankdaten werden ausschließlich <strong>lokal in deinem Browser</strong> verarbeitet. Es
+                        erfolgt keine Übertragung an externe Server. Nur der berechnete Kontostand wird in deinem
+                        lokalen Browser-Speicher gesichert.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         );

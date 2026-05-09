@@ -61,272 +61,261 @@
     <link rel="stylesheet" href="/blog-styles.css" />
 
     <style>
-      /* Allgemeine Container-Stile */
+      /* Moderne Effizienz-Kalkulator Styles - Strategie-Navigator Edition */
+      :root {
+        --primary-blue: #008cba;
+        --accent-cyan: #60e5ff;
+        --bg-dark: #191818;
+        --card-bg: #262626;
+        --border-color: #333;
+        --text-white: #ffffff;
+        --text-gray: #94a3b8;
+      }
+
+      body {
+        background-color: var(--bg-dark) !important;
+        color: var(--text-white) !important;
+        font-family: 'Inter', 'Noto Sans', sans-serif !important;
+      }
+
       .effizienz-quick-check-container {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 30px;
-        background-color: #333333; /* Dunkles Grau für den Haupt-Container */
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-        color: #ffffff; /* Standardmäßig weiße Schrift für den Haupt-Container */
-      }
-
-      /* Titel des Quick-Checks */
-      .effizienz-quick-check-container h2 {
-        text-align: center;
-        color: #008cbaff; /* Deine gewählte Blau-Farbe für den Titel */
-        margin-bottom: 20px;
-      }
-
-      /* Einführungstext */
-      .effizienz-quick-check-container p {
-        line-height: 1.6;
-        margin-bottom: 15px;
-        color: #ffffff; /* Sicherstellen, dass der Einführungstext weiß ist */
-      }
-
-      /* Fortschrittsbalken (Nicht direkt für diesen Kalkulator verwendet, aber im Design) */
-      .progress-container {
-        width: 100%;
-        background-color: #555555; /* Hintergrundfarbe des Balkens, etwas heller als der Container */
-        border-radius: 5px;
-        margin-bottom: 25px;
-        height: 10px; /* Höhe der Progress Bar */
+        max-width: 850px;
+        margin: 60px auto;
+        padding: 45px;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 28px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        position: relative;
         overflow: hidden;
       }
 
-      .progress-bar {
-        width: 0%;
-        height: 100%;
-        background-color: #60e5ff;
-        border-radius: 5px;
+      .effizienz-quick-check-container h1 {
         text-align: center;
-        color: white;
-        transition: width 0.4s ease-in-out;
-      }
-
-      /* Einzelner Fragenblock */
-      .question-block {
-        background-color: #444444; /* Dunkles Grau für den Fragenblock */
-        padding: 25px;
-        border-radius: 6px;
-        border: 1px solid #666666; /* Angepasster Border für dunklen Hintergrund */
+        font-size: 2.25rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--primary-blue) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         margin-bottom: 20px;
-        color: #ffffff; /* Weiße Schrift für den Fragenblock-Inhalt */
       }
 
-      /* Überschrift des Fragenblocks */
-      .question-block h3 {
-        color: #60e5ff; /* Deine gewählte Blau-Farbe für Fragenüberschriften */
-        margin-top: 0;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #666666; /* Angepasster Border für dunklen Hintergrund */
-        padding-bottom: 10px;
-      }
-
-      /* Labels für Auswahlfelder */
-      .input-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: inherit; /* Nimmt Farbe vom Elternelement an */
-      }
-
-      /* Inputfelder und Select-Boxen */
-      .input-group input[type="number"],
-      .input-group select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #666666; /* Angepasster Border */
-        border-radius: 4px;
-        box-sizing: border-box;
-        background-color: #555555; /* Etwas hellerer Hintergrund für Inputfelder */
-        color: #ffffff; /* Weiße Schrift in den Inputfeldern */
-        margin-bottom: 15px;
-      }
-
-      /* Hover-Stile für Select-Optionen (browserabhängig) */
-      .input-group select option {
-        background-color: #555555;
-        color: #ffffff;
-      }
-
-      /* Hilfe-Text unter Inputs */
-      .help-text {
-        font-size: 0.9em;
-        color: #b0b0b0; /* Helleres Grau für Hilfetext */
-        display: block;
-        margin-top: -10px; /* Etwas nach oben rücken */
-        margin-bottom: 15px;
-      }
-
-      /* Weiter-Button / Berechnen-Button */
-      .calculator-container button {
-        background-color: #008cbaff; /* Blau für Buttons */
-        color: white;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        transition: background-color 0.3s ease;
-        width: auto;
-        display: block; /* Block-Element für Zentrierung */
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .calculator-container button:hover {
-        background-color: #105a7a; /* Dunkleres Blau beim Hover */
-      }
-
-      /* Ergebnisbereich */
-      #resultsSection {
-        background-color: #444444; /* Dunkles Grau für den Ergebnisbereich, passend zum Fragenblock */
-        padding: 30px;
-        border-radius: 8px;
-        border: 1px solid #666666; /* Passender Border */
+      .effizienz-quick-check-container p {
         text-align: center;
-        color: #ffffff; /* Weiße Schrift */
-        margin-top: 30px;
+        color: var(--text-gray);
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        line-height: 1.6;
+      }
+
+      /* Question Blocks */
+      .question-block {
+        background-color: #1f1f1f;
+        padding: 35px;
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .question-block h3 {
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 15px;
+      }
+
+      .question-block label {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 25px;
+        line-height: 1.4;
+      }
+
+      /* Input & Select Styling */
+      select, input[type="number"] {
+        width: 100%;
+        padding: 16px 20px;
+        background-color: #1a1a1a;
+        border: 2px solid var(--border-color);
+        border-radius: 14px;
+        color: white;
+        font-size: 1.1rem;
+        font-family: inherit;
+        transition: all 0.2s ease;
+        appearance: none;
+        cursor: pointer;
+      }
+
+      select:focus, input[type="number"]:focus {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 4px rgba(0, 140, 186, 0.2);
+        outline: none;
+      }
+
+      /* Custom Arrow for Select */
+      .question-block { position: relative; }
+      select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2360e5ff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1.5rem center;
+        background-size: 1.5rem;
+      }
+
+      /* Navigation Buttons */
+      button {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #005f7d 100%);
+        color: white;
+        padding: 16px 40px;
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 800;
+        display: block;
+        margin: 30px auto 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(0, 140, 186, 0.3);
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(0, 140, 186, 0.5);
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--primary-blue) 100%);
+      }
+
+      /* Results Section (Ergebniskarte) */
+      #resultsSection {
+        background: linear-gradient(165deg, #1a1a1a 0%, #262626 100%);
+        padding: 50px;
+        border-radius: 32px;
+        border: 2px solid var(--border-color);
+        text-align: center;
+        box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8);
+        animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes fadeInScale {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
       }
 
       #resultsSection h3 {
-        color: #008cbaff; /* Überschrift im Ergebnisbereich (Blau) */
-        margin-bottom: 25px;
-        font-size: 1.8em;
+        color: var(--text-white);
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 40px;
       }
 
       .result-category {
-        margin-bottom: 30px; /* Abstand zwischen den Kategorien (Zeit/Kosten) */
-        padding: 15px;
-        background-color: #555555; /* Hintergrund für die Ergebnisblöcke, dunkler als Haupt-Container */
-        border-radius: 8px;
-        text-align: left; /* Text in den Kategorien linksbündig */
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 35px;
+        margin-bottom: 30px;
+        text-align: left;
+        transition: all 0.3s ease;
+      }
+
+      .result-category:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--primary-blue);
       }
 
       .result-category h4 {
-        color: #008cbaff; /* Überschrift der Kategorie (Blau) */
-        margin-top: 0;
-        margin-bottom: 15px;
-        font-size: 1.4em;
+        color: var(--accent-cyan);
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 25px;
         display: flex;
         align-items: center;
+        gap: 12px;
       }
 
-      .result-category h4 .icon-clock,
-      .result-category h4 .icon-euro {
-        /* Platzhalter für Icons - füge hier CSS für deine Icon-Bibliothek ein */
-        /* Beispiel für Font Awesome: font-family: "Font Awesome 5 Free"; font-weight: 900; */
-        margin-right: 10px;
-        font-size: 1.2em; /* Größe des Icons im Verhältnis zur Überschrift */
-        color: #ffffff; /* Icons weiß */
-      }
-      /* Wenn keine Icon-Lib, dann hier ein Emojisymbol als fallback oder direct-content */
-      .result-category h4 .icon-clock::before {
-        content: "⏱️ ";
-      }
-      .result-category h4 .icon-euro::before {
-        content: "💰 ";
-      }
+      .icon-clock::before { content: "⏱️ "; }
+      .icon-euro::before { content: "💰 "; }
+      .icon-nav::before { content: " 🚀"; }
 
       .result-block {
         display: flex;
-        justify-content: space-between; /* Label links, Wert rechts */
-        align-items: baseline;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px dashed #666666; /* Dezenter Trenner */
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
 
-      .result-block:last-child {
-        border-bottom: none; /* Kein Trenner nach dem letzten Block in der Kategorie */
-      }
+      .result-block:last-of-type { border-bottom: none; }
 
       .result-label {
-        font-weight: bold;
-        color: #dddddd; /* Leicht helleres Grau für die Labels */
-        flex-basis: 50%; /* Nimmt 50% der Breite ein */
-        text-align: left;
-        margin: 0;
+        color: var(--text-gray);
+        font-weight: 600;
+        font-size: 1.1rem;
       }
 
       .result-value {
-        font-size: 1.8em; /* Groß für die Zahlen */
-        font-weight: bold;
-        color: #ffffff; /* Weiß für die Zahlen */
-        flex-basis: 50%; /* Nimmt 50% der Breite ein */
-        text-align: right;
-        margin: 0;
+        font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--primary-blue) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(96, 229, 255, 0.2));
       }
 
-      .result-subtext {
-        font-size: 0.9em;
-        color: #bbbbbb; /* Leicht dunklerer Text für Sub-Informationen */
-        text-align: right;
-        width: 100%; /* Nimmt volle Breite unter dem Wert ein */
-        margin-top: -5px; /* Etwas näher an den Wert rücken */
-        margin-bottom: 10px;
-      }
-
-      /* Interpretations-Text */
       .interpretation-display {
-        font-size: 1.1em;
-        color: #ffffff;
-        margin-bottom: 25px;
+        font-size: 1.15rem;
         line-height: 1.6;
-        text-align: left; /* Interpretations-Text linksbündig */
+        color: #e2e8f0;
+        margin: 40px 0;
+        background: rgba(96, 229, 255, 0.05);
+        padding: 25px;
+        border-radius: 20px;
+        border-left: 4px solid var(--accent-cyan);
+        text-align: left;
       }
 
-      /* Call-to-Action Button */
+      /* CTA Button */
       .cta-button {
-        display: inline-block;
-        background-color: #008cbaff; /* Deine gewählte Blau-Farbe für den CTA */
-        color: white;
-        padding: 15px 30px;
-        border-radius: 5px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--primary-blue) 100%);
+        color: #191818 !important;
+        padding: 20px 45px;
+        border-radius: 20px;
         text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 30px;
-        transition: background-color 0.3s ease;
+        font-size: 1.25rem;
+        font-weight: 800;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 15px 35px rgba(96, 229, 255, 0.3);
       }
 
       .cta-button:hover {
-        background-color: #105a7a; /* Dunkleres Blau beim Hover */
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 20px 45px rgba(96, 229, 255, 0.5);
+        filter: brightness(1.1);
       }
 
-      /* Media Queries für Responsiveness */
-      @media (max-width: 768px) {
+      /* Mobile Optimierung */
+      @media (max-width: 640px) {
         .effizienz-quick-check-container {
-          margin: 20px;
-          padding: 20px;
+          padding: 25px;
+          margin: 20px 10px;
+          border-radius: 20px;
         }
-        .question-block {
-          padding: 15px;
-        }
-        .result-block {
-          flex-direction: column; /* Stapelt Label und Wert untereinander */
-          align-items: flex-start;
-          text-align: left;
-        }
-        .result-label,
-        .result-value,
-        .result-subtext {
-          width: 100%;
-          text-align: left; /* Alles linksbündig */
-          margin-bottom: 5px;
-        }
-        .result-value {
-          font-size: 1.5em; /* Etwas kleiner auf Mobilgeräten */
-        }
-        .cta-button {
-          width: 90%;
-          box-sizing: border-box; /* Sicherstellen, dass Padding in Breite enthalten ist */
-        }
+        .effizienz-quick-check-container h1 { font-size: 1.75rem; }
+        .result-category { padding: 20px; }
+        .result-value { font-size: 1.5rem; }
+        .cta-button { width: 100%; justify-content: center; padding: 18px; }
       }
     </style>
   </head>
