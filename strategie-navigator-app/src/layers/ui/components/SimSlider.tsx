@@ -13,6 +13,7 @@ interface SimSliderProps {
   step?: number;
   onChange: (val: number) => void;
   prefix?: string;
+  description?: string;
 }
 
 export const SimSlider: React.FC<SimSliderProps> = ({
@@ -24,6 +25,7 @@ export const SimSlider: React.FC<SimSliderProps> = ({
   step = 1,
   onChange,
   prefix = '',
+  description,
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 

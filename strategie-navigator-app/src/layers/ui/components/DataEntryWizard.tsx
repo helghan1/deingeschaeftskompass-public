@@ -365,8 +365,6 @@ export const DataEntryWizard: React.FC = () => {
         </div>
       </div>
 
-      </div>
-
       <div className="flex flex-col sm:flex-row gap-6 mt-12 pt-12 border-t border-white/5">
         <div className="bg-[#008cba]/5 border border-[#008cba]/20 p-8 rounded-[2.5rem] flex items-start gap-6 flex-1">
           <div className="p-3 bg-[#008cba]/10 rounded-2xl text-[#008cba]">

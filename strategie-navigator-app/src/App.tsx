@@ -348,7 +348,14 @@ function App() {
   };
 
 
-  const renderSimulation = () => (
+  const renderSimulation = () => {
+    if (!metrics || !baseMetrics) return (
+      <div className="flex flex-col items-center justify-center h-96 text-slate-500 gap-4">
+        <TrendingUp className="w-12 h-12 opacity-20" />
+        <p>Bitte gib zuerst deine Basis-Daten im Projekt-Setup ein.</p>
+      </div>
+    );
+    return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Simulation Sub-Navigation */}
       <div className="flex justify-center">
@@ -461,9 +468,9 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-bg-card border border-white/5 p-8 rounded-[2.5rem]">
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-4">Sim. Umsatz</h4>
-                <div className="text-3xl font-black mb-2">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(metrics.revenue)}</div>
-                <div className={cn("text-sm font-bold", metrics.revenue >= baseMetrics.revenue ? "text-emerald-500" : "text-rose-500")}>
-                  {metrics.revenue >= baseMetrics.revenue ? '+' : ''}{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(metrics.revenue - baseMetrics.revenue)}
+                <div className="text-3xl font-black mb-2">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(metrics!.revenue)}</div>
+                <div className={cn("text-sm font-bold", metrics!.revenue >= baseMetrics!.revenue ? "text-emerald-500" : "text-rose-500")}>
+                  {metrics!.revenue >= baseMetrics!.revenue ? '+' : ''}{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(metrics!.revenue - baseMetrics!.revenue)}
                 </div>
               </div>
               <div className="bg-bg-card border border-white/5 p-8 rounded-[2.5rem]">
@@ -475,9 +482,9 @@ function App() {
               </div>
               <div className="bg-bg-card border border-white/5 p-8 rounded-[2.5rem]">
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-4">Sim. Runway</h4>
-                <div className="text-3xl font-black mb-2">{SimulationEngine.calculateKPIs(metrics).runwayMonths.toFixed(1)} m</div>
-                <div className={cn("text-sm font-bold", SimulationEngine.calculateKPIs(metrics).runwayMonths >= SimulationEngine.calculateKPIs(baseMetrics).runwayMonths ? "text-emerald-500" : "text-rose-500")}>
-                   {SimulationEngine.calculateKPIs(metrics).runwayMonths.toFixed(1)} Monate Reichweite
+                <div className="text-3xl font-black mb-2">{SimulationEngine.calculateKPIs(metrics!).runwayMonths.toFixed(1)} m</div>
+                <div className={cn("text-sm font-bold", SimulationEngine.calculateKPIs(metrics!).runwayMonths >= SimulationEngine.calculateKPIs(baseMetrics!).runwayMonths ? "text-emerald-500" : "text-rose-500")}>
+                   {SimulationEngine.calculateKPIs(metrics!).runwayMonths.toFixed(1)} Monate Reichweite
                 </div>
               </div>
             </div>
@@ -490,8 +497,8 @@ function App() {
               <BIChart 
                 type="bar" 
                 data={[
-                  { name: 'Basis', umsatz: baseMetrics.revenue, gewinn: baseProfit },
-                  { name: 'Simulation', umsatz: metrics.revenue, gewinn: profit }
+                  { name: 'Basis', umsatz: baseMetrics!.revenue, gewinn: baseProfit },
+                  { name: 'Simulation', umsatz: metrics!.revenue, gewinn: profit }
                 ]} 
                 metrics={[
                   { key: 'umsatz', color: '#008cba', label: 'Umsatz' },
@@ -508,6 +515,8 @@ function App() {
       )}
     </div>
   );
+  };
+
   const renderLiquidity = () => {
     if (!metrics) return null;
     const kpis = SimulationEngine.calculateKPIs(metrics);
@@ -648,7 +657,7 @@ function App() {
   };
 
   return (
-    <DashboardLayout activeTab={activeTab} onTabChange={setActiveTab}>
+    <DashboardLayout activeTab={activeTab} onTabChange={(tab) => setActiveTab(tab as typeof activeTab)}>
       <div className="space-y-8 pb-12">
         {/* Header Section */}
         <div className="flex justify-between items-center">
