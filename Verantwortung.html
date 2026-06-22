@@ -90,11 +90,7 @@
                 </a>
               </div>
 
-              <div class="kopfzeile-start-buttons">
-                <a href="verantwortung.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
-                  <span> Verantwortung </span>
-                </a>
-              </div>
+              <div class="kopfzeile-start-buttons"></div>
 
               <div class="kopfzeile-start-buttons">
                 <a href="preise.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
@@ -123,7 +119,7 @@
           <div class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
             <a href="index.html">Startseite</a>
             <a href="gut-zu-wissen.html">Gut zu Wissen</a>
-            <a href="verantwortung.html">Verantwortung</a>
+
             <a href="preise.html">Preise</a>
             <a href="mehr-erfahren.html">Mehr Erfahren</a>
             <a href="kontakt.html">Kontakt</a>
@@ -339,24 +335,14 @@
         const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || "");
 
         switch (platform) {
-          case "facebook":
-            // Facebook Share URL: u= für die zu teilende URL
-            return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
           case "reddit":
             // Reddit Share URL: url und title
-            return `https://www.reddit.com/submit?url=${url}&title=${title}`;
-          case "whatsapp":
-            // WhatsApp Share URL: text (Titel + URL)
-            return `https://wa.me/?text=${title}%20${url}`;
-          case "tumblr":
-            // Tumblr Share URL: posttype=link, title und content
-            // Du kannst auch posttype=quote oder posttype=text verwenden
-            return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
+            return `https://www.reddit.com/r/deingeschaeftskompass/`;
           case "instagram":
             return `https://www.instagram.com/deingeschaeftskompass/`;
-          case "wordpress":
-            // WordPress.com Share URL: link und title
-            return `https://wordpress.com/create/post?url=${url}&title=${title}`;
+          case "youtube":
+            return `https://www.youtube.com/@deingeschaeftskompass/`;
+
           default:
             console.warn("Unbekannte Plattform für Teilen-URL:", platform);
             return "#"; // Fallback

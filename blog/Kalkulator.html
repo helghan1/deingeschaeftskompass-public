@@ -75,7 +75,7 @@
       body {
         background-color: var(--bg-dark) !important;
         color: var(--text-white) !important;
-        font-family: 'Inter', 'Noto Sans', sans-serif !important;
+        font-family: "Inter", "Noto Sans", sans-serif !important;
       }
 
       .effizienz-quick-check-container {
@@ -121,8 +121,14 @@
       }
 
       @keyframes slideIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .question-block h3 {
@@ -143,7 +149,8 @@
       }
 
       /* Input & Select Styling */
-      select, input[type="number"] {
+      select,
+      input[type="number"] {
         width: 100%;
         padding: 16px 20px;
         background-color: #1a1a1a;
@@ -157,14 +164,17 @@
         cursor: pointer;
       }
 
-      select:focus, input[type="number"]:focus {
+      select:focus,
+      input[type="number"]:focus {
         border-color: var(--primary-blue);
         box-shadow: 0 0 0 4px rgba(0, 140, 186, 0.2);
         outline: none;
       }
 
       /* Custom Arrow for Select */
-      .question-block { position: relative; }
+      .question-block {
+        position: relative;
+      }
       select {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2360e5ff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
@@ -206,8 +216,14 @@
       }
 
       @keyframes fadeInScale {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       #resultsSection h3 {
@@ -242,9 +258,15 @@
         gap: 12px;
       }
 
-      .icon-clock::before { content: "⏱️ "; }
-      .icon-euro::before { content: "💰 "; }
-      .icon-nav::before { content: " 🚀"; }
+      .icon-clock::before {
+        content: "⏱️ ";
+      }
+      .icon-euro::before {
+        content: "💰 ";
+      }
+      .icon-nav::before {
+        content: " 🚀";
+      }
 
       .result-block {
         display: flex;
@@ -254,7 +276,9 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
 
-      .result-block:last-of-type { border-bottom: none; }
+      .result-block:last-of-type {
+        border-bottom: none;
+      }
 
       .result-label {
         color: var(--text-gray);
@@ -312,10 +336,20 @@
           margin: 20px 10px;
           border-radius: 20px;
         }
-        .effizienz-quick-check-container h1 { font-size: 1.75rem; }
-        .result-category { padding: 20px; }
-        .result-value { font-size: 1.5rem; }
-        .cta-button { width: 100%; justify-content: center; padding: 18px; }
+        .effizienz-quick-check-container h1 {
+          font-size: 1.75rem;
+        }
+        .result-category {
+          padding: 20px;
+        }
+        .result-value {
+          font-size: 1.5rem;
+        }
+        .cta-button {
+          width: 100%;
+          justify-content: center;
+          padding: 18px;
+        }
       }
     </style>
   </head>
@@ -353,12 +387,6 @@
               </div>
 
               <div class="kopfzeile-start-buttons">
-                <a href="/verantwortung.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
-                  <span> Verantwortung </span>
-                </a>
-              </div>
-
-              <div class="kopfzeile-start-buttons">
                 <a href="/preise.html" class="kopfzeile-rest-action1 thq-button-animated thq-button-outline">
                   <span> Preise </span>
                 </a>
@@ -385,7 +413,7 @@
           <div class="kopfzeile-rest-mobile-menu" id="mobileMenuRest">
             <a href="/index.html">Startseite</a>
             <a href="/gut-zu-wissen.html">Gut zu Wissen</a>
-            <a href="/verantwortung.html">Verantwortung</a>
+
             <a href="/preise.html">Preise</a>
             <a href="/mehr-erfahren.html">Mehr Erfahren</a>
             <a href="/kontakt.html">Kontakt</a>
@@ -543,16 +571,15 @@
                 >
                   <img src="/public/instagram.webp" alt="Instagram" class="fuzeile-social-icon" />
                 </a>
-                - oder teile deine Begeisterung auf:
                 <a
                   href="#"
                   onclick="
-                    window.open(getShareUrl('facebook'), '_blank');
+                    window.open(getShareUrl('youtube'), '_blank');
                     return false;
                   "
                   class="fuzeile-social-button"
                 >
-                  <img src="/public/facebook.webp" alt="Facebook" class="fuzeile-social-icon" />
+                  <img src="/public/youtube.webp" alt="YouTube" class="fuzeile-social-icon" />
                 </a>
                 <a
                   href="#"
@@ -562,40 +589,7 @@
                   "
                   class="fuzeile-social-button"
                 >
-                  <img src="/public/reddit.webp" alt="Reddit" class="fuzeile-social-icon" />
-                </a>
-                <a
-                  href="#"
-                  onclick="
-                    window.open(getShareUrl('whatsapp'), '_blank');
-                    return false;
-                  "
-                  class="fuzeile-social-button"
-                >
-                  <img src="/public/whatsapp.webp" alt="WhatsApp" class="fuzeile-social-icon" />
-                </a>
-                <a
-                  href="#"
-                  onclick="
-                    window.open(getShareUrl('tumblr'), '_blank');
-                    return false;
-                  "
-                  class="fuzeile-social-button"
-                >
-                  <img src="/public/tumblr.webp" alt="Tumblr" class="fuzeile-social-icon" />
-                </a>
-                <a
-                  href="#"
-                  onclick="
-                    window.open(getShareUrl('wordpress'), '_blank');
-                    return false;
-                  "
-                  class="fuzeile-social-button"
-                >
-                  <img src="/public/wordpress.webp" alt="WordPress" class="fuzeile-social-icon" />
-                </a>
-                <button class="fuzeile-share-button" onclick="sharePage()">
-                  <img src="/public/share.webp" alt="Teilen" class="fuzeile-social-icon" />
+                  <img src="/public/Reddit.webp" alt="Reddit" class="fuzeile-social-icon" />
                 </button>
               </div>
             </div>
@@ -656,24 +650,14 @@
         const description = encodeURIComponent(document.querySelector('meta[name="description"]')?.content || "");
 
         switch (platform) {
-          case "facebook":
-            // Facebook Share URL: u= für die zu teilende URL
-            return `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title}`;
           case "reddit":
             // Reddit Share URL: url und title
-            return `https://www.reddit.com/submit?url=${url}&title=${title}`;
-          case "whatsapp":
-            // WhatsApp Share URL: text (Titel + URL)
-            return `https://wa.me/?text=${title}%20${url}`;
-          case "tumblr":
-            // Tumblr Share URL: posttype=link, title und content
-            // Du kannst auch posttype=quote oder posttype=text verwenden
-            return `https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=${url}&title=${title}&content=${description}`;
+            return `https://www.reddit.com/r/deingeschaeftskompass/`;
           case "instagram":
             return `https://www.instagram.com/deingeschaeftskompass/`;
-          case "wordpress":
-            // WordPress.com Share URL: link und title
-            return `https://wordpress.com/create/post?url=${url}&title=${title}`;
+          case "youtube":
+            return `https://www.youtube.com/@deingeschaeftskompass/`;
+
           default:
             console.warn("Unbekannte Plattform für Teilen-URL:", platform);
             return "#"; // Fallback
